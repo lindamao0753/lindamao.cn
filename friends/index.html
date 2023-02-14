@@ -1,0 +1,3608 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="keywords" content="Gridea静态个人博客">
+<meta name="description" content="温故而知新">
+<meta name="theme-color" content="#000">
+<title>Gridea</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1676353769601">
+<link rel="stylesheet" href="/media/css/gemini.css">
+<link rel="stylesheet" href="/media/fonts/font-awesome.css">
+<link
+  href="//fonts.loli.net/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rosario:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"
+  rel="stylesheet" type="text/css">
+
+<link href="/media/hljs/styles/default.css"
+  rel="stylesheet">
+
+<link rel="stylesheet" href="/styles/main.css">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/media/js/jquery.js"></script>
+<script src="/media/hljs/highlight.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.ui.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+  integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+  integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+  integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+
+
+
+
+
+
+</head>
+
+<body>
+  <div class="head-top-line"></div>
+  <div class="header-box">
+    
+<div class="gemini">
+  <header class="header  ">
+    <div class="blog-header box-shadow-wrapper bg-color " id="header">
+      <div class="nav-toggle" id="nav_toggle">
+        <div class="toggle-box">
+          <div class="line line-top"></div>
+          <div class="line line-center"></div>
+          <div class="line line-bottom"></div>
+        </div>
+      </div>
+      <div class="site-meta">       
+        <div class="site-title">
+          
+            <a href="/" class="brand">
+              <span>Gridea</span>
+            </a>  
+          
+        </div>
+        
+          <p class="subtitle">精于心，简于形</p>
+        
+      </div>
+      <nav class="site-nav" id="site_nav">
+        <ul id="nav_ul">
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/" target="_self">
+                  <i class="fa fa-globe"></i> 首页
+                </a>
+              
+            </li>
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/archives" target="_self">
+                  <i class="fa fa-globe"></i> 归档
+                </a>
+              
+            </li>
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/tags" target="_self">
+                  <i class="fa fa-globe"></i> 标签
+                </a>
+              
+            </li>
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/post/about" target="_self">
+                  <i class="fa fa-globe"></i> 关于
+                </a>
+              
+            </li>
+          
+          
+            
+              <li class="nav-item nav-item-active">
+                <a href="/friends/" target="_self">
+                  
+                    <i class="fa fa-address-book"></i> 友链
+                  
+                </a>
+              </li>
+            
+          
+          
+            <li id="fa_search" class="nav-item">
+              <a href="javascript:void(0);">
+                <i class="fa fa-search"></i> <span class="language" data-lan="search">搜索</span>
+              </a>
+            </li>
+          
+        </ul>
+      </nav>
+    </div>
+  </header>
+</div>
+
+<script type="text/javascript"> 
+ 
+  let showNav = true;
+
+  let navToggle = document.querySelector('#nav_toggle'),
+  siteNav = document.querySelector('#site_nav');
+  
+  function navClick() {
+    let sideBar = document.querySelector('.sidebar');
+    let navUl = document.querySelector('#nav_ul');
+    navToggle.classList.toggle('nav-toggle-active');
+    siteNav.classList.toggle('nav-menu-active');
+    if (siteNav.classList.contains('nav-menu-active')) {
+      siteNav.style = "height: " + (navUl.children.length * 42) +"px !important";
+    } else {
+      siteNav.style = "";
+    }
+  }
+
+  navToggle.addEventListener('click',navClick);  
+</script>
+  </div>
+  <div class="main-continer">
+    
+      <div
+        class="section-layout gemini ">
+        <div class="section-layout-wrapper">
+          <div id="sidebarMeta" class="sidebar">
+    
+<div class="sidebar-wrapper box-shadow-wrapper bg-color">
+  <div class="sidebar-item">
+    <img class="site-author-image right-motion" src="/images/avatar.png"/>
+    <p class="site-author-name">我是谁</p>
+    
+  </div>
+  <div class="sidebar-item side-item-stat right-motion">
+    <div class="sidebar-item-box">
+      <a href="/archives/">
+        
+        <span class="site-item-stat-count">6</span>
+        <span class="site-item-stat-name language" data-lan="article">文章</span>
+      </a>
+    </div>
+    <div class="sidebar-item-box">
+      <a href="/tags/">
+        <span class="site-item-stat-count">1</span>
+        <span class="site-item-stat-name language" data-lan="tag">标签</span>
+      </a>
+    </div>
+  </div>
+  
+    
+  
+  
+
+
+
+</div>
+</div>
+<script>
+  let sidebarMeta = document.querySelector('#sidebarMeta');
+  let scheme = 'gemini';
+  let sidebarWrapper = document.querySelector('.sidebar-wrapper');
+  if (sidebarMeta && (scheme === 'pisces' || scheme === 'gemini')) {
+    document.addEventListener('scroll', function(e) {
+      if (document.scrollingElement.scrollTop > parseInt(sidebarMeta.style.marginTop) + 10) {
+        sidebarWrapper.classList.add('home-sidebar-fixed')
+      } else {
+        sidebarWrapper.classList.remove('home-sidebar-fixed')
+      }
+    });
+  }
+  </script>
+            <div class="section-box gemini box-shadow-wrapper">
+              <section class="friends-section bg-color slide-down-in">
+                <div class="firends-box" align="center">
+                  <h1 class="firends-title" itemprop="name headline">
+                    友链
+                  </h1>
+                  
+                    
+                        
+                </div>
+                <hr>
+                <div style="text-align:center">
+                  <span class="with-love">
+                    <i class="fa fa-heart"></i>
+                  </span>
+                  <span class="language" data-lan="leave-message">如需添加友链,可以在关于中找到我的联系方式告知我</span>
+                  <span class="with-love">
+                    <i class="fa fa-heart"></i>
+                  </span>
+                </div>
+                <hr>
+                <div class="friends-note">
+                  <p><strong class="language" data-lan="format">友链格式：</strong></p>
+                  <ul>
+                    <li><span class="language" data-lan="site-name">网站名称：</span>Gridea</li>
+                    <li><span class="language" data-lan="site-link">网站地址：</span><a href="https://github.com/lindamao0753/lindamao0753.github.io" data-pjax-state="">https://github.com/lindamao0753/lindamao0753.github.io</a></li>
+                    <li><span class="language" data-lan="site-desc">网站描述：</span>温故而知新</li>
+                    <li><span class="language" data-lan="site-img">网站头像：</span>
+                      <a href="https://github.com/lindamao0753/lindamao0753.github.io/images/avatar.png">https://github.com/lindamao0753/lindamao0753.github.io/images/avatar.png</a>
+                    </li>
+                  </ul>
+                </div>
+                
+  
+
+              </section>
+            </div>
+        </div>
+      </div>
+      <div class="footer-box">
+  <footer class="footer">
+    <center id="runTimeBox">
+      已运行:<span id="run_time"></span>
+    </center>
+    <span id="busuanzi_container_site_pv">浏览数:<span id="busuanzi_value_site_pv"></span> 次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">访客数:<span id="busuanzi_value_site_uv"></span> 人</span>
+
+    <script>
+      BirthDay = new Date('');
+      if (BirthDay.getTime()) {
+        function runTime() {
+          str = "";
+          today = new Date();
+          timeold = today.getTime() - BirthDay.getTime();
+          msPerDay = 24 * 60 * 60 * 1000;
+          e_daysold = timeold / msPerDay;
+          daysold = Math.floor(e_daysold);
+          str += daysold + "天";
+          return str;
+        }
+        setInterval(function () {
+          $("#run_time").html(runTime());
+        }, 1000);
+      } else {
+        document.querySelector('.footer').removeChild(document.querySelector('#runTimeBox'));
+      }
+    </script>
+    <div class="poweredby">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </footer>
+  
+    
+        <div class="gemini back-to-top" id="back_to_top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span class="scrollpercent"> <span id="back_to_top_text">0</span>% </span>
+            
+        </div>
+        
+                  
+                        
+</div>
+<script>
+  let sideBarOpen = "sidebar-open";
+  let body = document.body;
+  let back2Top = document.querySelector("#back_to_top"),
+    back2TopText = document.querySelector("#back_to_top_text"),
+    drawerBox = document.querySelector("#drawer_box"),
+    rightSideBar = document.querySelector(".sidebar"),
+    viewport = document.querySelector("body");
+
+  function scrollAnimation(currentY, targetY) {
+    let needScrollTop = targetY - currentY;
+    let _currentY = currentY;
+    setTimeout(() => {
+      const dist = Math.ceil(needScrollTop / 10);
+      _currentY += dist;
+      window.scrollTo(_currentY, currentY);
+      if (needScrollTop > 10 || needScrollTop < -10) {
+        scrollAnimation(_currentY, targetY);
+      } else {
+        window.scrollTo(_currentY, targetY);
+      }
+    }, 1);
+  }
+
+  back2Top.addEventListener("click", function (e) {
+    scrollAnimation(document.scrollingElement.scrollTop, 0);
+    e.stopPropagation();
+    return false;
+  });
+
+  window.addEventListener("scroll", function (e) {
+    let percent =
+      (document.scrollingElement.scrollTop /
+        (document.scrollingElement.scrollHeight -
+          document.scrollingElement.clientHeight)) *
+      100;
+    if (percent > 1 && !back2Top.classList.contains("back-top-active")) {
+      back2Top.classList.add("back-top-active");
+    }
+    if (percent == 0) {
+      back2Top.classList.remove("back-top-active");
+    }
+    if (back2TopText) {
+      back2TopText.textContent = Math.floor(percent);
+    }
+  });
+
+  let hasCacu = false;
+  window.addEventListener("resize", function (e) {
+    calcuHeight();
+  });
+
+  function calcuHeight() {
+    // 动态调整站点概览高度
+    if (
+      (!hasCacu && back2Top.classList.contains("pisces")) ||
+      back2Top.classList.contains("gemini")
+    ) {
+      let sideBar = document.querySelector(".sidebar");
+      let navUl = document.querySelector("#site_nav");
+      sideBar.style =
+        "margin-top:" + (navUl.offsetHeight + navUl.offsetTop + 15) + "px;";
+      hasCacu = true;
+    }
+  }
+  calcuHeight();
+
+  let open = false,
+    MOTION_TIME = 300,
+    RIGHT_MOVE_DIS = "320px";
+
+  if (drawerBox) {
+    let rightMotions = document.querySelectorAll(".right-motion");
+    let right = drawerBox.classList.contains("right");
+
+    let transitionDir = right
+      ? "transition.slideRightIn"
+      : "transition.slideLeftIn";
+
+    let openProp, closeProp;
+    if (right) {
+      openProp = {
+        paddingRight: RIGHT_MOVE_DIS,
+      };
+      closeProp = {
+        paddingRight: "0px",
+      };
+    } else {
+      openProp = {
+        paddingLeft: RIGHT_MOVE_DIS,
+      };
+      closeProp = {
+        paddingLeft: "0px",
+      };
+    }
+
+    drawerBox.onclick = function () {
+      open = !open;
+      jQuery.Velocity(rightSideBar, "stop");
+      jQuery.Velocity(viewport, "stop");
+      jQuery.Velocity(rightMotions, "stop");
+      if (open) {
+        jQuery.Velocity(
+          rightSideBar,
+          {
+            width: RIGHT_MOVE_DIS,
+          },
+          {
+            duration: MOTION_TIME,
+            begin: function () {
+              jQuery.Velocity(rightMotions, transitionDir, {});
+            },
+          }
+        );
+        jQuery.Velocity(viewport, openProp, {
+          duration: MOTION_TIME,
+        });
+      } else {
+        jQuery.Velocity(
+          rightSideBar,
+          {
+            width: "0px",
+          },
+          {
+            duration: MOTION_TIME,
+            begin: function () {
+              jQuery.Velocity(rightMotions, {
+                opacity: 0,
+              });
+            },
+          }
+        );
+        jQuery.Velocity(viewport, closeProp, {
+          duration: MOTION_TIME,
+        });
+      }
+      for (let i = 0; i < drawerBox.children.length; i++) {
+        drawerBox.children[i].classList.toggle("muse-line");
+      }
+      drawerBox.classList.toggle(sideBarOpen);
+    };
+  }
+
+  // 链接跳转
+  let newWindow = "false";
+  if (newWindow === "true") {
+    let links = document.querySelectorAll(".post-body a");
+    links.forEach((item) => {
+      if (!item.classList.contains("btn")) {
+        item.setAttribute("target", "_blank");
+      }
+    });
+  }
+
+  let faSearch = document.querySelector("#fa_search");
+  faSearch &&
+    faSearch.addEventListener("click", function () {
+      document.querySelector("#search_mask").style = "";
+    });
+
+  // 代码高亮
+  hljs.initHighlightingOnLoad();
+
+  // 离开当前页title变化
+  var leaveTitle = "";
+  var normal_title = document.title;
+  if (leaveTitle) {
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState == "hidden") {
+        normal_title = document.title;
+        document.title = leaveTitle;
+      } else {
+        document.title = normal_title;
+      }
+    });
+  }
+</script>
+
+<link rel="stylesheet" href="/media/css/jquery.fancybox.css" />
+<script src="/media/js/jquery.fancybox.js"></script>
+
+<script>
+  let images = document.querySelectorAll(".section img");
+  images.forEach((image) => {
+    var parent = image.parentElement;
+    var next = image.nextElementSibling;
+    parent.removeChild(image);
+    var aelem = document.createElement("a");
+    aelem.href = image.src;
+    aelem.dataset["fancybox"] = "images";
+    aelem.dataset["rel"] = "fancybox-button";
+    aelem.classList.add("fancybox");
+    aelem.appendChild(image);
+    parent.insertBefore(aelem, next);
+  });
+</script>
+  </div>
+</body>
+
+  <div class="search-mask" id="search_mask" style="display: none;">
+  <div class="search-box">
+    <div class="search-title">
+      <i class="fa fa-search"></i>
+      <div class="input-box">
+        <input id="search" type="text" class="language" data-lan="search" placeholder="搜索">
+      </div>
+      <i id="close" class="fa fa-times-circle"></i>
+    </div>
+    <div class="stat-box">
+      <span id="stat_count">0</span><span class="language" data-lan="stat">条相关条目，使用了</span><span id="stat_times">0</span><span class="language" data-lan="stat-time">毫秒</span>
+      <hr>
+    </div>
+    <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://github.com/lindamao0753/lindamao0753.github.io/post/mysql/"" data-c="
+          &lt;h2 id=&#34;关系型数据库和非关系型数据库的区别&#34;&gt;关系型数据库和非关系型数据库的区别&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;数据存储结构&lt;/strong&gt;：&lt;br&gt;
+首先关系型数据库一般都有固定的表结构，并且需要通过DDL语句来修改表结构，不是很容易进行扩展，而非关系型数据库的存储机制就有很多了，比如基于文档的，K-V键值对的，还有基于图的等，对于数据的格式十分灵活没有固定的表结构，方便扩展，因此如果业务的数据结构并不是固定的或者经常变动比较大的，那么非关系型数据库是个好的选择&lt;/p&gt;
+&lt;p&gt;关系型数据库存储结构比较固定,不容易拓展&lt;/p&gt;
+&lt;p&gt;非关系型数据库结构不固定，容易拓展&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;可扩展性&lt;/strong&gt;&lt;br&gt;
+传统的关系型数据库给人一种横向扩展难，不好对数据进行分片等，而一些非关系型数据库则原生就支持数据的水平扩展(比如mongodb的sharding机制)，并且这可能也是很多NoSQL的一大卖点，其实象Mysql这种关系型数据库的水平扩展也并不是难，即使NoSQL水平扩展容易但对于向跨分片进行joins这种场景都没有什么太好的解决办法，不管是关系型还是非关系型数据库，解决水平扩展或者跨分片Joins这种场景，在应用层和数据库层中间加一层中间件来做数据处理也许是个好的办法&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;数据一致性&lt;/strong&gt;&lt;br&gt;
+关系型数据库一般强调的是数据最终一致性，而不没有像ACID一样强调数据的强一致性，从非关系型数据库中读到的有可能还是处于一个中间态的数据，因此如果你的业务对于数据的一致性要求很高，那么非关系型数据库并不一个很好的选择，非关系型数据库可能更多的偏向于OLAP场景，而关系型数据库更多偏向于OLTP场景&lt;/p&gt;
+&lt;p&gt;关系型数据库强调数据的一致性&lt;/p&gt;
+&lt;p&gt;非关系数据库不是很强调&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;三大范式&#34;&gt;三大范式&lt;/h2&gt;
+&lt;p&gt;第一范式是最基本的范式。如果数据库表中的所有&lt;strong&gt;字段值都是不可分解的原子值&lt;/strong&gt;，就说明该数据库表满足了第一范式。&lt;/p&gt;
+&lt;p&gt;数据库第二范式：&lt;strong&gt;关系模式必须满足第一范式，并且所有非主属性都完全依赖于主码&lt;/strong&gt;。注意，符合第二范式的关系模型可能还存在数据冗余、更新异常等问题。关系模型（学号，姓名，专业编号，专业名称）中，姓名依赖于学号，而专业名称依赖于专业编号，不满足数据库第二范式&lt;/p&gt;
+&lt;p&gt;数据库第三范式：&lt;strong&gt;关系模型满足第二范式&lt;/strong&gt;，所有非主属性对任何候选关键字都不存在传递依赖。即&lt;strong&gt;每个属性都跟主键有直接关系而不是间接关系&lt;/strong&gt;。接着以学生表举例，对于关系模型（学号，姓名，年龄，性别，所在院校，院校地址，院校电话）院校地址，院校电话和学号不存在直接关系，因此不满足第三范式。&lt;/p&gt;
+&lt;p&gt;第一范式：数据具&lt;strong&gt;有原子&lt;/strong&gt;性，不可再分。&lt;/p&gt;
+&lt;p&gt;第二范式：不允许出现部分依赖，即不允许出现复合主键。&lt;/p&gt;
+&lt;p&gt;第三范式：不存在传递依赖，即不允许出现某个字段依赖非主键。&lt;/p&gt;
+&lt;h2 id=&#34;mysql的架构&#34;&gt;MySQL的架构&lt;/h2&gt;
+&lt;p&gt;MySQL可以分为应用层,逻辑层,数据库引擎层,物理层。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;应用层&lt;/strong&gt;：负责和&lt;a href=&#34;&#34;&gt;客户端&lt;/a&gt;，响应&lt;a href=&#34;&#34;&gt;客户端&lt;/a&gt;请求，建立连接，返回数据。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;逻辑层&lt;/strong&gt;：包括SQK接口，解析器，优化器，Cache与buffer。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;数据库引擎层&lt;/strong&gt;：有常见的MyISAM,InnoDB等等。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;物理层&lt;/strong&gt;：负责文件存储，日志等等。&lt;/p&gt;
+&lt;h2 id=&#34;存储引擎&#34;&gt;存储引擎&lt;/h2&gt;
+&lt;h3 id=&#34;一些常用命令&#34;&gt;⼀些常⽤命令&lt;/h3&gt;
+&lt;p&gt;查看MySQL提供的所有存储引擎&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;show engines&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;查看MySQL当前默认的存储引擎&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;show variables like &#39;%storage_engine&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;查看表的存储引擎&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;show table status like &amp;quot;tablename&amp;quot;&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;myisam和innodb区别&#34;&gt;MyISAM和InnoDB区别&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;MyISAM&lt;/strong&gt;是MySQL的默认数据库引擎（5.5版之前）。虽然性能极佳，⽽且提供了⼤量的特性，包括全⽂索引、压缩、空间函数等，但MyISAM不⽀持事务和⾏级锁，⽽且最⼤的缺陷就是崩溃后⽆法安全恢复。不过，5.5版本之后，MySQL引⼊了&lt;strong&gt;InnoDB&lt;/strong&gt;（事务性数据库引擎），MySQL5.5版本后默认的存储引擎为&lt;strong&gt;InnoDB&lt;/strong&gt;。⼤多数时候我们使⽤的都是 &lt;strong&gt;InnoDB&lt;/strong&gt; 存储引擎，但是在某些情况下使⽤ MyISAM 也是合适的⽐如读密集的情况下。（如果你不介意 MyISAM 崩溃恢复问题的话）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;两者对比&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;是&lt;strong&gt;否⽀持⾏级锁&lt;/strong&gt; : MyISAM 只有表级锁(table-level locking)，⽽InnoDB ⽀持⾏级锁(rowlevel locking)和表级锁,默认为⾏级锁。&lt;/p&gt;
+&lt;p&gt;InnoDB的行锁是实现在索引上的，而不是锁在物理行记录上。潜台词是，如果访问没有命中索引，也无法使用行锁，将要退化为表锁。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;是否⽀持事务和崩溃后的安全恢复&lt;/strong&gt;： MyISAM 强调的是性能，每次查询具有原⼦性,其执⾏速度⽐InnoDB类型更快，但是不提供事务⽀持。但是InnoDB 提供事务⽀持事务，外部键等⾼级数据库功能。 具有事务(commit)、回滚(rollback)和&lt;strong&gt;崩溃修复能⼒&lt;/strong&gt;(crashrecoverycapabilities)的事务安全(transaction-safe (ACID compliant))型表。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;是否⽀持外键&lt;/strong&gt;： MyISAM不⽀持，⽽InnoDB⽀持&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;是否⽀持MVCC&lt;/strong&gt; ：仅 InnoDB ⽀持。应对⾼并发事务, MVCC⽐单纯的加锁更⾼效;MVCC只在 READ COMMITTED 和 REPEATABLE READ 两个隔离级别下⼯作;MVCC可以使⽤ 乐观(optimistic)锁 和 悲观(pessimistic)锁来实现;各数据库中MVCC实现并不统⼀。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I&lt;strong&gt;nnoDB是聚集索引&lt;/strong&gt;，使用B+Tree作为索引结构，数据文件是和（主键）索引绑在一起的（表数据文件本身就是按B+Tree组织的一个索引结构），必须要有主键，通过主键索引效率很高。但是&lt;strong&gt;辅助索引需要两次查询&lt;/strong&gt;，先查询到主键，然后再通过主键查询到数据。因此，主键不应该过大，因为主键太大，其他索引也都会很大。&lt;/p&gt;
+&lt;p&gt;MyISAM是非聚集索引，也是使用B+Tree作为索引结构，&lt;strong&gt;索引和数据文件是分离&lt;/strong&gt;的，索引保存的是数据文件的&lt;strong&gt;指针&lt;/strong&gt;。主键索引和辅助索引是独立的。&lt;/p&gt;
+&lt;p&gt;也就是说：InnoDB的B+树&lt;strong&gt;主键索引的叶子节点就是数据文件&lt;/strong&gt;，&lt;strong&gt;辅助索引的叶子节点是主键的值&lt;/strong&gt;；而MyISAM的B+树主键索引和辅助索引的叶子节点都是数据文件的地址指针。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://img-blog.csdn.net/20180923094753224?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1NjQyMDM2/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70&#34; alt=&#34;img&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://img-blog.csdn.net/20180923094753230?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1NjQyMDM2/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70&#34; alt=&#34;img&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;​	6.&lt;strong&gt;Innodb不支持全文索引，而MyISAM支持全文索引，在涉及全文索引领域的查询效率上MyISAM速度更快高；PS：5.7以后的InnoDB支持全文索引了&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;​	7.&lt;strong&gt;MyISAM表格可以被压缩后进行查询操作&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;​	8.&lt;strong&gt;InnoDB表必须有唯一索引（如主键）（用户没有指定的话会自己找/生产一个隐藏列Row_id来充当默认主键），而Myisam可以没有&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;​	9.&lt;strong&gt;Innodb存储文件有frm、ibd，而Myisam是frm、MYD、MYI&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;​    &lt;strong&gt;Innodb：frm是表定义文件，ibd是数据文件&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;​    &lt;strong&gt;Myisam：frm是表定义文件，myd是数据文件，myi是索引文件&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;如何在两者之间选择&#34;&gt;如何在两者之间选择&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;是否要支持事务，如果要请选择innodb，如果不需要可以考虑MyISAM；&lt;/li&gt;
+&lt;li&gt;如果表中绝大多数都只是读查询，可以考虑MyISAM，如果既有读也有写，请使用InnoDB。&lt;/li&gt;
+&lt;li&gt;系统奔溃后，MyISAM恢复起来更困难，能否接受；&lt;/li&gt;
+&lt;li&gt;MySQL5.5版本开始Innodb已经成为Mysql的默认引擎(之前是MyISAM)，说明其优势是有目共睹的，如果你不知道用什么，那就用InnoDB，至少不会差。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;innodb为什么推荐使用自增id作为主键&#34;&gt;InnoDB为什么推荐使用自增ID作为主键？&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;答：自增ID可以保证每次插入时B+索引是从右边扩展的，可以避免B+树和频繁合并和分裂（对比使用UUID）。如果使用字符串主键和随机主键，会使得数据随机插入，效率比较差。&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;innodb引擎的4大特性&#34;&gt;&lt;strong&gt;innodb引擎的4大特性&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;插入缓冲（insert buffer)&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;二次写(double write)&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;自适应哈希索引(ahi)&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;预读(read ahead)&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;innodb如何保证事务的原子性-持久性和一致性&#34;&gt;InnoDB如何保证事务的原子性、持久性和一致性？&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;undo log保障原子性&lt;/strong&gt;。该log保存了事务发生之前的数据的一个版本，可以用于回滚，从而保证事务原子性。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;redo log保证事务的持久性&lt;/strong&gt;，该log关注于事务的恢复.在重启mysql服务的时候，根据redo log进行重做，从而使事务有持久性。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;undo log+redo log保障一致性&lt;/strong&gt;。事务中的执行需要redo log，如果执行失败，需要undo log 回滚。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;hash索引和b树索引&#34;&gt;Hash索引和B+树索引&lt;/h3&gt;
+&lt;p&gt;首先要知道Hash索引和B+树索引的底层实现原理:&lt;/p&gt;
+&lt;p&gt;hash索引底层就是hash表,进行查找时,调用一次hash函数就可以获取到相应的键值,之后进行回表查询获得实际数据.&lt;/p&gt;
+&lt;p&gt;B+树底层实现是多路平衡查找树.对于每一次的查询都是从根节点出发,查找到叶子节点方可以获得所查键值,然后根据查询判断是否需要回表查询数据.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;不同点&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;hash索引进行等值查询更快(一般情况下),但是却无法进行范围查询.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;因为在hash索引中经过hash函数建立索引之后,索引的顺序与原顺序无法保持一致,不能支持范围查询.而B+树的的所有节点皆遵循(左节点小于父节点,右节点大于父节点,多叉树也类似),天然支持范围.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;hash索引不支持模糊查询以及多列索引的最左前缀匹配.原理也是因为hash函数的不可预测.&lt;strong&gt;AAAA&lt;/strong&gt;和&lt;strong&gt;AAAAB&lt;/strong&gt;的索引没有相关性.&lt;/li&gt;
+&lt;li&gt;hash索引任何时候都避免不了回表查询数据,而B+树在符合某些条件(聚簇索引,覆盖索引等)的时候可以只通过索引完成查询.&lt;/li&gt;
+&lt;li&gt;hash索引虽然在等值查询上较快,但是不稳定.性能不可预测,当某个键值存在&lt;strong&gt;大量重复&lt;/strong&gt;的时候,发生hash碰撞,此时效率可能极差.而B+树的查询效率比较稳定,对于所有的查询都是从根节点到叶子节点,且树的高度较低.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;因此,在大多数情况下,直接选择B+树索引可以获得&lt;strong&gt;稳定且较好&lt;/strong&gt;的查询速度.而不需要使用hash索引.&lt;/p&gt;
+&lt;h3 id=&#34;为什么使用b树&#34;&gt;为什么使用B+树&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;虽然哈希索引是O(1)，树索引是O(log(n))，但SQL有很多“有序”需求，故数据库使用树型索引&lt;/li&gt;
+&lt;li&gt;很适合磁盘存储，能够充分利用&lt;strong&gt;局部性原理，磁盘预读&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;局部性原理&lt;/strong&gt;：软件设计要尽量遵循“数据读取集中”与“使用到一个数据，大概率会使用其附近的数据”，这样磁盘预读能充分提高磁盘IO&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数据预读&lt;/strong&gt;：磁盘读写并不是按需读取，而是按页预读，一次会读一页的数据，每次加载更多的数据，以便未来减少磁盘IO&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;很低的树高度，能够存储大量数据，同时能有效的减少IO操作&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;索引本身占用的内存很小&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;能够很好的支持&lt;strong&gt;单点查询，范围查询，有序性查询&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;查询效率稳定&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;B+树存放数据数计算（https://blog.csdn.net/csdnlijingran/article/details/102309593）&lt;/li&gt;
+&lt;li&gt;不用B树的原因是因为&lt;strong&gt;B树不支持范围查找&lt;/strong&gt;，B+树的范围查找只需要遍历叶子节点就行，而B树则需要中序遍历&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;一颗b树能存多少数据&#34;&gt;一颗B+树能存多少数据&lt;/h2&gt;
+&lt;p&gt;https://blog.csdn.net/weixin_51867896/article/details/122799836&lt;/p&gt;
+&lt;h2 id=&#34;字符集及校对规则&#34;&gt;字符集及校对规则&lt;/h2&gt;
+&lt;p&gt;字符集指的是⼀种从⼆进制编码到某类字符符号的映射。校对规则则是指某种字符集下的排序规则。MySQL中每⼀种字符集都会对应⼀系列的校对规则。&lt;/p&gt;
+&lt;p&gt;MySQL采⽤的是类似继承的⽅式指定字符集的默认值，每个数据库以及每张数据表都有⾃⼰的默认值，他们逐层继承。⽐如：某个库中所有表的默认字符集将是该数据库所指定的字符集（这些表在没有指定字符集的情况下，才会采⽤默认字符集）&lt;/p&gt;
+&lt;h2 id=&#34;查询缓存的使用&#34;&gt;查询缓存的使⽤&lt;/h2&gt;
+&lt;p&gt;执⾏查询语句的时候，会先查询缓存。不过，MySQL 8.0 版本后移除，因为这个功能不太实⽤&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;my.cnf&lt;/strong&gt;加⼊以下配置，重启MySQL开启查询缓存&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;query_cache_size = 30M
+
+query_cache_type=1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;MySQL执⾏以下命令也可以开启查询缓存&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://i.imgtg.com/2023/02/14/dqZTt.png&#34; alt=&#34;dqZTt.png&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;开启查询缓存后在同样的查询条件以及数据情况下，会直接在缓存中返回结果&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;这⾥的查询条件包括查询本身、当前要查询的数据库、客户端协议版本号等⼀些可能影响结果的信息。因此任何两个查询在任何字符上的不同都会导致缓存不命中。&lt;/p&gt;
+&lt;p&gt;此外，如果查询中包含任何⽤户⾃定义函数、存储函数、⽤户变量、临时表、MySQL库中的系统表，其查询结果也不会被缓存。&lt;/p&gt;
+&lt;p&gt;缓存建⽴之后，MySQL的查询缓存系统会跟踪查询中涉及的每张表，如果这些表（数据或结构）发⽣变化，那么和这张表相关的所有缓存数据都将失效。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;缓存虽然能够提升数据库的查询性能，但是缓存同时也带来了额外的开销，每次查询后都要做⼀次缓存操作，失效后还要销毁&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;因此，开启缓存查询要谨慎，尤其对于写密集的应⽤来说更是如此。如果开启，要注意合理控制缓存空间⼤⼩，⼀般来说其⼤⼩设置为&lt;strong&gt;⼏⼗MB&lt;/strong&gt;比较合适。&lt;/p&gt;
+&lt;p&gt;此外，还可以通过&lt;strong&gt;sql_cache和sql_no_cache&lt;/strong&gt;来控制某个查询语句是否需要缓存&lt;/p&gt;
+&lt;h2 id=&#34;事务&#34;&gt;事务&lt;/h2&gt;
+&lt;h3 id=&#34;什么是事务&#34;&gt;什么是事务?&lt;/h3&gt;
+&lt;p&gt;事务是逻辑上的⼀组操作，要么都执⾏，要么都不执⾏。&lt;/p&gt;
+&lt;h3 id=&#34;事物的四大特性acid&#34;&gt;事物的四⼤特性(ACID)&lt;/h3&gt;
+&lt;p&gt;1**.原⼦性（Atomicity**）： 事务是最⼩的执⾏单位，不允许分割。事务的原⼦性确保动作要么	全部完成，要么完全不起作⽤；&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;&lt;strong&gt;⼀致性（Consistency）&lt;/strong&gt;： 执⾏事务前后，数据保持⼀致，多个事务对同⼀个数据读取的结果是相同的；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;隔离性（Isolation）&lt;/strong&gt;： 并发访问数据库时，⼀个⽤户的事务不被其他事务所⼲扰，各并发事务之间数据库是独⽴的；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;持久性（Durability&lt;/strong&gt;）： ⼀个事务被提交之后。它对数据库中数据的改变是持久的，即使数据库发⽣故障也不应该对其有任何影响。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;并发事务带来哪些问题&#34;&gt;并发事务带来哪些问题?&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;脏读(Dirty read&lt;/strong&gt;): 当一个事务正在访问数据并且对数据进行了修改,而这种修改还没有提 交到数据库中,这时另外一个事务也访问了这个数据,然后使用了这个数据。因为这个数据 是还没有提交的数据,那么另外一个事务读到的这个数据是“脏数据”,依据“脏数据”所做的 操作可能是不正确的。&lt;strong&gt;一改一读&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;丢失修改(Lost to modify)&lt;/strong&gt;: 指在一个事务读取一个数据时,另外一个事务也访问了该数 据,那么在第一个事务中修改了这个数据后,第二个事务也修改了这个数据。这样第一个事 务内的修改结果就被丢失,因此称为丢失修改。 例如:事务1读取某表中的数据A=20,事 务2也读取A=20,事务1修改A=A-1,事务2也修改A=A-1,最终结果A=19,事务1的修改被丢失。&lt;strong&gt;两个改&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;不可重复读(Unrepeatable read):&lt;/strong&gt; 指在一个事务内多次读同一数据。在这个事务还没有结 束时,另一个事务也访问该数据。那么,在第一个事务中的两次读数据之间,由于第二个事 务的修改导致第一个事务两次读取的数据可能不太一样。这就发生了在一个事务内两次读到 的数据是不一样的情况,因此称为不可重复读。&lt;strong&gt;一改一读&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;幻读(Phantom read)&lt;/strong&gt;: 幻读与不可重复读类似。它发 生在一个事务(T1)读取了几行数 据,接着另一个并发事务(T2)插入了一些数据时。在随后的查询中,第一个事务(T1) 就会发现多了一些原本不存在的记录,就好像发生了幻觉一样,所以称为幻读。&lt;strong&gt;一改一读&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;不可重复读的重点&lt;/strong&gt;是修改比如多次读取一条记录发现其中某些列的值被修改,幻读的重点在于新增或者删除比如多次读取一条记录发现记录增多或减少了。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;幻读的问题存在&lt;/strong&gt;是因为新增或者更新操作，这时如果进&lt;strong&gt;行范围查询的时候&lt;/strong&gt;（加锁查询），会出现不一致的问题&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;事务隔离级别有哪些mysql的默认隔离级别是&#34;&gt;事务隔离级别有哪些?MySQL的默认隔离级别是?&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;READ-UNCOMMITTED(&lt;strong&gt;读取未提交&lt;/strong&gt;)： 最低的隔离级别，允许读取尚未提交的数据变更，可能会导致脏读、幻读或不可重复读。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;一个事务还没提交，它做的变更就能被别的事务看到&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;READ-COMMITTED(&lt;strong&gt;读取已提交&lt;/strong&gt;)： 允许读取并发事务已经提交的数据，可以阻⽌脏读，但是幻读或不可重复读仍有可能发⽣。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;一个事务提交后，它做的变更才能被别的事务看到&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;REPEATABLE-READ(&lt;strong&gt;可重复读&lt;/strong&gt;)： 对同⼀字段的多次读取结果都是⼀致的，除⾮数据是被本身事务⾃⼰所修改，可以阻⽌脏读和不可重复读，但幻读仍有可能发⽣&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;一个事务执行过程中看到的数据总是和事务启动时看到的数据是一致的。在这个级别下事务未提交，做出的变更其它事务也看不到&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;SERIALIZABLE(&lt;strong&gt;可串⾏化&lt;/strong&gt;)： 最⾼的隔离级别，完全服从ACID的隔离级别。所有的事务依次逐个执⾏，这样事务之间就完全不可能产⽣⼲扰，也就是说，该级别可以防⽌脏读、不可重复读以及幻读。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;对于同一行记录进行读写会分别加读写锁，当发生读写锁冲突，后面执行的事务需等前面执行的事务完成才能继续执行。&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://i.imgtg.com/2023/02/14/dqvvx.png&#34; alt=&#34;dqvvx.png&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;MySQL InnoDB 存储引擎的&lt;strong&gt;默认&lt;/strong&gt;⽀持的隔离级别是 &lt;strong&gt;REPEATABLE-READ（可重读&lt;/strong&gt;）.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SELECT @@tx_isolation&lt;/strong&gt;查看支持的默认的隔离级别&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://i.imgtg.com/2023/02/14/dqmOp.png&#34; alt=&#34;dqmOp.png&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;这⾥需要注意的是：与 SQL 标准不同的地⽅在于 InnoDB 存储引擎在 &lt;strong&gt;REPEATABLE-READ（可重读）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;事务隔离级别下使⽤的是&lt;strong&gt;Next-Key Lock 锁算法，因此可以避免幻读的产⽣&lt;/strong&gt;，这与其他数据库系统(如 SQL Server)是不同的。&lt;/p&gt;
+&lt;p&gt;所以说InnoDB 存储引擎的默认⽀持的隔离级别是 REPEATABLE-READ（可重读）已经可以完全保证事务的隔离性要求，即达到了SQL标准的 SERIALIZABLE(可串⾏化) 隔离级别。&lt;/p&gt;
+&lt;p&gt;因为隔离级别越低，事务请求的锁越少，所以⼤部分数据库系统的隔离级别都READCOMMITTED(读取提交内容) ，但是你要知道的是InnoDB 存储引擎默认使⽤ REPEAaTABLE-READ（可重读） 并不会有任何性能损失。&lt;/p&gt;
+&lt;p&gt;InnoDB 存储引擎在 &lt;strong&gt;分布式事务&lt;/strong&gt; 的情况下⼀般会⽤到 &lt;strong&gt;SERIALIZABLE(可串⾏化)&lt;/strong&gt; 隔离级别。&lt;/p&gt;
+&lt;h3 id=&#34;可重复读的实现原理&#34;&gt;可重复读的实现原理&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Repeatable Read&lt;/em&gt;（可重复读）：一个事务在执行过程中可以看到其他事务已经提交的新插入的记录（读已经提交的，其实是读早于本事务开始且已经提交的），&lt;strong&gt;但是不能看到其他事务对已有记录的更新（即晚于本事务开始的）&lt;/strong&gt;，并且，该事务不要求与其他事务是“可串行化”的。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;简单的来说就是当前事务在堆当前的某条数据在其他事务的影响下重读的结果是一样的&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;解决方法&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;使用MVCC（多版本并发控制）。&lt;strong&gt;InnoDB为每行记录添加了一个版本号（系统版本号&lt;/strong&gt;），每当修改数据时，版本号加一。&lt;br&gt;
+在读取事务开始时，系统会给事务一个当前版本号，&lt;strong&gt;事务会读取版本号&amp;lt;=当前版本号的数&lt;/strong&gt;据，这时就算另一个事务插入一个数据，并立马提交，新插入这条数据的版本号会比读取事务的版本号高，因此读取事务读的数据还是不会变。&lt;/p&gt;
+&lt;p&gt;InnoDB 的可重复读的实现，利用了实现 MVCC 技术的快照技术。这是 MVCC 和基于封锁技术这两个并非控制技术的结合之处。&lt;/p&gt;
+&lt;p&gt;在&lt;em&gt;RR&lt;/em&gt;隔离级别下为事务设置了一个“一致性读视图（即快照）”，之后读取数据，就是根据这个快照来获取，这样，就不能看到他晚于本事务的事务对已有记录的更新（更新生成新版本，必然不在旧的快照所限定的范围内）。&lt;/p&gt;
+&lt;p&gt;根据隔离级别判断是不是要使用一个新的快照，如果是可重复读，则不使用新快照，沿用老的快照，这样就能保证所有的读操作看到的是同一个数据状态；同时也确保了读已提交隔离级别下一个事务块内的不同语句的读操作看到的不是同一个数据状态。&lt;/p&gt;
+&lt;p&gt;总结：&lt;/p&gt;
+&lt;p&gt;参考 https://blog.csdn.net/huanghanqian/article/details/79517480&lt;/p&gt;
+&lt;h2 id=&#34;mysql锁&#34;&gt;Mysql锁&lt;/h2&gt;
+&lt;p&gt;按锁粒度分类：&lt;br&gt;
+1. ⾏锁：锁某⾏数据，锁粒度最⼩，并发度⾼&lt;br&gt;
+2. 表锁：锁整张表，锁粒度最⼤，并发度低&lt;br&gt;
+3. &lt;strong&gt;间隙锁&lt;/strong&gt;：锁的是⼀个区间&lt;/p&gt;
+&lt;p&gt;还可以分为：&lt;br&gt;
+1. 共享锁：也就是读锁，⼀个事务给某⾏数据加了读锁，其他事务也可以读，但是不能写&lt;br&gt;
+2. 排它锁：也就是写锁，⼀个事务给某⾏数据加了写锁，其他事务不能读，也不能写&lt;/p&gt;
+&lt;p&gt;还可以分为：&lt;br&gt;
+1. 乐观锁：并不会真正的去锁某⾏记录，⽽是通过⼀个版本号来实现的&lt;br&gt;
+2. 悲观锁：上⾯所的⾏锁、表锁等都是悲观锁&lt;/p&gt;
+&lt;p&gt;在事务的隔离级别实现中，就需要利⽤锁来解决幻读&lt;/p&gt;
+&lt;h3 id=&#34;锁机制与innodb锁算法&#34;&gt;锁机制与InnoDB锁算法&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;MyISAM和InnoDB存储引擎使⽤的锁：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;MyISAM采⽤表级锁(table-level locking)。&lt;/li&gt;
+&lt;li&gt;InnoDB⽀持⾏级锁(row-level locking)和表级锁,默认为⾏级锁&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;表级锁和⾏级锁对⽐：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;表级锁： MySQL中锁定 &lt;strong&gt;粒度最⼤&lt;/strong&gt; 的⼀种锁，对当前操作的整张表加锁，实现简单，资源消&lt;br&gt;
+耗也比较少，加锁快，不会出现死锁。其锁定粒度最⼤，触发锁冲突的概率最⾼，并发度最&lt;br&gt;
+低，MyISAM和 InnoDB引擎都⽀持表级锁。&lt;/li&gt;
+&lt;li&gt;⾏级锁： MySQL中锁定 &lt;strong&gt;粒度最⼩&lt;/strong&gt; 的⼀种锁，只针对当前操作的⾏进⾏加锁。 ⾏级锁能⼤&lt;br&gt;
+⼤减少数据库操作的冲突。其加锁粒度最⼩，并发度⾼，但加锁的开销也最⼤，加锁慢，会&lt;br&gt;
+出现死锁。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;InnoDB存储引擎的锁的算法有三种：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Record lock：&lt;strong&gt;单个⾏记录上的锁&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Gap lock：&lt;strong&gt;间隙锁，锁定⼀个范围，不包括记录本身 目的是为了防止同一个事物的两次当前读，出现幻读的情况&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Next-key lock：&lt;strong&gt;record+gap 锁定⼀个范围，包含记录本身&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;相关知识点&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;innodb对于⾏的查询使⽤next-key lock&lt;/li&gt;
+&lt;li&gt;Next-locking keying为了解决Phantom Problem幻读问题&lt;/li&gt;
+&lt;li&gt;当查询的索引含有唯⼀属性时，将next-key lock降级为record key&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Gap锁设计的⽬的是为了阻⽌多个事务将记录插⼊到同⼀范围内，⽽这会导致幻读问题的产⽣&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;有两种⽅式显式关闭gap锁：（除了外键约束和唯⼀性检查外，其余情况仅使⽤recordlock）  不推荐
+&lt;ol&gt;
+&lt;li&gt;将事务隔离级别设置为RC(可重复读)&lt;/li&gt;
+&lt;li&gt;将参数innodb_locks_unsafe_for_binlog设置为1&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;间隙锁死锁&#34;&gt;间隙锁死锁&lt;/h2&gt;
+&lt;p&gt;https://blog.csdn.net/java_beautiful/article/details/125572280&lt;/p&gt;
+&lt;h3 id=&#34;mysql中的按粒度的锁分类&#34;&gt;MySQL中的按粒度的锁分类&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;表级锁: 对当前操作的整张表加锁,实现简单，加锁快，但并发能力低。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;行锁: 锁住某一行，如果表存在索引，那么记录锁是锁在索引上的，如果表没有索引，那么 InnoDB 会创建一个隐藏的聚簇索引加锁。行级锁能大大减少数据库操作的冲突。其加锁粒度最小，并发度高，但加锁的开销也最大，加锁慢，会出现死锁。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Gap 锁：也称为间隙锁: 锁定一个范围但不包括记录本身。其目的是为了防止同一事物的两次当前读出现幻读的情况。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Next-key Lock： 行锁+gap锁。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;如何解决数据库死锁&#34;&gt;如何解决数据库死锁&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;预先检测到死锁的循环依赖，并立即返回一个错误&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;当查询的时间达到锁等待超时的设定后放弃锁请求&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;解释一下什么是池化设计思想-什么是数据库连接池-为什么需要数据库连接池&#34;&gt;解释⼀下什么是池化设计思想 什么是数据库连接池 为什么需要数据库连接池&lt;/h2&gt;
+&lt;p&gt;池化设计应该不是⼀个新名词。我们常⻅的如java线程池、jdbc连接池、redis连接池等就是这类设计的代表实现。&lt;/p&gt;
+&lt;p&gt;这种设计会初始预设资源，解决的问题就是抵消每次获取资源的消耗，如创建线程的开销，获取远程连接的开销等。就好⽐你去⻝堂打饭，打饭的⼤妈会先把饭盛好⼏份放那⾥，你来了就直接拿着饭盒加菜即可，不⽤再临时⼜盛饭⼜打菜，效率就⾼了。&lt;/p&gt;
+&lt;p&gt;除了初始化资源，池化设计还包括如下这些特征：池⼦的初始值、池⼦的活跃值、池⼦的最⼤值等，这些特征可以直接映射到java线程池和数据库连接池的成员属性中。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;数据库连接本质就是⼀个 socket 的连接&lt;/strong&gt;。数据库服务端还要维护⼀些缓存和⽤户权限信息之类的 所以占⽤了⼀些内存。我们可以把数据库连接池是看做是&lt;strong&gt;维护的数据库连接的缓存&lt;/strong&gt;，以便将来需要对数据库的请求时可以重⽤这些连接。为每个⽤户打开和维护数据库连接，尤其是对动态数据库驱动的⽹站应⽤程序的请求，既昂贵⼜浪费资源。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;在连接池中，创建连接后，将其放置在池&lt;/strong&gt;中，&lt;strong&gt;并再次使⽤它，因此不必建⽴新的连接。如果使⽤了所有连接，则会建⽴⼀个新连接并将其添加到池中&lt;/strong&gt;。 连接池还减少了⽤户必须等待建⽴与数据库的连接的时间。&lt;/p&gt;
+&lt;h2 id=&#34;分库分表之后id-主键如何处理&#34;&gt;分库分表之后,id 主键如何处理&lt;/h2&gt;
+&lt;p&gt;因为要是分成多个表之后，每个表都是从 1 开始累加，这样是不对的，我们需要⼀个全局唯⼀的id 来⽀持。&lt;br&gt;
+&lt;strong&gt;⽣成全局 id 有下⾯这⼏种⽅式：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;UUID&lt;/strong&gt;：不适合作为主键，因为太⻓了，并且⽆序不可读，查询效率低。比较适合⽤于⽣成唯⼀的名字的标示⽐如⽂件的名字。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;数据库⾃增 id&lt;/strong&gt; : 两台数据库分别设置不同步⻓，⽣成不重复ID的策略来实现⾼可⽤。这种⽅式⽣成的 id 有序，但是需要独⽴部署数据库实例，成本⾼，还会有性能瓶颈。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;利⽤ redis ⽣成 id&lt;/strong&gt; : 性能比较好，灵活⽅便，不依赖于数据库。但是，引⼊了新的组件造成系统更加复杂，可⽤性降低，编码更加复杂，增加了系统成本。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Twitter的snowflake算法&lt;/strong&gt; ：Github 地址：https://github.com/twitter-archive/snowflake。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;美团的Leaf分布式ID⽣成系统&lt;/strong&gt; ：Leaf 是美团开源的分布式ID⽣成器，能保证全局唯⼀性、趋势递增、单调递增、信息安全，⾥⾯也提到了⼏种分布式⽅案的对⽐，但也需要依赖关系数据库、Zookeeper等中间件。感觉还不错。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;美团技术团队的⼀篇⽂章：https://tech.meituan.com/2017/04/21/mt-leaf.html 。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;一条sql语句执行得很慢的原因有哪些&#34;&gt;⼀条SQL语句执⾏得很慢的原因有哪些&lt;/h2&gt;
+&lt;p&gt;参考连接：https://www.cnblogs.com/kubidemanong/p/10734045.html&lt;/p&gt;
+&lt;p&gt;1、大多数情况下很正常，&lt;strong&gt;偶尔很慢&lt;/strong&gt;，则有如下原因&lt;/p&gt;
+&lt;p&gt;(1)、&lt;strong&gt;数据库在刷新脏页&lt;/strong&gt;，例如 redo log 写满了需要同步到磁盘。&lt;/p&gt;
+&lt;p&gt;(2)、&lt;strong&gt;执行的时候&lt;/strong&gt;，&lt;strong&gt;遇到锁&lt;/strong&gt;，如表锁、行锁。&lt;/p&gt;
+&lt;p&gt;2、这条 SQL 语句一直执行的很慢，则有如下原因。&lt;/p&gt;
+&lt;p&gt;(1)、&lt;strong&gt;没有用上索引&lt;/strong&gt;：例如该字段没有索引导致走全表扫描；由于对字段进行运算（select * from t where c - 1 = 1000;）、函数操作（pow(c,2) = 1000;）导致无法用索引。&lt;/p&gt;
+&lt;p&gt;(2)、&lt;strong&gt;数据库选错了索引&lt;/strong&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;索引&#34;&gt;索引&lt;/h2&gt;
+&lt;h3 id=&#34;mysql有哪些常见索引类型&#34;&gt;Mysql有哪些常见索引类型？&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;数据结构角度&lt;/p&gt;
+&lt;p&gt;B-Tree索引&lt;/p&gt;
+&lt;p&gt;哈希索引&lt;/p&gt;
+&lt;p&gt;R-Tree索引&lt;/p&gt;
+&lt;p&gt;全文索引&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;物理存储角度&lt;/p&gt;
+&lt;p&gt;主键索引（聚簇索引）：叶子节点存的是整行的数据&lt;/p&gt;
+&lt;p&gt;非主键索引（二级索引）：叶子节点存的主键的值&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;在哪些情况下会发生针对该列创建了索引但是在查询的时候并没有使用呢&#34;&gt;&lt;strong&gt;在哪些情况下会发生针对该列创建了索引但是在查询的时候并没有使用呢?&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;使用不等于查询,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;不匹配最左前缀原则&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;列参与了数学运算或者函数&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在字符串like时左边是通配符.类似于&#39;%aaa&#39;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;当mysql分析&lt;strong&gt;全表扫描比使用索引快的时候不使用索引&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;当使用联合索引,前面一个条件为范围查询,后面的即使符合最左前缀原则,也无法使用索引&lt;/p&gt;
+&lt;p&gt;参考https://blog.csdn.net/c1776167012/article/details/120788728&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;简述hash索引&#34;&gt;简述Hash索引&lt;/h3&gt;
+&lt;p&gt;哈希索引对于&lt;strong&gt;每一行数据计算一个哈希码&lt;/strong&gt;，&lt;strong&gt;并将所有的哈希码存储在索引中&lt;/strong&gt;，同时在哈希表中保存指向每个数据行的指针。只有 Memory 引擎显式支持哈希索引。&lt;/p&gt;
+&lt;p&gt;Hash索引&lt;strong&gt;不支持范围查询&lt;/strong&gt;，无法用于&lt;a href=&#34;&#34;&gt;排序&lt;/a&gt;，也不支持部分索引列匹配查找。&lt;/p&gt;
+&lt;h3 id=&#34;简述自适应hash索引&#34;&gt;简述自适应Hash索引&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;InnoDB对于频繁使用的某些索引值，会在内存中基于 B-Tree 索引之上再创键一个哈希索引，这也被称为自适应Hash索引。&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;简述聚集索引和稀疏索引&#34;&gt;简述聚集索引和稀疏索引&lt;/h3&gt;
+&lt;p&gt;聚集索引按每张表的主键构建一棵B+树，数据库中的每个搜索键值都有一个索引记录，每个数据页通过双向链表连接。表数据访问更快，但表更新代价高。&lt;/p&gt;
+&lt;p&gt;稀疏索引不会为每个搜索关键字创建索引记录。搜索过程需要，我们&lt;strong&gt;首先按索引记录进行操作&lt;/strong&gt;，并按顺序搜索，直到找到所需的数据为止。&lt;/p&gt;
+&lt;h3 id=&#34;简述辅助索引与回表查询&#34;&gt;简述辅助索引与回表查询&lt;/h3&gt;
+&lt;p&gt;辅助索引是非聚集索引，叶子节点不包含记录的全部数据，&lt;strong&gt;包含了一个书签用来告诉InnoDB哪里可以找到与索引相对应的行数据&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;通过辅助索引查询，先通过书签查到聚集索引，再根据聚集索引查对应的值，需要两次，也称为&lt;strong&gt;回表查询&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;简述联合索引和最左匹配原则&#34;&gt;简述联合索引和最左匹配原则&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;联合索引是指对表上的多个列的关键词进行索引&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;对于联合索引的查询，如果精确匹配联合索引的左边连续一列或者多列，则mysql会一直向右匹配直到遇到范围查询（&amp;lt;,between,like）就停止匹配。Mysql会对第一个索引字段数据进行排序，在第一个字段基础上，再对第二个字段排序。&lt;/p&gt;
+&lt;p&gt;参考：https://blog.csdn.net/sinat_41917109/article/details/88944290&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://i.imgtg.com/2023/02/14/dqpNU.png&#34; alt=&#34;dqpNU.png&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;简述覆盖索引&#34;&gt;简述覆盖索引&lt;/h3&gt;
+&lt;p&gt;**覆盖索引指一个索引包含或覆盖了所有需要查询的字段的值，**不需要回表查询，即索引本身存了对应的值。&lt;/p&gt;
+&lt;h3 id=&#34;基于主键索引的查询和非主键索引的查询有什么区别&#34;&gt;基于主键索引的查询和非主键索引的查询有什么区别？&lt;/h3&gt;
+&lt;p&gt;对于select * from 主键=XX，基于主键的普通查询仅查找主键这棵树&lt;/p&gt;
+&lt;p&gt;对于select * from 非主键=XX，基于非主键的查询有可能存在回表过程（回到主键索引树搜索的过程称为回表）&lt;strong&gt;，因为非主键索引叶子节点仅存主键值，无整行全部信息。&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;非主键索引的查询一定会回表吗&#34;&gt;非主键索引的查询一定会回表吗？&lt;/h3&gt;
+&lt;p&gt;不一定，当查询语句的要求字段全部命中索引，不用回表查询。&lt;strong&gt;如select 主键 from 非主键=XX，此时非主键索引叶子节点即可拿到主键信息，不用回表。&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;为什么数据库不用红黑树-用b树&#34;&gt;为什么数据库不用红黑树 用B+树&lt;/h2&gt;
+&lt;p&gt;红黑树的出度为 2，而 B Tree 的出度一般都非常大**。红黑树的树高 h 很明显比 B Tree 大非常多，IO次数很多，导致会比较慢，因此检索的次数也就更多**。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;B+Tree 相比于 B-Tree 更适合外存索引，拥有更大的出度&lt;/strong&gt;，IO次数较少，检索效率会更高。&lt;/p&gt;
+&lt;h3 id=&#34;创建的索引有没有被使用到或者说怎么才可以知道这条语句运行很慢的原因&#34;&gt;&lt;strong&gt;创建的索引有没有被使用到?或者说怎么才可以知道这条语句运行很慢的原因?&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;MySQL提供了&lt;strong&gt;explain&lt;/strong&gt;命令来查看语句的执行计划,MySQL在执行某个语句之前,会将该语句过一遍查询优化器,之后会拿到对语句的分析,也就是执行计划,其中包含了许多信息. &lt;strong&gt;可以通过其中和索引有关的信息来分析是否命中了索引&lt;/strong&gt;,例如possilbe_key,key,key_len等字段,分别说明了此语句可能会使用的索引,实际使用的索引以及使用的索引长度.&lt;/p&gt;
+&lt;h3 id=&#34;主键索引和唯一索引的区别&#34;&gt;主键索引和唯一索引的区别&lt;/h3&gt;
+&lt;p&gt;1.主键为一种约束，唯一索引为一种索引，本质上就不同；&lt;/p&gt;
+&lt;p&gt;2.主键创建后一定包含唯一性索引，而唯一索引不一定就是主键；&lt;/p&gt;
+&lt;p&gt;3.主键不允许空值，唯一索引可以为空；&lt;/p&gt;
+&lt;p&gt;4.&lt;strong&gt;主键可以被其他表引用，而唯一索引不可以&lt;/strong&gt;；&lt;/p&gt;
+&lt;p&gt;5.一个表最多只能创建一个主键，而可以创建多个唯一索引；&lt;/p&gt;
+&lt;p&gt;6.主键和索引都是键，&lt;strong&gt;主键是逻辑键&lt;/strong&gt;，索引为物理键，即主键不实际存在。&lt;/p&gt;
+&lt;h2 id=&#34;简述mysql使用explain-的关键字段&#34;&gt;简述MySQL使用EXPLAIN 的关键字段&lt;/h2&gt;
+&lt;p&gt;explain关键字用于分析sql语句的执行情况，可以通过他进行sql语句的性能分析。&lt;/p&gt;
+&lt;p&gt;type：表示连接类型，从好到差的类型&lt;a href=&#34;&#34;&gt;排序&lt;/a&gt;为&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;system：系统表，数据已经加载到内存里。&lt;/li&gt;
+&lt;li&gt;const：常量连接，通过索引一次就找到。&lt;/li&gt;
+&lt;li&gt;eq_ref：唯一性索引扫描，返回所有匹配某个单独值的行。&lt;/li&gt;
+&lt;li&gt;ref：非主键非唯一索引等值扫描，const或eq_ref改为普通非唯一索引。&lt;/li&gt;
+&lt;li&gt;range：范围扫描，在索引上扫码特定范围内的值。&lt;/li&gt;
+&lt;li&gt;index：索引树扫描，扫描索引上的全部数据。&lt;/li&gt;
+&lt;li&gt;all：全表扫描。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;key：显示MySQL实际决定使用的键。&lt;/p&gt;
+&lt;p&gt;key_len：显示MySQL决定使用的键长度，长度越短越好&lt;/p&gt;
+&lt;p&gt;Extra：额外信息&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Using filesort：MySQL使用外部的索引&lt;a href=&#34;&#34;&gt;排序&lt;/a&gt;，很慢需要优化。&lt;/li&gt;
+&lt;li&gt;Using temporary：使用了临时表保存中间结果，很慢需要优化。&lt;/li&gt;
+&lt;li&gt;Using index：使用了覆盖索引。&lt;/li&gt;
+&lt;li&gt;Using where：使用了where。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;mysql插入数据的流程&#34;&gt;MySQL插入数据的流程&lt;/h2&gt;
+&lt;p&gt;https://blog.csdn.net/zhaoliang831214/article/details/82711350&lt;/p&gt;
+&lt;p&gt;https://blog.csdn.net/weixin_40581617/article/details/80623276&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;会话状态转换为update&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;激活事物状态由 not_active 变为 active&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;查找定位数据&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;进行乐观插入&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;mysql语句执行流程&#34;&gt;Mysql语句执行流程&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;流程：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;连接器：&lt;/strong&gt; 身份认证和权限相关(登录 MySQL 的时候)。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;查询缓存:&lt;/strong&gt; 执行查询语句的时候，会先查询缓存（MySQL 8.0 版本后移除，因为这个功能不太实用）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;分析器&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;没有命中缓存的话，SQL 语句就会经过分析器，分析器说白了就是要先看你的 SQL 语句要干嘛，再检查你的 SQL 语句语法是否正确。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;第一步，词法分析&lt;/strong&gt;，一条 SQL 语句有多个字符串组成，首先要&lt;strong&gt;提取关键字&lt;/strong&gt;，比如 select，提出查询的表，提出字段名，提出查询条件等等。做完这些操作后，就会进入第二步。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;第二步，语法分析&lt;/strong&gt;，主要就是&lt;strong&gt;判断你输入的 sql 是否正确&lt;/strong&gt;，是否符合 MySQL 的语法。完成这 2 步之后，MySQL 就准备开始执行了，但是如何执行，怎么执行是最好的结果呢？这个时候就需要优化器上场了。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;优化器&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;按照 MySQL 认为最优的方案去执行。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;https://zhuanlan.zhihu.com/p/192707721&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;MySQL 会帮我去使用他自己认为的最好的方式去优化这条 SQL 语句，并生成一条条的执行计划。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;创建了多个索引，MySQL 会依据成本最小原则来选择使用对应的索引，这里的成本主要包括两个方面, IO 成本和 CPU 成本
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;IO 成本&lt;/strong&gt;: 即从磁盘把数据加载到内存的成本，默认情况下，读取数据页的 IO 成本是 1，MySQL 是以页的形式读取数据的，即当用到某个数据时，并不会只读取这个数据，而会把这个数据相邻的数据也一起读到内存中，这就是有名的程序局部性原理，所以 MySQL 每次会读取一整页，一页的成本就是 1。所以 IO 的成本主要和页的大小有关&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CPU 成本&lt;/strong&gt;：将数据读入内存后，还要检测数据是否满足条件和排序等 CPU 操作的成本，显然它与行数有关，默认情况下，检测记录的成本是 0.2。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;执行器:&lt;/strong&gt; 执行语句，然后从存储引擎返回数据。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;http://note.mxecy.cn/docs/%E5%9B%BE%E7%89%87/MySql/Mysql%E6%9F%A5%E8%AF%A2%E8%BF%87%E7%A8%8B.png&#34; alt=&#34;img&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;总结&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;&#34;&gt;客户端&lt;/a&gt;首先通过连接器进行&lt;strong&gt;身份认证和权限相关&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;如果是执行查询语句的时候，&lt;strong&gt;会先查询缓存&lt;/strong&gt;，但MySQL 8.0 版本后该步骤移除。&lt;/li&gt;
+&lt;li&gt;没有命中缓存的话，&lt;strong&gt;SQL 语句就会经过解析器，分析语句，包括语法检查等等&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;通过&lt;strong&gt;优化器&lt;/strong&gt;，将用户的SQL语句按照 MySQL 认为最优的方案去执行。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;执行语句&lt;/strong&gt;，并从存储引擎返回数据。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;简述mysql优化流程&#34;&gt;简述MySQL优化流程&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;通过&lt;strong&gt;慢日志&lt;/strong&gt;定位执行较慢的SQL语句  HOW VARIABLES LIKE &#39;%query%&#39;   查询慢日志相关信息&lt;/li&gt;
+&lt;li&gt;利用&lt;strong&gt;explain对这些关键字段进行分析&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;根据分析结果进行优化&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;sql执行顺序&#34;&gt;SQL执行顺序&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;-- 语法顺序
+select distinct 
+        &amp;lt;select_list&amp;gt;
+from
+    &amp;lt;left_table&amp;gt;&amp;lt;join_type&amp;gt;
+join &amp;lt;right_table&amp;gt; on &amp;lt;join_condition&amp;gt;
+where
+    &amp;lt;where_condition&amp;gt;
+group by
+    &amp;lt;group_by_list&amp;gt;
+having
+    &amp;lt;having_condition&amp;gt;
+order by
+    &amp;lt;order_by_condition&amp;gt;
+limit &amp;lt;limit number&amp;gt;
+
+
+-- 执行顺序
+1、from &amp;lt;left_table&amp;gt;&amp;lt;join_type&amp;gt;
+2、on &amp;lt;join_condition&amp;gt;
+3、&amp;lt;join_type&amp;gt; join &amp;lt;right_table&amp;gt;
+4、where &amp;lt;where_condition&amp;gt;
+5、group by &amp;lt;group_by_list&amp;gt;
+6、having &amp;lt;having_condition&amp;gt;
+7、select
+8、distinct &amp;lt;select_list&amp;gt;
+9、order by &amp;lt;order_by_condition&amp;gt;
+10、limit &amp;lt;limit_number&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;基本优化&#34;&gt;基本优化&lt;/h2&gt;
+&lt;p&gt;参考&lt;/p&gt;
+&lt;p&gt;https://mp.weixin.qq.com/s?__biz=Mzg2OTA0Njk0OA==&amp;amp;mid=2247485117&amp;amp;idx=1&amp;amp;sn=92361755b7c3de488b415ec4c5f46d73&amp;amp;chksm=cea24976f9d5c060babe50c3747616cce63df5d50947903a262704988143c2eeb4069ae45420&amp;amp;token=79317275&amp;amp;lang=zh_CN%23rd&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;数据类型选择：选择能够满足业务需求的最小数据类型。同时对于数值类型，如果没有负数，则使用&lt;code&gt;unsigned&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如果只查询一条记录，如是否存在，需要加上&lt;code&gt;limit&lt;/code&gt;阻断后续的查找。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;禁止使用 SELECT * 必须使用 SELECT &amp;lt;字段列表&amp;gt; 查询统计所有 count（*）会统计值为NULL的行，而count（列名）不会统计值为NULL的行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;主键外键约束在&lt;strong&gt;应用层解决&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;O&lt;strong&gt;R改写成IN&lt;/strong&gt;：OR的效率是n级别，IN的效率是log(n)级别，in的个数建议控制在200以内&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;尽量避免在WHERE子句中使用!=或&amp;lt; &amp;gt;操作符，否则将引擎放弃使用索引而进行全表扫描 &amp;lt;&amp;gt;等价于!=&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对于连续数值，使用BETWEEN不用IN：SELECT id FROM t WHERE num BETWEEN 1 AND 5&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;单表数据保持在500w以内，如果大了就进行分表&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;禁止数据库中存储图片，图片等二进制数据&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;尽可能把所有列定义为 NOT NULL&lt;/strong&gt;：&lt;strong&gt;索引 NULL 列需要额外的空间来保存&lt;/strong&gt;，所以要占用更多的空间进行比较和计算时要对 NULL 值做特别的处理&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;财务相关数据使用decimal类型&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;单表索引不要超过5个&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;禁止给表的每一列建立单独的索引&lt;/strong&gt;。使用联合索引代替&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;建立联合索引&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;将区分度高的放在最左侧。（区分度=列中不同值的数量/列的总行数）&lt;/li&gt;
+&lt;li&gt;尽量把字段长度小的列放在联合索引的最左侧（因为字段长度越小，一页能存储的数据量越大，IO 性能也就越好）&lt;/li&gt;
+&lt;li&gt;使用最频繁的列放到联合索引的左侧（这样可以比较少的建立一些索引）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;避免使用子查询，可以把子查询优化为 join 操作&lt;/strong&gt;：通常子查询在 in 子句中，且子查询中为简单 SQL(不包含 union、group by、order by、limit 从句) 时,才可以把子查询转化为关联查询进行优化。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;子查询的结果集无法使用索引，通常子查询的结果集会被存储到临时表中，不论是内存临时表还是磁盘临时表都不会存在索引，所以查询性能会受到一定的影响。特别是对于返回结果集比较大的子查询，其对查询性能的影响也就越大&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;避免使用 JOIN 关联太多的表&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;WHERE 从句中禁止对列进行函数转换和计算&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;超 100 万行的批量写 (UPDATE,DELETE,INSERT) 操作,要分批多次进行操作&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;大批量操作可能会造成严重的主从延迟&lt;/strong&gt;：主从环境中,大批量操作可能会造成严重的主从延迟，大批量的写操作一般都需要执行一定长的时间， 而只有当主库上执行完成后，才会在其他从库上执行，所以会造成主库与从库长时间的延迟情况&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;binlog 日志为 row 格式时会产生大量的日志&lt;/strong&gt;：大批量写操作会产生大量日志，特别是对于 row 格式二进制数据而言，由于在 row 格式中会记录每一行数据的修改，我们一次修改的数据越多，产生的日志量也就会越多，日志的传输和恢复所需要的时间也就越长，这也是造成主从延迟的一个原因&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;避免产生大事务操作&lt;/strong&gt;：大批量修改数据，一定是在一个事务中进行的，这就会造成表中大批量数据进行锁定，从而导致大量的阻塞，阻塞会对 MySQL 的性能产生非常大的影响。特别是长时间的阻塞会占满所有数据库的可用连接，这会使生产环境中的其他应用无法连接到数据库，因此一定要注意大批量写操作要进行分批&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将or条件改写成&lt;code&gt;union all&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将&lt;code&gt;xx is not null&lt;/code&gt;改写成&lt;code&gt;ifnull((xx,0) &amp;gt; 0)&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;少用内联子查询（select后有子查询），因为Sql返回多少行，内联子查询就要执行多少次&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;基于成本的优化器CBO对子查询的处理能力比较弱，可以使用inner join&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;limit&#34;&gt;Limit&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;原因：Limit分页时，如&lt;code&gt;limit offset, size&lt;/code&gt;会扫描前&lt;code&gt;offset + size&lt;/code&gt;行，然后去掉前面的&lt;code&gt;offset&lt;/code&gt;行，返回最后的&lt;code&gt;size&lt;/code&gt;行。当&lt;code&gt;offset&lt;/code&gt;过大的时候，或者有&lt;code&gt;where&lt;/code&gt;条件的时候会走全表查询。效率极低。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;解决方案：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;利用&lt;strong&gt;覆盖索引&lt;/strong&gt;进行优化：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;SELECT * FROM tableName
+WHERE id &amp;gt;= (SELECT id FROM tableName ORDER BY id LIMIT 500000 , 1)
+LIMIT 2;
+-- 其中，id为主键，在子查询中，只查询了id，因此可以利用覆盖索引查询出第500000的id的位置（不用回表查询）。然后通过id走索引会表查询出数据
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;like&#34;&gt;Like&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;原因：&lt;strong&gt;因为B+树的最左前缀匹配。导致全模糊查询以及左模糊查询无法生效。会触发全表查询。&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;解决方案：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;利用覆盖索引优化&lt;/strong&gt;（同上，在要模糊的字段上加索引，减少回表查询）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;explain select * from tableName where id in (select id FROM tableName where name like &amp;quot;%searchKey%&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;干掉左边的模糊匹配：&lt;a href=&#34;https://jeffkemponoracle.com/2008/01/like-with-wildcard-at-start-can-use-an-index/&#34;&gt;参考&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用全文索引（建立全文索引 + ES分词）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;SELECT * FROM tableName WHERE MATCH(`name`) AGAINST(&#39;searchKey&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;大表优化&#34;&gt;大表优化&lt;/h3&gt;
+&lt;p&gt;当MySQL单表记录数过⼤时，数据库的CRUD性能会明显下降，⼀些常⻅的优化措施如下&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;限制数据范围&lt;/strong&gt;：务必禁止不带任何限制数据范围条件的查询语句。比如:我们当用户在查询订单历史的时候,我们可以控制在一个月的范围内;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;读写分离&lt;/strong&gt;：经典的数据库拆分方案,主库负责写,从库负责读;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;垂直分区&lt;/strong&gt;：&lt;strong&gt;简单来说垂直拆分是指数据表列的拆分,把一张列比较多的表拆分为多张表&lt;/strong&gt;。例如,用户表中既有用户的登录信息又有用户的基本信息,可以将用户表拆分成两个单独的表,甚至放到单独的库做分库。（&lt;strong&gt;数据库范式&lt;/strong&gt;）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://i.imgtg.com/2023/02/14/dqJLY.png&#34; alt=&#34;dqJLY.png&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;​	&lt;strong&gt;垂直拆分的优点&lt;/strong&gt;： 可以使得列数据变⼩，在查询时减少读取的Block数，减少I/O次数。此外，垂直分区可以简化表的结构，易于维护。&lt;/p&gt;
+&lt;p&gt;​	&lt;strong&gt;垂直拆分的缺点：&lt;/strong&gt; 主键会出现冗余，需要管理冗余列，并会引起Join操作，可以通过在应⽤层进⾏Join来解决。此外，垂直分区会让事务变得更加复杂；&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;保持数据表结构不变,通过某种策略存储数据分片。这样每一片数据分散到不同的表或者库中,达到了分布式的目的。 水平拆分可以支撑非常大的数据量。（&lt;strong&gt;分表&lt;/strong&gt;）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;⽔平分区 ：保持数据表结构不变，通过某种策略存储数据分⽚。这样每⼀⽚数据分散到不同的表或者库中，达到了分布式的⽬的。 ⽔平拆分可以⽀撑⾮常⼤的数据量。⽔平拆分是指数据表⾏的拆分，表的⾏数超过200万⾏时，就会变慢，这时可以把⼀张的表的数&lt;br&gt;
+据拆成多张表来存放。举个例⼦：我们可以将⽤户信息表拆分成多个⽤户信息表，这样就可以避免单⼀表数据量过⼤对性能造成影响。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://i.imgtg.com/2023/02/14/dqPuv.png&#34; alt=&#34;dqPuv.png&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;⽔平拆分可以⽀持⾮常⼤的数据量。需要注意的⼀点是：分表仅仅是解决了单⼀表数据过⼤的问题，但由于表的数据还是在同⼀台机器上，其实对于提升MySQL并发能⼒没有什么意义，所以&lt;br&gt;
+&lt;strong&gt;⽔平拆分最好分库 。&lt;/strong&gt;&lt;br&gt;
+⽔平拆分能够 &lt;strong&gt;⽀持⾮常⼤的数据量存储，应⽤端改造也少，但 分⽚事务难以解决&lt;/strong&gt; ，跨节点Join性能差，逻辑复杂。&lt;strong&gt;尽量不要对数据进⾏分⽚&lt;/strong&gt;，&lt;strong&gt;因为拆分会带来逻辑、部署、运维的各种复杂度&lt;/strong&gt; ，⼀般的数据表在优化得当的情况下⽀撑千万以下的数据量是没有太⼤问题的。如果实在要分⽚，尽量选择客户端分⽚架构，这样可以减少⼀次和中间件的⽹络I/O。&lt;br&gt;
+&lt;strong&gt;下⾯补充⼀下数据库分⽚的两种常⻅⽅案：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;​	&lt;strong&gt;客户端代理&lt;/strong&gt;： &lt;strong&gt;分⽚逻辑在应⽤端，封装在jar包中，通过修改或者封装JDBC层来实现&lt;/strong&gt;。 当&lt;br&gt;
+当⽹的 &lt;strong&gt;Sharding-JDBC&lt;/strong&gt; 、阿⾥的TDDL是两种⽐᫾常⽤的实现。&lt;/p&gt;
+&lt;p&gt;​	&lt;strong&gt;中间件代理&lt;/strong&gt;： &lt;strong&gt;在应⽤和数据中间加了⼀个代理层。分⽚逻辑统⼀维护在中间件服务中&lt;/strong&gt;。 我&lt;br&gt;
+们现在谈的 Mycat 、360的Atlas、⽹易的DDB等等都是这种架构的实现。&lt;/p&gt;
+&lt;h2 id=&#34;清理表碎片&#34;&gt;清理表碎片&lt;/h2&gt;
+&lt;h3 id=&#34;mysql中删除&#34;&gt;Mysql中删除&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Mysql可以通过&lt;strong&gt;drop&lt;/strong&gt;、&lt;strong&gt;truncate&lt;/strong&gt;、&lt;strong&gt;delete&lt;/strong&gt;删除数据
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;drop table table_name&lt;/code&gt;：不管是innoDB还是MyISAM都会立刻释放空间&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;truncate table table_name&lt;/code&gt;：不管是innoDB还是MyISAM都会立刻释放空间&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;delete from table_name&lt;/code&gt;：删除表的全部数据，对于MyISAM会立刻释放磁盘空间，对于InnoDB不会释放磁盘空间&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;delete from table_name where xxx&lt;/code&gt;：带条件的删除，不管是InnoDB还是MyISAM都不会释放磁盘空间&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;delete&lt;/code&gt; 操作后，使用&lt;code&gt;optimize table table_name&lt;/code&gt;会立即释放磁盘空间，不管是InnoDB还是MyISAM&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;对于delete的数据虽然没有释放磁盘空间，但是下次插入数据时，仍然可以使用这部分空间。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;mysql表碎片&#34;&gt;Mysql表碎片&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;产生原因：删除的原因导致的
+&lt;ul&gt;
+&lt;li&gt;删除一行内容后，该段空间就会变为空白、被留空，在一段时间内的大量删除操作，会是的留空的空间比存储列表内容所使用的空间更大。&lt;/li&gt;
+&lt;li&gt;执行插入操作时，MySql会尝试使用空白空间，但如果某个空白空间一直没有被大小合适的数据占用，就会产生碎片&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;当碎片多的时候，将会影响b+树查询性能&lt;/strong&gt;（如果是SSD的话则不会）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;mysql读取&#34;&gt;Mysql读取&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Mysql预读：Mysql的&lt;strong&gt;预读分为线性预读（单位为extend）&lt;strong&gt;和&lt;/strong&gt;随机预读（单位为页）&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;线性预读（linear read-ahead）：线性预读的读取单位为extend，可以通过&lt;code&gt;innodb_read_ahead_threshold&lt;/code&gt;来指定大小，默认为56。如果一个extend中顺序读取的page大于等于该变量时，MySQL就会把下一个extend预读到buffer pool中（&lt;strong&gt;注意MySql buffer pool的变种LRU机制&lt;/strong&gt;）&lt;/li&gt;
+&lt;li&gt;随机预读（randomread-ahead）：随机预读方式则是表示当同一个extent中的一些page在buffer pool中发现时，Innodb会将该extent中的剩余page一并读到buffer pool中。
+&lt;ul&gt;
+&lt;li&gt;由于随机预读方式给innodb code带来了一些不必要的复杂性，同时在性能也存在不稳定性，在5.5中已经将这种预读方式废弃，默认是OFF。若要启用此功能，即将配置变量设置innodb_random_read_ahead为ON。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;mvcc&#34;&gt;MVCC&lt;/h2&gt;
+&lt;p&gt;参考https://www.jianshu.com/p/8845ddca3b23&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;MVCC（Multi-Version Concurrency Control）多版本并发控制，MVCC 是一种并发控制的方法，一般在数据库管理系统中，实现对数据库的并发访问，它在不同的数据库引擎中有不同的实现。MySQL中MVCC只能在Repeatable Read（读可重复读）、Read Committed（读可提交）这两个隔离级别下工作。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;读提交总是读取数据的最新行&lt;/strong&gt;，而不是复合当前事务版本的数据行&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;序列化会对所有的读取操作加锁&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在MVCC中，删除语句并不会导致要删除的记录真正被删除，而是在丢弃相应的undo log时，才会删除相应的行及索引记录。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;实现原理&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;数据库隐藏字段：
+&lt;ul&gt;
+&lt;li&gt;DB_TRX_ID：6byte，最近修改(修改/插入)事务ID：记录创建这条记录/最后一次修改该记录的事务ID&lt;/li&gt;
+&lt;li&gt;DB_ROLL_PTR：7byte，回滚指针，指向这条记录的上一个版本（存储于rollback segment里）&lt;/li&gt;
+&lt;li&gt;DB_ROW_ID：6byte，隐含的自增ID（隐藏主键），如果数据表没有主键，InnoDB会自动以DB_ROW_ID产生一个聚簇索引&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;mysql-mvcc具体实现方式是哪一种&#34;&gt;MySQL MVCC具体实现方式是哪一种&lt;/h3&gt;
+&lt;p&gt;参考:https://blog.csdn.net/SnailMann/article/details/94724197&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;隐式字段&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;undo日志&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Read View(读视图)&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;mvcc能解决什么问题好处是&#34;&gt;MVCC能解决什么问题，好处是？&lt;/h3&gt;
+&lt;h4 id=&#34;数据库并发场景有三种分别为&#34;&gt;数据库并发场景有三种，分别为：&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;读-读：不存在任何问题，也不需要并发控制&lt;/li&gt;
+&lt;li&gt;读-写：有线程安全问题，可能会造成事务隔离性问题，可能遇到脏读，幻读，不可重复读&lt;/li&gt;
+&lt;li&gt;写-写：有线程安全问题，可能会存在更新丢失问题，比如第一类更新丢失，第二类更新丢失&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;mvcc带来的好处是&#34;&gt;MVCC带来的好处是？&lt;/h4&gt;
+&lt;p&gt;**多版本并发控制（MVCC）**是一种用来解决读-写冲突的无锁并发控制，也就是为事务分配单向增长的时间戳，&lt;strong&gt;为每个修改保存一个版本，版本与事务时间戳关联&lt;/strong&gt;，读操作只读该事务开始前的数据库的快照。 所以MVCC可以为数据库解决以下问题&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;在并发读写数据库时，可以做到在读操作时不用阻塞写操作，写操作也不用阻塞读操作，提高了数据库并发读写的性能&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;同时还可以解决脏读，幻读，不可重复读等事务隔离问题，但不能解决&lt;strong&gt;更新丢失问题&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;小结一下咯&#34;&gt;小结一下咯&lt;/h4&gt;
+&lt;p&gt;总之，MVCC就是因为大牛们，不满意只让数据库采用悲观锁这样性能不佳的形式去解决读-写冲突问题，而提出的解决方案，所以在数据库中，因为有了MVCC，所以我们可以形成两个组合：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;MVCC + 悲观锁&lt;br&gt;
+MVCC解决读写冲突，悲观锁解决写写冲突&lt;/li&gt;
+&lt;li&gt;MVCC + 乐观锁&lt;br&gt;
+MVCC解决读写冲突，乐观锁解决写写冲突&lt;br&gt;
+这种组合的方式就可以最大程度的提高数据库并发性能，并解决读写冲突，和写写冲突导致的问题&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;读提交和可重复读都基于mvcc实现有什么区别&#34;&gt;读提交和可重复读都基于MVCC实现，有什么区别？&lt;/h3&gt;
+&lt;p&gt;在可重复读级别下，只会在&lt;strong&gt;事务开始前创建视图&lt;/strong&gt;，事务中后续的查询共用一个视图。&lt;/p&gt;
+&lt;p&gt;而读提交级别下&lt;strong&gt;每个语句执行前都会创建新的视图&lt;/strong&gt;。因此对于可重复读，查询只能看到事务创建前就已经提交的数据。&lt;/p&gt;
+&lt;h2 id=&#34;简述mysql中的日志log&#34;&gt;简述MySQL中的日志log&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;redo log&lt;/strong&gt;: 存储引擎级别的log（InnoDB有，MyISAM没有），该&lt;strong&gt;log关注于事务&lt;/strong&gt;的&lt;strong&gt;恢复&lt;/strong&gt;.在重启mysql服务的时候，根据redo log进行&lt;strong&gt;重做&lt;/strong&gt;，从而使事务有&lt;strong&gt;持久性&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;undo&lt;/strong&gt; log：是存储引擎级别的log（InnoDB有，MyISAM没有）&lt;strong&gt;保证数据的原子性&lt;/strong&gt;，该log保存了事务发生之前的数据的一个版本，可以用于&lt;strong&gt;回滚&lt;/strong&gt;，&lt;strong&gt;是MVCC的重要实现方法之一&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;bin log&lt;/strong&gt;：数据库级别的log，关注&lt;strong&gt;恢复数据库的数据&lt;/strong&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;mysql是如何保证主备一致的&#34;&gt;MySQL是如何保证主备一致的&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;MySQL通过bin log（二进制日志）实现主备一致&lt;/strong&gt;。bin log记录了&lt;strong&gt;所有修改了数据库或可能修改数据库的语句&lt;/strong&gt;，而不会记录select、show这种不会修改数据库的语句。&lt;/p&gt;
+&lt;p&gt;在备份的过程中，&lt;strong&gt;主库A会有一个专门的线程将主库A的bin log发送给 备库B进行备份&lt;/strong&gt;。其中bin log有三种记录格式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;statement&lt;/strong&gt;:记录对数据库进行修改的语句本身，有可能会记录一些额外的相关信息。
+&lt;ul&gt;
+&lt;li&gt;优点是binlog日志量少，IO压力小，性能较高。&lt;/li&gt;
+&lt;li&gt;缺点是由于记录的信息相对较少，在不同库执行时由于上下文的环境不同可能导致主备不一致。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;row&lt;/strong&gt;:记录对数据库做出修改的语句所影响到的数据行以及对这些行的修改。比如当修改涉及多行数据，会把涉及的每行数据都记录到bin log。
+&lt;ul&gt;
+&lt;li&gt;优点是能够完全的还原或者复制日志被记录时的操作。&lt;/li&gt;
+&lt;li&gt;缺点是日志量占用空间较大，IO压力大，性能消耗较大。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;mixed&lt;/strong&gt;:混合使用上述两种模式，一般的语句使用statment方式进行保存，如果遇到一些特殊的函数，则使用row模式进行记录。MySQL自己会判断这条SQL语句是否可能引起主备不一致，如果有可能，就用row格式， 否则就用statement格式。但是在生产环境中，一般会使用row模式。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;redo-log与bin-log的区别&#34;&gt;redo log与bin log的区别？&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;redo log是&lt;strong&gt;InnoDB引擎特&lt;/strong&gt;有的，只记录该引擎中表的&lt;strong&gt;修改记录&lt;/strong&gt;。bin log是MySQL的&lt;strong&gt;Server层&lt;/strong&gt;实现的，会记录&lt;strong&gt;所有引擎&lt;/strong&gt;对数据库的修改。&lt;/li&gt;
+&lt;li&gt;redo log是&lt;strong&gt;物理&lt;/strong&gt;日志，记录的是在具体某个数据页上做了什么修改；bin log是&lt;strong&gt;逻辑&lt;/strong&gt;日志，记录的是这个语句的原始逻辑。&lt;/li&gt;
+&lt;li&gt;redo log是&lt;strong&gt;循环&lt;/strong&gt;写的，&lt;strong&gt;空间固定会用完&lt;/strong&gt;；bin log是可以追加写入的，bin log文件写到一定大小后会&lt;strong&gt;切换&lt;/strong&gt;到下一个，&lt;strong&gt;并不会覆盖以前的日志&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;什么时候redo-log会触发写磁盘&#34;&gt;什么时候redo log会触发写磁盘&lt;/h2&gt;
+&lt;p&gt;https://blog.csdn.net/wuzhenwei0419/article/details/105258902/&lt;/p&gt;
+&lt;h2 id=&#34;crash-safe能力是什么&#34;&gt;crash-safe能力是什么&lt;/h2&gt;
+&lt;p&gt;InnoDB通过redo log保证即使数据库发生异常重启，之前&lt;strong&gt;提交的记录&lt;/strong&gt;都不会丢失，这个能力称为crash-safe。&lt;/p&gt;
+&lt;h2 id=&#34;wal技术是什么&#34;&gt;WAL技术是什么&lt;/h2&gt;
+&lt;p&gt;WAL的全称是Write-Ahead Logging，它的关键点就是**先写日志，再写磁盘。**事务在提交写入磁盘前，会先写到redo log里面去。如果直接写入磁盘涉及磁盘的随机I/O访问，涉及磁盘随机I/O访问是非常消耗时间的一个过程，相比之下先写入redo log，后面再找合适的时机批量刷盘能提升性能。&lt;/p&gt;
+&lt;h2 id=&#34;两阶段提交是什么&#34;&gt;两阶段提交是什么&lt;/h2&gt;
+&lt;p&gt;为了&lt;strong&gt;保证binl og和redo log两份日志的逻辑一致&lt;/strong&gt;，最终保证恢复到主备数据库的数据是一致的，采用两阶段提交的机制。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;执行器调用存储引擎接口，存储引擎将修改更新到内存中后，将修改操作记录redo log中，此时redo log处于&lt;strong&gt;prepare&lt;/strong&gt;状态。&lt;/li&gt;
+&lt;li&gt;存储引擎告知&lt;strong&gt;执行器执行完毕&lt;/strong&gt;，执行器生成这个操作对应的bin log，并把binlog写入磁盘。&lt;/li&gt;
+&lt;li&gt;执行器调用引擎的&lt;strong&gt;提交事务接口&lt;/strong&gt;，引擎把刚刚写入的redo log改成提交&lt;strong&gt;commit&lt;/strong&gt;状态，更新完成。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;只靠bin-log可以支持数据库崩溃恢复吗&#34;&gt;只靠bin log可以支持数据库崩溃恢复吗&lt;/h2&gt;
+&lt;p&gt;不可以。 历史原因：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;InnoDB在作为MySQL的插件加入MySQL引擎家族之前，就已经是一个提供了崩溃恢复和事务支持的引擎了。InnoDB接入了MySQL后，发现既然bin log没有崩溃恢复的能力，那引入InnoDB原有的redo log来保证崩溃恢复能力。 实现原因：&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;bin log没有记录数据页修改的详细信息，不具备恢复数据页的能力&lt;/strong&gt;。binlog记录着数据行的增删改，但是不记录事务对数据页的改动，这样细致的改动只记录在redo log中。当一个事务做增删改时，其实涉及到的数据页改动非常细致和复杂，包括行的字段改动以及行头部以及数据页头部的改动，甚至b+tree会因为插入一行而发生若干次页面分裂，那么事务也会把所有这些改动记录下来到redo log中。因为数据库系统进程crash时刻，磁盘上面页面镜像可以非常混乱，其中有些页面含有一些正在运行着的事务的改动，而一些已提交的事务的改动并没有刷上磁盘。事务恢复过程可以理解为是要把没有提交的事务的页面改动都去掉，并把已经提交的事务的页面改动都加上去这样一个过程。这些信息，都是binlog中没有记录的，只记录在了存储引擎的redo log中。&lt;/li&gt;
+&lt;li&gt;操作写入binlog可细分为write和fsync两个过程，write指的就是指把日志写入到文件系统的page cache，并没有把数据持久化到磁盘,fsync才是将数据持久化到磁盘的操作。通过参数设置sync_binlog为0的时候，表示每次提交事务都只write，不fsync。此时数据库崩溃可能导致部分提交的事务以及binlog日志由于没有持久化而丢失。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;简述mysql主从复制&#34;&gt;简述MySQL主从复制&lt;/h2&gt;
+&lt;p&gt;MySQL提供主从复制功能，可以方便的&lt;strong&gt;实现数据的多处自动备份&lt;/strong&gt;，不仅能增加数据库的安全性，还能进行&lt;strong&gt;读写分离&lt;/strong&gt;，提升&lt;strong&gt;数据库负载性能&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;主从复制流程：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在事务完成之前，主库在&lt;strong&gt;bin log&lt;/strong&gt;上记录这些改变，&lt;strong&gt;完成bin log写入过程后，主库通知存储引擎提交事物&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;从库将主库的bin log复制到对应的中继日志，即开辟一个I/O工作线程，I/O线程在主库上打开一个普通的连接，然后开始bin log dump process，将这些事件写入中继日志。从主库的bin log中读取事件，如果已经读到最新了，线程进入睡眠并等待ma主库产生新的事件。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;读写分离：即只在MySQL主库上写，只在MySQL从库上读，以减少数据库压力，提高性能。&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;sql-truncate-delete和drop的异同&#34;&gt;SQL truncate 、delete和drop的异同&lt;/h2&gt;
+&lt;p&gt;https://blog.csdn.net/biglxl/article/details/73301965&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;相同点&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;1.truncate和不带where子句的delete、以及drop都会删除表内的数据。&lt;/p&gt;
+&lt;p&gt;2.drop、truncate都是DDL语句(数据定义语言),执行后会自动提交。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;不同点&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;1.truncate 和 delete 只删除数据不删除表的结构(定义)&lt;br&gt;
+drop 语句将删除表的结构被依赖的约束(constrain)、触发器(trigger)、索引(index)；依赖于该表的存储过程/函数将保留,但是变为 invalid 状态（无效状态）。&lt;/p&gt;
+&lt;p&gt;2.delete 语句是数据库操作语言(dml)，这个操作会放到 rollback segement 中，事务提交之后才生效；如果有相应的 trigger（触发器），执行的时候将被触发。&lt;/p&gt;
+&lt;p&gt;truncate、drop 是数据库定义语言(ddl)，操作立即生效，原数据不放到 rollback segment 中，不能回滚，操作不触发 trigger（触发器）。&lt;br&gt;
+（rollback segment可以理解为是一个存储状态的区域，它相当于保存操作前数据库的状态信息，当操作执行成功后继续存储当前状态，当操作失败时回滚即恢复到操作之前保存的状态）&lt;/p&gt;
+&lt;p&gt;3.速度，一般来说: drop&amp;gt; truncate &amp;gt; delete&lt;br&gt;
+原因：&lt;br&gt;
+drop 删除了表的数据及表的结构即从数据库中删除该表&lt;br&gt;
+truncate 只删除数据&lt;br&gt;
+delete 有条件的删除表中数据（没有条件即没有where语句即删除表中所有数据）&lt;/p&gt;
+&lt;h2 id=&#34;数据模型描述&#34;&gt;数据模型描述&lt;/h2&gt;
+&lt;p&gt;数据模型的组成要素有：&lt;/p&gt;
+&lt;p&gt;1**.数据结构**，描述数据库的组成对象以及对象之间的联系，数据结构是所描述的对象类型的集合，是对系统静态特征的描述&lt;/p&gt;
+&lt;p&gt;2.&lt;strong&gt;数据操作&lt;/strong&gt;，是指对数据库中各种对象的实例允许执行的操作的集合，主要有查询和更新。&lt;/p&gt;
+&lt;p&gt;3.&lt;strong&gt;数据的完整性约束条件&lt;/strong&gt;，是一组完整性规则的集合。完整性规则是给定的数据模型中数据及其联系所具有的之约和依存规则，用以限定符合数据模型的数据库状态以及状态的变化，以保证数据的正确、有效、相容。&lt;/p&gt;
+&lt;h2 id=&#34;异常&#34;&gt;异常&lt;/h2&gt;
+&lt;p&gt;删除操作异常是指不该删除的数据被删除；&lt;/p&gt;
+&lt;p&gt;插入操作异常是指应该插入的数据未被插入；&lt;/p&gt;
+&lt;h2 id=&#34;having条件&#34;&gt;Having条件&lt;/h2&gt;
+&lt;p&gt;having和group by 区别&lt;/p&gt;
+&lt;p&gt;having是对于group by分组后结果进行筛选，group by是进行分组&lt;/p&gt;
+&lt;p&gt;where 子句和 having子句区别&lt;/p&gt;
+&lt;p&gt;where是对查询进行限制条件，&lt;strong&gt;having只是对于group by后的结果进行限制&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;所以用having就一定要和group by连用，且是先group by XXX 再having XXX，用group by不一有having（&lt;strong&gt;它只是一个筛选条件用的&lt;/strong&gt;）&lt;/p&gt;
+&lt;p&gt;where后不可以加聚合函数，但是having可以添加聚合函数&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;都是实际的比预期操作的少&lt;/strong&gt;3&lt;/p&gt;
+&lt;h2 id=&#34;select执行顺序&#34;&gt;select执行顺序&lt;/h2&gt;
+&lt;p&gt;写法顺序：select--from--where--group by--having--order by&lt;/p&gt;
+&lt;p&gt;执行顺序：from--where--group by--having--select--order by  就是select要放后面，如果有order by，则order by放最后，因为order by 是对结果进行排序&lt;/p&gt;
+&lt;h2 id=&#34;用于调用存储过程的对象&#34;&gt;用于调用存储过程的对象&lt;/h2&gt;
+&lt;p&gt;CallableStatemet 用于调用存储过程的对象&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/borter/p/9562391.html&#34;&gt;Statement和PreparedStatement都是用来发送和执行SQL语句的&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/borter/p/9562403.html&#34;&gt;ResultSet是结果集对象&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;sql注入和解决方法&#34;&gt;SQL注入和解决方法&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;什么是SQL注入？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;SQL注入就是在系统登陆窗口或其他一切可输入文本中输入一段SQL语句，由于“SQL注入”是利用未过滤/未审核用户输入的攻击方法，其实就是让应用运行本不应该运行的SQL代码，如果应用毫无防备地创建了SQL字符串并且运行了它们，就会造成一些出人意料的结果。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;简单的sql注入语句&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;String sql = &amp;quot;select * from user_table where username=&lt;/p&gt;
+&lt;p&gt;&#39; &amp;quot;+userName+&amp;quot; &#39; and password=&#39; &amp;quot;+password+&amp;quot; &#39;&amp;quot;;&lt;/p&gt;
+&lt;p&gt;改写成&lt;/p&gt;
+&lt;p&gt;SELECT * FROM user_table WHERE username=&lt;/p&gt;
+&lt;p&gt;&#39;’or 1 = 1 -- and password=&#39;’&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SQL注入解决方法&lt;/strong&gt;&lt;br&gt;
+解决SQL注入问题的关键是对所有可能来自用户输入的数据进行严格的检查、对数据库配置使用最小权限原则。&lt;/p&gt;
+&lt;p&gt;1、所有的查询语句都使用数据库提供的参数化查询接口，参数化的语句使用参数而不是将用户输入变量嵌入到SQL语句中。当前几乎所有的数据库系统都提供了参数化SQL语句执行接口，使用此接口可以非常有效的防止SQL注入攻击。&lt;/p&gt;
+&lt;p&gt;​	MyBatis提供了两种支持动态 sql 的语法 #{} 和 &lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mrow&gt;&lt;/mrow&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;，&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;其&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;中&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;{}，其中&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;其&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;中&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;{} 是简单的&lt;a href=&#34;https://so.csdn.net/so/search?q=%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9B%BF%E6%8D%A2&amp;amp;spm=1001.2101.3001.7020&#34;&gt;字符串替换&lt;/a&gt;，而 #{} 在预处理时，会把参数部分用一个占位符 ? 代替，可以有效的防止sql的注入&lt;/p&gt;
+&lt;p&gt;2、对进入数据库的特殊字符（’”\尖括号&amp;amp;*;等）进行转义处理，或编码转换。&lt;/p&gt;
+&lt;p&gt;3、严格限制变量类型，比如整型变量就采用intval()函数过滤，数据库中的存储字段必须对应为int型。&lt;/p&gt;
+&lt;p&gt;4、数据长度应该严格规定，能在一定程度上防止比较长的SQL注入语句无法正确执行。&lt;/p&gt;
+&lt;p&gt;5、网站每个数据层的编码统一，建议全部使用UTF-8编码，上下层编码不一致有可能导致一些过滤模型被绕过。&lt;/p&gt;
+&lt;p&gt;6、严格限制网站用户的数据库的操作权限，给此用户提供仅仅能够满足其工作的权限，从而最大限度的减少注入攻击对数据库的危害。&lt;/p&gt;
+&lt;p&gt;7、避免网站显示SQL错误信息，比如类型错误、字段不匹配等，防止攻击者利用这些错误信息进行一些判断。&lt;/p&gt;
+&lt;p&gt;8、在网站发布之前建议使用一些专业的SQL注入检测工具进行检测，及时修补这些SQL注入漏洞。&lt;/p&gt;
+&lt;p&gt;9、确认PHP配置文件中的magicquotesgpc选项保持开启&lt;/p&gt;
+&lt;h2 id=&#34;log日志有几个级别&#34;&gt;log日志有几个级别&lt;/h2&gt;
+&lt;p&gt;https://blog.csdn.net/jYF_666/article/details/102776645&lt;/p&gt;
+&lt;p&gt;log4j定义了8个级别的log（除去OFF和ALL，可以说分为6个级别），优先级从高到低依次为：OFF、FATAL、ERROR、WARN、INFO、DEBUG、TRACE、 ALL。&lt;br&gt;
+Log4j建议只使用四个级别，优先级从高到低分别是 &lt;strong&gt;ERROR、WARN、INFO、DEBUG&lt;/strong&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;mysql常用函数&#34;&gt;Mysql常用函数&lt;/h2&gt;
+&lt;p&gt;https://www.bilibili.com/read/cv3838568/&lt;/p&gt;
+&lt;p&gt;1.&lt;strong&gt;聚合函数&lt;/strong&gt;&lt;br&gt;
+聚合函数是平时比较常用的一类函数，这里列举如下：&lt;/p&gt;
+&lt;p&gt;COUNT(col)   统计查询结果的行数&lt;/p&gt;
+&lt;p&gt;MIN(col)   查询指定列的最小值&lt;/p&gt;
+&lt;p&gt;MAX(col)   查询指定列的最大值&lt;/p&gt;
+&lt;p&gt;SUM(col)   求和，返回指定列的总和&lt;/p&gt;
+&lt;p&gt;AVG(col)   求平均值，返回指定列数据的平均值&lt;/p&gt;
+&lt;p&gt;2.&lt;strong&gt;数值型函数&lt;/strong&gt;&lt;br&gt;
+数值型函数主要是对数值型数据进行处理，得到我们想要的结果，常用的几个列举如下，具体使用方法大家可以试试看。&lt;/p&gt;
+&lt;p&gt;ABS(x)   返回x的绝对值&lt;/p&gt;
+&lt;p&gt;BIN(x)   返回x的二进制&lt;/p&gt;
+&lt;p&gt;CEILING(x)   返回大于x的最小整数值&lt;/p&gt;
+&lt;p&gt;EXP(x)   返回值e（自然对数的底）的x次方&lt;/p&gt;
+&lt;p&gt;FLOOR(x)   返回小于x的最大整数值&lt;/p&gt;
+&lt;p&gt;GREATEST(x1,x2,...,xn)   返回集合中最大的值&lt;/p&gt;
+&lt;p&gt;LEAST(x1,x2,...,xn)   返回集合中最小的值&lt;/p&gt;
+&lt;p&gt;LN(x)   返回x的自然对数&lt;/p&gt;
+&lt;p&gt;LOG(x,y)   返回x的以y为底的对数&lt;/p&gt;
+&lt;p&gt;MOD(x,y)   返回x/y的模（余数）&lt;/p&gt;
+">Mysql</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://github.com/lindamao0753/lindamao0753.github.io/post/cao-zuo-xi-tong/"" data-c="
+          &lt;h2 id=&#34;操作系统基础&#34;&gt;操作系统基础&lt;/h2&gt;
+&lt;h3 id=&#34;什么是操作系统&#34;&gt;什么是操作系统？&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;操作系统（Operating System，简称 OS）是管理计算机硬件与软件资源的程序，是计算机的基⽯&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;操作系统本质上是⼀个运⾏在计算机上的软件程序 ，⽤于管理计算机硬件和软件资源。&lt;/strong&gt; 举例：运⾏在你电脑上的所有应⽤程序都通过操作系统来调⽤系统内存以及磁盘等等硬件。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;操作系统存在屏蔽了硬件层的复杂性。&lt;/strong&gt; 操作系统就像是硬件使⽤的负责⼈，统筹着各种相关事项。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;操作系统的内核（Kernel）是操作系统的核⼼部分，它负责系统的内存管理，硬件设备的管理，⽂件系统的管理以及应⽤程序的管理&lt;/strong&gt;。 内核是连接应⽤程序和硬件的桥梁，决定着系统的性能和稳定。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://i.imgtg.com/2023/02/14/dqezL.png&#34; alt=&#34;dqezL.png&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;系统调用&#34;&gt;系统调⽤&lt;/h3&gt;
+&lt;p&gt;根据进程访问资源的特点，我们可以把进程在系统上的运⾏分为两个级别：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;⽤户态(user mode) : &lt;strong&gt;⽤户态运⾏的进程或可以直接读取⽤户程序的数据&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;系统态(kernel mode):可以&lt;strong&gt;简单的理解系统态运⾏的进程或程序⼏乎可以访问计算机的任何资源，不受限制。&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;我们运⾏的程序基本都是运⾏在⽤户态，如果我们调⽤操作系统提供的系统态级别的⼦功能就需要用到系统调用也就是说在我们运⾏的⽤户程序中，凡是与系统态级别的资源有关的操作（如⽂件管理、进程控制、内存管理等)，都必须通过系统调⽤⽅式向操作系统提出服务请求，并由操作系统代为完成。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;分类：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;设备管理。完成设备的请求或释放，以及设备启动等功能。&lt;/li&gt;
+&lt;li&gt;⽂件管理。完成⽂件的读、写、创建及删除等功能。&lt;/li&gt;
+&lt;li&gt;进程控制。完成进程的创建、撤销、阻塞及唤醒等功能。&lt;/li&gt;
+&lt;li&gt;进程通信。完成进程之间的消息传递或信号传递等功能。&lt;/li&gt;
+&lt;li&gt;内存管理。完成内存的分配、回收以及获取作业占⽤内存区⼤⼩及地址等功&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;进程和线程&#34;&gt;进程和线程&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;进程是资源分配的最小单位&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;线程是CPU调度的最小单位&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;进程和线程的区别&#34;&gt;进程和线程的区别&lt;/h3&gt;
+&lt;h3 id=&#34;进程有哪几种状态&#34;&gt;进程有哪⼏种状态&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;创建状态(new) ：进程正在被创建，尚未到就绪状态&lt;/li&gt;
+&lt;li&gt;就绪状态(ready) ：进程已处于准备运⾏状态，即进程获得了除了处理器之外的⼀切所需资源，⼀旦得到处理器资源(处理器分配的时间⽚)即可运⾏。&lt;/li&gt;
+&lt;li&gt;运⾏状态(running) ：进程正在处理器上上运⾏(单核 CPU 下任意时刻只有⼀个进程处于运⾏状态)。&lt;/li&gt;
+&lt;li&gt;阻塞状态(waiting) ：⼜称为等待状态，进程正在等待某⼀事件⽽暂停运⾏如等待某资源为可⽤或等待 IO 操作完成。即使处理器空闲，该进程也不能运⾏。&lt;/li&gt;
+&lt;li&gt;结束状态(terminated) ：进程正在从系统中消失。可能是进程正常结束或其他原因中断退出&lt;br&gt;
+运⾏。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;进程间的通信方式和优缺点&#34;&gt;进程间的通信⽅式和优缺点&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;管道/匿名管道(Pipes)&lt;/strong&gt; ：⽤于具有&lt;strong&gt;亲缘关系的⽗⼦进程间或者兄弟进程之间的通信&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;优点:比较简单&lt;br&gt;
+缺点:效率低下&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;有名管道(Names Pipes)&lt;/strong&gt; : 匿名管道由于没有名字，只能⽤于亲缘关系的进程间通信。为了克服这个缺点，提出了有名管道。有名&lt;strong&gt;管道严格遵循先进先出(first in first out)&lt;/strong&gt;。有名管道以磁盘⽂件的⽅式存在，可以实现本机任意两个进程通信。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;信号(Signal)&lt;/strong&gt; ：信号是⼀种比较复杂的通信⽅式，⽤于&lt;strong&gt;通知接收进程某个事件已经发⽣&lt;/strong&gt;；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;消息队列(Message Queuing)&lt;/strong&gt; ：消息队列是消息的链表,具有特定的格式,存放在内存中并由消息队列标识符标识。管道和消息队列的通信数据都是先进先出的原则。与管道（⽆名管道：只存在于内存中的⽂件；命名管道：存在于实际的磁盘介质或者⽂件系统）不同的是消息队列存放在&lt;strong&gt;内核&lt;/strong&gt;中，只有在内核重启(即，操作系统重启)或者显示地删除⼀个消息队列时，该消息队列才会被真正的删除。&lt;strong&gt;消息队列可以实现消息的随机查询,消息不⼀定要以先进先出的次序读取,也可以按消息的类型读取&lt;/strong&gt;.⽐ FIFO 更有优势。消息队列克服了信号承载信息量少，管道只能承载⽆格式字 节流以及缓冲区⼤⼩受限等缺。&lt;/p&gt;
+&lt;p&gt;​	优点:进程的数据放在某个内存之后就马上让进程返回&lt;br&gt;
+​	缺点:如果 a 进程发送的数据占的内存比较大，并且两个进程之间的通信特别频繁的话，消息队列模型就不大适合了&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;信号量(Semaphores)&lt;/strong&gt; ：信号量是⼀个&lt;strong&gt;计数器&lt;/strong&gt;，⽤于多进程对共享数据的访问，&lt;strong&gt;信号量的意图在于进程间同步&lt;/strong&gt;。这种通信⽅式主要⽤于解决与同步相关的问题并避免竞争条件。&lt;/p&gt;
+&lt;p&gt;​	优点:解决多进程竞争内存的问题&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;**共享内存(Shared memory) ：**使得多个进程可以访问同⼀块内存空间，不同进程可以及时看到对⽅进程中对共享内存中数据的更新。这种⽅式需要依靠某种同步操作，如互斥锁和信号量等。可以说这是最有⽤的进程间通信⽅式。&lt;/p&gt;
+&lt;p&gt;​	优点:解决拷贝所消耗的时间了&lt;br&gt;
+​	缺点:多进程竞争内存的问题，就像类似于我们平时说的线程安全问题&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;套接字(Sockets) :&lt;/strong&gt; 此⽅法主要⽤于在客户端和服务器之间通过⽹络进⾏通信。套接字是⽀持 TCP/IP 的⽹络通信的基本操作单元，可以看做是不同主机之间的进程进⾏双向通信的端点，简单的说就是通信的两⽅的⼀种约定，⽤套接字中的相关函数来完成通信过程。&lt;br&gt;
+优点:两个相隔几千里的进程能够进行通信&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;线程间的同步的方式&#34;&gt;线程间的同步的⽅式&lt;/h3&gt;
+&lt;p&gt;线程同步是两个或多个共享关键资源的线程的并发执⾏。应该同步线程以避免关键的资源使⽤冲突。操作系统⼀般有下⾯三种线程同步方式:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;**互斥量(Mutex)：**采⽤互斥对象机制，只有拥有互斥对象的线程才有访问公共资源的权限。因为互斥对象只有⼀个，所以可以保证公共资源不会被多个线程同时访问。⽐如 Java 中的&lt;br&gt;
+synchronized 关键词和各种 Lock 都是这种机制。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;信号量(Semphares)&lt;/strong&gt; ：它允许同⼀时刻多个线程访问同⼀资源，但是需要控制同⼀时刻访问此资源的最⼤线程数量&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;事件(Event) :Wait/Notify&lt;/strong&gt;：通过通知操作的⽅式来保持多线程同步，还可以⽅便的实现多线程优先级的比较&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;线程同步互斥的四种方式&#34;&gt;线程同步/互斥的四种方式&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;1、临界区&lt;/strong&gt;：通过对多线程的串行化来访问公共资源或一段代码，速度快，适合控制数据访问。&lt;strong&gt;在任意时刻只允许一个线程对共享资源进行访问&lt;/strong&gt;，如果有多个线程试图访问公共资源，那么在有一个线程进入后，其他试图访问公共资源的线程将被挂起，并一直等到进入临界区的线程离开，临界区在被释放后，其他线程才可以抢占。它并不是核心对象，不是属于操作系统维护的，而是属于进程维护的。&lt;/p&gt;
+&lt;p&gt;总结下关键段：&lt;br&gt;
+1）关键段共初始化化、销毁、进入和离开关键区域四个函数。&lt;br&gt;
+2）关键段可以解决线程的互斥问题，但因为具有“线程所有权”，所以无法解决同步问题。&lt;br&gt;
+3）推荐关键段与旋转锁配合使用。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2、互斥对象&lt;/strong&gt;：互斥对象和临界区很像，采用互斥对象机制，&lt;strong&gt;只有拥有互斥对象的线程才有访问公共资源的权限&lt;/strong&gt;。因为互斥对象只有一个，所以能保证公共资源不会同时被多个线程同时访问。&lt;strong&gt;当前拥有互斥对象的线程处理完任务后必须将线程交出，以便其他线程访问该资源。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;总结下互斥量Mutex：&lt;br&gt;
+1）互斥量是内核对象，它与关键段都有“线程所有权”所以不能用于线程的同步。&lt;br&gt;
+2）互斥量能够用于多个进程之间线程互斥问题，并且能完美的解决某进程意外终止所造成的“遗弃”问题。&lt;br&gt;
+&lt;strong&gt;3、信号量&lt;/strong&gt;：信号量也是内核对象。它允许多个线程在同一时刻访问同一资源，但是需要限制在同一时刻访问此资源的最大线程数目&lt;/p&gt;
+&lt;p&gt;在用CreateSemaphore()创建信号量时即要同时指出允许的最大资源计数和当前可用资源计数。一般是将当前可用资源计数设置为最 大资源计数，每增加一个线程对共享资源的访问，&lt;strong&gt;当前可用资源计数就会减1 ，只要当前可用资源计数是大于0 的，就可以发出信号量信号&lt;/strong&gt;。但是当前可用计数减小 到0 时则说明当前占用资源的线程数已经达到了所允许的最大数目，不能在允许其他线程的进入，此时的信号量信号将无法发出。线程在处理完共享资源后，应在离 开的同时通过ReleaseSemaphore （）函数将当前可用资源计数加1 。在任何时候当前可用资源计数决不可能大于最大资源计数。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4、事件对象&lt;/strong&gt;： **通过通知操作的方式来保持线程的同步，**还可以方便实现对多个线程的优先级比较的操作&lt;/p&gt;
+&lt;p&gt;总结下事件&lt;strong&gt;Event&lt;/strong&gt;&lt;br&gt;
+1）事件是内核对象，事件分为手动置位事件和自动置位事件。事件Event内部它包含一个使用计数（所有内核对象都有），一个布尔值表示是手动置位事件还是自动置位事件，另一个布尔值用来表示事件有无触发。&lt;br&gt;
+2）事件可以由SetEvent()来触发，由ResetEvent()来设成未触发。还可以由PulseEvent()来发出一个事件脉冲。&lt;br&gt;
+3）事件可以解决线程间同步问题，因此也能解决互斥问题。&lt;/p&gt;
+&lt;h3 id=&#34;进程的调度算法&#34;&gt;进程的调度算法&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;先到先服务(FCFS)调度算法&lt;/strong&gt; : 从就绪队列中选择⼀个最先进⼊该队列的进程为之分配资源，使它⽴即执⾏并⼀直执⾏到完成或发⽣某事件⽽被阻塞放弃占⽤ CPU 时再重新调度。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;短作业优先(SJF)的调度算法&lt;/strong&gt; : 从就绪队列中选出⼀个估计运⾏时间最短的进程为之分配资源，使它⽴即执⾏并⼀直执⾏到完成或发⽣某事件⽽被阻塞放弃占⽤ CPU 时再重新调度。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;时间⽚轮转调度算法&lt;/strong&gt; : 时间⽚轮转调度是⼀种最古⽼，最简单，最公平且使⽤最⼴的算法，⼜称 RR(Round robin)调度。每个进程被分配⼀个时间段，称作它的时间⽚，即该进程允许&lt;br&gt;
+运⾏的时间。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;多级反馈队列调度算法&lt;/strong&gt; ：前⾯介绍的⼏种进程调度的算法都有⼀定的局限性。如短进程优先的调度算法，仅照顾了短进程⽽忽略了⻓进程 。多级反馈队列调度算法既能使⾼优先级的作业得到响应⼜能使短作业（进程）迅速完成。，因⽽它是⽬前被公认的⼀种较好的进程调度算法，UNIX 操作系统采取的便是这种调度算法。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;优先级调度&lt;/strong&gt; ： 为每个流程分配优先级，⾸先执⾏具有最⾼优先级的进程，依此类推。具有相同优先级的进程以 FCFS ⽅式执⾏。可以根据内存要求，时间要求或任何其他资源要求来&lt;br&gt;
+确定优先级。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;进程的要素&#34;&gt;进程的要素&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://i.imgtg.com/2023/02/14/dqrPi.png&#34; alt=&#34;dqrPi.png&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;进程控制块：标识信息 现场信息 控制信息&lt;/p&gt;
+&lt;p&gt;进程映像 ：静态特征-进程程序块 进程数据块&lt;/p&gt;
+&lt;p&gt;​                     动态特征-进程控制块 进程核心数&lt;/p&gt;
+&lt;p&gt;进程队列 ：单向链接 双向链接&lt;/p&gt;
+&lt;h2 id=&#34;内存管理基础&#34;&gt;内存管理基础&lt;/h2&gt;
+&lt;h3 id=&#34;内存管理介绍&#34;&gt;内存管理介绍&lt;/h3&gt;
+&lt;p&gt;操作系统的内存管理主要负责&lt;strong&gt;内存的分配与回收&lt;/strong&gt;（malloc 函数：申请内存，free 函数：释放内存），另外地址转换也就是将逻辑地址转换成相应的物理地址等功能也是操作系统内存管理做的事情。&lt;/p&gt;
+&lt;h3 id=&#34;常见的几种内存管理机制&#34;&gt;常见的几种内存管理机制&lt;/h3&gt;
+&lt;p&gt;简单分为&lt;strong&gt;连续分配管理⽅式&lt;/strong&gt;和&lt;strong&gt;⾮连续分配管理⽅式&lt;/strong&gt;这两种。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;连续分配管理⽅式&lt;/strong&gt;是指为⼀个⽤户程序分配⼀个&lt;strong&gt;连续的内存空间&lt;/strong&gt;，常⻅的如 &lt;strong&gt;块式管理&lt;/strong&gt; 。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;⾮连续分配管理⽅式&lt;/strong&gt;允许⼀个程序使⽤的内存分布在&lt;strong&gt;离散或者说不相邻的内存&lt;/strong&gt;中，常⻅的如&lt;strong&gt;⻚式管理&lt;/strong&gt; 和 &lt;strong&gt;段式管理。&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;块式管理&lt;/strong&gt; ： 远古时代的计算机操系统的内存管理⽅式。将内存分为⼏个固定⼤⼩的块，每个块中只包含⼀个进程。如果程序运⾏需要内存的话，操作系统就分配给它⼀块，如果程序运⾏只需要很⼩的空间的话，分配的这块内存很⼤⼀部分⼏乎被浪费了。这些在每个块中未被利⽤的空间，我们称之为碎⽚。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;⻚式管理&lt;/strong&gt; ：把主存分为⼤⼩相等且固定的⼀⻚⼀⻚的形式，页较⼩，相对相⽐于块式管理的划分⼒度更⼤，提⾼了内存利⽤率，减少了碎⽚。&lt;strong&gt;⻚式管理通过⻚表对应逻辑地址和物理地址&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;段式管理&lt;/strong&gt; ： ⻚式管理虽然提⾼了内存利⽤率，但是⻚式管理其中的⻚实际并⽆任何实际意&lt;br&gt;
+义。 段式管理把主存分为⼀段段的，每⼀段的空间⼜要⽐⼀⻚的空间⼩很多 。但是，最重要的是&lt;strong&gt;段是有实际意义&lt;/strong&gt;的，每个段定义了⼀组逻辑信息，例如,有主程序段 MAIN、⼦程序段X、数据段 D 及栈段 S 等。 段式管理通过段表对应逻辑地址和物理地址。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;段页式管理&lt;/strong&gt;：&lt;strong&gt;段⻚式管理机制结合了段式管理和⻚式管理的优点&lt;/strong&gt;。简单来说段⻚式管理机制就是把主存先分成若⼲段，每个段⼜分成若⼲⻚，也就是说 段⻚式管理机制 中段与段之间以及段的内部的都是离散的&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;快表和多级页表&#34;&gt;快表和多级页表&lt;/h3&gt;
+&lt;p&gt;在分⻚内存管理中，很重要的两点是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;虚拟地址到物理地址的转换要快&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;解决虚拟地址空间⼤，⻚表也会很⼤的问题&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;快表&lt;/strong&gt;&lt;br&gt;
+为了解决虚拟地址到物理地址的转换速度，操作系统在 ⻚表⽅案 基础之上引⼊了 快表 来加速虚&lt;br&gt;
+拟地址到物理地址的转换。我们可以把快表理解为⼀种特殊的⾼速缓冲存储器（Cache），其中&lt;br&gt;
+的内容是⻚表的⼀部分或者全部内容。作为⻚表的 Cache，它的作⽤与⻚表相似，但是提⾼了访&lt;br&gt;
+问速率。由于采⽤⻚表做地址转换，读写内存数据时 CPU 要访问两次主存。有了快表，有时只&lt;br&gt;
+要访问⼀次⾼速缓冲存储器，⼀次主存，这样可加速查找并提⾼指令执⾏速度。&lt;/p&gt;
+&lt;p&gt;快表的地址转换流程：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;根据虚拟地址中的⻚号查快表；2. 如果该⻚在快表中，直接从快表中读取相应的物理地址；&lt;/li&gt;
+&lt;li&gt;如果该⻚不在快表中，就访问内存中的⻚表，再从⻚表中得到物理地址，同时将⻚表中的该&lt;br&gt;
+映射表项添加到快表中；&lt;/li&gt;
+&lt;li&gt;当快表填满后，⼜要登记新⻚时，就按照⼀定的淘汰策略淘汰掉快表中的⼀个⻚。&lt;br&gt;
+看完了之后你会发现快表和我们平时经常在我们开发的系统使⽤的缓存（⽐如 Redis）很像，的&lt;br&gt;
+确是这样的，操作系统中的很多思想、很多经典的算法，你都可以在我们⽇常开发使⽤的各种⼯&lt;br&gt;
+具或者框架中找到它们的影⼦。&lt;/li&gt;
+&lt;li&gt;当快表填满后，⼜要登记新⻚时，就按照⼀定的淘汰策略淘汰掉快表中的⼀个⻚。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;多级⻚表&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;引⼊多级⻚表的主要⽬的是为了避免把全部⻚表⼀直放在内存中占⽤过多空间，特别是那些根本&lt;br&gt;
+就不需要的⻚表就不需要保留在内存中。多级⻚表属于时间换空间的典型场景。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;总结&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;为了提⾼内存的空间性能，提出了多级⻚表的概念；但是提到空间性能是以浪费时间性能为基础&lt;br&gt;
+的，因此为了补充损失的时间性能，提出了快表（即 TLB）的概念。 不论是快表还是多级⻚表实&lt;br&gt;
+际上都利⽤到了程序的局部性原理，局部性原理在后⾯的虚拟内存这部分会介绍到。&lt;/p&gt;
+&lt;h3 id=&#34;分页机制和分段机制&#34;&gt;分页机制和分段机制&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;共同点 ：&lt;/strong&gt;&lt;br&gt;
+分⻚机制和分段机制都是为了提⾼内存利⽤率，᫾少内存碎⽚。&lt;br&gt;
+⻚和段都是离散存储的，所以两者都是离散分配内存的⽅式。但是，&lt;strong&gt;每个⻚和段中的内存是连续的&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;区别&lt;/strong&gt; ：⻚的⼤⼩是固定的，由操作系统决定；⽽段的⼤⼩不固定，取决于我们当前运⾏的程&lt;br&gt;
+序。&lt;br&gt;
+分⻚仅仅是为了满⾜操作系统内存管理的需求，⽽段是逻辑信息的单位，在程序中可以&lt;br&gt;
+体现为代码段，数据段，能够更好满⾜⽤户的需要。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;逻辑虚拟地址和物理地址&#34;&gt;逻辑（虚拟）地址和物理地址&lt;/h3&gt;
+&lt;p&gt;⽐如在 C 语⾔中，指针⾥⾯存储的数值就可以理解成为内存⾥的⼀个地址，这个地址也就是我们说的逻辑地址，逻辑地址由操作系统决定。物理地址指的是真实物理内存中地址，更具体⼀点来说就是内存地址寄存器中的地&lt;br&gt;
+址。物理地址是内存单元真正的地址。&lt;/p&gt;
+&lt;h3 id=&#34;cpu寻址&#34;&gt;CPU寻址&lt;/h3&gt;
+&lt;p&gt;现代处理器使⽤的是⼀种称为 &lt;strong&gt;虚拟寻址(Virtual Addressing)&lt;/strong&gt; 的寻址⽅式。&lt;strong&gt;使⽤虚拟寻址，CPU&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;需要将虚拟地址翻译成物理地址，这样才能访问到真实的物理内存。&lt;/strong&gt; 实际上完成虚拟地址转换为&lt;br&gt;
+物理地址转换的硬件是 CPU 中含有⼀个被称为 &lt;strong&gt;内存管理单元&lt;/strong&gt;（&lt;strong&gt;Memory Management Unit,&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;MMU）&lt;/strong&gt; 的硬件如下图所示：&lt;br&gt;
+&lt;img src=&#34;https://i.imgtg.com/2023/02/14/dqAlX.png&#34; alt=&#34;dqAlX.png&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;为什么要有虚拟地址空间呢？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;先从没有虚拟地址空间的时候说起吧！没有虚拟地址空间的时候，&lt;strong&gt;程序都是直接访问和操作的都&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;是物理内存&lt;/strong&gt; 。但是这样有什么问题呢？&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;⽤户程序可以访问任意内存，寻址内存的每个字节，这样就很容易（有意或者⽆意）破坏操&lt;br&gt;
+作系统，造成操作系统崩溃。&lt;/li&gt;
+&lt;li&gt;想要同时运⾏多个程序特别困难，⽐如你想同时运⾏⼀个微信和⼀个 QQ ⾳乐都不⾏。为什&lt;br&gt;
+么呢？举个简单的例⼦：微信在运⾏的时候给内存地址 1xxx 赋值后，QQ ⾳乐也同样给内&lt;br&gt;
+存地址 1xxx 赋值，那么 QQ ⾳乐对内存的赋值就会覆盖微信之前所赋的值，这就造成了微&lt;br&gt;
+信这个程序就会被QQ音乐占用而退出&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;总结来说：如果直接把物理地址暴露出来的话会带来严重问题，⽐如可能对操作系统造成伤害以&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;及给同时运⾏多个程序造成困难。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;通过虚拟地址访问内存有以下优势&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;程序可以使⽤⼀系列相邻的虚拟地址来访问物理内存中不相邻的⼤内存缓冲区。&lt;/li&gt;
+&lt;li&gt;程序可以使⽤⼀系列虚拟地址来访问⼤于可⽤物理内存的内存缓冲区。当物理内存的供应量&lt;br&gt;
+变⼩时，内存管理器会将物理内存⻚（通常⼤⼩为 4 KB）保存到磁盘⽂件。数据或代码⻚会根据需要在物理内存与磁盘之间移动。&lt;/li&gt;
+&lt;li&gt;不同进程使⽤的虚拟地址彼此隔离。⼀个进程中的代码⽆法更改正在由另⼀进程或操作系统使⽤的物理内存。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;虚拟内存&#34;&gt;虚拟内存&lt;/h2&gt;
+&lt;h3 id=&#34;什么是虚拟内存&#34;&gt;什么是虚拟内存&lt;/h3&gt;
+&lt;p&gt;很多时候我们使⽤点&lt;br&gt;
+开了很多占内存的软件，这些软件占⽤的内存可能已经远远超出了我们电脑本身具有的物理内&lt;br&gt;
+存。为什么可以这样呢？ 正是因为 &lt;strong&gt;虚拟内存&lt;/strong&gt; 的存在，通过 虚拟内存 可以让程序可以拥有超过系&lt;br&gt;
+统物理内存⼤⼩的可⽤内存空间。另外，&lt;strong&gt;虚拟内存为每个进程提供了⼀个⼀致的、私有的地址空&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;间，它让每个进程产⽣了⼀种⾃⼰在独享主存的错觉（每个进程拥有⼀⽚连续完整的内存空&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;间）&lt;/strong&gt;。这样会更加有效地管理内存并减少出错。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;虚拟内存是计算机系统内存管理的⼀种技术&lt;/strong&gt;，我们可以⼿动设置⾃⼰电脑的虚拟内存。不要单纯&lt;br&gt;
+认为虚拟内存只是“使⽤硬盘空间来扩展内存“的技术。&lt;strong&gt;虚拟内存的重要意义是它定义了⼀个连续&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;的虚拟地址空间，并且 把内存扩展到硬盘空间&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;维基百科中介绍：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;虚拟内存&lt;/strong&gt; 使得应⽤程序认为它拥有连续的可⽤的内存（⼀个连续完整的地址空间），⽽实&lt;br&gt;
+际上，它通常是被分隔成多个物理内存碎⽚，还有部分暂时存储在外部磁盘存储器上，在需&lt;br&gt;
+要时进⾏数据交换。与没有使⽤虚拟内存技术的系统相⽐，使⽤这种技术的系统使得⼤型程&lt;br&gt;
+序的编写变得更容易，对真正的物理内存（例如 RAM）的使⽤也更有效率。⽬前，⼤多数&lt;br&gt;
+操作系统都使⽤了虚拟内存，如 Windows 家族的“虚拟内存”；Linux 的“交换空间”等。&lt;br&gt;
+From:https://zh.wikipedia.org/wiki/虚拟内存&lt;/p&gt;
+&lt;h3 id=&#34;局部性原理&#34;&gt;局部性原理&lt;/h3&gt;
+&lt;p&gt;局部性原理是虚拟内粗技术的基础，正是因为程序运行具有局部性原理，才可以装入部分程序到内存就开始运行&lt;/p&gt;
+&lt;p&gt;早在 1968 年的时候，就有⼈指出我们的程序在执⾏的时候往往呈现局部性规律，也就是说在某&lt;br&gt;
+个᫾短的时间段内，程序执⾏局限于某⼀⼩部分，程序访问的存储空间也局限于某个区域。&lt;/p&gt;
+&lt;p&gt;局部性原理表现在以下两个⽅⾯：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;时间局部性&lt;/strong&gt; ：如果程序中的某条指令⼀旦执⾏，不久以后该指令可能再次执⾏；如果某数据&lt;br&gt;
+被访问过，不久以后该数据可能再次被访问。产⽣时间局部性的典型原因，是由于在&lt;strong&gt;程序中&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;存在着⼤量的循环操作&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;空间局部性&lt;/strong&gt; ：⼀旦程序访问了某个存储单元，在不久之后，其附近的存储单元也将被访问，&lt;br&gt;
+即程序在⼀段时间内所访问的地址，可能集中在⼀定的范围之内，这是因为指令通常是顺序&lt;br&gt;
+存放、顺序执⾏的，数据也⼀般是以向量、数组、表等形式簇聚存储的。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;时间局部性是通过将近来使⽤的指令和数据保存到⾼速缓存存储器中，并使⽤⾼速缓存的层次结&lt;br&gt;
+构实现。空间局部性通常是使⽤᫾⼤的⾼速缓存，并将预取机制集成到⾼速缓存控制逻辑中实&lt;br&gt;
+现。虚拟内存技术实际上就是建⽴了 “内存⼀外存”的两级存储器的结构，利⽤局部性原理实现髙&lt;br&gt;
+速缓存。&lt;/p&gt;
+&lt;h3 id=&#34;虚拟存储器&#34;&gt;虚拟存储器&lt;/h3&gt;
+&lt;p&gt;基于局部性原理，在程序装⼊时，可以将程序的⼀部分装⼊内存，⽽将其他部分留在外存，就可&lt;br&gt;
+以启动程序执⾏。由于外存往往⽐内存⼤很多，所以我们运⾏的软件的内存⼤⼩实际上是可以⽐&lt;br&gt;
+计算机系统实际的内存⼤⼩⼤的。在程序执⾏过程中，当所访问的信息不在内存时，由操作系统&lt;br&gt;
+将所需要的部分调⼊内存，然后继续执⾏程序。另⼀⽅⾯，操作系统将内存中暂时不使⽤的内容&lt;br&gt;
+换到外存上，从⽽腾出空间存放将要调⼊内存的信息。这样，计算机好像为⽤户提供了⼀个⽐实&lt;br&gt;
+际内存⼤的多的存储器——虚拟存储器&lt;/p&gt;
+&lt;p&gt;实际上，我觉得虚拟内存同样是⼀种时间换空间的策略，你⽤ CPU 的计算时间，⻚的调⼊调出&lt;br&gt;
+花费的时间，换来了⼀个虚拟的更⼤的空间来⽀持程序的运⾏&lt;/p&gt;
+&lt;h3 id=&#34;虚拟内存的技术实现&#34;&gt;虚拟内存的技术实现&lt;/h3&gt;
+&lt;p&gt;虚拟内存的实现需要建⽴在离散分配的内存管理⽅式的基础上。 虚拟内存的实现有以下&lt;br&gt;
+三种⽅式：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;请求分⻚存储管理&lt;/strong&gt; ：建⽴在分⻚管理之上，为了⽀持虚拟存储器功能⽽增加了请求调⻚功能&lt;br&gt;
+和⻚⾯置换功能。请求分⻚是⽬前最常⽤的⼀种实现虚拟存储器的⽅法。请求分⻚存储管理&lt;br&gt;
+系统中，在作业开始运⾏之前，仅装⼊当前要执⾏的部分段即可运⾏。假如在作业运⾏的过&lt;br&gt;
+程中发现要访问的⻚⾯不在内存，则由处理器通知操作系统按照对应的⻚⾯置换算法将相应&lt;br&gt;
+的⻚⾯调⼊到主存，同时操作系统也可以将暂时不⽤的⻚⾯置换到外存中。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;请求分段存储管理&lt;/strong&gt; ：建⽴在分段存储管理之上，增加了请求调段功能、分段置换功能。请求&lt;br&gt;
+分段储存管理⽅式就如同请求分⻚储存管理⽅式⼀样，在作业开始运⾏之前，仅装⼊当前要&lt;br&gt;
+执⾏的部分段即可运⾏；在执⾏过程中，可使⽤请求调⼊中断动态装⼊要访问但⼜不在内存&lt;br&gt;
+的程序段；当内存空间已满，⽽⼜需要装⼊新的段时，根据置换功能适当调出某个段，以便&lt;br&gt;
+腾出空间⽽装⼊新的段。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;请求段⻚式存储管理&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;请求分与分存储管理区别&#34;&gt;请求分⻚与分⻚存储管理区别&lt;/h3&gt;
+&lt;p&gt;请求分⻚存储管理建⽴在分⻚管理之上。他们的根本区别是是否将程序全部所需的全部地址空间&lt;br&gt;
+都装⼊主存，这也是请求分⻚存储管理可以提供虚拟内存的原因，我们在上⾯已经分析过了。&lt;br&gt;
+它们之间的根本区别在于是否将⼀作业的全部地址空间同时装⼊主存。请求分⻚存储管理不要求&lt;br&gt;
+将作业全部地址空间同时装⼊主存。基于这⼀点，请求分⻚存储管理可以提供虚存，⽽分⻚存储&lt;br&gt;
+管理却不能提供虚存。&lt;br&gt;
+不管是上⾯那种实现⽅式，我们⼀般都需要：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;⼀定容量的内存和外存：在载⼊程序的时候，只需要将程序的⼀部分装⼊内存，⽽将其他部&lt;br&gt;
+分留在外存，然后程序就可以执⾏了；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;缺⻚中断&lt;/strong&gt;：如果**需执⾏的指令或访问的数据尚未在内存（**称为缺⻚或缺段），则由处理器通&lt;br&gt;
+知操作系统将相应的⻚⾯或段调⼊到内存，然后继续执⾏程序；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;虚拟地址空间&lt;/strong&gt; ：逻辑地址到物理地址的变换。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;页面置换算法&#34;&gt;页面置换算法&lt;/h3&gt;
+&lt;p&gt;地址映射过程中，若在⻚⾯中发现所要访问的⻚⾯不在内存中，则发⽣缺⻚中断 。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;缺⻚中断&lt;/strong&gt; 就是要访问的⻚不在主存，需要操作系统将其调⼊主存后再进⾏访问。 在这个时候，被内存映射的⽂件实际上成了⼀个分⻚交换⽂件。&lt;/p&gt;
+&lt;p&gt;当发⽣缺⻚中断时，如果当前内存中并没有空闲的⻚⾯，操作系统就必须在内存选择⼀个⻚⾯将其移出内存，以便为即将调⼊的⻚⾯让出空间。⽤来选择淘汰哪⼀⻚的规则叫做⻚⾯置换算法，我们可以把⻚⾯置换算法看成是淘汰⻚⾯的规则。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;OPT ⻚⾯置换算法（最佳⻚⾯置换算法）&lt;/strong&gt; ：最佳(Optimal, OPT)置换算法所选择的被淘汰&lt;br&gt;
+⻚⾯将是以后永不使⽤的，或者是在最⻓时间内不再被访问的⻚⾯,这样可以保证获得最低的&lt;br&gt;
+缺⻚率。但由于⼈们⽬前⽆法预知进程在内存下的若千⻚⾯中哪个是未来最⻓时间内不再被&lt;br&gt;
+访问的，因⽽该算法⽆法实现。⼀般作为衡量其他置换算法的⽅法。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;FIFO（First In First Out） ⻚⾯置换算法（先进先出⻚⾯置换算法）&lt;/strong&gt; : 总是淘汰最先进⼊内&lt;br&gt;
+存的⻚⾯，即选择在内存中驻留时间最久的⻚⾯进⾏淘汰。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;LRU （Least Currently Used）⻚⾯置换算法（最近最久未使⽤⻚⾯置换算法）&lt;/strong&gt; ：LRU算&lt;br&gt;
+法赋予每个⻚⾯⼀个访问字段，⽤来记录⼀个⻚⾯⾃上次被访问以来所经历的时间 T，当须&lt;br&gt;
+淘汰⼀个⻚⾯时，选择现有⻚⾯中其 T 值最⼤的，即最近最久未使⽤的⻚⾯予以淘汰。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;LFU （Least Frequently Used）⻚⾯置换算法（最少使⽤⻚⾯置换算法）&lt;/strong&gt; : 该置换算法选&lt;br&gt;
+择在之前时期使⽤最少的⻚⾯作为淘汰⻚。&lt;/p&gt;
+">操作系统</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://github.com/lindamao0753/lindamao0753.github.io/post/ji-suan-ji-wang-luo/"" data-c="
+          &lt;h2 id=&#34;osi与tcpip各层的结构与功能都有哪些协议&#34;&gt;OSI与TCP/IP各层的结构与功能,都有哪些协议?&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://i.imgtg.com/2023/02/14/dqUzb.png&#34; alt=&#34;dqUzb.png&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;低三层&lt;/strong&gt;统称为&lt;strong&gt;通信子网&lt;/strong&gt;，它是为了联网而附加的通信设备，完成数据的&lt;strong&gt;传输功能&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;高三层&lt;/strong&gt;统称为 &lt;strong&gt;资源子网&lt;/strong&gt;。它相当于计算机系统，&lt;strong&gt;完成数据的处理等功能&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;传输层&lt;/strong&gt;承上启下&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;应⽤层&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;应⽤层(application-layer）的任务是通过应⽤进程间的交互来完成特定⽹络应⽤&lt;/strong&gt;。应⽤层协议定义的是应⽤进程（进程：主机中正在运⾏的程序）间的通信和交互的规则。&lt;strong&gt;对于不同的⽹络应⽤需要不同的应⽤层协议&lt;/strong&gt;。在互联⽹中应⽤层协议很多，如&lt;strong&gt;域名系统DNS&lt;/strong&gt;，用于文件传送的&lt;strong&gt;FTP&lt;/strong&gt;，⽀持万维⽹应⽤的&lt;strong&gt;HTTP协议&lt;/strong&gt;，⽀持电⼦邮件的 &lt;strong&gt;SMTP协议&lt;/strong&gt;等等。我们把应⽤层交互的数据单元称为报⽂。&lt;br&gt;
+&lt;strong&gt;域名系统DNS&lt;/strong&gt;&lt;br&gt;
+域名系统(Domain Name System缩写 DNS，Domain Name被译为域名)是因特⽹的⼀项核⼼服务，它作为可以将域名和IP地址相互映射的⼀个分布式数据库，能够使⼈更⽅便的访问互联⽹，⽽不⽤去记住能够被机器直接读取的IP数串。（百度百科）例如：⼀个公司的&lt;br&gt;
+Web ⽹站可看作是它在⽹上的⻔户，⽽域名就相当于其⻔牌地址，通常域名都使⽤该公司的名称或简称。例如上⾯提到的微软公司的域名，类似的还有：IBM 公司的域名是 www.ibm.com、Oracle 公司的域名是 www.oracle.com、Cisco公司的域名是 www.cisco.com 等。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;HTTP协议&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;HTTP协议超⽂本传输协议（HTTP，HyperText Transfer Protocol)是互联⽹上应⽤最为⼴泛的⼀种⽹络协议。所有的 WWW（万维⽹） ⽂件都必须遵守这个标准。设计 HTTP 最初的⽬的是为了提供⼀种发布和接收 HTML ⻚⾯的⽅法。（百度百科）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;运输层&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;运输层(transport layer)的主要任务就是负责向两台主机进程之间的通信提供通⽤的数据传输服务&lt;/strong&gt;。应⽤进程利⽤该服务传送应⽤层报⽂。“通⽤的”是指并不针对某⼀个特定的⽹络应⽤，⽽是多种应⽤可以使⽤同⼀个运输层服务。由于⼀台主机可同时运⾏多个线程，因此运输层有复⽤和分⽤的功能。所谓复⽤就是指多个应⽤层进程可同时使⽤下⾯运输层的服务，分⽤和复⽤相反，是运输层把收到的信息分别交付上⾯应⽤层中的相应进程。&lt;/p&gt;
+&lt;p&gt;运输层主要使⽤以下两种协议:&lt;/p&gt;
+&lt;p&gt;1.&lt;strong&gt;传输控制协议 TCP&lt;/strong&gt;（Transmission Control Protocol）--提供⾯向连接的，可靠的数据传输服务。&lt;/p&gt;
+&lt;p&gt;2.&lt;strong&gt;⽤户数据协议 UDP&lt;/strong&gt;（User Datagram Protocol）--提供⽆连接的，尽最⼤努⼒的数据传输服务（不保证数据传输的可靠性）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;⽹络层&lt;/strong&gt;&lt;br&gt;
+在 计算机⽹络中进⾏通信的两个计算机之间可能会经过很多个数据链路，也可能还要经过很多通信⼦⽹。&lt;strong&gt;⽹络层的任务就是选择合适的⽹间路由和交换结点， 确保数据及时传送&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;在发送数据时，⽹络层把运输层产⽣的报⽂段或⽤户数据报封装成分组和包进⾏传送。TCP/IP 体系结构中，由于⽹络层使⽤ IP 协议，因此分组也叫 IP 数据报 ，简称 数据报。这⾥要注意：不要把运输层的“⽤户数据报 UDP ”和⽹络层的“ IP 数据报”弄混。另外，⽆论是哪⼀层的数据单元，都可笼统地⽤“分组”来表示。这⾥强调指出，⽹络层中的“⽹络”⼆字已经不是我们通常谈到的具体⽹络，⽽是指计算机⽹络体系结构模型中第三层的名称.&lt;br&gt;
+互联⽹是由⼤量的异构（heterogeneous）⽹络通过路由器（router）相互连接起来的。互联⽹使⽤的⽹络层协议是⽆连接的⽹际协议（Intert Protocol）和许多路由选择协议，因此互联⽹的⽹络层也叫做⽹际层或IP层。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;地址解析协议ARP&lt;/strong&gt;&lt;br&gt;
+由于是IP协议使用了ARP协议，因此通常把&lt;strong&gt;ARP协议划归为网络层&lt;/strong&gt;。用途：为了从网络层使用的IP地址，解析出在数据链路层使用的硬件地也就&lt;strong&gt;MAC地址&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;主要功能：进行路由选择，并实现流量控制，拥塞控制，差错控制和网络互联等功能&lt;/p&gt;
+&lt;p&gt;常见的协议：&lt;strong&gt;IP，IPX，ICMP，IGMP，ARP，RARP，OSPF&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;数据链路层&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;数据链路层(data link layer)通常简称为链路层。&lt;strong&gt;两台主机之间的数据传输&lt;/strong&gt;，总是在⼀段⼀段的链路上传送的，这就需要使⽤专⻔的链路层的协议。 在两个相邻节点之间传送数据时，&lt;strong&gt;数据链路层将⽹络层交下来的 IP 数据报组装成帧&lt;/strong&gt;，在两个相邻节点间的链路上传送帧&lt;/p&gt;
+&lt;p&gt;每⼀帧包括数据和必要的控制信息（&lt;strong&gt;如同步信息，地址信息，差错控制等&lt;/strong&gt;）。在接收数据时，控制信息使接收端能够知道⼀个帧从哪个⽐特开始和到哪个⽐特结束。这样，数据链路层在收到⼀个帧后，就可从中提出数据部分，上交给⽹络层。控制信息还使接收端能够检测到所收到的帧中有误差错。如果发现差错，数据链路层就简单地丢弃这个出了差错的帧，以避免继续在⽹络中传送下去⽩⽩浪费⽹络资源。如果需要改正数据在链路层传输时出现差错（这就是说，数据链路层不仅要检错，⽽且还要纠错），那么就要采⽤可靠&lt;br&gt;
+性传输协议来纠正出现的差错。这种⽅法会使链路层的协议复杂些。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;功能概括&lt;/strong&gt;：成帧,差错控制，流量控制和传输管理等&lt;/p&gt;
+&lt;p&gt;典型的数据链路层协议有 SDLC，HDLC，PPP，STP和帧中继。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;物理层&lt;/strong&gt;&lt;br&gt;
+在物理层上所传送的数据单位是&lt;strong&gt;⽐特&lt;/strong&gt;。&lt;strong&gt;物理层(physical layer)的作⽤是实现相邻计算机节点之间⽐特流的透明传送，尽可能屏蔽掉具&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;体传输介质和物理设备的差异&lt;/strong&gt;。 使其上⾯的数据链路层不必考虑⽹络的具体传输介质是什么。“透明传送⽐特流”表示经实际电路传送后的⽐特流没有发⽣变化，对传送的⽐特流来说，这个电路好像是看不⻅的。在互联⽹使⽤的各种协中最重要和最著名的就是 TCP/IP 两个协议。现在⼈们经常提到的TCP/IP并不⼀定单指TCP和IP这两个具体的协议，⽽往往表示互联⽹所使⽤的整个TCP/IP协议族。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;比特流&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;各个层之间的设备&#34;&gt;各个层之间的设备&lt;/h3&gt;
+&lt;p&gt;物理层：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;中继器，集线器，双绞线&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;数据链路层：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;网桥，以太网交换&lt;/strong&gt;机，&lt;strong&gt;网卡&lt;/strong&gt;（一半物理层，一半数据链路层）&lt;/p&gt;
+&lt;p&gt;网络层：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;路由器&lt;/strong&gt;，三层交换机&lt;/p&gt;
+&lt;p&gt;传输层：&lt;/p&gt;
+&lt;p&gt;四层交换机（常用作负载均衡），&lt;strong&gt;网关&lt;/strong&gt;：对高层协议（包括传输层及更高层次）进行转换的网间连接器&lt;/p&gt;
+&lt;h3 id=&#34;ip地址与mac地址的作用和关系&#34;&gt;IP地址与MAC地址的作用和关系&lt;/h3&gt;
+&lt;p&gt;IP和MAC两者之间分工明确，默契合作，完成通信过程。&lt;/p&gt;
+&lt;p&gt;在数据通信时，IP地址专注于网络层，网络层设备（如路由器）根据IP地址，&lt;strong&gt;将数据包&lt;/strong&gt;从一个网络传递转发到另外一个网络上；&lt;/p&gt;
+&lt;p&gt;而MAC地址专注于数据链路层，数据链路层设备（如交换机）根据MAC地址，将一个&lt;strong&gt;数据帧&lt;/strong&gt;从一个节点传送到相同链路的另一个节点上。IP和MAC地址这种映射关系由ARP（Address Resolution Protocol，地址解析协议）协议完成，ARP根据目的IP地址，找到中间节点的MAC地址，通过中间节点传送，从而最终到达目的网络。&lt;/p&gt;
+&lt;h2 id=&#34;tcp-三次握手和四次挥手&#34;&gt;TCP 三次握⼿和四次挥⼿&lt;/h2&gt;
+&lt;p&gt;图解：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://i.imgtg.com/2023/02/14/dqblg.png&#34; alt=&#34;dqblg.png&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://i.imgtg.com/2023/02/14/dqzZs.png&#34; alt=&#34;dqzZs.png&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;客户端–发送带有 SYN 标志的数据包–⼀次握⼿–服务端&lt;/li&gt;
+&lt;li&gt;服务端–发送带有 SYN/ACK 标志的数据包–⼆次握⼿–客户端&lt;/li&gt;
+&lt;li&gt;客户端–发送带有带有 ACK 标志的数据包–三次握⼿–服务端&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;路由和交换的区别&#34;&gt;路由和交换的区别&lt;/h3&gt;
+&lt;p&gt;交换技术和路由技术的最大区别在于他们寻址的方式以及报文的转发方式上.&lt;/p&gt;
+&lt;p&gt;交换技术是发生在2层也就是&lt;strong&gt;数据链路层&lt;/strong&gt;上，&lt;strong&gt;是直接利用mac地址建立会话&lt;/strong&gt;；&lt;/p&gt;
+&lt;p&gt;路由技术发生在&lt;strong&gt;网络层&lt;/strong&gt;，需要通过&lt;strong&gt;ip地址建立路由表&lt;/strong&gt;，然后进行数据通信。&lt;/p&gt;
+&lt;p&gt;在报文的转发方式上，交换技术是使用&lt;strong&gt;先收再转，路由技术是采用边收边转&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;为什么要三次握手&#34;&gt;为什么要三次握⼿&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;三次握⼿的⽬的是建⽴可靠的通信信道，说到通讯，简单来说就是数据的发送与接收，⽽三次握⼿最主要的⽬的就是双⽅确认⾃⼰与对⽅的发送与接收是正常的。&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;为什么tcp握手需要三次两次行不行&#34;&gt;为什么TCP握手需要三次，两次行不行？&lt;/h3&gt;
+&lt;p&gt;不行。TCP进行可靠传输的关键就在于维护一个序列号，三次握手的过程即是通信双方相互告知序列号起始值， 并确认对方已经收到了序列号起始值。&lt;/p&gt;
+&lt;p&gt;如果只是两次握手， 至多只有&lt;a href=&#34;&#34;&gt;客户端&lt;/a&gt;的起始序列号能被确认， &lt;strong&gt;服务器端的序列号则得不到确认&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;为什么要传回-syn&#34;&gt;为什么要传回 SYN&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;接收端传回发送端所发送的 SYN 是为了告诉发送端，我接收到的信息确实就是你所发送的信号&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;了。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;SYN 是 TCP/IP 建⽴连接时使⽤的握⼿信号。在客户机和服务器之间建⽴正常的 TCP ⽹络连接时，客户机⾸先发出⼀个 SYN 消息，服务器使⽤ SYN-ACK 应答表示接收到了这个消息，最后客户机再以 ACK(Acknowledgement[汉译：确认字符 ,在数据通信传输中，接收站&lt;br&gt;
+发给发送站的⼀种传输控制字符。它表示确认发来的数据已经接受⽆误。 ]）消息响应。这样在客户机和服务器之间才能建⽴起可靠的TCP连接，数据才可以在客户机和服务器之间传递。&lt;/p&gt;
+&lt;h3 id=&#34;传了-syn为啥还要传-ack&#34;&gt;传了 SYN,为啥还要传 ACK&lt;/h3&gt;
+&lt;p&gt;双⽅通信⽆误必须是两者互相发送信息都⽆误。传了 SYN，证明发送⽅到接收⽅的通道没有问题，但是接收⽅到发送⽅的通道还需要 ACK 信号来进⾏验证&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://i.imgtg.com/2023/02/14/dqFcK.png&#34; alt=&#34;dqFcK.png&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;断开⼀个 TCP 连接则需要“四次挥⼿”：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;客户端-发送⼀个 FIN，⽤来关闭客户端到服务器的数据传&lt;/li&gt;
+&lt;li&gt;服务器-收到这个 FIN，它发回⼀ 个 ACK，确认序号为收到的序号加1 。和 SYN ⼀样，⼀个FIN 将占⽤⼀个序号&lt;/li&gt;
+&lt;li&gt;服务器-关闭与客户端的连接，发送⼀个FIN给客户端&lt;/li&gt;
+&lt;li&gt;客户端-发回 ACK 报⽂确认，并将确认序号设置为收到序号加1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;为什么要四次挥手&#34;&gt;为什么要四次挥⼿&lt;/h3&gt;
+&lt;p&gt;任何⼀⽅都可以在数据传送结束后发出连接释放的通知，待对⽅确认后进⼊半关闭状态。当另⼀⽅也没有数据再发送的时候，则发出连接释放通知，对⽅确认后就完全关闭了TCP连接。&lt;/p&gt;
+&lt;h3 id=&#34;简述半连接队列&#34;&gt;简述半连接队列&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;TCP握手&lt;/strong&gt;中，当服务器处于&lt;strong&gt;SYN_RCVD&lt;/strong&gt; 状态，服务器会把此种状态下请求连接放在一个队列里，该队列称为半连接队列。&lt;/p&gt;
+&lt;h3 id=&#34;简述syn攻击&#34;&gt;简述SYN攻击&lt;/h3&gt;
+&lt;p&gt;SYN攻击即利用TCP协议缺陷，通过&lt;strong&gt;发送大量的半连接请求，占用半连接队列，耗费CPU和内存资源&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;优化方式：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;缩短SYN Timeout SYN生效的时间&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;记录IP，&lt;strong&gt;若连续受到某个IP的重复SYN报文&lt;/strong&gt;，从这个IP地址来的包会被一概丢弃。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;为什么tcp挥手需要4次&#34;&gt;为什么TCP挥手需要4次&lt;/h3&gt;
+&lt;p&gt;主要原因是当服务端收到&lt;a href=&#34;&#34;&gt;客户端&lt;/a&gt;的 FIN 数据包后，服务端可能还有数据没发完，不会立即close。&lt;/p&gt;
+&lt;p&gt;所以服务端会先将 ACK 发过去告诉&lt;a href=&#34;&#34;&gt;客户端&lt;/a&gt;我收到你的断开请求了，但请再给我一点时间，这段时间用来发送剩下的数据报文，发完之后再将 FIN 包发给&lt;a href=&#34;&#34;&gt;客户端&lt;/a&gt;表示现在可以断了。之后&lt;a href=&#34;&#34;&gt;客户端&lt;/a&gt;需要收到 FIN 包后发送 ACK 确认断开信息给服务端。&lt;/p&gt;
+&lt;h3 id=&#34;为什么四次挥手释放连接时需要等待2msl&#34;&gt;为什么四次挥手释放连接时需要等待2MSL&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;MSL即报文最大生存时间&lt;/strong&gt;。设置2MSL可以保证上一次连接的报文已经在网络中&lt;strong&gt;消失&lt;/strong&gt;，&lt;strong&gt;不会出现与新TCP连接报文冲突的情况&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;socket_listen里面第二个参数backlog的用处&#34;&gt;socket_listen里面第二个参数backlog的用处&lt;/h3&gt;
+&lt;p&gt;当有多个客户端一起请求的时候，&lt;strong&gt;服务端不可能来多少就处理多少，这样如果并发太多，就会因为性能的因素发生拥塞，然后造成雪崩&lt;/strong&gt;。所有就搞了一个队列，先将请求放在队列里面，一个个来。&lt;strong&gt;socket_listen里面的第二个参数backlog就是设置这个队列的长度&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;如果将队列长度设置成10，那么如果有20个请求一起过来，服务端就会先放10个请求进入这个队列，因为长度只有10。然后其他的就直接拒绝。tcp协议这时候不会发送rst给客户端，这样的话客户端就会重新发送SYN，以便能进入这个队列。&lt;/p&gt;
+&lt;p&gt;如果三次握手完成了，就会将完成三次握手的请求取出来，放入另一个队列中，这样队列就空出一个位置，其他重发SYN的请求就可以进&lt;/p&gt;
+&lt;p&gt;入队列中。&lt;/p&gt;
+&lt;p&gt;**服务器监听时，在每次处理一个客户端的连接时是需要一定时间的，这个时间非常的短(也许只有1ms 或者还不到)，但这个时间还是存在的。而这个backlog 存在的意义就是：在这段时间里面除了第一个连接请求是正在进行处理以外，其他的连接请求都在请求队列中等待，而如果超过了队列的最大等待个数时，其他的请求将被忽略或者将不会被处理。**这个backlog 的值就是影响这个队列的大小的。&lt;/p&gt;
+&lt;p&gt;简单的来说就是设置最大等待队列的容量 以免造成并发太大的情况造成网络拥塞&lt;/p&gt;
+&lt;h2 id=&#34;tcpip和udp报文结构和报头包含的内容&#34;&gt;TCP/IP和UDP报文结构和报头包含的内容！&lt;/h2&gt;
+&lt;p&gt;源端口号&lt;/p&gt;
+&lt;p&gt;目标端口号&lt;/p&gt;
+&lt;p&gt;数据报长度&lt;/p&gt;
+&lt;p&gt;校验值&lt;/p&gt;
+&lt;h2 id=&#34;tcp和udp&#34;&gt;TCP和UDP&lt;/h2&gt;
+&lt;h3 id=&#34;tcpudp-协议的区别&#34;&gt;TCP,UDP 协议的区别&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://i.imgtg.com/2023/02/14/dqiOa.png&#34; alt=&#34;dqiOa.png&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;UDP 在传送数据之前不需要先建⽴连接，远地主机在收到 UDP 报⽂后，不需要给出任何确认。虽然 UDP 不提供可靠交付，但在某些情况下 UDP 确是⼀种最有效的⼯作⽅式（⼀般⽤于即时通信）⽐如： QQ 语⾳、 QQ 视频 、直播等等&lt;/p&gt;
+&lt;p&gt;**TCP 提供⾯向连接的服务。**在传送数据之前必须先建⽴连接，数据传送结束后要释放连接。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;TCP 不提供⼴播或多播服务&lt;/strong&gt;。由于 TCP 要提供可靠的，⾯向连接的传输服务（TCP的可靠体现在TCP在传递数据之前，会有三次握⼿来建⽴连接，⽽且在数据传递时，有确认、窗⼝、重传、拥塞控制机制，在数据传完后，还会断开连接⽤来节约系统资源），这⼀难以避免增加了许多开销，如确认，流量控制，计时器以及连接管理等。这不仅使协议数据单元的⾸部增⼤很多，还要占⽤许多处理机资源。&lt;/p&gt;
+&lt;p&gt;TCP ⼀般⽤于&lt;strong&gt;⽂件传输、发送和接收邮件、远程登录&lt;/strong&gt;等场景。&lt;/p&gt;
+&lt;h3 id=&#34;tcp-协议如何保证可靠传输&#34;&gt;TCP 协议如何保证可靠传输&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;应⽤数据被&lt;strong&gt;分割&lt;/strong&gt;成 TCP 认为最适合发送的数据块。&lt;/li&gt;
+&lt;li&gt;TCP 给发送的每⼀个包进⾏&lt;strong&gt;编号&lt;/strong&gt;，&lt;strong&gt;接收⽅对数据包进⾏排序，把有序数据传送给应⽤层&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;校验和&lt;/strong&gt;： TCP 将保持它&lt;strong&gt;⾸部和数据&lt;/strong&gt;的检验和。这是⼀个&lt;strong&gt;端到端&lt;/strong&gt;的检验和，⽬的是检测数据在传输过程中的任何变化。如果收到段的检验和有差错，TCP 将丢弃这个报⽂段和不确认收到此报⽂段。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;TCP 的接收端会丢弃重复的数据。&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;流量控制&lt;/strong&gt;： TCP 连接的每⼀⽅都有&lt;strong&gt;固定⼤⼩的缓冲空间&lt;/strong&gt;，TCP的接收端只允许发送端发送接收端缓冲区能接纳的数据。当接收⽅来不及处理发送⽅的数据，能提示发送⽅降低发送的速率，防⽌包丢失。&lt;strong&gt;TCP 使⽤的流量控制协议是可变⼤⼩的滑动窗⼝协议&lt;/strong&gt;。 （TCP 利⽤滑动窗⼝实现流量控制）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;拥塞控制&lt;/strong&gt;： 当&lt;strong&gt;⽹络拥塞&lt;/strong&gt;时，&lt;strong&gt;减少数据的发送&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ARQ协议&lt;/strong&gt;： 也是为了实现可靠传输的，它的基本原理就是&lt;strong&gt;每发完⼀个分组就停⽌发送，等待对⽅确认。在收到确认后再发下⼀个分组。&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;超时重传&lt;/strong&gt;： 当 TCP 发出⼀个段后，它启动⼀个定时器，等待⽬的端确认收到这个报⽂段。如果不能及时收到⼀个确认，将重发这个报⽂&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;简述tcp粘包现象&#34;&gt;简述TCP粘包现象&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;TCP是面向流协议，发送的单位是字节流&lt;/strong&gt;，因此会存在将&lt;strong&gt;多个小尺寸数据被封装在一个tcp报文中发出去的可能性&lt;/strong&gt;。 可以简单的理解成&lt;a href=&#34;&#34;&gt;客户端&lt;/a&gt;&lt;strong&gt;调用了两次send，服务器端一个recv就把信息都读出来了&lt;/strong&gt;。 简单来说将多份信息一次性发出去了&lt;/p&gt;
+&lt;h3 id=&#34;tcp粘包现象处理方法&#34;&gt;TCP粘包现象处理方法&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;固定发送信息长度，或在两个信息之间加入分隔符&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;arq协议&#34;&gt;ARQ协议&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;⾃动重传请求（Automatic Repeat-reQuest，ARQ）&lt;strong&gt;是OSI模型中&lt;/strong&gt;数据链路层和传输层&lt;/strong&gt;的错误纠正协议之⼀。它通过使⽤确认和超时这两个机制，在不可靠服务的基础上实现可靠的信息传输。如果发送⽅在发送后⼀段时间之内没有收到确认帧，它通常会重新发送。ARQ包括停⽌等待ARQ协议和连续ARQ协议。&lt;br&gt;
+&lt;strong&gt;停⽌等待ARQ协议&lt;/strong&gt;&lt;br&gt;
+停⽌等待协议是为了实现可靠传输的，它的基本原理就是每发完⼀个分组就停⽌发送，等待对⽅确认（回复ACK）。如果过了⼀段时间（超时时间后），还是没有收到 ACK 确认，说明没有发送成功，需要重新发送，直到收到确认后再发下⼀个分组；在停⽌等待协议中，若接收⽅收到重复分组，就丢弃该分组，但同时还要发送确认；&lt;br&gt;
+&lt;strong&gt;优点&lt;/strong&gt;： 简单&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;缺点&lt;/strong&gt;： 信道利⽤率低，&lt;strong&gt;等待时间⻓&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1) ⽆差错情况:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;发送⽅发送分组,接收⽅在规定时间内收到,并且回复确认.发送⽅再次发送。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2) 出现差错情况（超时重传）&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;停⽌等待协议中超时重传是指只要超过⼀段时间仍然没有收到确认，就重传前⾯发送过的分组（认为刚才发送过的分组丢失了）。因此每发送完⼀个分组需要设置⼀个超时计时器，其重传时间应⽐数据在分组传输的平均往返时间更⻓⼀些。这种⾃动重传⽅式常称为 &lt;strong&gt;⾃动重传请求 ARQ&lt;/strong&gt;。另外在停⽌等待协议中若收到重复分组，就丢弃该分组，但同时还要发送确认。&lt;strong&gt;连续 ARQ 协议&lt;/strong&gt; 可提⾼信道利⽤率。发送维持⼀个发送窗⼝，凡位于发送窗⼝内的分组可连续发送出去，⽽不需要等待对⽅确认。接收⽅⼀般采⽤累积确认，对按序到达的最后⼀个分组发送确认，表明到这个分组位置的所有分组都已经正确收到了。&lt;br&gt;
+&lt;strong&gt;3) 确认丢失和确认迟到&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;确认丢失&lt;/strong&gt; ：确认消息在传输过程丢失。当A发送M1消息，B收到后，B向A发送了⼀个M1确认消息，但却在传输过程中丢失。⽽A并不知道，在超时计时过后，A重传M1消息，B再次收到该消息后采取以下两点措施：1. 丢弃这个重复的M1消息，不向上层交付。 2. 向A发送&lt;br&gt;
+确认消息。（不会认为已经发送过了，就不再发送。A能重传，就证明B的确认消息失）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;确认迟到&lt;/strong&gt; ：确认消息在传输过程中迟到。A发送M1消息，B收到并发送确认。在超时时间内&lt;br&gt;
+没有收到确认消息，A重传M1消息，B仍然收到并继续发送确认消息（B收到了2份M1）。此时A收到了B第⼆次发送的确认消息。接着发送其他数据。过了⼀会，A收到了B第⼀次发送的对M1的确认消息（A也收到了2份确认消息）。处理如下：1. A收到重复的确认后，直接丢弃。2. B收到重复的M1后，也直接丢弃重复的M1。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;连续ARQ协议&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;连续 ARQ 协议可提⾼信道利⽤率。发送⽅维持⼀个发送窗⼝，凡位于发送窗⼝内的分组可以连续发送出去，⽽不需要等待对⽅确认。接收⽅⼀般采⽤累计确认，对按序到达的最后⼀个分组发送确认，表明到这个分组为⽌的所有分组都已经正确收到了。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;优点&lt;/strong&gt;： 信道利⽤率⾼，容易实现，即使确认丢失，也不必重传。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;缺点&lt;/strong&gt;： 不能向发送⽅反映出接收⽅已经正确收到的所有分组的信息。 ⽐如：发送⽅发送了 5条消息，中间第三条丢失（3号），这时接收⽅只能对前两个发送确认。发送⽅⽆法知道后三个分组的下落，⽽只好把后三个全部重传⼀次。这也叫 Go-Back-N（回退 N），表示需要退回来重传已经发送过的 N 个&lt;/p&gt;
+&lt;h3 id=&#34;滑动窗口和流量控制&#34;&gt;滑动窗⼝和流量控制&lt;/h3&gt;
+&lt;p&gt;TCP 利⽤滑动窗⼝实现流量控制。&lt;strong&gt;流量控制是为了控制发送⽅发送速率&lt;/strong&gt;，保证接收⽅来得及接收。 接收⽅发送的确认报⽂中的窗⼝字段可以⽤来控制发送⽅窗⼝⼤⼩，从⽽影响发送⽅的发送速率。将窗⼝字段设置为 0，则发送⽅不能发送数据。&lt;/p&gt;
+&lt;h3 id=&#34;拥塞控制&#34;&gt;拥塞控制&lt;/h3&gt;
+&lt;p&gt;在某段时间，若对⽹络中某⼀资源的需求超过了该资源所能提供的可⽤部分，⽹络的性能就要变坏。这种情况就叫拥塞。拥塞控制就是为了防⽌过多的数据注⼊到⽹络中，这样就可以使⽹络中的路由器或链路不致过载。拥塞控制所要做的都有⼀个前提，就是⽹络能够承受现有的⽹络负荷。拥塞控制是⼀个全局性的过程，涉及到所有的主机，所有的路由器，以及与降低⽹络传输性能有关的所有因素。相反，流量控制往往是点对点通信量的控制，是个端到端的问题。流量控制所要做到的就是抑制发送端发送数据的速率，以便使接收端来得及接收。&lt;/p&gt;
+&lt;p&gt;为了进⾏拥塞控制，TCP 发送⽅要维持⼀个 &lt;strong&gt;拥塞窗⼝&lt;/strong&gt;(cwnd) 的状态变量。拥塞控制窗⼝的⼤⼩取决于⽹络的拥塞程度，并且动态变化。发送⽅让⾃⼰的发送窗⼝取为拥塞窗⼝和接收⽅的接受窗⼝中较⼩的⼀个。&lt;/p&gt;
+&lt;p&gt;TCP的拥塞控制采⽤了四种算法，即 &lt;strong&gt;慢开始 、 拥塞避免 、快重传 和 快恢复&lt;/strong&gt;。在⽹络层也可以使路由器采⽤适当的分组丢弃策略（如主动队列管理 AQM），以减少⽹络拥塞的发⽣。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;慢开始&lt;/strong&gt;： 慢开始算法的思路是当主机开始发送数据时，如果⽴即把⼤量数据字节注⼊到⽹络，那么可能会引起⽹络阻塞，因为现在还不知道⽹络的符合情况。经验表明，较好的⽅法是先探测⼀下，即由⼩到⼤逐渐增⼤发送窗⼝，也就是由⼩到⼤逐渐增⼤拥塞窗⼝数值。cwnd初始值为1，每经过⼀个传播轮次，cwnd加倍。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;拥塞避免&lt;/strong&gt;： 拥塞避免算法的思路是让拥塞窗⼝cwnd缓慢增⼤，即每经过⼀个往返时间RTT就把发送放的cwnd加1.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;快重传与快恢复：&lt;/strong&gt;&lt;br&gt;
+在 TCP/IP 中，快速重传和恢复（fast retransmit and recovery，FRR）是⼀种拥塞控制算法，它能快速恢复丢失的数据包。没有 FRR，如果数据包丢失了，TCP 将会使⽤定时器来要求传输暂停。在暂停的这段时间内，没有新的或复制的数据包被发送。有了 FRR，如果接收机接收到⼀个不按顺序的数据段，它会⽴即给发送机发送⼀个重复确认。如果发送机接收到三个重复确认，它会假定确认件指出的数据段丢失了，并⽴即重传这些丢失的数据段。有了 FRR，就不会因为重传时要求的暂停被耽误。当有单独的数据包丢失时，快速重传和恢复（FRR）能最有效地⼯作。当有多个数据信息包在某⼀段很短的时间内丢失时，它则不能很有效地⼯作。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;http://note.mxecy.cn/docs/%E5%9B%BE%E7%89%87/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/TCP%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6.png&#34; alt=&#34;img&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;tcp四次挥手后有一个timewait有什么用&#34;&gt;TCP四次挥手后有一个TIMEWAIT，有什么用？&lt;/h3&gt;
+&lt;p&gt;（1）&lt;strong&gt;为实现TCP连接的可靠释放&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;保证最后一个ACK能到达服务器&lt;/strong&gt;，如果服务器没有收到客户端的确认报文，它会重新进行第四次挥手，这样客户端在2MSL内能收到重发的报文，并给出回应，重置2MSL计时器（MSL是Maximum Segment Lifetime英文的缩写,中文可以译为“报文最大生存时间”）&lt;/p&gt;
+&lt;p&gt;（2）&lt;strong&gt;为使旧的重复数据包在网络中因过期而消失&lt;/strong&gt;&lt;br&gt;
+服务端发送给客户端的一些报文在传输过程中由于网络拥堵而导致严重推迟，而在它到达客户端之前服务端已经重发了该报文，并完成其任务。如果在被推迟的报文未抵达前客户端就断开了连接，随后又建立了一个与之前相同IP、Port的连接，而之前被推迟的报文在这时恰好到达，而此时此新连接非彼连接，从而会发生数据错乱，进而导致无法预知的情况。因此必须维持一段等待时间，使迟到的报文在网络中完全消失。这个时间可以时所有网络中的报文到达应该到的位置，新的连接中不会出现旧的连接的报文&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;TIME_WAIT造成的危害&lt;/strong&gt;&lt;br&gt;
+2.&lt;strong&gt;1 消耗资源&lt;/strong&gt;&lt;br&gt;
+为释放的socket会占用&lt;strong&gt;内存、CPU、文件描述符数量&lt;/strong&gt;等等，还有一个时端口数量，在一个连接没有进入CLOSED状态之前，这个连接是不能被重用的！除非设置了端口重用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;解决办法&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;1开启重用 允许将TIME-WAIT sockets重新用于新的TCP连接&lt;/p&gt;
+&lt;p&gt;2开启快速回收 开启TCP连接中TIME-WAIT sockets的快速回收&lt;/p&gt;
+&lt;p&gt;3减少timewait的存活时间&lt;/p&gt;
+&lt;p&gt;4.不主动关闭socket&lt;/p&gt;
+&lt;p&gt;5短连接改为长连接&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;在浏览器中输入url地址-显示主的过程&#34;&gt;在浏览器中输⼊url地址 -&amp;gt;&amp;gt; 显示主⻚的过程&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;根据域名，解析域名DNS&lt;/li&gt;
+&lt;li&gt;拿到解析的IP地址，建立TCP连接&lt;/li&gt;
+&lt;li&gt;向IP地址发送HTTP连接&lt;/li&gt;
+&lt;li&gt;服务器处理请求&lt;/li&gt;
+&lt;li&gt;服务器返回响应请求&lt;/li&gt;
+&lt;li&gt;关闭TCP连接&lt;/li&gt;
+&lt;li&gt;浏览器解析HTML&lt;/li&gt;
+&lt;li&gt;浏览器渲染&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;简述dns解析过程&#34;&gt;简述DNS解析过程&lt;/h3&gt;
+&lt;p&gt;1、客户机发出查询请求，在本地&lt;strong&gt;计算机缓存&lt;/strong&gt;查找，若没有找到，就会将请求发送给本地dns服务器&lt;/p&gt;
+&lt;p&gt;2、&lt;strong&gt;本地dns服务器&lt;/strong&gt;会在自己的区域里面查找，找到即根据此记录进行解析。&lt;/p&gt;
+&lt;p&gt;3、本地服务器没有找到客户机查询的信息，就会将此请求发送到&lt;strong&gt;根域名dns服务器&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;4、根域名服务器解析客户机请求的根域部分，它把包含的下一级的dns服务器的地址返回到&lt;strong&gt;客户机的dns服务器地址&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;5、客户机的dns服务器根据返回的信息接着访问下一级的dns服务器&lt;/p&gt;
+&lt;p&gt;6、这样&lt;strong&gt;递归&lt;/strong&gt;的方法一级一级接近查询的目标，最后在有目标域名的服务器上面得到相应的IP信息&lt;/p&gt;
+&lt;p&gt;7、&lt;strong&gt;客户机&lt;/strong&gt;的本地的dns服务器会将查询结果返回给我们的客户机&lt;/p&gt;
+&lt;p&gt;8、客户机根据得到的ip信息访问目标主机，完成解析过程&lt;/p&gt;
+&lt;h2 id=&#34;状态码&#34;&gt;状态码&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://i.imgtg.com/2023/02/14/dqn7S.png&#34; alt=&#34;dqn7S.png&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;2XX 成功&lt;/p&gt;
+&lt;p&gt;· 200 OK，表示从客户端发来的请求在服务器端被正确处理&lt;/p&gt;
+&lt;p&gt;· 204 No content，表示请求成功，但响应报文不含实体的主体部分&lt;/p&gt;
+&lt;p&gt;· 206 Partial Content，进行范围请求&lt;/p&gt;
+&lt;p&gt;3XX 重定向&lt;/p&gt;
+&lt;p&gt;· 301 moved permanently，永久性重定向，表示资源已被分配了新的 URL&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;· 302 found，临时性重定向，表示资源临时被分配了新的 URL&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;· 303 see other，表示资源存在着另一个 URL，应使用 GET 方法丁香获取资源&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;· 304 not modified，表示服务器允许访问资源，但因发生请求未满足条件的情况&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;· 307 temporary redirect，临时重定向，和302含义相同&lt;/p&gt;
+&lt;p&gt;4XX 客户端错误&lt;/p&gt;
+&lt;p&gt;· 400 bad request，请求报文存在语法错误&lt;/p&gt;
+&lt;p&gt;· 401 unauthorized，表示发送的请求需要有通过 HTTP 认证的认证信息&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;· 403 forbidden，表示对请求资源的访问被服务器拒绝&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;· 404 not found，表示在服务器上没有找到请求的资源&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;5XX 服务器错误&lt;/p&gt;
+&lt;p&gt;502 网关错误 badgetway&lt;/p&gt;
+&lt;p&gt;503 服务不可用是的一种状态 Service Unaviailable&lt;/p&gt;
+&lt;p&gt;504 Getway Time-out 网关超时&lt;/p&gt;
+&lt;h2 id=&#34;http&#34;&gt;HTTP&lt;/h2&gt;
+&lt;h3 id=&#34;各种协议与http协议之间的关系&#34;&gt;各种协议与HTTP协议之间的关系&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://img-blog.csdn.net/20180203130314494?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzczMzExMTk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&#34; alt=&#34;img&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;首先发给DNS服务器，进行域名解析，得到IP地址后生成针对目标Web服务器的HTTP请求报文，然后报文由TCP协议负责传输，为了方便通信，HTTP请求报文被分为报文段，然后每个报文段可靠的传输给对方，然后报文段由IP层负责一边中转一遍传送，服务器收到报文段后重组报文段，然后由应用层的HTTP协议处理请求的内容，请求的结果以 同样的方式进行回传。&lt;/p&gt;
+&lt;h3 id=&#34;转发和重定向的区别&#34;&gt;转发和重定向的区别&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;转发是服务器&lt;/strong&gt;行为。服务器直接向目标地址访问URL,将相应内容读取之后发给浏览器，用户浏览器地址栏URL不变，&lt;strong&gt;转发页面和转发到的页面可以共享request里面的数据。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;重定向是利用&lt;strong&gt;服务器返回的状态码来实现的&lt;/strong&gt;，如果服务器返回301或者302，浏览器收到新的消息后自动跳转到新的网址重新请求资源。用户的地址栏url会发生改变，而且&lt;strong&gt;不能共享数据&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;简述http10&#34;&gt;简述http1.0&lt;/h3&gt;
+&lt;p&gt;规定了请求头和请求尾，响应头和响应尾（get post）  每一个请求都是&lt;strong&gt;一个单独的连接&lt;/strong&gt;，做不到&lt;strong&gt;连接的复用&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;简述http11的改进&#34;&gt;简述http1.1的改进&lt;/h3&gt;
+&lt;p&gt;HTTP1.1默认开启长连接，&lt;strong&gt;在一个TCP连接上可以传送多个HTTP请求和响应&lt;/strong&gt;。使用 TCP 长连接的方式改善了 HTTP/1.0 短连接造成的性能开销。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;支持管道（pipeline）网络传输&lt;/strong&gt;，只要第一个请求发出去了，不必等其回来，就可以发第二个请求出去，可以减少整体的响应时间。&lt;/p&gt;
+&lt;p&gt;服务端无法主动push&lt;/p&gt;
+&lt;h3 id=&#34;http2&#34;&gt;hTTP2&lt;/h3&gt;
+&lt;h6 id=&#34;特性&#34;&gt;&lt;a href=&#34;https://note.mxecy.cn/#/./docs/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80?id=%E7%89%B9%E6%80%A7&#34;&gt;特性&lt;/a&gt;&lt;/h6&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;使用二进制形式传输而非文本格式&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;比起http1的文本传输，二进制解析起来更为&lt;strong&gt;高效.&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;http2将请求和响应分割为更小的帧，并对其采用&lt;strong&gt;二进制编码&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;HTTP2不使用管道化的方式，而是引入了帧、消息和数据流等概念，每个请求/响应被称为消息，每个消息都被拆分成若干个帧进行传输，每个帧都分配一个序号。每个帧在传输是属于一个数据流，而一个连接上可以存在多个流，各个帧在流和连接上独立传输，到达之后在组装成消息，这样就避免了&lt;strong&gt;请求/响应阻塞&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;使用了报头压缩
+&lt;ul&gt;
+&lt;li&gt;压缩策略：
+&lt;ul&gt;
+&lt;li&gt;HTTP/2在客户端和服务器端使用“首部表”来跟踪和存储之前发送的键－值对，对于相同的数据，不再通过每次请求和响应发送；&lt;/li&gt;
+&lt;li&gt;首部表在HTTP/2的连接存续期内始终存在，由客户端和服务器共同渐进地更新;&lt;/li&gt;
+&lt;li&gt;每个新的首部键－值对要么被追加到当前表的末尾，要么替换表中之前的值。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;多路复用：
+&lt;ul&gt;
+&lt;li&gt;特性：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;同域名下所有通信都在单个连接上完成&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;单个连接可以承载任意数量的双向数据流。&lt;/li&gt;
+&lt;li&gt;数据流以消息的形式发送，而消息又由一个或多个帧组成，多个帧之间可以乱序发送，因为根据帧首部的流标识可以重新组装。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;优点：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;同个域名只需要占用一个 TCP 连接，消除了因多个 TCP 连接而带来的延时和内存消耗&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;单个连接上可以并行交错的请求和响应，之间互不干扰。&lt;/li&gt;
+&lt;li&gt;在HTTP/2中，每个请求都可以带一个31bit的优先值，0表示最高优先级， 数值越大优先级越低。有了这个优先值，客户端和服务器就可以在处理不同的流时采取不同的策略，以最优的方式发送流、消息和帧。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Server Push：
+&lt;ul&gt;
+&lt;li&gt;服务器不再是完全被动地响应请求，也可以新建“流”主动向客户端发送消息。比如，在浏览器刚请求HTML的时候就提前把可能会用到的JS、CSS文件发给客户端，减少等待的延迟，这被称为&amp;quot;服务器推送&amp;quot;（ Server Push，也叫 Cache push）
+&lt;ul&gt;
+&lt;li&gt;服务端可以主动推送，客户端也有权利选择是否接收。如果服务端推送的资源已经被浏览器缓存过，浏览器可以通过发送RST_STREAM帧来拒收。主动推送也遵&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;http3&#34;&gt;&lt;a href=&#34;https://note.mxecy.cn/#/./docs/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80?id=http3&#34;&gt;HTTP3&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;相比与HTTP2使用的TCP协议，HTTP3使用了&lt;strong&gt;UDP协议，并且通过QUIC协议来保证连接的可靠性。&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;简述tlsssl-http-https的关系&#34;&gt;简述TLS/SSL, HTTP, HTTPS的关系&lt;/h3&gt;
+&lt;p&gt;SSL全称为Secure Sockets Layer即&lt;strong&gt;安全套接层&lt;/strong&gt;，其继任为TLSTransport Layer Security&lt;strong&gt;传输层安全协议&lt;/strong&gt;，均用于在&lt;strong&gt;传输层&lt;/strong&gt;为数据通讯提供安全支持。&lt;/p&gt;
+&lt;p&gt;可以将HTTPS协议简单理解为&lt;strong&gt;HTTP协议＋TLS/SSL&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;https的连接过程&#34;&gt;https的连接过程&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;浏览器将支持的加密&lt;a href=&#34;&#34;&gt;算法&lt;/a&gt;信息发给服务器&lt;/li&gt;
+&lt;li&gt;服务器选择一套浏览器支持的加密&lt;a href=&#34;&#34;&gt;算法&lt;/a&gt;，以证书的形式回发给浏览器&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;&#34;&gt;客户端&lt;/a&gt;(SSL/TLS)解析证书验证证书合法性，生成&lt;strong&gt;对称加密&lt;/strong&gt;的密钥，我们将该密钥称之为client key，即&lt;a href=&#34;&#34;&gt;客户端&lt;/a&gt;密钥，用服务器的公钥对&lt;a href=&#34;&#34;&gt;客户端&lt;/a&gt;密钥进行&lt;strong&gt;非对称加密&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;&#34;&gt;客户端&lt;/a&gt;会发起HTTPS中的第二个HTTP请求，将加密之后的&lt;a href=&#34;&#34;&gt;客户端&lt;/a&gt;对称密钥发送给服务器&lt;/li&gt;
+&lt;li&gt;服务器接收到&lt;a href=&#34;&#34;&gt;客户端&lt;/a&gt;发来的密文之后，会用自己的私钥对其进行非对称解密，解密之后的明文就是&lt;a href=&#34;&#34;&gt;客户端&lt;/a&gt;密钥，然后用&lt;a href=&#34;&#34;&gt;客户端&lt;/a&gt;密钥对数据进行对称加密，这样数据就变成了密文。&lt;/li&gt;
+&lt;li&gt;服务器将加密后的密文发送给&lt;a href=&#34;&#34;&gt;客户端&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;&#34;&gt;客户端&lt;/a&gt;收到服务器发送来的密文，用&lt;a href=&#34;&#34;&gt;客户端&lt;/a&gt;密钥对其进行对称解密，得到服务器发送的数据。这样HTTPS中的第二个HTTP请求结束，整个HTTPS传输完成&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;简述http20的改进&#34;&gt;简述http2.0的改进&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;提出多路复用&lt;/strong&gt;。多路复用前，文件时串行传输的，请求a文件，b文件只能等待，并且连接数过多。&lt;strong&gt;引入多路复用，a文件b文件可以同时传输&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;文本传输改成了二进制传输&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;引入了二进制数据帧。其中帧对数据进行顺序标识，有了序列id，服务器就可以进行并行传&lt;/p&gt;
+&lt;h3 id=&#34;http连接短连接&#34;&gt;HTTP⻓连接,短连接&lt;/h3&gt;
+&lt;p&gt;在HTTP/1.0中默认使⽤短连接。也就是说，客户端和服务器每进⾏⼀次HTTP操作，就建⽴⼀次连接，任务结束就中断连接。当客户端浏览器访问的某个HTML或其他类型的Web⻚中包含有其他的Web资源（如JavaScript⽂件、图像⽂件、CSS⽂件等），每遇到这样⼀个Web资源，浏览器就会重新建⽴⼀个HTTP会话。&lt;/p&gt;
+&lt;p&gt;⽽从HTTP/1.1起，默认使⽤&lt;strong&gt;⻓连接，⽤以保持连接特性&lt;/strong&gt;。使⽤⻓连接的HTTP协议，会在响应头加⼊这⾏代码：&lt;/p&gt;
+&lt;p&gt;Connection keep -alive&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;9&#34;&gt;&lt;img src=&#34;https://i.imgtg.com/2023/02/14/dq1LN.png&#34; alt=&#34;dq1LN.png&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;在使⽤⻓连接的情况下，当⼀个⽹⻚打开完成后，客户端和服务器之间⽤于传输HTTP数据的&lt;br&gt;
+TCP连接不会关闭，客户端再次访问这个服务器时，会继续使⽤这⼀条已经建⽴的连接。KeepAlive不会永久保持连接，它有⼀个保持时间，可以在不同的服务器软件（如Apache）中设定这个时间。实现⻓连接需要客户端和服务端都⽀持⻓连接。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;HTTP协议的⻓连接和短连接，实质上是TCP协议的⻓连接和短连接。&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;http是不保存状态的协议如何保存用户状态&#34;&gt;HTTP是不保存状态的协议,如何保存⽤户状态?&lt;/h3&gt;
+&lt;p&gt;HTTP 是⼀种不保存状态，即⽆状态（stateless）协议。也就是说 HTTP 协议⾃身不对请求和响应之间的通信状态进⾏保存。那么我们保存⽤户状态呢？Session 机制的存在就是为了解决这个问题，&lt;strong&gt;Session&lt;/strong&gt; 的主要作⽤就是通过&lt;strong&gt;服务端记录⽤户的状态&lt;/strong&gt;。典型的场景是购物⻋，当你要添加商品到购物⻋的时候，系统不知道是哪个⽤户操作的，因为 HTTP 协议是⽆状态的。服务端给特定的⽤户创建特定的 Session 之后就可以标识这个⽤户并且跟踪这个⽤户了（⼀般情况下，服务器会在⼀定时间内保存这个 Session，过了时间限制，就会销毁这个Session）。在服务端保存 Session 的⽅法很多，最常⽤的就是内存和数据库(⽐如是使⽤内存数据库redis保存)。既然 Session 存放在服务器端，&lt;/p&gt;
+&lt;p&gt;那么我们如何实现 Session 跟踪呢？⼤部分情况下，我们都是通过在 Cookie 中附加⼀个 &lt;strong&gt;Session ID&lt;/strong&gt; 来⽅式来跟踪。&lt;/p&gt;
+&lt;h3 id=&#34;http-10和http-11的主要区别是什么&#34;&gt;HTTP 1.0和HTTP 1.1的主要区别是什么?&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;⻓连接 :&lt;/strong&gt; 在HTTP/1.0中,默认使用的是短连接,也就是说每次请求都要重新建立一次连接。 HTTP 是基于TCP/IP协议的,每一次建立或者断开连接都需要三次握手四次挥手的开销,如 果每次请求都要这样的话,开销会比较大。因此最好能维持一个⻓连接,可以用个⻓连接来发多个请求。HTTP 1.1起,默认使用⻓连接 ,默认开启Connection: keep-alive。 HTTP/1.1 的持续连接有非流水线方式和流水线方式 。流水线方式是客户在收到HTTP的响应报文之前 就能接着发送新的请求报文。与之相对应的非流水线方式是客户在收到前一个响应后才能发 送下一个请求。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;错误状态响应码&lt;/strong&gt; :在HTTP1.1中新增了24个错误状态响应码,如409(Conflict)表示请求的 资源与资源的当前状态发生冲突;410(Gone)表示服务器上的某个资源被永久性的删除。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;缓存处理&lt;/strong&gt; :在HTTP1.0中主要使用header里的If-Modified-Since,Expires来做为缓存判断的标 准,HTTP1.1则引入了更多的缓存控制策略例如Entity tag,If-Unmodified-Since, If-Match, If-None-Match等更多可供选择的缓存头来控制缓存策略。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;带宽优化及网络连接的使用&lt;/strong&gt; :HTTP1.0中,存在一些浪费带宽的现象,例如客户端只是需要 某个对象的一部分,而服务器却将整个对象送过来了,并且不支持断点续传功能,HTTP1.1 则在请求头引入了&lt;strong&gt;range头域,它允许只请求资源的某个部分&lt;/strong&gt;,即返回码是206(Partial Content),这样就方便了开发者自由的选择以便于充分利用带宽和连接。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;一个-tcp-连接可以对应几个-http-请求提示这在问你http10和11的区别&#34;&gt;一个 TCP 连接可以对应几个 HTTP 请求？(提示，这在问你HTTP1.0和1.1的区别)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;如果keep-alive的话可以发送多个请求。&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;一个-tcp-连接中-http-请求发送可以一起发送么比如一起发三个请求再三个响应一起接收提示这就是在问你http20和http11协议的区别&#34;&gt;一个 TCP 连接中 HTTP 请求发送可以一起发送么（比如一起发三个请求，再三个响应一起接收）？(提示，这就是在问你HTTP2.0和HTTP1.1协议的区别)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;在 &lt;strong&gt;HTTP/1.1&lt;/strong&gt; 存在 &lt;strong&gt;Pipelining&lt;/strong&gt;  流水线技术可以完成这个多个请求同时发送，但是由于浏览器默认关闭，所以可以认为这是不可行的。&lt;/li&gt;
+&lt;li&gt;在 &lt;strong&gt;HTTP2 中由于 Multiplexing  多路复用特点的存在&lt;/strong&gt;，&lt;strong&gt;多个 HTTP 请求可以在同一个 TCP 连接中并行进行&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;浏览器对同一host建立tcp连接到数量有没有限制&#34;&gt;浏览器对同一Host建立TCP连接到数量有没有限制？&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;不同浏览器支持不同&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;http-和-https-的区别&#34;&gt;HTTP 和 HTTPS 的区别？&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;端⼝ ：HTTP的URL由“http://”起始且默认使⽤端⼝&lt;strong&gt;80&lt;/strong&gt;，⽽HTTPS的URL由“https://”起始且默认使⽤端⼝&lt;strong&gt;443&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安全性和资源消耗： &lt;strong&gt;HTTP协议运⾏在TCP&lt;/strong&gt;之上，所有传输的内容都是明⽂，客户端和服务器端都⽆法验证对⽅的身份。HTTPS是运⾏在&lt;strong&gt;SSL/TLS&lt;/strong&gt;之上的HTTP协议，&lt;strong&gt;SSL/TLS 运⾏在TCP之&lt;/strong&gt;上。所有传输的内容都经过加密**，加密采⽤对称加密，但对称加密的密钥⽤服务器⽅的证书进⾏了⾮对称加密**。所以说，HTTP 安全性没有 HTTPS⾼，但是 HTTPS ⽐HTTP耗费更多服务器资源。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;对称加密&lt;/strong&gt;：密钥只有⼀个，加密解密为同⼀个密码，且加解密速度快，典型的对称加密算法有DES、AES等；&lt;br&gt;
+&lt;strong&gt;⾮对称加密&lt;/strong&gt;：密钥成对出现（且根据公钥⽆法推知私钥，根据私钥也⽆法推知公钥），&lt;br&gt;
+加密解密使⽤不同密钥（公钥加密需要私钥解密，私钥加密需要公钥解密），相对对称&lt;br&gt;
+加密速度较慢，典型的⾮对称加密算法有RSA、DSA&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;cookie和session&#34;&gt;Cookie和Session&lt;/h2&gt;
+&lt;h3 id=&#34;cookie的作用是什么和session有什么区别&#34;&gt;Cookie的作⽤是什么?和Session有什么区别&lt;/h3&gt;
+&lt;p&gt;Cookie ⼀般⽤来保存⽤户信息 ⽐如&lt;/p&gt;
+&lt;p&gt;①我们在 Cookie 中保存已经登录过得⽤户信息，下次访问⽹站的时候⻚⾯可以⾃动帮你登录的⼀些基本信息给填了；&lt;/p&gt;
+&lt;p&gt;②⼀般的⽹站都会有保持登录也就是说下次你再访问⽹站的时候就不需要重新登录了，这是因为⽤户登录的时候我们可以存放了⼀个Token 在 Cookie 中，下次登录的时候只需要根据 Token 值来查找⽤户即可(为了安全考虑，重新登录⼀般要将 Token 重写)；&lt;/p&gt;
+&lt;p&gt;登录⼀次⽹站后访问⽹站其他⻚⾯不需要重新登录。Session 的主要作⽤就是通过服务端记录⽤户的状态。 典型的场景是购物⻋，当你要添加商品到购物⻋的时候，系统不知道是哪个⽤户操作的，因为 HTTP 协议是⽆状态的。服务端给特定的⽤户创建特定的 Session 之后就可以标识这个⽤户并且跟踪这个⽤户了。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Cookie 数据保存在客户端(浏览器端)，Session 数据保存在服务器端。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Cookie 存储在客户端中，⽽Session存储在服务器上，相对来说 Session 安全性更⾼。如果要在Cookie 中存储⼀些敏感信息，不要直接写⼊ Cookie 中，最好能将 Cookie 信息加密然后使⽤到的时候再去服务器端解密。&lt;/p&gt;
+&lt;h3 id=&#34;cookie-被禁用怎么办&#34;&gt;Cookie 被禁用怎么办&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;最常用的就是利用 &lt;strong&gt;URL 重写把 Session ID 直接附加在URL路径&lt;/strong&gt;的后面。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;uri和url的区别&#34;&gt;URI和URL的区别&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;URI(Uniform Resource Identifier) 是&lt;strong&gt;统⼀资源标志符&lt;/strong&gt;，可以唯⼀标识⼀个资源。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;URL(Uniform Resource Location) 是&lt;strong&gt;统⼀资源定位符&lt;/strong&gt;，可以提供该资源的路径。它是⼀种具体的 URI，即 URL 可以⽤来标识⼀个资源，⽽且还指明了如何 locate 这个资源。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;连不上网排查&#34;&gt;连不上网排查&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;通过ping dns服务器，如果能ping通说明到互联网的路由没有问题
+&lt;ul&gt;
+&lt;li&gt;相关协议：&lt;strong&gt;ICMP&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;使用nslookup 域名，查看是否能够获取到ip地址，如果不能则是dns问题（应用层）&lt;/li&gt;
+&lt;li&gt;使用telnet 域名 端口，如果不能则是TCP问题（传输层）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;拓展&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;ICMP协议是一个网络层协议。&lt;br&gt;
+一个新搭建好的网络，往往需要先进行一个简单的测试，来验证网络是否畅通；但是IP协议并不提供可靠传输。如果丢包了，IP协议并不能通知传输层是否丢包以及丢包的原因。&lt;br&gt;
+所以我们就需要一种协议来完成这样的功能–ICMP协议。&lt;/p&gt;
+&lt;p&gt;ICMP协议的功能&lt;/p&gt;
+&lt;p&gt;ICMP协议的功能主要有：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;确认IP包是否成功到达目标地址&lt;/li&gt;
+&lt;li&gt;通知在发送过程中IP包被丢弃的原因&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;网络性能指标&#34;&gt;网络性能指标&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;速率&lt;/strong&gt;：单位比特，指的是数据的传送速率&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;带宽&lt;/strong&gt;：单位时间内网络中某信道所能通过的最高数据率，单位是bit/s&lt;/li&gt;
+&lt;li&gt;吞吐率：单位时间内通过某网络的数据量&lt;/li&gt;
+&lt;li&gt;时延：指数据从网络的一端到另外一端所需的时间
+&lt;ul&gt;
+&lt;li&gt;发送时延：发送时延=数据帧长度/发送速率&lt;/li&gt;
+&lt;li&gt;传播时延：传播时延=信号长度/在信道上的传播速率&lt;/li&gt;
+&lt;li&gt;处理时延&lt;/li&gt;
+&lt;li&gt;排队时延&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;时延带宽积：时延带宽积=传播时延x带宽。又称以比特位单位的链路长度&lt;/li&gt;
+&lt;li&gt;往返时间：RT&lt;/li&gt;
+&lt;li&gt;利用率
+&lt;ul&gt;
+&lt;li&gt;信道利用率&lt;/li&gt;
+&lt;li&gt;网络利用率：全网络信道利用率的加权平均&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;get请求和post请求的区别&#34;&gt;Get请求和Post请求的区别&lt;/h2&gt;
+&lt;p&gt;对于GET方式的请求，浏览器会把&lt;strong&gt;http header和data一并发送出去&lt;/strong&gt;，&lt;strong&gt;服务器响应200（返回数据）&lt;/strong&gt;；&lt;/p&gt;
+&lt;p&gt;而对于POST，浏览器&lt;strong&gt;先发送header&lt;/strong&gt;，服务器先响应&lt;strong&gt;100 continue&lt;/strong&gt;，浏览器&lt;strong&gt;再发送data&lt;/strong&gt;，服务器&lt;strong&gt;响应200 ok（返回数据）&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;GET产生&lt;strong&gt;一个TCP数据包&lt;/strong&gt;；POST产生&lt;strong&gt;两个TCP数据包&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;本质上来说这两个请求都是通过tcp/ip 协议 只是具体的应用不同&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;数据传输方式不同：GET请求通过&lt;strong&gt;URL&lt;/strong&gt;传输数据，而POST的数据通过&lt;strong&gt;请求体&lt;/strong&gt;传输。&lt;/li&gt;
+&lt;li&gt;安全性不同：POST的数据因为在请求主体内，所以有一定的安全性保证，而GET的数据在URL中，通过历史记录，缓存很容易查到数据信息。&lt;/li&gt;
+&lt;li&gt;数据类型不同：&lt;strong&gt;GET只允许 ASCII 字符，而POST无限制&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;GET无害： 刷新、后退等浏览器操作GET请求是无害的，POST可能重复提交表单&lt;/li&gt;
+&lt;li&gt;特性不同：GET是安全（这里的安全是指&lt;strong&gt;只读&lt;/strong&gt;特性，就是使用这个方法&lt;strong&gt;不会引起服务器状态变化&lt;/strong&gt;）且幂等（&lt;strong&gt;幂等的概念是指同一个请求方法执行多次和仅执行一次的效果完全相同&lt;/strong&gt;），而POST是非安全非幂等
+&lt;ul&gt;
+&lt;li&gt;POST的两次提交对应的是新增两个内容，不是幂等的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;get和post的使用场景&#34;&gt;Get和Post的使用场景&lt;/h2&gt;
+&lt;p&gt;当请求无副作用时（如进行&lt;strong&gt;搜索&lt;/strong&gt;），便可使用GET方法；当请求有副作用时（如添加数据行），则用POST方法。一个比较实际的问题是：GET方法可能会产生很长的&lt;strong&gt;URL&lt;/strong&gt;，或许会超过某些浏览器与服务器对URL长度的限制。&lt;/p&gt;
+&lt;p&gt;若符合下列任一情况，则用POST方法：&lt;/p&gt;
+&lt;p&gt;请求的结果有持续性的副作用，例如，数据库内添加新的数据行。&lt;br&gt;
+若使用GET方法，则表单上收集的数据可能让URL过长。&lt;br&gt;
+要传送的数据不是采用7位的ASCII编码。&lt;/p&gt;
+&lt;p&gt;若符合下列任一情况，则用GET方法：&lt;/p&gt;
+&lt;p&gt;请求是为了&lt;strong&gt;查找资源&lt;/strong&gt;，HTML表单数据仅用来帮助搜索。&lt;br&gt;
+请求结果无持续性的副作用。&lt;/p&gt;
+&lt;p&gt;\收集的数据及HTML表单内的输入字段名称的总长不超过1024个字符。&lt;/p&gt;
+&lt;h2 id=&#34;rest-api&#34;&gt;REST API&lt;/h2&gt;
+&lt;p&gt;REST API全称为表述性状态转移（Representational State Transfer，REST）即利用HTTP中get、post、put、delete以及其他的HTTP方法构成REST中数据资源的增删改查操作：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Create ： POST&lt;/li&gt;
+&lt;li&gt;Read ： GET&lt;/li&gt;
+&lt;li&gt;Update ： PUT/PATCH&lt;/li&gt;
+&lt;li&gt;Delete： DELETE&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;xss过滤攻击&#34;&gt;XSS过滤攻击&lt;/h2&gt;
+&lt;h3 id=&#34;xss&#34;&gt;XSS&lt;/h3&gt;
+&lt;p&gt;XSS又叫CSS (Cross Site Script) ，跨站脚本攻击。它指的是恶意攻击者往Web页面里插入恶意html代码，当用户浏览该页之时，嵌入其中Web里面的html代码会被执行，从而达到恶意的特殊目的。XSS属于被动式的攻击，因为其被动且不好利用，所以许多人常呼略其危害性。&lt;/p&gt;
+&lt;p&gt;在WEB2.0时代，强调的是互动，使得用户输入信息的机会大增，在这个情况下，我们作为开发者，在开发的时候，要提高警惕。&lt;/p&gt;
+&lt;h3 id=&#34;xss攻击的主要途径&#34;&gt;XSS攻击的主要途径&lt;/h3&gt;
+&lt;p&gt;XSS攻击方法只是利用HTML的属性，作各种的尝试，找出注入的方法。现在对三种主要方式进行分析。&lt;br&gt;
+第一种：对普通的用户输入，页面原样内容输出。&lt;/p&gt;
+&lt;p&gt;打开http://go.ent.163.com/goproducttest/test.jsp(限公司IP)，输 入：&lt;/p&gt;
+&lt;p&gt;第二种：在代码区里有用户输入的内容&lt;/p&gt;
+&lt;p&gt;原则就是，代码区中，绝对不应含有用户输入的东西。&lt;/p&gt;
+&lt;p&gt;第三种：允许用户输入HTML标签的页面。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;10&#34;&gt;&lt;img src=&#34;https://i.imgtg.com/2023/02/14/dq7XC.png&#34; alt=&#34;dq7XC.png&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;xss攻击解决办法&#34;&gt;XSS攻击解决办法&lt;/h3&gt;
+&lt;p&gt;请记住两条原则：&lt;strong&gt;过滤输入和转义输出&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;具体执行的方式有以下几点：&lt;br&gt;
+第一、在输入方面对所有用户提交内容进行可靠的输入验证，提交内容包括URL、查询关键字、http头、post数据等&lt;/p&gt;
+&lt;p&gt;第二、在输出方面，在用户输内容中使用标签。标签内的内容不会解释，直接显示。&lt;/p&gt;
+&lt;p&gt;第三、严格执行字符输入字数控制。&lt;/p&gt;
+&lt;p&gt;四、在脚本执行区中，应绝无用户输入。&lt;/p&gt;
+&lt;h2 id=&#34;dns记录类型&#34;&gt;DNS记录类型&lt;/h2&gt;
+&lt;p&gt;参考：https://blog.csdn.net/u013920085/article/details/42552987&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;A记录：（WEB服务器的IP指向 ）：A （Address）记录是用来指定主机名（或域名）对应的IP地址记录。用户可以将该域名下的网站服务器指向到自己的web server上。同时也可以设置域名的子域名。通俗来说A记录就是服务器的IP,域名绑定A记录就是告诉DNS,当你输入域名的时候给你引导向设置在DNS的A记录所对应的服务器。 简单的说，A记录是指定域名对应的IP地址。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;AAAA记录：该记录是将域名解析到一个指定的IPV6的IP上&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CNAME记录：通常称别名解析。可以将注册的不同域名都转到一个域名记录上，由这个域名记录统一解析管理，与A记录不同的是，CNAME别名记录设置的可以是一个域名的描述而不一定是IP地址&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;NS记录 ：NS（Name Server）记录是域名服务器记录，用来指定该域名由哪个DNS服务器来进行解析。 您注册域名时，总有默认的DNS服务器，每个注册的域名都是由一个DNS域名服务器来进行解析的，DNS服务器NS记录地址一般以以下的形式出现： ns1.domain.com、ns2.domain.com等。 简单的说，NS记录是指定由哪个DNS服务器解析你的域名。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;MX记录 ：MX（Mail Exchanger）记录是邮件交换记录，它指向一个邮件服务器，用于电子邮件系统发邮件时根据收信人的地址后缀来定位邮件服务器。例如，当Internet上的某用户要发一封信给 user@mydomain.com 时，该用户的邮件系统通过DNS查找mydomain.com这个域名的MX记录，如果MX记录存在， 用户计算机就将邮件发送到MX记录所指定的邮件服务器上。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;TXT记录：TXT记录，一般指某个主机名或域名的说明，如：admin IN TXT &amp;quot;管理员, 电话：XXXXXXXXXXX&amp;quot;，mail IN TXT &amp;quot;邮件主机，存放在xxx , 管理人：AAA&amp;quot;，Jim IN TXT &amp;quot;contact: abc@mailserver.com&amp;quot;，也就是您可以设置 TXT 内容以便使别人联系到您。 TXT的应用之一，SPF（Sender Policy Framework）反垃圾邮件。SPF是跟DNS相关的一项技术，它的内容写在DNS的TXT类型的记录里面。MX记录的作用是给寄信者指明某个域名的邮件服务器有哪些。SPF的作用跟MX相反，它向收信者表明，哪些邮件服务器是经过某个域名认可会发送邮件的。SPF的作用主要是反垃圾邮件，主要针对那些发信人伪造域名的垃圾邮件。例如：当邮件服务器收到自称发件人是spam@gmail.com的邮件，那么到底它是不是真的gmail.com的邮件服务器发过来的呢，我们可以查询gmail.com的SPF记录，以此防止别人伪造你来发邮件。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;PTR记录：PTR是pointer 的简写。 &amp;quot;PTR&amp;quot;就是&amp;quot;反向DNS&amp;quot;,&lt;br&gt;
+domain name pointer，可以粗略的理解为DNS反向&lt;br&gt;
+Domain Name Pointer. 是一个指针记录，用于将一个IP地址映射到对应的主机名,也可以看成是A记录的反向,通过IP访问域名,原来是通过域名访问IP)&lt;br&gt;
+如何顺利做好反向解析？首先要有固定公网IP地址、可用域名（最好不要被其它服务所用），例如您有lunch-time.com的域名，您可以要求您的域名注册商为您添加一个okmail.lunch-time.com的域名　　并将其A记录指向您的SMTP服务器出口公网IP地址，如：220.112.20.18，接着请与您的固定IP所属ISP联系要求为您的IP反向解析至okmail.lunch-time.com。完成后别忘了将您的SMTP服务器的HELO域名改为okmail.lunch-time.com，这样才可以达到目的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+">计算机网络</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://github.com/lindamao0753/lindamao0753.github.io/post/ji-he/"" data-c="
+          &lt;h2 id=&#34;listsetmap三者的区别&#34;&gt;List,Set,Map三者的区别&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;List&lt;/strong&gt; (对付顺序的好帮⼿)： 存储的元素是&lt;strong&gt;有序的、可重复的&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Set&lt;/strong&gt; (注重独⼀⽆⼆的性质): 存储的元素是&lt;strong&gt;⽆序的&lt;/strong&gt;、&lt;strong&gt;不可重复的&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Map&lt;/strong&gt; (⽤ Key 来搜索的专家): 使⽤&lt;strong&gt;键值对&lt;/strong&gt;（kye-value）存储，类似于数学上的函数y=f(x)，“x”代表 key，&amp;quot;y&amp;quot;代表 value，&lt;strong&gt;Key 是⽆序的、不可重复的&lt;/strong&gt;，&lt;strong&gt;value 是⽆序的、可重复&lt;/strong&gt;的，每个键最多映射到⼀个值。&lt;br&gt;
+&lt;img src=&#34;https://i.imgtg.com/2023/02/14/do1kr.png&#34; alt=&#34;do1kr.png&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;list&#34;&gt;List&lt;/h2&gt;
+&lt;h3 id=&#34;copyonwritearraylist&#34;&gt;CopyOnWriteArrayList&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;读写分离list&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;写操作在一个&lt;strong&gt;复制的数组&lt;/strong&gt;上进行，读操作还是在&lt;strong&gt;原始数组&lt;/strong&gt;中进行，&lt;strong&gt;读写分离&lt;/strong&gt;，互不影响。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;写操作需要加锁&lt;/strong&gt;，防止并发写入时导致写入数据丢失。 写操作结束之后需要把原始数组指向新的复制数组&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;适用于读多写少的场景&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    public boolean add(E e) {
+        final ReentrantLock lock = this.lock;
+        lock.lock();
+        try {
+            Object[] elements = getArray();
+            int len = elements.length;
+            Object[] newElements = Arrays.copyOf(elements, len + 1);
+            newElements[len] = e;
+            setArray(newElements);
+            return true;
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    @SuppressWarnings(&amp;quot;unchecked&amp;quot;)
+    private E get(Object[] a, int index) {
+        return (E) a[index];
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;arraylist-与-linkedlist-区别&#34;&gt;Arraylist 与 LinkedList 区别?&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;是否保证线程安全&lt;/strong&gt;： ArrayList 和 LinkedList 都是&lt;strong&gt;不同步&lt;/strong&gt;的，也就是&lt;strong&gt;不保证线程安全&lt;/strong&gt;；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;底层数据结构&lt;/strong&gt;： Arraylist 底层使⽤的是 &lt;strong&gt;Object 数组&lt;/strong&gt;； LinkedList 底层使⽤的是 &lt;strong&gt;双向链表 数据结构&lt;/strong&gt;（&lt;strong&gt;JDK1.6 之前为循环链表&lt;/strong&gt;，J&lt;strong&gt;DK1.7 取消了循环&lt;/strong&gt;。注意双向链表和双向循环链表的区别）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;插⼊和删除是否受元素位置的影响&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;① ArrayList 采⽤数组存储，所以插⼊和删除元素的时间复杂度受元素位置的影响。 ⽐如：执⾏ add(E e) ⽅法的时候， ArrayList 会默认在将指定的元素追加到此列表的末尾，这种情况时间复杂度就是 O(1)。但是如果要在指定位置 i插⼊和删除元素的话（ add(int index, E element) ）时间复杂度就为 O(n-i)。因为在进⾏上述操作的时候集合中第 i 和第 i 个元素之后的(n-i)个元素都要执⾏向后位/向前移⼀位的操作。&lt;/p&gt;
+&lt;p&gt;②&lt;br&gt;
+LinkedList 采⽤链表存储，所以对于 add(E e) ⽅法的插⼊，删除元素时间复杂度不受元素位置的影响，近似 O(1)，如果是要在指定位置 i 插⼊和删除元素的话（ (add(int index, Eelement) ） 时间复杂度近似为 o(n)) 因为需要先移动到指定位置再插⼊。&lt;/p&gt;
+&lt;p&gt;arraylist实现了randomaccess接口 但是linked没有。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;是否⽀持快速随机访问&lt;/strong&gt;： LinkedList 不⽀持⾼效的随机元素访问，⽽ ArrayList ⽀持。快速随机访问就是通过&lt;strong&gt;元素的序号&lt;/strong&gt;快速获取元素对象(对应于 get(int index)**** ⽅法)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;内存空间占⽤&lt;/strong&gt;： ArrayList 的空 间浪费主要体现在在 &lt;strong&gt;list 列表的结尾会预留⼀定的容量空间&lt;/strong&gt;预留给将要插入的元素 ⽽ LinkedList 的空间花费则体现在它的每⼀**个元素都需要消耗⽐ ArrayList 更多的空间（**&lt;strong&gt;因为要存放直接后继和直接前驱以及数据&lt;/strong&gt;）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;arraylist-与-linkedlist的有些成员变量为什么使用transient关键字&#34;&gt;Arraylist 与 LinkedList的有些成员变量为什么使用transient关键字&lt;/h3&gt;
+&lt;p&gt;1.ArrayList中将elementData修饰成transient是为了&lt;strong&gt;节省空间&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;2.LinkedList中将first和last修饰成transient是为了&lt;strong&gt;节省空间&lt;/strong&gt;和&lt;strong&gt;重新连接链表&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;arraylist源码分析&#34;&gt;Arraylist源码分析&lt;/h3&gt;
+&lt;p&gt;https://baijiahao.baidu.com/s?id=1637926321175819771&amp;amp;wfr=spider&amp;amp;for=pc&lt;/p&gt;
+&lt;h3 id=&#34;arraylist为什么用15倍扩容&#34;&gt;Arraylist为什么用1.5倍扩容&lt;/h3&gt;
+&lt;p&gt;k=1.5时，&lt;strong&gt;就能充分利用前面已经释放的空间&lt;/strong&gt;。如果k &amp;gt;= 2，&lt;strong&gt;新容量刚刚好永远大于过去所有废弃的数组容量会造成空间利用资源的浪费&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;为什么不取扩容固定容量呢？&lt;br&gt;
+扩容的目的需要综合考虑这两种情况：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;扩容容量不能&lt;strong&gt;太小&lt;/strong&gt;，&lt;strong&gt;防止频繁扩容，频繁申请内存空间 + 数组频繁复制&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;扩容容量不能&lt;strong&gt;太大&lt;/strong&gt;，&lt;strong&gt;需要充分利用空间，避免浪费过多空间&lt;/strong&gt;；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;而扩容固定容量，很难决定到底取多少值合适，取任何具体值都不太合适，因为所需数据量往往由数组的客户端在具体应用场景决定。依赖于当前已经使用的量 * 系数， 比较符合实际应用场景。比如，我现在已经用到一个数组100的容量，接下来很可能会有这个数量级的数据需要插入。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;为什么是1.5，而不是1.2，1.25，1.8或者1.75？&lt;br&gt;
+&lt;strong&gt;因为1.5 可以充分利用移位操作，减少浮点数或者运算时间和运算次数 提示计算的效率&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;双向链表和双向循环链表&#34;&gt;双向链表和双向循环链表&lt;/h3&gt;
+&lt;p&gt;双向链表： 包含两个指针，⼀个 prev 指向前⼀个节点，⼀个 next 指向后⼀个节点&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://i.imgtg.com/2023/02/14/do7pM.png&#34; alt=&#34;do7pM.png&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;arraylist-与-vector-区别呢为什么要用arraylist取代vector呢&#34;&gt;ArrayList 与 Vector 区别呢?为什么要⽤Arraylist取代Vector呢？&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;ArrayList 是 List 的主要实现类，底层使⽤ Object[ ] 存储，适⽤于频繁的查找⼯作，线程不安全 ；&lt;/li&gt;
+&lt;li&gt;Vector 是 List 的古⽼实现类，底层使⽤ Object[ ] 存储，线程安全的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;arraylist-的扩容机制&#34;&gt;ArrayList 的扩容机制&lt;/h3&gt;
+&lt;p&gt;概括的说，ArrayList 是一个动态数组，它是线程不安全的，允许元素为null。其底层数据结构依然是数组，它实现了List&lt;E&gt;, RandomAccess, Cloneable, java.io.Serializable接口，其中&lt;strong&gt;RandomAccess&lt;/strong&gt;代表了其拥有随机快速访问的能力，ArrayList可以以**O(1)**的时间复杂度去根据下标访问元素。&lt;/p&gt;
+&lt;p&gt;因其&lt;strong&gt;底层数据结构是数组&lt;/strong&gt;，所以可想而知，它是占据一块&lt;strong&gt;连续&lt;/strong&gt;的内存空间（&lt;strong&gt;容量就是数组的length&lt;/strong&gt;），所以它也有数组的&lt;strong&gt;缺点&lt;/strong&gt;，空间效率不高。&lt;/p&gt;
+&lt;p&gt;由于数组的&lt;strong&gt;内存连续&lt;/strong&gt;，可以根据下标以O(1)的时间读写(改查)元素，因此时间效率很高。&lt;/p&gt;
+&lt;p&gt;当集合中的元素&lt;strong&gt;超出&lt;/strong&gt;这个容量，便会进行&lt;strong&gt;扩容&lt;/strong&gt;操作。扩容操作也是ArrayList 的一个&lt;strong&gt;性能消耗比较大&lt;/strong&gt;的地方，所以若我们可以提前预知数据的规模，应该通过public ArrayList(int initialCapacity) {}构造方法，&lt;strong&gt;指定集合的大小，去构建ArrayList实例，以减少扩容次数，提高效率&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;或者在需要扩容的时候，&lt;strong&gt;手动调用&lt;/strong&gt;public void ensureCapacity(int minCapacity) {}方法扩容。不过该方法是ArrayList的API，不是List接口里的，所以使用时需要&lt;strong&gt;强转&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;((ArrayList)list).ensureCapacity(30);&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;当每次修改结构时，增加导致扩容，或者删，都会修改modCount&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;先点进源码查看&lt;/p&gt;
+&lt;h6 id=&#34;构造方法&#34;&gt;&lt;strong&gt;构造方法：&lt;/strong&gt;&lt;/h6&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//存储集合元素的底层实现：真正存放元素的数组
+transient Object[] elementData; // non-private to simplify nested class access
+//当前元素数量
+private int size;
+
+//默认构造方法
+public ArrayList() {
+    //默认构造方法只是简单的将 空数组赋值给了elementData
+    this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
+}
+
+//空数组
+private static final Object[] EMPTY_ELEMENTDATA = {};
+//带初始容量的构造方法
+//如果传入参数，则代表指定ArrayList的初始数组长度，传入参数如果是大于等于0，则使用用户的参数初始化，如果用户传入的参数小于0，则抛出异常，构造方法如下： 
+public ArrayList(int initialCapacity) {
+    //如果初始容量大于0，则新建一个长度为initialCapacity的Object数组.
+    //注意这里并没有修改size(对比第三个构造函数)
+    if (initialCapacity &amp;gt; 0) {
+        this.elementData = new Object[initialCapacity];
+    } else if (initialCapacity == 0) {//如果容量为0，直接将EMPTY_ELEMENTDATA赋值给elementData
+        this.elementData = EMPTY_ELEMENTDATA;
+    } else {//容量小于0，直接抛出异常
+        throw new IllegalArgumentException(&amp;quot;Illegal Capacity: &amp;quot;+
+                                           initialCapacity);
+    }
+}
+
+//利用别的集合类来构建ArrayList的构造函数
+public ArrayList(Collection&amp;lt;? extends E&amp;gt; c) {
+    //直接利用Collection.toArray()方法得到一个对象数组，并赋值给elementData 
+    elementData = c.toArray();
+    //因为size代表的是集合元素数量，所以通过别的集合来构造ArrayList时，要给size赋值
+    if ((size = elementData.length) != 0) {
+        // c.toArray might (incorrectly) not return Object[] (see 6260652)
+        if (elementData.getClass() != Object[].class)//这里是当c.toArray出错，没有返回Object[]时，利用Arrays.copyOf 来复制集合c中的元素到elementData数组中
+            elementData = Arrays.copyOf(elementData, size, Object[].class);
+    } else {
+        //如果集合c元素数量为0，则将空数组EMPTY_ELEMENTDATA赋值给elementData 
+        // replace with empty array.
+        this.elementData = EMPTY_ELEMENTDATA;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;参数&#34;&gt;参数&lt;/h6&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;	// 序列化id
+	private static final long serialVersionUID = 8683452581122892189L;
+	// 默认初始的容量
+	private static final int DEFAULT_CAPACITY = 10;
+	// 一个空对象
+	private static final Object[] EMPTY_ELEMENTDATA = new Object[0];
+	// 一个空对象，如果使用默认构造函数创建，则默认对象内容默认是该值
+	private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = new Object[0];
+	// 当前数据对象存放地方，当前对象不参与序列化
+	transient Object[] elementData;
+	// 当前数组长度
+	private int size;
+	// 数组最大长度
+	private static final int MAX_ARRAY_SIZE = 2147483639;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//这是一个空的数组
+private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = {};
+public ArrayList() {
+    this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这段源码说明当你没有向集合中添加任何元素时，集合容量为0。那么默认的10个容量怎么来的呢？&lt;/p&gt;
+&lt;p&gt;这就得看看add方法的源码了：&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;这里大家要注意一下&lt;strong&gt;Collection.toArray()&lt;strong&gt;这个方法，在Collection子类各大集合的源码中，高频使用了这个方法去&lt;/strong&gt;获得某Collection的所有元素&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;关于方法：&lt;strong&gt;Arrays.copyOf(elementData, size, Object[].class)&lt;/strong&gt;，就是根据class的类型来决定是new 还是反射去构造一个泛型数组，同时利用native函数，批量赋值元素至新数组中。&lt;br&gt;
+如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static &amp;lt;T,U&amp;gt; T[] copyOf(U[] original, int newLength, Class&amp;lt;? extends T[]&amp;gt; newType) {
+    @SuppressWarnings(&amp;quot;unchecked&amp;quot;)
+    //根据class的类型来决定是new 还是反射去构造一个泛型数组
+    T[] copy = ((Object)newType == (Object)Object[].class)
+        ? (T[]) new Object[newLength]
+        : (T[]) Array.newInstance(newType.getComponentType(), newLength);
+    //利用native函数，批量赋值元素至新数组中。
+    System.arraycopy(original, 0, copy, 0,
+                     Math.min(original.length, newLength));
+    return copy;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;值得注意的是，&lt;strong&gt;System.arraycopy&lt;/strong&gt;也是一个很高频的函数，大家要留意一下。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static native void arraycopy(Object src,  int  srcPos,
+                                    Object dest, int destPos,
+                                    int length);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;常用api&#34;&gt;常用API：&lt;/h6&gt;
+&lt;p&gt;&lt;strong&gt;1.增&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;add的方法有两个，一个是&lt;strong&gt;带一个参数&lt;/strong&gt;的，一个是&lt;strong&gt;带两个参数&lt;/strong&gt;的。&lt;br&gt;
+&lt;strong&gt;add(E e) 方法&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;add主要的&lt;strong&gt;执行逻辑&lt;/strong&gt;如下：&lt;br&gt;
+1）确保数组已使用长度（size）加1之后足够存下 下一个数据&lt;br&gt;
+2）修改次数modCount 标识自增1，如果当前数组已使用长度（size）加1后的大于当前的数组长度，则调用&lt;strong&gt;grow&lt;/strong&gt;方法，增长数组。&lt;/p&gt;
+&lt;p&gt;grow方法会将当前数组的长度变为原来容量的1.5倍。&lt;br&gt;
+3）确保新增的数据有地方存储之后，则将新元素添加到位于size的位置上。&lt;br&gt;
+4）返回添加成功布尔值。&lt;/p&gt;
+&lt;p&gt;添加元素方法入口：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    public boolean add(E e) {
+        //扩容的操作 当容量不够的时候就把容量扩大
+        ensureCapacityInternal(size + 1);  // Increments modCount!!
+        //想数组中添加元素
+        elementData[size++] = e;
+        return true;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;确保添加的元素有地方存储，当第一次添加元素的时候this.size+1 的值是&lt;strong&gt;1&lt;/strong&gt;，所以第一次添加的时候会将当前elementData数组的长度变为10：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//最初的数组容量为0     
+private void ensureCapacityInternal(int minCapacity) {
+		//第一次判断数组当中为空 默认的数组的数组也是空 所以第一次添加条件成立
+        if (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) {
+           	//max函数比较当前容量和默认容量 当前为0 默认为10 所以返回大的是10 所以第一次添加完成之后就变成了10
+            minCapacity = Math.max(DEFAULT_CAPACITY, minCapacity);
+        }
+    //扩容完成执行下面的操作
+        ensureExplicitCapacity(minCapacity);
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;将修改次数（modCount）&lt;strong&gt;自增1&lt;/strong&gt;，判断是否需要扩充数组长度,判断条件就是用当前所需的数组最小长度与数组的长度对比，如果大于0，则增长数组长度。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//当前容量为10private void ensureExplicitCapacity(int minCapacity) {    	//修改次数+1        modCount++;        // overflow-conscious code    	//当前容量为哦10 减去数组的长度0大于0        if (minCapacity - elementData.length &amp;gt; 0)            //执行扩容操作            grow(minCapacity);    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果当前的数组已使用空间（size）加1之后 大于数组长度，则增大数组容量，扩大为原来的1.5倍。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//此时的minCapacity为10private void grow(int minCapacity) {        // overflow-conscious code    	//旧的容量为当前数组的长度为0        int oldCapacity = elementData.length;    	//扩容操作    	//新的长度为旧的加上旧的右移1位 0+0还是0    	//假设此时的数组的长度已经到达10 的时候 就会变成15        int newCapacity = oldCapacity + (oldCapacity &amp;gt;&amp;gt; 1);    	//判断最新的容量是否大于之前的最小容量 目的是让最新的容量要大于等于之前的最小容量        if (newCapacity - minCapacity &amp;lt; 0)                    newCapacity = minCapacity;        if (newCapacity - MAX_ARRAY_SIZE &amp;gt; 0)            //MAX_ARRAY_SIZE是个超级大的数字 如果数组不是很大的话是下面的条件一般是不会成立的            newCapacity = hugeCapacity(minCapacity);        // minCapacity is usually close to size, so this is a win:    	//第一次创建数组 此时的数组长度为newCapacity的大小     	//后面也是如此        elementData = Arrays.copyOf(elementData, newCapacity);    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;add(int index, E element)方法&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这个方法其实和上面的add类似，该方法可以按照元素的位置，指定位置插入元素，具体的执行逻辑如下：&lt;br&gt;
+1）rangeCheckForAdd(index)&lt;strong&gt;确保数插入的位置小于等于当前数组长度，并且不小于0&lt;/strong&gt;，否则抛出异常&lt;/p&gt;
+&lt;p&gt;2）确保数组已使用长度（size）加1之后足够存下 下一个数据&lt;/p&gt;
+&lt;p&gt;3）修改次数（modCount）标识自增1，如果当前数组已使用长度（size）加1后的大于当前的数组长度，则调用grow方法，增长数组&lt;/p&gt;
+&lt;p&gt;4）&lt;strong&gt;grow&lt;/strong&gt;方法会将当前数组的长度变为原来容量的1.5倍。&lt;/p&gt;
+&lt;p&gt;5）确保有足够的容量之后，使用System.arraycopy 将需要插入的位置（index）&lt;strong&gt;后面的元素统统往后移动一位&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;6）将新的数据内容存放到数组的指定位置（&lt;strong&gt;index&lt;/strong&gt;）上&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt; public void add(int index, E element) {        rangeCheckForAdd(index);        ensureCapacityInternal(size + 1);  // Increments modCount!!     	//通过数组复制的方式复制一次数组        System.arraycopy(elementData, index, elementData, index + 1,                         size - index);        elementData[index] = element;        size++;    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;注意：使用该方法的话将导致指定位置后面的数组元素&lt;strong&gt;全部重新移动，即往后移动一位&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;总结：&lt;/strong&gt;&lt;br&gt;
+add、addAll。&lt;br&gt;
+先判断是否越界，是否需要扩容。&lt;br&gt;
+如果扩容， 就复制数组。	&lt;br&gt;
+然后设置对应下标元素值。&lt;/p&gt;
+&lt;p&gt;值得注意的是：&lt;br&gt;
+1 &lt;strong&gt;如果需要扩容的话，默认扩容一半。如果扩容一半不够，就用目标的size作为扩容后的容量。&lt;/strong&gt;&lt;br&gt;
+2 &lt;strong&gt;在扩容成功后，会修改modCount&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;map-set&#34;&gt;Map Set&lt;/h2&gt;
+&lt;h3 id=&#34;hashmap-和-hashtable-的区别&#34;&gt;HashMap 和 Hashtable 的区别&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;线程是否安全&lt;/strong&gt;： HashMap 是⾮线程安全的， HashTable 是线程安全的,因为 HashTable 内部的⽅法基本都经过synchronized 修饰。（如果你要保证线程安全的话就使⽤ConcurrentHashMap 吧！）；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;效率&lt;/strong&gt;： 因为线程安全的问题， HashMap 要⽐ HashTable 效率⾼⼀点。另外， HashTable基本被淘汰，不要在代码中使⽤它；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;对 Null key 和 Null value 的⽀持&lt;/strong&gt;： HashMap 可以存储 null 的 key 和 value，但 null 作为键只能有⼀个，null 作为值可以有多个；HashTable 不允许有 null 键和 null 值，否则会抛出NullPointerException 。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;初始容量⼤⼩和每次扩充容量⼤⼩的不同&lt;/strong&gt; ：&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;① 创建时如果不指定容量初始值， Hashtable默认的初始⼤⼩为 &lt;strong&gt;11&lt;/strong&gt;，之后每次扩充，容量变为原来的 &lt;strong&gt;2n+1&lt;/strong&gt;。 HashMap 默认的初始化⼤⼩为 16。之后每次扩充，容量变为原来的 2 倍。&lt;/p&gt;
+&lt;p&gt;② 创建时如果给定了容量初始值，那么Hashtable 会直接使⽤你给定的⼤⼩，⽽ HashMap 会将其扩充为 2 的幂次⽅⼤⼩（ HashMap 中的 tableSizeFor() ⽅法保证，下⾯给出了源代码）。也就是说 HashMap 总是使⽤ 2 的幂作为哈希表的⼤⼩,后⾯会介绍到为什么是 2 的幂次⽅。&lt;/p&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;&lt;strong&gt;底层数据结构&lt;/strong&gt;： JDK1.8 以后的 HashMap 在解决哈希冲突时有了较⼤的变化，当链表⻓度⼤于阈值（默认为 8）（将链表转换成红⿊树前会判断，如果当前数组的⻓度⼩于 64，那么会选择先进⾏数组扩容，⽽不是转换为红⿊树）时，将链表转化为红⿊树，以减少搜索时间Hashtable 没有这样的&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;1、继承：&lt;br&gt;
+HashTable继承自&lt;strong&gt;Dirctionary&lt;/strong&gt;，HashMap继承自AbstractMap，二者均实现了Map接口；&lt;br&gt;
+2、线程安全性：&lt;br&gt;
+HashTable的方法是同步的，即是线程安全的。HaspMap的方法不是同步的，不是线程安全的的。在多线程并发的情况下，我们可以直接使用HashTable，如果 要使用HashMap，就需要自行对HashMap的同步处理。&lt;br&gt;
+3、键值：&lt;br&gt;
+HashTable中不允许有null键和null值，HashMap中允许出现一个null键，可以存在一个或者多个键的值都为null。程序中，对HashMap，如果使用get(参数为 键)方法时，返回结果为null，可能是该键不存在，也可能是该键对应的值为null，这就出现了结果的二义性。因此，在HashMap中，我们不能使用get()方法来查询键 对应的值，应该使用containskey()方法。&lt;br&gt;
+4、遍历：&lt;br&gt;
+这两个在遍历方式的实现不同。HashTable和HashMap两者都实现了Iterator。但是，由于历史原因，HashTable还使用Enumeration。&lt;br&gt;
+5、哈希值：&lt;br&gt;
+&lt;strong&gt;HashTable是直接使用对象的hashCode。HashMap是重新计算hash值。&lt;/strong&gt;&lt;br&gt;
+6、扩容：&lt;br&gt;
+HashTable和HashMap的底层实现的数组和初始大小和扩容方式。HashTable初始大小为11，并且每次扩容都为：2&lt;em&gt;old+1。HashMap的默认大小为16，并且一 定是2的指数，每次扩容都为old&lt;/em&gt;2。&lt;/p&gt;
+&lt;h3 id=&#34;hashmap-和-hashset区别&#34;&gt;HashMap 和 HashSet区别&lt;/h3&gt;
+&lt;p&gt;HashSet 底层就是基于 HashMap 实现的。&lt;/p&gt;
+&lt;p&gt;因为除了 clone() 、 writeObject() 、 readObject() 是 HashSet⾃⼰不得不实现之外，其他⽅法都是直接调⽤ HashMap 中的⽅法。&lt;br&gt;
+&lt;img src=&#34;https://i.imgtg.com/2023/02/14/doNYG.png&#34; alt=&#34;doNYG.png&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;hashset当中为什么要对hashmap使用transient关键字&#34;&gt;HashSet当中为什么要对HashMap使用transient关键字&lt;/h3&gt;
+&lt;p&gt;在源码当中查看 其实HashSet当中还有这两个方法&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;private void writeObject(java.io.ObjectOutputStream s){}&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;private void readObject(java.io.ObjectInputStream s){}&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;分析得出结论：&lt;/p&gt;
+&lt;p&gt;在序列化HashSet的时候，会调HashSet中的&lt;strong&gt;writeObject&lt;/strong&gt;，将hashSet中的hashMap中的数据序列化存起来，而在反序列化的时候，会调用Hashset中的readObject来&lt;strong&gt;重新构造&lt;/strong&gt;hashSet中的hashMap，这样的话，&lt;strong&gt;就完全没必要序列化hashSet中的HashMap&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;反射调用HashSet的writeObject方法，同理反序列化也就是在反射调用HashSet中的readObjcet方法&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;hashset如何检查重复&#34;&gt;HashSet如何检查重复&lt;/h3&gt;
+&lt;p&gt;当你把对象加⼊ HashSet 时， HashSet 会先计算对象的 &lt;strong&gt;hashcode&lt;/strong&gt; 值来判断对象加⼊的位置，同时也会与其他加⼊的对象的 hashcode 值作比较，如果没有相符的 hashcode ，HashSet 会假设对象没有重复出现。但是如果发现有相同 hashcode 值的对象，这时会调⽤ equals() ⽅法来检查hashcode 相等的对象是否真的相同。如果两者相同， HashSet 就不会让加⼊操作成功。&lt;/p&gt;
+&lt;h3 id=&#34;hashmap的底层实现&#34;&gt;HashMap的底层实现&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;JDK1.8 之前&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;JDK1.8 之前 HashMap 底层是 &lt;strong&gt;数组和链表&lt;/strong&gt; 结合在⼀起使⽤也就是 链表散列。HashMap 通过key 的 hashCode 经过扰动函数处理过后得到 hash 值，然后通过 (n - 1) &amp;amp; hash 判断当前元素存放的位置（这⾥的 n 指的是数组的⻓度），如果当前位置存在元素的话，就判断该元素与要存⼊的元素的 hash 值以及 key 是否相同，&lt;strong&gt;如果相同的话，直接覆盖&lt;/strong&gt;，&lt;strong&gt;不相同就通过拉链法解决冲突&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;所谓扰动函数指的就是 HashMap 的 hash ⽅法。使⽤ hash ⽅法也就是扰动函数是为了防⽌⼀些实现⽐较差的 hashCode() ⽅法 换句话说使⽤扰动函数之后可以减少&lt;/p&gt;
+&lt;p&gt;相⽐于 JDK1.8 的 hash ⽅法 ，JDK 1.7 的 hash ⽅法的性能会稍差⼀点点，因为毕竟扰动了 4次。所谓 “拉链法” 就是：将链表和数组相结合。也就是说创建⼀个链表数组，数组中每⼀格就是⼀个链表。&lt;strong&gt;若遇到哈希冲突，则将冲突的值加到链表中即可&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;JDK1.8 之后&lt;/strong&gt;&lt;br&gt;
+相⽐于之前的版本， JDK1.8 之后在解决哈希冲突时有了较大的变化，当&lt;strong&gt;链表⻓度⼤于阈值&lt;/strong&gt;（默认为 8）（将链表转换成红⿊树前会判断，如果当前数组的⻓度⼩于 &lt;strong&gt;64&lt;/strong&gt;，那么会选择先进⾏数组扩容，⽽不是转换为红⿊树）时，将链表转化为红⿊树，以减少搜索时间&lt;/p&gt;
+&lt;h3 id=&#34;hashmap-多线程操作导致死循环问题&#34;&gt;HashMap 多线程操作导致死循环问题&lt;/h3&gt;
+&lt;p&gt;主要原因在于 并发下的&lt;strong&gt;Rehash 会造成元素之间会形成⼀个循环链表&lt;/strong&gt;。不过，jdk 1.8 后解决了这个问题，但是还是不建议在多线程下使⽤ HashMap,因为多线程下使⽤ HashMap 还是会存在其他问题⽐如数据丢失。并发环境下推荐使⽤ &lt;strong&gt;ConcurrentHashMap&lt;/strong&gt; 。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;void transfer(Entry[] newTable, boolean rehash) {    //新数组的长度    int newCapacity = newTable.length;    //遍历旧数组    for (Entry&amp;lt;K,V&amp;gt; e : table) {        while(null != e) {            Entry&amp;lt;K,V&amp;gt; next = e.next;            if (rehash) {                //重新计算hash值                e.hash = null == e.key ? 0 : hash(e.key);            }            //这里根据刚刚得到的新hash重新调用indexFor方法计算下标索引            int i = indexFor(e.hash, newCapacity);            //假设当前数组中某个位置的链表结构为a-&amp;gt;b-&amp;gt;c;women             //（1）当为原链表中的第一个结点的时候：e.next=null;newTable[i]=e;e=e.next            //（2）当遍历到原链表中的后续节点的时候：e.next=head;newTable[i]=e（这里将头节点设置为新插入的结点，即头插法）;e=e.next            //（3）这里也是导致扩容后，链表顺序反转的原理（代码就是这样写的，链表反转，当然前提是计算的新下标还是相同的）            e.next = newTable[i];             newTable[i] = e;            e = next;        }    }}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在jdk7中使用头插法可能会导致出现死环（a.next = b，b.next = a）。导致在put的时候一直获取不到数据。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;两个线程同时对一个hashMap resize。线程a执行到&lt;code&gt;Entry&amp;lt;K,V&amp;gt; next = e.next;&lt;/code&gt;被阻塞了，线程b执行完了resize，此时a再继续执行时，可能会导致死环。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;详情请查看：https://coolshell.cn/articles/9606.html&lt;/p&gt;
+&lt;h3 id=&#34;concurrenthashmap-和-hashtable-的区别&#34;&gt;ConcurrentHashMap 和 Hashtable 的区别&lt;/h3&gt;
+&lt;p&gt;ConcurrentHashMap 和 Hashtable 的区别主要体现在实现线程安全的⽅式上不同。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;底层数据结构&lt;/strong&gt;： JDK1.7 的 ConcurrentHashMap 底层采⽤ &lt;strong&gt;分段的数组+链表&lt;/strong&gt; 实现，JDK1.8采⽤的数据结构跟 HashMap1.8 的结构⼀样，数组+链表/红⿊⼆叉树。 Hashtable 和JDK1.8 之前的 HashMap 的底层数据结构类似都是采⽤ 数组+链表 的形式，数组是HashMap 的主体，&lt;strong&gt;链表则是主要为了解决哈希冲突&lt;/strong&gt;⽽存在的；&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;实现线程安全的⽅式（重要&lt;/strong&gt;）：&lt;/p&gt;
+&lt;p&gt;① 在 &lt;strong&gt;JDK1.7&lt;/strong&gt; 的时候， ConcurrentHashMap （分段锁）对整个桶数组进⾏了&lt;strong&gt;分割分段( Segment )&lt;/strong&gt;，每⼀把锁只锁容器其中&lt;strong&gt;⼀部分数据&lt;/strong&gt;，多线程访问容器⾥不同数据段的数据，就不会存在锁竞争，提⾼并发访问率。 到了 JDK1.8 的时候已经摒弃了 &lt;strong&gt;Segment&lt;/strong&gt; 的概念，⽽是直接⽤ &lt;strong&gt;Node 数组+链表+红⿊树的数据结构&lt;/strong&gt;来实现，并发控制使⽤ &lt;strong&gt;synchronized&lt;/strong&gt; 和 &lt;strong&gt;CAS&lt;/strong&gt; 来操作。（JDK1.6 以后 对 synchronized 锁做了很多优化） &lt;strong&gt;整个看起来就像是优化过且线程安全的 HashMap&lt;/strong&gt; ，虽然在 JDK1.8 中还能看到&lt;strong&gt;Segment 的数据结构，但是已经简化了属性，只是为了兼容旧版本&lt;/strong&gt;；&lt;/p&gt;
+&lt;p&gt;② Hashtable (同⼀把锁) :使⽤ &lt;strong&gt;synchronized 来保证线程安全&lt;/strong&gt;，效率⾮常低下。当⼀个线程访问同步⽅法时，其他线程也访问同步⽅法，可能会进⼊&lt;strong&gt;阻塞或轮询状&lt;/strong&gt;态，如使⽤ put 添加元素，另⼀个线程不能使⽤ put 添加元素，也不能使⽤ get，竞争会越来越激烈效率越低。&lt;/p&gt;
+&lt;p&gt;两者的对⽐图：&lt;br&gt;
+HashTable&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://i.imgtg.com/2023/02/14/do3lM.png&#34; alt=&#34;do3lM.png&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;JDK1.7 的 ConcurrentHashMap：&lt;/strong&gt;&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://i.imgtg.com/2023/02/14/dowBG.png&#34; alt=&#34;dowBG.png&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;JDK1.8 的 ConcurrentHashMap：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;JDK1.8 的 ConcurrentHashMap 不在是 Segment 数组 + HashEntry 数组 + 链表，⽽是 Node 数组 + 链表 / 红⿊树。不过，&lt;strong&gt;Node&lt;/strong&gt; 只能⽤于链表的情况，红⿊树的情况需要使⽤ &lt;strong&gt;TreeNode&lt;/strong&gt; 。当冲突链表达到⼀定⻓度时，链表会转换成红⿊树。&lt;/p&gt;
+&lt;h3 id=&#34;concurrenthashmap线程安全的具体实现方式底层具体实现&#34;&gt;ConcurrentHashMap线程安全的具体实现⽅式/底层具体实现&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;JDK1.7&lt;/strong&gt;&lt;br&gt;
+⾸先将&lt;strong&gt;数据分为⼀段⼀段的存储&lt;/strong&gt;，然后给每⼀段数据配⼀把锁，当⼀个线程占⽤锁访问其中⼀个段数据时，其他段的数据也能被其他线程访问。&lt;br&gt;
+&lt;strong&gt;ConcurrentHashMap&lt;/strong&gt; 是由 &lt;strong&gt;Segment&lt;/strong&gt; 数组结构和 &lt;strong&gt;HashEntry&lt;/strong&gt; 数组结构组成。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Segment&lt;/strong&gt; 实现了 &lt;strong&gt;ReentrantLock&lt;/strong&gt; ,所以 &lt;strong&gt;Segment&lt;/strong&gt; 是⼀种可重⼊锁，扮演锁的⻆⾊。 &lt;strong&gt;HashEntry&lt;/strong&gt; 用于储存键值对数据&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://i.imgtg.com/2023/02/14/dqMZ1.png&#34; alt=&#34;dqMZ1.png&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;⼀个 &lt;strong&gt;ConcurrentHashMap&lt;/strong&gt; ⾥包含⼀个 &lt;strong&gt;Segment&lt;/strong&gt; 数组。 &lt;strong&gt;Segment&lt;/strong&gt; 的结构和 &lt;strong&gt;HashMap&lt;/strong&gt; 类似，是⼀种数组和链表结构，⼀个 &lt;strong&gt;Segment&lt;/strong&gt; 包含⼀个 &lt;strong&gt;HashEntry&lt;/strong&gt; 数组，每个 &lt;strong&gt;HashEntry&lt;/strong&gt; 是⼀个链表结构的元素，每个 &lt;strong&gt;Segment&lt;/strong&gt; 守护着⼀个 &lt;strong&gt;HashEntry&lt;/strong&gt; 数组⾥的元素，当对 &lt;strong&gt;HashEntry&lt;/strong&gt; 数组的数据进⾏修改时，必须⾸先获得对应的 &lt;strong&gt;Segment&lt;/strong&gt; 的锁。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;JDK1.8&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;ConcurrentHashMap&lt;/strong&gt; 取消了 &lt;strong&gt;Segment&lt;/strong&gt; 分段锁，采⽤ &lt;strong&gt;CAS&lt;/strong&gt; 和 &lt;strong&gt;synchronized&lt;/strong&gt; 来保证并发安全。数据结构跟 HashMap1.8 的结构类&lt;/p&gt;
+&lt;p&gt;似，&lt;strong&gt;数组+链表/红⿊⼆叉树&lt;/strong&gt;。Java 8 在链表⻓度超过⼀定阈值（8）时将链表（寻址时间复杂度为 O(N)）转换为红⿊树（寻址时间复杂度为 O(log(N))）&lt;br&gt;
+&lt;strong&gt;synchronized&lt;/strong&gt; &lt;strong&gt;只锁定当前链表或红⿊⼆叉树的⾸节点&lt;/strong&gt;，这样只要 hash 不冲突，就不会产⽣并发，效率⼜提升 N 倍。&lt;/p&gt;
+&lt;h3 id=&#34;比较-hashset-linkedhashset-和-treeset-三者的异同&#34;&gt;⽐较 HashSet、LinkedHashSet 和 TreeSet 三者的异同&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;HashSet&lt;/strong&gt; 是 Set 接⼝的主要实现类 ， HashSet 的底层是 HashMap ，线程不安全的，可以存储 null 值； 无序&lt;br&gt;
+&lt;strong&gt;LinkedHashSet&lt;/strong&gt; 是 HashSet 的⼦类，&lt;strong&gt;能够按照添加的顺序遍历&lt;/strong&gt;；有序&lt;br&gt;
+&lt;strong&gt;TreeSet 底层使⽤红⿊树&lt;/strong&gt;，能够按照添加元素的顺序进⾏遍历，排序的⽅式有⾃然排序和定制排序 。有序&lt;/p&gt;
+&lt;h3 id=&#34;hashmap的扩容为什么要选用2倍&#34;&gt;HashMap的扩容为什么要选用2倍&lt;/h3&gt;
+&lt;p&gt;当HashMap的容量达&lt;strong&gt;到threshold域值&lt;/strong&gt;时，就会触发扩容。扩容前后，哈希桶的&lt;strong&gt;长度&lt;/strong&gt;一定会是&lt;strong&gt;2的次方&lt;/strong&gt;。&lt;strong&gt;这样在根据key的hash值寻找对应的哈希桶时&lt;/strong&gt;，可以用&lt;strong&gt;位运算替代取余操作&lt;/strong&gt;，更加高效。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;capacity 为 2的整数次幂的话，计算桶的位置 h&amp;amp;(length-1) 就相当于对 length 取模，&lt;strong&gt;提升了计算效率&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;capacity 为 2 的整数次幂的话，便保证了 h&amp;amp;(capacity-1) 的结果可能是0也可能是1，&lt;strong&gt;保证了散列的均匀性&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;capacity 为 2 的整数次幂可以使得在resize的时候&lt;strong&gt;不用重新计算hash值&lt;/strong&gt;。而通过&lt;code&gt;(e.hash &amp;amp; oldCap) == 0 ? 原来位置 : 原来位置+原来哈希表大小&lt;/code&gt;就能算出在新哈希表的正确位置（能通过&lt;code&gt;(n - 1) &amp;amp; hash&lt;/code&gt;正确获取元素）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;hashmap的负载因子为什么为075&#34;&gt;HashMap的负载因子为什么为0.75&lt;/h3&gt;
+&lt;p&gt;负载因子，默认值是0.75。负载因子表示一个散列表的空间的使用程度，有这样一个公式：initailCapacity*loadFactor=HashMap的容量。 所以&lt;strong&gt;负载因子越大则散列表的装填程度越高，也就是能容纳更多的元素，元素多了，链表大了，所以此时索引效率就会降低&lt;/strong&gt;。反之，负载因子越小则链表中的数据量就越稀疏，此时会对空间造成烂费，但是此时索引效率高。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;当桶中元素到达8个的时候，概率已经变得非常小，也就是说用0.75作为加载因子&lt;/strong&gt;，每个碰撞位置的链表长度超过８个是几乎不可能的。&lt;/p&gt;
+&lt;h3 id=&#34;hashmap的遍历方式&#34;&gt;HashMap的遍历方式&lt;/h3&gt;
+&lt;p&gt;https://www.cnblogs.com/xyfer1018/p/10434827.html&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;第一种：遍历HashMap的entrySet&lt;strong&gt;键值对&lt;/strong&gt;集合&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;1.通过**HashMap.entrySet()**得到键值对集合；&lt;/p&gt;
+&lt;p&gt;2.通过迭代器&lt;strong&gt;Iterator&lt;/strong&gt;遍历键值对集合得到key值和value值；&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-JAVA&#34;&gt;Iterator it = map.entrySet().iterator();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;第二种：遍历HashMap键的Set集合获取值；&lt;/p&gt;
+&lt;p&gt;1.通过&lt;strong&gt;HashMap.keySet(&lt;/strong&gt;)获得键的Set集合；&lt;/p&gt;
+&lt;p&gt;2.遍历键的Set集合获取值；&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;Iterator it = map.keySet().iterator();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;第三种：遍历HashMap“值”的集合；&lt;/p&gt;
+&lt;p&gt;1.通过HashMap.values()得到“值”的集合&lt;/p&gt;
+&lt;p&gt;2.遍历“值”的集合；&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;Iterator it = map.values().iterator();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;如何用一个数组构造hashmap&#34;&gt;如何用一个数组构造hashmap&lt;/h3&gt;
+&lt;p&gt;hashmap的底层是通过&lt;strong&gt;数组+链表+红黑树的形&lt;/strong&gt;式&lt;/p&gt;
+&lt;p&gt;关键是构造entry数组&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://i.imgtg.com/2023/02/14/dqO0I.png&#34; alt=&#34;dqO0I.png&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;https://blog.csdn.net/miracleon/article/details/102542395&lt;/p&gt;
+&lt;h2 id=&#34;解决hash冲突的方法&#34;&gt;解决hash冲突的方法&lt;/h2&gt;
+&lt;p&gt;https://www.cnblogs.com/kaleidoscope/p/9588151.html&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;拉链法&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;散列法（开放地址法）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;所有&lt;strong&gt;输入的元素全部存放在哈希表&lt;/strong&gt;里，也就是说，位桶的实现是不需要任何的链表来实现的，换句话说，也就是这个哈希表的装载因子不会超过1。它的实现是在插入一个元素的时候，先通过哈希函数进行判断，若是发生哈希冲突，就以当前地址为基准，根据再寻址的方法（探查序列），去寻找下一个地址，若发生冲突再去寻找，直至找到一个为空的地址为止。所以这种方法又称为再散列法。&lt;/li&gt;
+&lt;li&gt;缺点：&lt;strong&gt;每次冲突都要重新散列，计算时间增加&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;hash表相关考点&#34;&gt;hash表相关考点&lt;/h2&gt;
+&lt;p&gt;解决哈希冲突的链地址算法 插入新数据项的时间表述中 随装载因子线性增长&lt;/p&gt;
+&lt;p&gt;哈希表的装填因子&lt;/p&gt;
+&lt;p&gt;装填因子 = （哈希表中的记录数） /  （哈希表的长度）。&lt;/p&gt;
+&lt;p&gt;装填因子是哈希表装满程度的标记因子。值越大，填入表中的数据元素越多，产生冲突的可能性越大。&lt;/p&gt;
+&lt;h2 id=&#34;集合框架底层数据结构总结&#34;&gt;集合框架底层数据结构总结&lt;/h2&gt;
+&lt;h3 id=&#34;list-2&#34;&gt;List&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Arraylist ： Object[] 数组&lt;/li&gt;
+&lt;li&gt;Vector ： Object[] 数组&lt;/li&gt;
+&lt;li&gt;LinkedList ： 双向链表(JDK1.6 之前为循环链表，JDK1.7 取消了循环)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;set&#34;&gt;Set&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Arraylist ： Object[] 数组&lt;/li&gt;
+&lt;li&gt;Vector ： Object[] 数组&lt;/li&gt;
+&lt;li&gt;LinkedList ： 双向链表(JDK1.6 之前为循环链表，JDK1.7 取消了循环)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;map&#34;&gt;Map&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;HashMap ： JDK1.8 之前 HashMap 由数组+链表组成的，数组是 HashMap 的主体，链表则是主要为了解决哈希冲突⽽存在的（“拉链法”解决冲突）。JDK1.8 以后在解决哈希冲突时有了较	⼤的变化，当链表⻓度⼤于阈值（默认为 8）（将链表转换成红⿊树前会判断，如果当前数组的⻓度⼩于 64，那么会选择先进⾏数组扩容，⽽不是转换为红⿊树）时，将链转化为红⿊树，以减少搜索时间&lt;/li&gt;
+&lt;li&gt;LinkedHashMap ： LinkedHashMap 继承⾃ HashMap ，所以它的底层仍然是基于拉链式散列结构即由数组和链表或红⿊树组成。另外， LinkedHashMap 在上⾯结构的基础上，增加了⼀条双向链表，使得上⾯的结构可以保持键值对的插⼊顺序。同时通过对链表进⾏相应的操作，实现了访问顺序相关逻辑。详细可以查看：《LinkedHashMap 源码详细分析（JDK1.8）》&lt;/li&gt;
+&lt;li&gt;Hashtable ： 数组+链表组成的，数组是 HashMap 的主体，链表则是主要为了解决哈希冲突⽽存在的&lt;/li&gt;
+&lt;li&gt;TreeMap ： 红⿊树（⾃平衡的排序⼆叉树）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;如何选用集合&#34;&gt;如何选⽤集合&lt;/h2&gt;
+&lt;p&gt;主要根据集合的特点来选⽤，⽐如我们需要根据键值获取到元素值时就选⽤ Map 接⼝下的集合，需要排序时选择 TreeMap ,不需要排序时就选择 HashMap ,需要保证线程安全就选⽤ConcurrentHashMap 。&lt;/p&gt;
+&lt;p&gt;当我们只需要存放元素值时，就选择实现 Collection 接⼝的集合，需要保证元素唯⼀时选择实现Set 接⼝的集合⽐如 TreeSet 或 HashSet ，不需要就选择实现 List 接⼝的⽐如 ArrayList 或LinkedList ，然后再根据实现这些接⼝的集合的特点来选⽤。&lt;/p&gt;
+&lt;h2 id=&#34;线程同步的集合&#34;&gt;线程同步的集合&lt;/h2&gt;
+&lt;p&gt;线程同步：喂，SHE&lt;/p&gt;
+&lt;p&gt;喂（Vector）&lt;/p&gt;
+&lt;p&gt;S（Stack）&lt;/p&gt;
+&lt;p&gt;H（hashtable）&lt;/p&gt;
+&lt;p&gt;E（enumeration）&lt;/p&gt;
+">集合</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://github.com/lindamao0753/lindamao0753.github.io/post/ji-ben-suan-fa/"" data-c="
+          &lt;h1 id=&#34;比较算法&#34;&gt;比较算法&lt;/h1&gt;
+&lt;h2 id=&#34;冒泡排序&#34;&gt;冒泡排序&lt;/h2&gt;
+&lt;p&gt;概述：&lt;/p&gt;
+&lt;p&gt;实现代码(逆序)：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.lin;
+
+public class BubbleSort {
+    //排序方法
+    public static void bubbleSort(int[] arr) {
+        if(arr == null || arr.length == 0)
+            return ;
+        for(int i=0; i&amp;lt;arr.length;i++) {
+            //如果内循环的索引大于外层的就无法进行排序了
+            for(int j=arr.length-1; j&amp;gt;i; j--) {
+                if(arr[j]&amp;lt;arr[j-1]) {
+                    swap(arr, j-1, j);
+                }
+            }
+        }
+    }
+    //交换方法
+    public static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    public static void main(String[] args) {
+        int[] arr;
+        arr = new int[]{....};
+        bubbleSort(arr);
+        for (int i : arr) {
+            System.out.print(&amp;quot; &amp;quot;+i);
+        }
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;正序实现代码&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.lin;
+/*
+ *@Description:冒泡排序算法实现（正序）
+ */
+public class BubbleSort2 {
+    public static void bubbleSort(int[] arr) {
+        if(arr == null || arr.length == 0)
+            return ;
+        for(int i=1;i&amp;lt;arr.length;i++) {
+           //当内循环小于数组的长度再减去i的时候就退出
+            for(int j=0; j&amp;lt;arr.length-i; j++) {
+                if(arr[j]&amp;gt;arr[j+1]) {
+                    swap(arr, j+1, j);
+                }
+            }
+        }
+    }
+
+    public static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+    public static void main(String[] args) {
+        int[] arr;
+        arr = new int[]{....};
+        bubbleSort(arr);
+        for (int i : arr) {
+            System.out.print(&amp;quot; &amp;quot;+i);
+        }
+
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;选择排序&#34;&gt;选择排序&lt;/h2&gt;
+&lt;p&gt;实现代码（正序) ：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.lin;
+/*
+@Description 正序的选择排序算法
+ */
+public class SelectSort {
+    public static void selectSort(int[] arr) {
+        if(arr == null || arr.length == 0)
+            return ;
+        //先定义最小的数字
+
+        for(int i=0; i&amp;lt;arr.length;i++){//只需要比较n-1次
+            //先定义最小值的索引 从0开始
+            int minIndex = i;
+            for(int j=i+1; j&amp;lt;arr.length;j++)
+            {
+            //从i+1开始比较，因为minIndex默认为i了就是0，i就没必要比了。
+                //判断前面的值是否小于后面
+                if(arr[j]&amp;lt;arr[minIndex])
+                {
+                    //如果前面的数字 小于后面的值就将后面的索引和之前的交换
+                    minIndex = j;
+                }
+            }
+            //当内循环找到最小值的时候才进行一次交换
+            if(minIndex != i) { //如果minIndex不为i，说明找到了更小的值，执行交换的方法
+                swap(arr, i, minIndex);
+            }
+    }
+}
+public static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+        }
+
+    public static void main(String[] args) {
+        int[] arr;
+        arr = new int[]{5,4,8,6,3,2,2};
+        selectSort(arr);
+        for (int i : arr) {
+            System.out.print(&amp;quot; &amp;quot;+i);
+        }
+    }
+        }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;插入排序&#34;&gt;插入排序&lt;/h2&gt;
+&lt;p&gt;实现代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.lin;
+/**
+ *@Description:简单插入排序算法实现(正序)
+ */
+public class InsertSort {
+    public static void insertSort(int[] a) {
+        int i, j, insertNote;// 要插入的数据
+        for (i = 1; i &amp;lt; a.length; i++) {// 从数组的第二个元素开始循环将数组中的元素插入
+            insertNote = a[i];// 设置数组中的第2个元素为第一次循环要插入的数据 依次往后
+            j = i - 1;
+            //不断的判断插入的元素是否小于前面的所有元素 是的话就循环将元素往右边放
+            while (j &amp;gt;= 0 &amp;amp;&amp;amp; insertNote &amp;lt; a[j]) {
+                a[j + 1] = a[j];// 如果要插入的元素小于第j个元素,就将第j个元素向后移动
+                j--;
+            }
+            a[j + 1] = insertNote;// 直到要插入的元素不小于第j个元素,将insertNote插入到数组中
+        }
+    }
+
+
+    public static void main(String[] args) {
+        int[] arr;
+        arr = new int[]{3,5,4,8,6,3};
+        insertSort(arr);
+        for (int i : arr) {
+            System.out.print(&amp;quot; &amp;quot;+i);
+        }
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;希尔排序&#34;&gt;希尔排序&lt;/h2&gt;
+&lt;p&gt;实现代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.lin;
+
+public class ShellSort {
+
+
+    public static int[] shellSort(int[] array){
+        //控制步长，每循环一次就除二
+        for (int n = array.length/2; n &amp;gt; 0; n /= 2 ){
+            //从下标为步长的元素开始，依次向后循环
+            
+            //不用担心前面的元素，因为下面j层的循环，会依次和前面的数字进行比较。
+
+            for (int i = n; i &amp;lt; array.length; i++) {
+                // 从下标为[步长]的数字开始，向前 隔一个步长 进行比较
+                // 如果后一个比前一个小，则交换，如果不是，则返回上一层循环，
+                // i+1后再进行【如果后一个比前一个小，则交换】的比较
+                // 之后j-n，再和一开始位置的两个步长距离的数字进行比较
+                // 如此反复
+                for (int j = i; j &amp;gt; 0 &amp;amp;&amp;amp; j-n &amp;gt;= 0 &amp;amp;&amp;amp; array[j] &amp;lt; array[j-n]; j-=n) {
+                    int temp = array[j];
+                    array[j] = array[j-n];
+                    array[j-n] = temp;
+                }
+            }
+        }
+        return array;
+    }
+    public static void main(String[] args) {
+        int[] array = {3,5,4,8,6,3};
+        int[] ints = shellSort(array);
+        for (int anInt : ints) {
+            System.out.print(&amp;quot; &amp;quot;+anInt);
+        }
+//        int[] array = new int[80000];
+//        for (int i = 0; i &amp;lt; array.length; i++) {
+//            array[i] = (int)(Math.random()*800000);
+//        }
+        long startTime=System.currentTimeMillis();
+        shellSort(array);
+        long endTime=System.currentTimeMillis();
+        System.out.println(&amp;quot;  程序运行时间： &amp;quot;+(endTime - startTime)+&amp;quot;ms&amp;quot;);
+        //希尔排序排序80k长度的数组，在我这台电脑上只用了不到0.1秒，而插入排序则需要2秒多
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;快速排序&#34;&gt;快速排序&lt;/h2&gt;
+&lt;p&gt;实现代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import java.util.Random;
+/**
+ * 912. 排序数组 快排 三指针
+ * https://leetcode.cn/problems/sort-an-array/description/
+ */
+public class sortArray {
+        // 快速排序 3：三指针快速排序
+        /**
+         * 列表大小等于或小于该大小，将优先于 quickSort 使用插入排序
+         */
+        private static final int INSERTION_SORT_THRESHOLD = 7;
+
+        private  final Random RANDOM = new Random();
+
+        public int[] sortArray(int[] nums) {
+            int len = nums.length;
+            quickSort(nums, 0, len - 1);
+            return nums;
+        }
+
+        private void quickSort(int[] nums, int left, int right) {
+            // 小区间使用插入排序
+            if (right - left &amp;lt;= INSERTION_SORT_THRESHOLD) {
+                insertionSort(nums, left, right);
+//                这里记得return掉 否则会抛异常
+                return;
+            }
+            // 产生[left,right]的某个索引
+            int randomIndex = left + RANDOM.nextInt(right - left + 1);
+            swap(nums, randomIndex, left);
+
+            // 循环不变量：
+            // all in [left + 1, lt] &amp;lt; pivot
+            // all in [lt + 1, i) = pivot
+            // all in [gt, right] &amp;gt; pivot
+//            哨兵
+            int pivot = nums[left];
+            int lt = left;
+            int gt = right + 1;
+
+            int i = left + 1;
+            //当i==gt的时，第二个数组和第三个数组还没连起来，所以循环还应该继续
+            while (i &amp;lt; gt) {
+                if (nums[i] &amp;lt; pivot) {
+                    lt++;
+                    swap(nums, i, lt);
+                    i++;
+                } else if (nums[i] == pivot) {
+                    i++;
+                } else {
+                    gt--;
+                    swap(nums, i, gt);
+                }
+            }
+            swap(nums, left, lt);
+            // 注意这里，大大减少了两侧分治的区间
+            quickSort(nums, left, lt - 1);
+            quickSort(nums, gt, right);
+        }
+
+        /**
+         * 对数组 nums 的子区间 [left, right] 使用插入排序
+         *
+         * @param nums  给定数组
+         * @param left  左边界，能取到
+         * @param right 右边界，能取到
+         */
+        private void insertionSort(int[] nums, int left, int right) {
+            for (int i = left + 1; i &amp;lt;= right; i++) {
+                int insertNumber = nums[i];
+                int j = i;
+                while (j &amp;gt; left &amp;amp;&amp;amp; nums[j - 1] &amp;gt; insertNumber) {
+                    nums[j] = nums[j - 1];
+                    j--;
+                }
+                nums[j] = insertNumber;
+            }
+        }
+
+        private void swap(int[] nums, int index1, int index2) {
+            int temp = nums[index1];
+            nums[index1] = nums[index2];
+            nums[index2] = temp;
+        }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;归并排序&#34;&gt;归并排序&lt;/h2&gt;
+&lt;p&gt;代码实现：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.lin;
+
+public class MergeSort {
+    //两路归并算法，两个排好序的子序列合并为一个子序列
+    //mid为取子序列前面和后面之和的对半索引
+    public static void merge(int[] a, int left, int mid, int right){
+        int []tmp=new int[a.length];//辅助数组 将改变的子序列复制到a数组当中
+        int p1=left,p2=mid+1,k=left;//p1、p2是检测指针，k是存放指针 通过k的索引赋值到temp的数组上面
+        //当子序列的索引都小于检测指针进行循环
+        while(p1&amp;lt;=mid &amp;amp;&amp;amp; p2&amp;lt;=right){
+            if(a[p1]&amp;lt;=a[p2])
+                //如果前面值小于后面的 就把前面的值先放到辅助数组当中
+                tmp[k++]=a[p1++];
+            else
+                //否则就将后面的值放到辅助数组当中
+                tmp[k++]=a[p2++];
+        }
+        
+        while(p1&amp;lt;=mid) tmp[k++]=a[p1++];//如果第一个序列未检测完，直接将后面所有元素加到合并的序列中
+        
+        while(p2&amp;lt;=right) tmp[k++]=a[p2++];//同上
+
+        //复制回原素组
+        for (int i = left; i &amp;lt;=right; i++)
+            a[i]=tmp[i];
+    }
+
+    public static void mergeSort(int[] a, int start, int end){
+        //递归调用函数 先把子序列分完再开始排序
+        if(start&amp;lt;end){//当子序列中只有一个元素时结束递归
+            int mid=(start+end)/2;//划分子序列
+            mergeSort(a, start, mid);//对左侧子序列进行递归排序
+            mergeSort(a, mid+1, end);//对右侧子序列进行递归排序
+            merge(a, start, mid, end);//合并 完成一次排序合并就会satrt 和mid 还有end 的值都会增加 两两元素之间发生交交换
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;堆排序&#34;&gt;堆排序&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.lin;
+
+import java.util.Arrays;
+
+public class HeapSort {
+        //大函数
+    public static void sort(int []arr){
+        //1.构建大顶堆
+        for(int i=arr.length/2-1;i&amp;gt;=0;i--){
+            //从最后一个非叶子结点开始（arr.length/2-1） 从下至上，从右至左调整结构 一直到找到最后的非叶子结点 最后也就到了0索引为0的那里
+            //循环执行调用调大顶堆的函数
+            adjustHeap(arr,i,arr.length);
+        }
+        //2.调整堆结构+交换堆顶元素与末尾元素
+        for(int j=arr.length-1;j&amp;gt;0;j--){
+            //j-1 的原因是交换完就最后一个元素后 除去最后一个元素并对剩下的元素进行重新堆积大顶堆
+            swap(arr,0,j);//将堆顶元素与末尾元素进行交换
+
+            adjustHeap(arr,0,j);//对重新对堆进行调整
+        }
+
+    }
+
+    /**
+     * 调整大顶堆（仅是调整过程，建立在大顶堆已构建的基础上）
+     * @param arr
+     * @param i
+     * @param length
+     */
+            //调整大顶堆函数
+    public static void adjustHeap(int []arr,int i,int length){
+        int temp = arr[i];//先取出当前元素i 也就是父节点 2k+1的原因调整因为交换元素的大顶堆 使其满足大顶堆定义
+        for(int k=i*2+1;k&amp;lt;length;k=k*2+1){//从i结点的左子结点开始，也就是2i+1处开始
+            //k为i结点的子节点的第一个结点 也就是左子节点
+            //判断找出最大的子节点
+            if(k+1&amp;lt;length &amp;amp;&amp;amp; arr[k]&amp;lt;arr[k+1]){
+                //如果没有右结点的时候直接进行下面的比较
+                //如果左子结点小于右子结点，k指向右子结 然后将索引+1
+                k++;
+            }
+            //最后将那个最大的子节点
+            if(arr[k] &amp;gt;temp){//如果子节点大于父节点，将子节点值赋给父节点（不用进行交换） 并将当前的子节点变为子节点然后回到上面的循环再与其子节点进行比较
+                arr[i] = arr[k];
+                i = k;
+            }else{
+                break;
+            }
+        }
+        arr[i] = temp;//将temp值放到最终的位置
+    }
+
+    /**
+     * 交换元素
+     * @param arr
+     * @param a
+     * @param b
+     */
+
+        //交换函数
+    public static void swap(int []arr,int a ,int b){
+        int temp=arr[a];
+        arr[a] = arr[b];
+        arr[b] = temp;
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;非比较算法&#34;&gt;非比较算法&lt;/h1&gt;
+&lt;h2 id=&#34;比较和非比较的区别&#34;&gt;比较和非比较的区别&lt;/h2&gt;
+&lt;p&gt;常见的快速排序、归并排序、堆排序、冒泡排序等属于比较排序。在排序的最终结果里，元素之间的次序依赖于它们之间的比较。每个数都必须和其他数进行比较，才能确定自己的位置。&lt;br&gt;
+在&lt;strong&gt;冒泡排序&lt;/strong&gt;之类的排序中，问题规模为n，又因为需要比较n次，所以平均时间复杂度为O(n²)。在&lt;strong&gt;归并排序、快速排序&lt;/strong&gt;之类的排序中，问题规模通过分治法消减为logN次，所以时间复杂度平均&lt;strong&gt;O(nlogn)&lt;/strong&gt;。&lt;br&gt;
+比较排序的优势是，适用于各种规模的数据，也不在乎数据的分布，都能进行排序。可以说，比较排序适用于一切需要排序的情况。&lt;/p&gt;
+&lt;p&gt;计数排序、基数排序、桶排序则属于非比较排序。非比较排序是通过确定每个元素之前，应该有多少个元素来排序。针对数组arr，计算arr[i]之前有多少个元素，则唯一确定了arr[i]在排序后数组中的位置。&lt;br&gt;
+非比较排序只要确定每个元素之前的已有的元素个数即可，所有一次遍历即可解决。算法时间复杂度&lt;strong&gt;O(n)&lt;/strong&gt;。&lt;br&gt;
+非比较排序时间复杂度底，但由于非比较排序需要占用空间来确定唯一位置。所以对数据规模和数据分布有一定的要求。&lt;/p&gt;
+&lt;h2 id=&#34;计数排序&#34;&gt;计数排序&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.lin;
+
+public class CountSort {
+    public static int[] countSort1(int[] arr){
+        if (arr == null || arr.length == 0) {
+            return null;
+        }
+        //定义待排数组中的最大值 先将其最小为为最大的值 这样肯定有比它大的数 然后返回更大的值
+        int max = Integer.MIN_VALUE;
+        //定义待排数组中的最小值 先将其最小为为最小的值 这样肯定有比它小的数 然后返回更小的值
+        int min = Integer.MAX_VALUE;
+        //根据Math函数找出数组中的最大最小值
+        for(int i = 0; i &amp;lt; arr.length; i++){
+
+            max = Math.max(max, arr[i]);
+
+            min = Math.min(min, arr[i]);
+        }
+        //辅助计数数组 help该数组大小为待排序数组中的最大值减最小值+1 保证了如果是以步长为1增的数字都能够排在数组当中
+        int help[] = new int[max-min+1];
+        //找出每个数字出现的次数 从索引为0的开始
+        for(int i = 0; i &amp;lt; arr.length; i++){
+            //position 为索引的位置
+            int position= arr[i] - min;
+
+            //有这个数的话在索引上的值+1
+            help[position]++;
+        }
+        int index = 0;
+        for(int i = 0; i &amp;lt; help.length; i++){
+            //如果数组上有此值 按照个数依次将他排完
+            while(help[i]-- &amp;gt; 0){
+                //从最小值开始加起来 因为最小值排在最前面  然后根据出现的位置进行排序 就可以将正确的顺序排放下去了
+                //arr[index++]的值为当前的索引值加上最小值 
+                arr[index++] = i+min;
+            }
+        }
+        return arr;
+    }
+
+    public static void main(String[] args) {
+        int[] arr;
+        arr = new int[]{3,5,4,8,6,3};
+        countSort1(arr);
+        for (int i : arr) {
+            System.out.print(&amp;quot; &amp;quot;+i);
+        }
+    }
+    }
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;桶排序&#34;&gt;桶排序&lt;/h2&gt;
+&lt;p&gt;代码实现：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.lin;
+import java.util.ArrayList;
+import java.util.Collections;
+public class BucketSort {
+    public static void bucketSort(int[] arr) {
+
+        int max = Integer.MIN_VALUE;
+
+        int min = Integer.MAX_VALUE;
+        //找出待排序数组中的最大值max、最小值min
+        for (int i = 0; i &amp;lt; arr.length; i++) {
+
+            max = Math.max(max, arr[i]);
+
+            min = Math.min(min, arr[i]);
+        }
+
+        //桶数
+        int bucketNum = (max - min) / arr.length + 1;
+        //创建动态ArrayList数组作为桶 桶里面放的元素也用ArrayList 储存
+        //数组当中的元素声明为整形
+        ArrayList&amp;lt;ArrayList&amp;lt;Integer&amp;gt;&amp;gt; bucketArr = new ArrayList&amp;lt;&amp;gt;(bucketNum);
+        for (int i = 0; i &amp;lt; bucketNum; i++) {
+            bucketArr.add(new ArrayList&amp;lt;Integer&amp;gt;());
+        }
+
+        //将每个元素放入桶
+        for (int i = 0; i &amp;lt; arr.length; i++) {
+
+            int num = (arr[i] - min) / (arr.length);
+            bucketArr.get(num).add(arr[i]);
+
+        }
+
+        //对每个桶进行排序
+        for (int i = 0; i &amp;lt; bucketArr.size(); i++) {
+            Collections.sort(bucketArr.get(i));
+        }
+        System.out.println(bucketArr.toString());
+
+    }
+
+    public static void main(String[] args) {
+        int[] arr;
+        arr = new int[]{1,8,7,44,42,46,38,34,33,17,15,16,27,28,24};
+        bucketSort(arr);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;冒泡排序，插入排序，是稳定的排序算法；&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;不稳定算法&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;选择排序，希尔排序，堆排序，归并排序，快速排序不稳定的。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;算法&lt;/th&gt;
+&lt;th&gt;稳定性&lt;/th&gt;
+&lt;th&gt;时间复杂度&lt;/th&gt;
+&lt;th&gt;空间复杂度&lt;/th&gt;
+&lt;th&gt;适用场景&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;冒泡&lt;/td&gt;
+&lt;td&gt;稳定&lt;/td&gt;
+&lt;td&gt;O(n*n)&lt;/td&gt;
+&lt;td&gt;O(1)&lt;/td&gt;
+&lt;td&gt;适用的情景为数据量量不大，对稳定性有要求，且数据基本有序的情况下&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;归并&lt;/td&gt;
+&lt;td&gt;稳定&lt;/td&gt;
+&lt;td&gt;O(nlogn)&lt;/td&gt;
+&lt;td&gt;O(n)&lt;/td&gt;
+&lt;td&gt;分布散乱随机&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;插入&lt;/td&gt;
+&lt;td&gt;稳定&lt;/td&gt;
+&lt;td&gt;O(n*n)&lt;/td&gt;
+&lt;td&gt;O(1)&lt;/td&gt;
+&lt;td&gt;适用于数据量不大，对算法的稳定性有要求，且数据局部或者整体有序&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;选择&lt;/td&gt;
+&lt;td&gt;不稳定&lt;/td&gt;
+&lt;td&gt;O(n*n)&lt;/td&gt;
+&lt;td&gt;O(1)&lt;/td&gt;
+&lt;td&gt;当数据量不大，且对稳定性没有要求的时候，适用于选择排序&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;快速&lt;/td&gt;
+&lt;td&gt;不稳定&lt;/td&gt;
+&lt;td&gt;O(nlogn)&lt;/td&gt;
+&lt;td&gt;O(nlogn)到O(n)&lt;/td&gt;
+&lt;td&gt;分布散乱随机&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;桶&lt;/td&gt;
+&lt;td&gt;不稳定&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;仅适用于数据的分布相对比较集中的时候，&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;堆&lt;/td&gt;
+&lt;td&gt;不稳定&lt;/td&gt;
+&lt;td&gt;O(nlog)&lt;/td&gt;
+&lt;td&gt;O(1)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;希尔&lt;/td&gt;
+&lt;td&gt;不稳定&lt;/td&gt;
+&lt;td&gt;O(nlogn)到O(n*n)&lt;/td&gt;
+&lt;td&gt;O(1)&lt;/td&gt;
+&lt;td&gt;其排序的效率受到比较距离大小的影响&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;查找顺序速度&#34;&gt;查找顺序速度&lt;/h2&gt;
+&lt;p&gt;顺序 分块 折半 哈希&lt;/p&gt;
+&lt;p&gt;顺序查找的时间复杂度为o(n)&lt;/p&gt;
+&lt;p&gt;分块查找的时间复杂度为o(logn)到o(n)之间&lt;/p&gt;
+&lt;p&gt;二分查找的时间复杂度为o(log n)&lt;/p&gt;
+&lt;p&gt;哈希查找的时间复杂度为o(1)&lt;/p&gt;
+">基本算法</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://github.com/lindamao0753/lindamao0753.github.io/post/about/"" data-c="
+          &lt;blockquote&gt;
+&lt;p&gt;欢迎来到我的小站呀，很高兴遇见你！🤝&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;关于本站&#34;&gt;🏠 关于本站&lt;/h2&gt;
+&lt;h2 id=&#34;博主是谁&#34;&gt;👨‍💻 博主是谁&lt;/h2&gt;
+&lt;h2 id=&#34;兴趣爱好&#34;&gt;⛹ 兴趣爱好&lt;/h2&gt;
+&lt;h2 id=&#34;联系我呀&#34;&gt;📬 联系我呀&lt;/h2&gt;
+">关于</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://github.com/lindamao0753/lindamao0753.github.io/post/hello-gridea/"" data-c="
+          &lt;p&gt;&lt;a href=&#34;https://github.com/getgridea/gridea&#34;&gt;Github&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://gridea.dev/&#34;&gt;Gridea 主页&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;http://fehey.com/&#34;&gt;示例网站&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;特性&#34;&gt;特性👇&lt;/h2&gt;
+&lt;p&gt;📝  你可以使用最酷的 &lt;strong&gt;Markdown&lt;/strong&gt; 语法，进行快速创作&lt;/p&gt;
+&lt;p&gt;🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片&lt;/p&gt;
+&lt;p&gt;🏷️  你可以对文章进行标签分组&lt;/p&gt;
+&lt;p&gt;📋  你可以自定义菜单，甚至可以创建外部链接菜单&lt;/p&gt;
+&lt;p&gt;💻  你可以在 &lt;strong&gt;Windows&lt;/strong&gt;，&lt;strong&gt;MacOS&lt;/strong&gt; 或 &lt;strong&gt;Linux&lt;/strong&gt; 设备上使用此客户端&lt;/p&gt;
+&lt;p&gt;🌎  你可以使用 &lt;strong&gt;𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌&lt;/strong&gt; 或 &lt;strong&gt;Coding Pages&lt;/strong&gt; 向世界展示，未来将支持更多平台&lt;/p&gt;
+&lt;p&gt;💬  你可以进行简单的配置，接入 &lt;a href=&#34;https://github.com/gitalk/gitalk&#34;&gt;Gitalk&lt;/a&gt; 或 &lt;a href=&#34;https://github.com/SukkaW/DisqusJS&#34;&gt;DisqusJS&lt;/a&gt; 评论系统&lt;/p&gt;
+&lt;p&gt;🇬🇧  你可以使用&lt;strong&gt;中文简体&lt;/strong&gt;或&lt;strong&gt;英语&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力&lt;/p&gt;
+&lt;p&gt;🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步&lt;/p&gt;
+&lt;p&gt;🌱 当然 &lt;strong&gt;Gridea&lt;/strong&gt; 还很年轻，有很多不足，但请相信，它会不停向前 🏃&lt;/p&gt;
+&lt;p&gt;未来，它一定会成为你离不开的伙伴&lt;/p&gt;
+&lt;p&gt;尽情发挥你的才华吧！&lt;/p&gt;
+&lt;p&gt;😘 Enjoy~&lt;/p&gt;
+">Hello Gridea</a>
+      </div>
+      
+    </div>
+    <div class="page">
+      <div id="page_ul"></div>
+    </div>
+  </div>
+</div>
+<script>
+  !function () {
+    let searchMask = document.querySelector('#search_mask');
+    let result = document.querySelector('#result');
+    let items = document.querySelectorAll('.item');
+    let searchBox = document.querySelector('#search');
+    let statCount = document.querySelector('#stat_count');
+    let statTimes = document.querySelector('#stat_times');
+    let pageUl = document.querySelector('#page_ul');
+    let close = document.querySelector('#close');
+    
+    close.addEventListener('click', function() {
+      searchMask.style = 'display: none;'
+    })
+
+    let finds = [];
+    let contents = [];
+    let pageSize = 10;
+    items.forEach(item => {
+      let a = item.querySelector('a');
+      contents.push({
+        title: a.innerText,
+        details: a.dataset.c,
+        link: a.href
+      })
+      item.remove();
+    })
+
+    function insertStr(soure, start, count) {
+      let newStr = soure.substr(start, count);
+      return soure.slice(0, start) + '<em>' + newStr + '</em>' + soure.slice(start + count);
+    }
+
+    pageUl.addEventListener('click', function(event) {
+      let target = event.target;
+      if (target.__proto__ === HTMLSpanElement.prototype) {
+        appendResults(parseInt(target.dataset.i));
+      }
+    })
+
+    function appendResults(index) {
+      let htmlResult = '';
+      let start = index || 0;
+      let end = Math.min(start + pageSize, finds.length);
+      for (let i = start; i < end; i++) {
+        const current = finds[i];
+        let html = current.title;
+        let sum = 0;
+        let positions = current.positions;
+        positions.forEach(position => {
+          html = insertStr(html, position.start + sum, position.count);
+          sum += 9;
+        })
+        htmlResult += `<div class="item"><a class="result-title" href="${current.link}">${html}</a></div>`;
+      }
+      result.innerHTML = htmlResult;
+      pageUl.innerHTML = '';
+      let count = finds.length / pageSize;
+      let lis = '';
+      if (start !== 0) {
+        lis += `<span class="fa fa-angle-left" data-i='${start - 1}'></span>`;
+      }
+      for (let i = 0; i < count; i++) {
+        lis += `<span class='${i === start?'current':''}' data-i='${i}'>${i+1}</span>`;     
+      }
+      if (start+1 < count) {
+        lis += `<span class="fa fa-angle-right" data-i='${start+1}'></span>`;  
+      }
+      pageUl.innerHTML = lis;
+    }
+
+    function search(delay) {
+      let timer = null
+      return function () {
+        clearTimeout(timer)
+        timer = setTimeout(() => {
+          let start = Date.now();
+          let segments = searchBox.value.split(' ').filter(c => c != '');
+          if (segments.length <= 0) {
+            return;
+          }
+          finds = [];
+          let htmlResult = '';
+          contents.forEach(content => {
+            let title = content.title;
+            let positions = [];
+            let find = false;
+            segments.forEach((segment) => {
+              if (content.title.includes(segment)) {
+                find = true;
+                positions.push({
+                  start: content.title.indexOf(segment),
+                  count: segment.length
+                })
+              } else if (content.details.includes(segment)) {
+                find = true;
+              }
+            });
+            if (find) {
+              finds.push({
+                title: content.title,
+                link: content.link,
+                positions
+              });
+            }
+          })
+          appendResults(0);
+          statCount.textContent = finds.length;
+          statTimes.textContent = Date.now() - start;
+        }, delay)
+      }
+    }
+    searchBox.addEventListener('input', search(200));
+  }()
+</script>
+
+<input hidden id="copy" />
+<script>
+  !function () {
+    let times = document.querySelectorAll('.publish-time');
+    for (let i = 0; i < times.length; i++) {
+      let date = times[i].dataset.t;
+      let time = Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000);
+      if (time < 60) {
+        str = time + '秒之前';
+      } else if (time < 3600) {
+        str = Math.floor(time / 60) + '分钟之前';
+      } else if (time >= 3600 && time < 86400) {
+        str = Math.floor(time / 3600) + '小时之前';
+      } else if (time >= 86400 && time < 259200) {
+        str = Math.floor(time / 86400) + '天之前';
+      } else {
+        str = times[i].textContent;
+      }
+      times[i].textContent = str;
+    }
+  }();
+</script>
+
+<script>
+  let language = '';
+  if (language !== '') {
+    let map = new Map();
+    if (language === 'en') {
+      map.set('search', 'Search');
+      map.set('category', 'Categories');
+      map.set('article', 'Articles');
+      map.set('tag', 'Tags');
+      map.set('top', 'Top');
+      map.set('publish', 'published');
+      map.set('minute', ' minutes');
+      map.set('read-more', 'Read More');
+      map.set('view', 'View');
+      map.set('words', ' words');
+      map.set('category-in', 'category in');
+      map.set('preview', 'Meta');
+      map.set('index', 'Toc');
+      map.set('no-archives', "You haven't created yet");
+      map.set('archives', " articles in total");
+      map.set('cloud-tags', " tags in total");
+      map.set('copyright', "Copyright: ");
+      map.set('author', "Author: ");
+      map.set('link', "Link: ");
+      map.set('leave-message', "Leave a message");
+      map.set('format', "Links Format");
+      map.set('site-name', "Name: ");
+      map.set('site-link', "Link: ");
+      map.set('site-desc', "Desc: ");
+      map.set('stat', " related results, taking ");
+      map.set('stat-time', " ms");
+      map.set('site-img', "Image: ");
+    }
+
+    if (map.size > 0) {
+      let lanElems = document.querySelectorAll('.language');
+      lanElems.forEach(elem => {
+        let lan = elem.dataset.lan, text = map.get(lan);
+        if (elem.__proto__ === HTMLInputElement.prototype) {
+          elem.placeholder = text
+        } else {
+          if (elem.dataset.count) {
+            text = elem.dataset.count + text;
+          }
+          elem.textContent = text;
+        }
+      })
+    }
+  }
+
+  window.Clipboard = (function (window, document, navigator) {
+    var textArea,
+      copy;
+
+    // 判断是不是ios端
+    function isOS() {
+      return navigator.userAgent.match(/ipad|iphone/i);
+    }
+    //创建文本元素
+    function createTextArea(text) {
+      textArea = document.createElement('textArea');
+      textArea.value = text;
+      textArea.style.width = 0;
+      textArea.style.height = 0;
+      textArea.clientHeight = 0;
+      textArea.clientWidth = 0;
+      document.body.appendChild(textArea);
+    }
+    //选择内容
+    function selectText() {
+      var range,
+        selection;
+
+      if (isOS()) {
+        range = document.createRange();
+        range.selectNodeContents(textArea);
+        selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        textArea.setSelectionRange(0, 999999);
+      } else {
+        textArea.select();
+      }
+    }
+
+    //复制到剪贴板
+    function copyToClipboard() {
+      try {
+        document.execCommand("Copy")
+      } catch (err) {
+        alert("复制错误！请手动复制！")
+      }
+      document.body.removeChild(textArea);
+    }
+
+    copy = function (text) {
+      createTextArea(text);
+      selectText();
+      copyToClipboard();
+    };
+
+    return {
+      copy: copy
+    };
+  })(window, document, navigator);
+
+  function copyCode(e) {
+    if (e.srcElement.tagName === 'SPAN' && e.srcElement.classList.contains('copy-code')) {
+      let code = e.currentTarget.querySelector('code');
+      var text = code.innerText;
+      if (e.srcElement.textContent === '复制成功') {
+        return;
+      }
+      e.srcElement.textContent = '复制成功';
+      (function (elem) {
+        setTimeout(() => {
+          if (elem.textContent === '复制成功') {
+            elem.textContent = '复制代码'
+          }
+        }, 1000);
+      })(e.srcElement)
+      Clipboard.copy(text);
+    }
+  }
+
+  let pres = document.querySelectorAll('pre');
+  pres.forEach(pre => {
+    let code = pre.querySelector('code');
+    let copyElem = document.createElement('span');
+    copyElem.classList.add('copy-code');
+    copyElem.textContent = '复制代码';
+    pre.appendChild(copyElem);
+    pre.onclick = copyCode
+  })
+
+</script>
+<script src="/media/js/motion.js"></script>
+
+
+  <script
+    src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+  <script>
+    var scroll = new SmoothScroll('a[href*="#"]', {
+      speed: 200
+    });
+  </script>
+
+
+
+
+
+
+
+</html>
