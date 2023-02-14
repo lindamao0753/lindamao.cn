@@ -5,11 +5,11 @@
   <meta charset="UTF-8" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<meta name="keywords" content="">
+<meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="">
 <meta name="theme-color" content="#000">
 <title>lindamao</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1676355155589">
+<link rel="shortcut icon" href="/favicon.ico?v=1676355369900">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -186,7 +186,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">6</span>
+        <span class="site-item-stat-count">7</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -228,7 +228,7 @@
   <div class="archive-timeline-box">
     <div class="archive-timeline-title">
       
-        <h2 class="language" data-lan="archives" data-count="6">非常好！目前共计6篇文章，继续努力！</h2>
+        <h2 class="language" data-lan="archives" data-count="7">非常好！目前共计7篇文章，继续努力！</h2>
       
     </div>
     
@@ -238,6 +238,19 @@
           <h2 class="tag-year">2023</h2>
         </div>    
         
+      
+      <a href="https://lindamao.cn/post/redis/">
+        <div class="motion-warpper tag-archive-node">
+          <div class="tag-node">
+            <h1>
+              02-14
+              <small>Redis</small>
+            </h1>
+          </div>  
+      </div>
+      </a>
+    
+      
       
       <a href="https://lindamao.cn/post/rabbitmq/">
         <div class="motion-warpper tag-archive-node">
@@ -598,9 +611,552 @@
     <div class="result" id="result">
       
       <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://lindamao.cn/post/redis/"" data-c="
+          &lt;h2 id=&#34;介绍一下-redis&#34;&gt;介绍⼀下 Redis&lt;/h2&gt;
+&lt;p&gt;简单来说 &lt;strong&gt;Redis 就是⼀个使⽤ C 语⾔开发的数据库&lt;/strong&gt;，不过与传统数据库不同的是 &lt;strong&gt;Redis 的数据&lt;/strong&gt;是存在内存中的 ，也就是它是内存数据库，所以读写速度⾮常快，因此 Redis 被⼴泛应⽤于缓存⽅向。&lt;/p&gt;
+&lt;p&gt;另外，&lt;strong&gt;Redis 除了做缓存之外，Redis 也经常⽤来做分布式锁，甚⾄是消息队列&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Redis 提供了多种数据类型来⽀持不同的业务场景。Redis 还⽀持事务 、持久化、Lua 脚本、多种集群⽅案。&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;分布式缓存常的技术选型方案有哪些&#34;&gt;分布式缓存常⻅的技术选型⽅案有哪些？&lt;/h2&gt;
+&lt;p&gt;分布式缓存的话，使⽤的比较多的主要是 Memcached 和 Redis。不过，现在基本没有看过还有项⽬使⽤ Memcached 来做缓存，都是直接⽤ Redis。&lt;/p&gt;
+&lt;p&gt;Memcached 是分布式缓存最开始兴起的那会，比较常⽤的。后来，随着 Redis 的发展，⼤家慢慢都转⽽使⽤更加强⼤的 Redis 了。&lt;/p&gt;
+&lt;p&gt;分布式缓存主要解决的是单机缓存的容量受服务器限制并且⽆法保存通⽤的信息。因为，本地缓存只在当前服务⾥有效，⽐如你部署了两个相同的服务，他们两者之间的缓存数据是⽆法共同的。&lt;/p&gt;
+&lt;h2 id=&#34;说一下-redis-和-memcached-的区别和共同点&#34;&gt;说⼀下 Redis 和 Memcached 的区别和共同点&lt;/h2&gt;
+&lt;p&gt;现在公司⼀般都是⽤ Redis 来实现缓存，⽽且 Redis ⾃身也越来越强⼤了！不过，了解 Redis 和&lt;br&gt;
+Memcached 的区别和共同点，有助于我们在做相应的技术选型的时候，能够做到有理有据！&lt;br&gt;
+&lt;strong&gt;共同点 ：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;都是基于内存的数据库，⼀般都⽤来当做缓存使⽤。&lt;/li&gt;
+&lt;li&gt;都有过期策略。&lt;/li&gt;
+&lt;li&gt;两者的性能都⾮常⾼。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;区别 ：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Redis ⽀持更丰富的数据类型（&lt;strong&gt;⽀持更复杂的应⽤场景&lt;/strong&gt;）。Redis 不仅仅⽀持简单的 k/v 类型的数据，同时还提供 list，set，zset，hash 等数据结构的存储。Memcached 只⽀持最简单的 k/v 数据类型。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Redis ⽀持数据的持久化&lt;/strong&gt;，可以将内存中的数据保持在磁盘中，重启的时候可以再次加载进⾏使⽤,⽽ Memecache 把数据全部存在内存之中。&lt;/li&gt;
+&lt;li&gt;Redis &lt;strong&gt;有灾难恢复机制&lt;/strong&gt;。 因为可以把缓存中的数据持久化到磁盘上。&lt;/li&gt;
+&lt;li&gt;Redis 在服务器内存使⽤完之后，可以将不⽤的数据放到磁盘上。但是，Memcached 在服务器内存使⽤完之后，就会直接报异常。&lt;/li&gt;
+&lt;li&gt;Memcached 没有原⽣的集群模式，需要依靠客户端来实现往集群中分⽚写⼊数据；但是Redis ⽬前是&lt;strong&gt;原⽣⽀持 cluster 模式&lt;/strong&gt;的.&lt;/li&gt;
+&lt;li&gt;Memcached 是&lt;strong&gt;多线程，⾮阻塞 IO 复⽤的⽹络模型&lt;/strong&gt;；Redis 使⽤&lt;strong&gt;单线程的多路 IO 复⽤模型&lt;/strong&gt;。 （Redis 6.0 引⼊了多线程 IO ）&lt;/li&gt;
+&lt;li&gt;Redis &lt;strong&gt;⽀持发布订阅模型、Lua 脚本、事务&lt;/strong&gt;等功能，⽽ Memcached 不⽀持。并且，Redis⽀持更多的编程语⾔。&lt;/li&gt;
+&lt;li&gt;Memcached过期数据的删除策略只⽤了惰性删除，⽽ Redis 同时使⽤了&lt;strong&gt;惰性删除与定期删除&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;更推荐Redis作为分布式的缓存&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;缓存数据的处理流程是怎样的&#34;&gt;缓存数据的处理流程是怎样的？&lt;/h2&gt;
+&lt;p&gt;流程图：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;如果⽤户请求的数据在缓存中就直接返回。&lt;/li&gt;
+&lt;li&gt;缓存中不存在的话就看数据库中是否存在。&lt;/li&gt;
+&lt;li&gt;数据库中存在的话就更新缓存中的数据。&lt;/li&gt;
+&lt;li&gt;数据库中不存在的话就返回空数&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;D:%5Cnote%5C%E9%9D%A2%E8%AF%95%5C%E9%9D%A2%E8%AF%95.assets%5Cimage-20230203111116721.png&#34; alt=&#34;image-20230203111116721&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;为什么要用-redis为什么要用缓存&#34;&gt;为什么要⽤ Redis/为什么要⽤缓存？&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;D:%5Cnote%5C%E9%9D%A2%E8%AF%95%5C%E9%9D%A2%E8%AF%95.assets%5Cimage-20230203111135947.png&#34; alt=&#34;image-20230203111135947&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;针对高性能和高并发出发&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;⾼性能 ：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;假如⽤户第⼀次访问数据库中的某些数据的话，这个过程是⽐᫾慢，毕竟是从硬盘中读取的。但是，如果说，⽤户访问的数据属于⾼频数据并且不会经常改变的话，那么我们就可以很放⼼地将该⽤户访问的数据存在缓存中。&lt;strong&gt;这样有什么好处&lt;/strong&gt;呢？ 那就是保证⽤户下⼀次再访问这些数据的时候就可以直接从缓存中获取了。&lt;/p&gt;
+&lt;p&gt;操作缓存就是&lt;strong&gt;直接操作内存，所以速度相当快&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;不过，要保持数据库和缓存中的数据的⼀致性。 如果数据库中的对应数据改变的之后，&lt;strong&gt;同步改变缓存中相应的数据即可&lt;/strong&gt;！&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;⾼并发：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;⼀般像 MySQL 这类的数据库的 QPS ⼤概都在 1w 左右（4 核 8g） ，但是使⽤ Redis 缓存之后很容易达到 10w+，甚⾄最⾼能达到 30w+（就单机 redis 的情况，redis 集群的话会更⾼）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;QPS（Query Per Second）：服务器每秒可以执⾏的查询次数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;所以，直接操作缓存能够承受的数据库请求数量是远远⼤于直接访问数据库的，所以我们可以考虑把数据库中的部分数据转移到缓存中去，这样⽤户的⼀部分请求会直接到缓存这⾥⽽不⽤经过数据库进⽽我们也就提⾼的系统整体的&lt;/p&gt;
+&lt;h2 id=&#34;io模型&#34;&gt;IO模型&lt;/h2&gt;
+&lt;p&gt;https://zhuanlan.zhihu.com/p/115912936&lt;/p&gt;
+&lt;h2 id=&#34;io多路复用机制&#34;&gt;IO多路复用机制&lt;/h2&gt;
+&lt;p&gt;https://blog.csdn.net/sehanlingfeng/article/details/78920423&lt;/p&gt;
+&lt;h2 id=&#34;bionioaio-有什么区别&#34;&gt;&lt;strong&gt;BIO,NIO,AIO 有什么区别?&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;BIO (Blocking I/O): 同步阻塞 I/O 模式&lt;/strong&gt;，&lt;strong&gt;数据的读取写⼊必须阻塞在⼀个线程内等待其完成&lt;/strong&gt;。在活动连接数不是特别⾼（⼩于单机 1000）的情况下，这种模型是比较不错的，可以让每⼀个连接专注于⾃⼰的 I/O 并且编程模型简单，也不⽤过多考虑系统的过载、限流等问题。线程池本身就是⼀个天然的漏⽃，可以缓冲⼀些系统处理不了的连接或请求。但是，当⾯对⼗万甚⾄百万级连接的时候，传统的 BIO 模型是⽆能为⼒的。因此，我们需要⼀种更⾼效的 I/O 处理模型来应对更⾼的并发量。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NIO (Non-blocking/New I/O): NIO 是⼀种同步⾮阻塞的 I/O 模型&lt;/strong&gt;，在 Java 1.4 中引⼊了NIO 框架，对应 java.nio 包，提供了 &lt;strong&gt;Channel&lt;/strong&gt; , &lt;strong&gt;Selector&lt;/strong&gt;，Buffer 等抽象。NIO 中的 N 可以理解为 Non-blocking，不单纯是 New。它⽀持&lt;strong&gt;⾯向缓冲&lt;/strong&gt;的，基于通道的 I/O 操作⽅法。&lt;/p&gt;
+&lt;p&gt;NIO 提供了与传统 BIO 模型中的 Socket 和 ServerSocket 相对应的 SocketChannel 和ServerSocketChannel 两种不同的套接字通道实现,两种通道都⽀持阻塞和⾮阻塞两种模式。阻塞模式使⽤就像传统中的⽀持⼀样，比较简单，但是性能和可靠性都不好；⾮阻塞模式正好与之相反。对于低负载、低并发的应⽤程序，可以使⽤同步阻塞 I/O 来提升开发速率和更好的维护性；对于⾼负载、⾼并发的（⽹络）应⽤，应使⽤ NIO 的⾮阻塞模式来开发&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;AIO (Asynchronous I/O): AIO 也就是 NIO 2&lt;/strong&gt;。在 Java 7 中引⼊了 NIO 的改进版 NIO 2,它是&lt;strong&gt;异步⾮阻塞的 IO 模型&lt;/strong&gt;。异步 IO 是&lt;strong&gt;基于事件和回调机制实现&lt;/strong&gt;的，也就是应⽤操作之后会直接返回，不会堵塞在那⾥，当后台处理完成，操作系统会通知相应的线程进⾏后续的操作。&lt;br&gt;
+AIO 是异步 IO 的缩写，&lt;strong&gt;虽然 NIO 在⽹络操作中，提供了⾮阻塞的⽅法，但是 NIO 的 IO ⾏为还是同步的&lt;/strong&gt;。对于 NIO 来说，我们的业务线程是在 IO 操作准备好时，得到通知，接着就由这个线程⾃⾏进⾏ IO 操作，IO 操作本身是同步的。查阅⽹上相关资料，我发现就⽬前来说 AIO 的应⽤还不是很⼴泛，Netty 之前也尝试使⽤过 AIO，不过⼜放弃了&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NIO与BIO区别&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;通讯方式：NIO 通过&lt;strong&gt;Channel（通道）&lt;/strong&gt; 进行读写，通道是&lt;strong&gt;双向&lt;/strong&gt;的，可读也可写。而BIO使用的&lt;strong&gt;流读写是单向&lt;/strong&gt;的。&lt;/li&gt;
+&lt;li&gt;BIO流是阻塞的，NIO流是不阻塞的。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;BIO 面向流(Stream oriented)&lt;/strong&gt;，&lt;strong&gt;而 NIO 面向缓冲区(Buffer oriented)&lt;/strong&gt;。
+&lt;ol&gt;
+&lt;li&gt;在面向流的I/O中·可以将数据直接写入或者将数据直接读到 Stream 对象中。&lt;strong&gt;虽然 Stream 中也有 Buffer 开头的扩展类，但只是流的包装类，还是从流读到缓冲区&lt;/strong&gt;，而 NIO 却是&lt;strong&gt;直接读到 Buffer 中进行操作&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;在NIO厍中，所有数据都是用缓冲区处理的。在读取数据时，它是直接读到缓冲区中的; 在写入数据时，写入到缓冲区中。&lt;strong&gt;任何时候访问NIO中的数据，都是通过缓冲区进行操作&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;NIO 带来了什么&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;避免多线程&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;非阻塞I/O，I/O读写不再阻塞，而是返回0&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;单线程处理多任务&lt;/li&gt;
+&lt;li&gt;基于block的传输，通常比基于流的传输更高效&lt;/li&gt;
+&lt;li&gt;更高级的IO函数，zero-copy&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;事件驱动模型&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;IO多路复用大大提高了Java网络应用的可伸缩性和实用性&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;redis-常数据结构以及使用场景分析&#34;&gt;Redis 常⻅数据结构以及使⽤场景分析&lt;/h2&gt;
+&lt;h3 id=&#34;string&#34;&gt;&lt;strong&gt;String&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;​	1.&lt;strong&gt;介绍&lt;/strong&gt; ：string 数据结构是简单的 key-value 类型。虽然 Redis 是⽤ C 语⾔写的，但是 Redis并没有使⽤ C 的字符串表示，⽽是⾃⼰构建了⼀种 简单动态字符串（simple dynamicstring，SDS）。相⽐于 C 的原⽣字符串，Redis 的 SDS 不光可以保存⽂本数据还可以保存&lt;br&gt;
+⼆进制数据，并且获取字符串⻓度复杂度为 O(1)（C 字符串为 O(N)）,除此之外,Redis 的SDS API 是安全的，不会造成缓冲区溢出。&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;&lt;strong&gt;常⽤命令&lt;/strong&gt;: set,get,strlen,exists,dect,incr,setex 等等。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;应⽤场景&lt;/strong&gt; ：⼀般常⽤在需要&lt;strong&gt;计数的场景&lt;/strong&gt;，⽐如⽤户的访问次数、热点⽂章的点赞转发数量等，共享用户session。&lt;br&gt;
+等。&lt;/li&gt;
+&lt;li&gt;.redis 的 string 类型存储的限制为&lt;strong&gt;512M&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;list&#34;&gt;list&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;介绍&lt;/strong&gt; ：list 即是 链表。链表是⼀种⾮常常⻅的数据结构，特点是易于数据元素的插⼊和删除并且且可以灵活调整链表⻓度，但是链表的随机访问困难。许多⾼级编程语⾔都内置了链表的实现⽐如 Java 中的 &lt;strong&gt;LinkedList&lt;/strong&gt;，但是 C 语⾔并没有实现链表，所以 Redis 实现了⾃⼰的链表数据结构。Redis 的 list 的实现为⼀个 &lt;strong&gt;双向链表&lt;/strong&gt;，即可以⽀持&lt;strong&gt;反向查找和遍历&lt;/strong&gt;，更⽅便操作，不过带来了部分额外的内存开销。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;常⽤命令&lt;/strong&gt;: rpush,lpop,lpush,rpop,lrange.llen 等。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;应⽤场景&lt;/strong&gt;: &lt;strong&gt;发布与订阅或者说消息队列、慢查询&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;hash&#34;&gt;hash&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;介绍&lt;/strong&gt; ：hash 类似于 JDK1.8 前的 HashMap，内部实现也差不多(数组 + 链表)。不过，Redis 的 hash 做了更多优化。另外，&lt;strong&gt;hash 是⼀个 string 类型的 field 和 value 的映射表，特别适合⽤于存储对象，后续操作的时候，你可以直接仅仅修改这个对象中的某个字段的值。&lt;/strong&gt; ⽐如我们可以 hash 数据结构来存储&lt;strong&gt;⽤户信息，商品信息&lt;/strong&gt;等等。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;常⽤命令&lt;/strong&gt;： hset,hmset,hexists,hget,hgetall,hkeys,hvals 等。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;应⽤场景:&lt;/strong&gt; 系统中对象数据的存储。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;set&#34;&gt;set&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;介绍&lt;/strong&gt; ： set 类似于 Java 中的 HashSet 。Redis 中的 set 类型是⼀种⽆序集合，集合中的元素没有先后顺序。当你需要存储⼀个列表数据，⼜不希望出现重复数据时，set 是⼀个很好的选择，并且 set 提供了判断某个成员是否在⼀个 set 集合内的重要接⼝，这个也是 list 所不能提供的。可以基于 set 轻易实现交集、并集、差集的操作。&lt;/li&gt;
+&lt;li&gt;⽐如：你可以将⼀个⽤户所有的关注⼈存在⼀个集合中，将其所有粉丝存在⼀个集合。Redis 可以⾮常⽅便的实现如共同关注、共同粉丝、共同喜好等功能。这个过程也就是求交集的过程。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;常⽤命令&lt;/strong&gt;： sadd,spop,smembers,sismember,scard,sinterstore,sunion 等。&lt;br&gt;
+3. &lt;strong&gt;应⽤场景:&lt;/strong&gt; 需要存放的数据不能重复以及需要获取多个数据源交集和并集等场景 例如：在微博应⽤中，可以将⼀个⽤户所有的关注⼈存在⼀个集合中，将其所有粉丝存在⼀个集合。Redis可以⾮常⽅便的实现如&lt;strong&gt;共同关注、共同粉丝、共同喜好&lt;/strong&gt;等功能。这个过程也就是求交集的过程，&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;sorted-set&#34;&gt;sorted set&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;介绍&lt;/strong&gt;： 和 set 相⽐，sorted set 增加了⼀个权重参数 score，使得集合中的元素能够按 score进⾏有序排列，还可以通过 score 的范围来获取元素的列表。有点像是 Java 中 HashMap和 TreeSet 的结合体。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;常⽤命令&lt;/strong&gt;： zadd,zcard,zscore,zrange,zrevrange,zrem 等。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;应⽤场景：&lt;/strong&gt; 需要对数据根据某个权重进⾏排序的场景，比如微博热搜，做带权重的队列⽐如在直播系统中，实时排⾏信息包含直播间&lt;strong&gt;在线⽤户列表，各种礼物排⾏榜，弹幕消息&lt;/strong&gt;（可以理解为按消息维度的消息排⾏榜）等信息 。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;redis线程&#34;&gt;Redis线程&lt;/h2&gt;
+&lt;h3 id=&#34;redis单线程原理&#34;&gt;Redis单线程原理&lt;/h3&gt;
+&lt;p&gt;首先必须明确，Redis单线程指的是网络请求模块使用了一个线程（，其他模块仍用了多个线程。并不是一个线程完成了所有功能。原理上，其采用了利用epoll的多路复用特性，因此可以采用单线程处理其网络请求。&lt;/p&gt;
+&lt;h3 id=&#34;redis-单线程模型详解&#34;&gt;Redis 单线程模型详解&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Redis 基于 Reactor 模式来设计开发了⾃⼰的⼀套⾼效的事件处理模型&lt;/strong&gt; （Netty 的线程模型也基于 Reactor 模式，Reactor 模式不愧是⾼性能 IO 的基⽯），这套事件处理模型对应的是 Redis中的&lt;strong&gt;⽂件事件处理器&lt;/strong&gt;（file event handler）。由于⽂件事件处理器（file event handler）是单线程⽅式运⾏的，所以我们⼀般都说 Redis 是单线程模型。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;既然是单线程，那怎么监听⼤量的客户端连接呢？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Redis 通过&lt;strong&gt;IO 多路复⽤程序&lt;/strong&gt; 来监听来⾃客户端的⼤量连接（或者说是监听多个 socket），它会将感兴趣的事件及类型(读、写）注册到内核中并监听每个事件是否发⽣。&lt;/p&gt;
+&lt;p&gt;这样的好处⾮常明显： &lt;strong&gt;I/O 多路复⽤技术的使⽤让 Redis 不需要额外创建多余的线程来监听客户端的⼤量连接，降低了资源的消耗&lt;/strong&gt;（和 NIO 中的 Selector 组件很像）。&lt;/p&gt;
+&lt;p&gt;另外， Redis 服务器是⼀个事件驱动程序，服务器需要处理两类事件： 1. ⽂件事件; 2. 时间事件。&lt;/p&gt;
+&lt;p&gt;时间事件不需要多花时间了解，我们接触最多的还是 ⽂件事件（&lt;strong&gt;客户端进⾏读取写⼊等操作，涉及⼀系列⽹络通信&lt;/strong&gt;）。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Redis 基于 Reactor 模式开发了⾃⼰的⽹络事件处理器：这个处理器被称为⽂件事件处理器（file event handler）。⽂件事件处理器使⽤ I/O 多路复⽤（multiplexing）程序来同时监听多个套接字，并根据 套接字⽬前执⾏的任务来为套接字关联不同的事件处理器。当被监听的套接字准备好执⾏连接应答（accept）、读取（read）、写⼊（write）、关 闭（close）等操作时，与操作相对应的⽂件事件就会产⽣，这时⽂件事件处理器就会调⽤套接字之前关联好的事件处理器来处理这些事件。虽然⽂件事件处理器以单线程⽅式运⾏，但通过使⽤ I/O 多路复⽤程序来监听多个套接字，⽂件事件处理器既实现了⾼性能的⽹络通信模型，⼜可以很好地与 Redis 服务器中其他同样以单线程⽅式运⾏的模块进⾏对接，这保持了 Redis 内部单线程设计的简单性。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以看出，⽂件事件处理器（file event handler）主要是包含 4 个部分：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;多个 socket（客户端连接）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;IO 多路复⽤程序（⽀持多个客户端连接的关键）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;⽂件事件分派器（将 socket 关联到相应的事件处理器）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;事件处理器（连接应答处理器、命令请求处理器、命令回复处理器）&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;D:%5Cnote%5C%E9%9D%A2%E8%AF%95%5C%E9%9D%A2%E8%AF%95.assets%5Cimage-20230203111214293.png&#34; alt=&#34;image-20230203111214293&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;redis-没有使用多线程为什么不使用多线程&#34;&gt;Redis 没有使⽤多线程？为什么不使⽤多线程&lt;/h3&gt;
+&lt;p&gt;虽然说 Redis 是单线程模型，但是， 实际上，Redis 在 4.0 之后的版本中就已经加⼊了对多线程的支持&lt;/p&gt;
+&lt;p&gt;不过，Redis 4.0 增加的多线程主要是针对⼀些⼤键值对的删除操作的命令，使⽤这些命令就会使⽤主处理之外的其他线程来“异步处理”。&lt;br&gt;
+⼤体上来说，Redis 6.0 之前主要还是**单线程处理。**那，Redis6.0 之前 为什么不使⽤多线程？&lt;br&gt;
+主要原因：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;单线程编程容易并且更&lt;strong&gt;容易维护&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;Redis的性能瓶颈不在 &lt;strong&gt;CPU&lt;/strong&gt; ，主要在&lt;strong&gt;内存和⽹络&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;多线程就会存在&lt;strong&gt;死锁、线程上下⽂切换&lt;/strong&gt;等问题，甚⾄&lt;strong&gt;会影响性能&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;redis60-之后为何引入了多线程&#34;&gt;Redis6.0 之后为何引⼊了多线程？&lt;/h3&gt;
+&lt;p&gt;Redis6.0 引⼊多线程主要是为了提⾼⽹络 IO 读写性能，因为这个算是 Redis 中的⼀个性能瓶颈（Redis 的瓶颈主要受限于内存和⽹络）。&lt;/p&gt;
+&lt;p&gt;虽然，Redis6.0 引⼊了多线程，但是 Redis 的&lt;strong&gt;多线程只是在⽹络数据的读写&lt;/strong&gt;这类耗时操作上使⽤了， &lt;strong&gt;执⾏命令仍然是单线程顺序执⾏&lt;/strong&gt;。因此，你也不需要担⼼线程安全问题。&lt;/p&gt;
+&lt;p&gt;Redis6.0 的&lt;strong&gt;多线程默认是禁⽤的&lt;/strong&gt;，只使⽤主线程。如需开启需要修改 &lt;strong&gt;redis&lt;/strong&gt; 配置⽂件 &lt;strong&gt;redis.conf&lt;/strong&gt;&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;D:%5Cnote%5C%E9%9D%A2%E8%AF%95%5C%E9%9D%A2%E8%AF%95.assets%5Cimage-20230203111239352.png&#34; alt=&#34;image-20230203111239352&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;开启多线程后还需要设置线程数否则是不⽣效的。同样需要修改 redis 配置⽂件 &lt;strong&gt;redis.conf :&lt;/strong&gt;&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;D:%5Cnote%5C%E9%9D%A2%E8%AF%95%5C%E9%9D%A2%E8%AF%95.assets%5Cimage-20230203111247809.png&#34; alt=&#34;image-20230203111247809&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;参考连接：https://mp.weixin.qq.com/s/FZu3acwK6zrCBZQ_3HoUgw&lt;/p&gt;
+&lt;p&gt;​				   https://draveness.me/whys-the-design-redis-single-thread/&lt;/p&gt;
+&lt;h2 id=&#34;redis多线程&#34;&gt;Redis多线程&lt;/h2&gt;
+&lt;p&gt;https://blog.csdn.net/lizhengze1117/article/details/108032406&lt;/p&gt;
+&lt;h2 id=&#34;什么情况下使用redis&#34;&gt;什么情况下使用redis&lt;/h2&gt;
+&lt;p&gt;https://blog.csdn.net/qq_35190492/article/details/103105780&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;针对热点数据进行缓存&lt;/li&gt;
+&lt;li&gt;对于特定限时数据的存放&lt;/li&gt;
+&lt;li&gt;针对带热点权值数据的&lt;a href=&#34;https://www.nowcoder.com/jump/super-jump/word?word=%E6%8E%92%E5%BA%8F&#34;&gt;排序&lt;/a&gt;list&lt;/li&gt;
+&lt;li&gt;分布式锁&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;为什么要给redis缓存数据设置过期时间&#34;&gt;为什么要给Redis缓存数据设置过期时间&lt;/h2&gt;
+&lt;p&gt;因为内存是有限的，如果缓存中的所有数据都是⼀直保存的话，分分钟直接**Out of memory。**Redis ⾃带了给缓存数据设置过期时间的功能，⽐如：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;D:%5Cnote%5C%E9%9D%A2%E8%AF%95%5C%E9%9D%A2%E8%AF%95.assets%5Cimage-20230203111259581.png&#34; alt=&#34;image-20230203111259581&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;注意：Redis中除了字符串类型有⾃⼰独有设置过期时间的命令 &lt;strong&gt;setex&lt;/strong&gt; 外，其他⽅法都需要依靠&lt;strong&gt;expire&lt;/strong&gt; 命令来设置过期时间 。另外， persist 命令可以移除⼀个键的过期时间&lt;br&gt;
+&lt;strong&gt;过期时间除了有助于缓解内存的消耗，还有什么其他⽤么？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;验证码有效时间 token有效时间&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;很多时候，我们的业务场景就是需要某个数据只在某⼀时间段内存在，⽐如我们的短信验证码可能只在1分钟内有效，⽤户登录的 token 可能只在 1 天内有效。如果使⽤传统的数据库来处理的话，⼀般都是⾃⼰判断过期，这样更麻烦并且&lt;strong&gt;性能&lt;/strong&gt;要差很多。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;避免数据库和缓存的不一致&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;设置缓存过期时间当缓存当中的值失效了之后就会到数据库当中去更新数据&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;redis是如何判断数据是否过期&#34;&gt;Redis是如何判断数据是否过期&lt;/h2&gt;
+&lt;p&gt;Redis 通过⼀个叫做&lt;strong&gt;过期字典&lt;/strong&gt;（可以看作是hash表）来保存数据过期的时间。过期字典的键指向&lt;br&gt;
+Redis数据库中的某个key(键)，过期字典的值是⼀个long long类型的整数，这个整数保存了key所&lt;br&gt;
+指向的数据库键的过期时间（毫秒精度的UNIX时间戳）。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;D:%5Cnote%5C%E9%9D%A2%E8%AF%95%5C%E9%9D%A2%E8%AF%95.assets%5Cimage-20230203111310626.png&#34; alt=&#34;image-20230203111310626&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;过期字典&lt;/strong&gt;是存储在redisDb这个结构⾥的：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;D:%5Cnote%5C%E9%9D%A2%E8%AF%95%5C%E9%9D%A2%E8%AF%95.assets%5Cimage-20230203111320481.png&#34; alt=&#34;image-20230203111320481&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;过期的数据的删除策略&#34;&gt;过期的数据的删除策略&lt;/h2&gt;
+&lt;p&gt;如果假设你设置了⼀批 key 只能存活 1 分钟，那么 1 分钟后，Redis 是怎么对这批 key 进⾏删除的呢？&lt;br&gt;
+常⽤的过期数据的删除策略就两个（重要！⾃⼰造缓存轮⼦的时候需要格外考虑的东⻄）：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;惰性删除&lt;/strong&gt; ：只会在取出key的时候才对数据进⾏过期检查。这样对CPU最友好，但是可能会造成太多过期 key 没有被删除。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;定期删除&lt;/strong&gt; ： 每隔⼀段时间抽取⼀批 key 执⾏删除过期key操作。并且，Redis 底层会通过限制删除操作执⾏的时⻓和频率来减少删除操作对CPU时间的影响。&lt;br&gt;
+定期删除对内存更加友好，惰性删除对CPU更加友好。两者各有千秋，所以Redis 采⽤的是 定期删除+惰性/懒汉式删除 。&lt;br&gt;
+但是，仅仅通过给 key 设置过期时间还是有问题的。因为还是可能存在定期删除和惰性删除漏掉了很多过期 key 的情况。这样就导致⼤量过期 key 堆积在内存⾥，然后就Out of memory了。&lt;/p&gt;
+&lt;p&gt;怎么解决这个问题呢？答案就是： &lt;strong&gt;Redis 内存淘汰机制。&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;redis-内存淘汰机制&#34;&gt;Redis 内存淘汰机制&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;相关问题&lt;/strong&gt;：MySQL ⾥有 2000w 数据，Redis 中只存 20w 的数据，如何保证 Redis 中的数据都是热点数据?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Redis 提供 6 种数据淘汰策略：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;volatile-lru（least recently used）：从已设置过期时间的数据集（server.db[i].expires）中挑选&lt;strong&gt;最近最少使⽤&lt;/strong&gt;的数据淘汰&lt;/li&gt;
+&lt;li&gt;volatile-ttl：从已设置过期时间的数据集（server.db[i].expires）中挑选&lt;strong&gt;将要过期&lt;/strong&gt;的数据淘汰&lt;/li&gt;
+&lt;li&gt;volatile-random：从已设置过期时间的数据集（server.db[i].expires）中&lt;strong&gt;任意选择数据淘汰&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;allkeys-lru（least recently used）：当内存不⾜以容纳新写⼊数据时，在键空间中，移除&lt;br&gt;
+最近最少使⽤的 key（这个是最常⽤的）&lt;/li&gt;
+&lt;li&gt;allkeys-random：从数据集（server.db[i].dict）中任意选择数据淘汰&lt;/li&gt;
+&lt;li&gt;no-eviction：禁⽌驱逐数据，也就是说当内存不⾜以容纳新写⼊数据时，新写⼊操作会报错。这个应该没⼈使⽤吧！&lt;br&gt;
+4.0 版本后增加以下两种：&lt;/li&gt;
+&lt;li&gt;volatile-lfu（least frequently used）：&lt;strong&gt;从已设置过期时间的数据集(server.db[i].expires)中挑选最不经常使⽤的数据淘汰&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;allkeys-lfu（least frequently used）：&lt;strong&gt;当内存不⾜以容纳新写⼊数据时，在键空间中，移除最不经常使⽤的 key&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;redis-持久化机制&#34;&gt;Redis 持久化机制&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;(怎么保证 Redis 挂掉之后再重启数据可以进⾏恢复)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;很多时候我们需要持久化数据也就是将内存中的数据写⼊到硬盘⾥⾯，⼤部分原因是为了之后重⽤数据（⽐如重启机器、机器故障之后恢复数据），或者是为了防⽌系统故障⽽将数据备份到个远程位置。Redis 不同于 Memcached 的很重要⼀点就是，Redis ⽀持持久化，⽽且⽀持两种不同的持久化操作。Redis 的⼀种持久化⽅式叫快照（snapshotting，&lt;strong&gt;RDB&lt;/strong&gt;），另⼀种⽅式是只追加⽂件append-only file, （&lt;strong&gt;AOF&lt;/strong&gt;）。这两种⽅法各有千秋，下⾯我会详细这两种持久化⽅法是什么，么⽤，如何选择适合⾃⼰的持久化⽅法。&lt;br&gt;
+&lt;strong&gt;快照（snapshotting）持久化（RDB)&lt;/strong&gt;&lt;br&gt;
+Redis 可以通过创建快照来获得存储在内存⾥⾯的数据在某个时间点上的副本。Redis 创建快照之后，可以对快照进⾏备份，可以将快照复制到其他服务器从⽽创建具有相同数据的服务器副本（&lt;strong&gt;Redis 主从结构，主要⽤来提⾼ Redis 性能&lt;/strong&gt;），还可以将快照留在原地以便重启服务器的时候使⽤。&lt;/p&gt;
+&lt;p&gt;快照持久化RDB是 **Redis 默认采⽤的持久化⽅式，**在 Redis.conf 配置⽂件中默认有此下配置：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;9&#34;&gt;&lt;img src=&#34;D:%5Cnote%5C%E9%9D%A2%E8%AF%95%5C%E9%9D%A2%E8%AF%95.assets%5Cimage-20230203111331829.png&#34; alt=&#34;image-20230203111331829&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;AOF（append-only file）持久化&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;与快照持久化相⽐，AOF 持久化 的&lt;strong&gt;实时性&lt;/strong&gt;更好，因此已成为主流的持久化⽅案。默认情况下Redis 没有开启 AOF（append only file）⽅式的持久化，可以通过 appendonly 参数开启：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;10&#34;&gt;&lt;img src=&#34;D:%5Cnote%5C%E9%9D%A2%E8%AF%95%5C%E9%9D%A2%E8%AF%95.assets%5Cimage-20230203111338949.png&#34; alt=&#34;image-20230203111338949&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;开启 AOF 持久化后每执⾏⼀条会更改 Redis 中的数据的命令，Redis 就会将该命令写⼊硬盘中的 AOF ⽂件。AOF ⽂件的保存位置和 RDB ⽂件的位置相同，都是通过 dir 参数设置的，默认的&lt;br&gt;
+⽂件名是 **appendonly.aof。**在 Redis 的配置⽂件中存在三种不同的 AOF 持久化⽅式，它们分别是：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;11&#34;&gt;&lt;img src=&#34;D:%5Cnote%5C%E9%9D%A2%E8%AF%95%5C%E9%9D%A2%E8%AF%95.assets%5Cimage-20230203111346448.png&#34; alt=&#34;image-20230203111346448&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;为了兼顾数据和写⼊性能，⽤户可以考虑 &lt;strong&gt;appendfsync everyse&lt;/strong&gt;c 选项 ，让 Redis 每秒同步⼀次AOF ⽂件，Redis 性能⼏乎没受到任何影响。⽽且这样即使出现系统崩溃，⽤户最多只会丢失⼀秒之内产⽣的数据。当硬盘忙于执⾏写⼊操作的时候，Redis 还会优雅的放慢⾃⼰的速度以便适应硬盘的最⼤写⼊速度。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;补充内容：AOF 重写&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;AOF 重写可以产⽣⼀个新的 AOF ⽂件，这个新的 AOF ⽂件和原有的 AOF ⽂件所保存的数据库状态⼀样，但体积更⼩。&lt;/p&gt;
+&lt;p&gt;AOF 重写是⼀个有歧义的名字，该功能是通过读取数据库中的键值对来实现的，程序⽆须对现有AOF ⽂件进⾏任何读⼊、分析或者写⼊操作。&lt;/p&gt;
+&lt;p&gt;在执⾏ BGREWRITEAOF 命令时，Redis 服务器会维护⼀个 AOF 重写缓冲区，该缓冲区会在⼦进程创建新 AOF ⽂件期间，记录服务器执⾏的所有写命令。当⼦进程完成创建新 AOF ⽂件的⼯作之后，服务器会将重写缓冲区中的所有内容追加到新 AOF ⽂件的末尾，使得新旧两个 AOF ⽂件所保存的数据库状态⼀致。最后，服务器⽤新的 AOF ⽂件替换旧的 AOF ⽂件，以此来完成AOF ⽂件重写操作&lt;/p&gt;
+&lt;h3 id=&#34;rdb&#34;&gt;RDB&lt;/h3&gt;
+&lt;p&gt;RDB即将当前数据生成快照，并保存于硬盘中。可以通过手动命令，也可以设置自动触发。&lt;/p&gt;
+&lt;h3 id=&#34;简述redis的aof&#34;&gt;简述Redis的AOF&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;AOF通过日志&lt;/strong&gt;，对数据的写入修改操作进行记录。这种持久化方式实时性更好。通过配置文件打开AOF。&lt;/p&gt;
+&lt;h3 id=&#34;简述aof的持久化策略&#34;&gt;简述AOF的持久化策略&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;always。每执行一次数据修改命令就将其命令写入到磁盘日志文件上。&lt;/li&gt;
+&lt;li&gt;everysec。每秒将命令写入到磁盘日志文件上。&lt;/li&gt;
+&lt;li&gt;no。不主动设置，由操作系统决定什么时候写入到磁盘日志文件上。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;简述aof的重写&#34;&gt;简述AOF的重写&lt;/h3&gt;
+&lt;p&gt;随着&lt;a href=&#34;&#34;&gt;客户端&lt;/a&gt;不断进行操作，AOF对应的文件也越来越大。&lt;a href=&#34;&#34;&gt;redis&lt;/a&gt;提供了&lt;strong&gt;bgrewriteaof函数&lt;/strong&gt;，针对目前数据库中数据，在不读取原有AOF文件的基础上，重写了一个新的AOF文件，减少文件大小。&lt;/p&gt;
+&lt;h3 id=&#34;rdb与aof优缺点比较&#34;&gt;RDB与AOF优缺点比较&lt;/h3&gt;
+&lt;p&gt;AOF占用的文件体积比RDB大。一般来说利用AOF备份对系统的消耗比RDB低。对于备份时出现系统故障，RDB数据可能会全丢，但AOF只会损失一部分。RDB恢复速度比AOF低。&lt;/p&gt;
+&lt;h3 id=&#34;redis自动触发rdb机制&#34;&gt;Redis自动触发RDB机制&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;通过&lt;strong&gt;配置文件&lt;/strong&gt;，设置&lt;strong&gt;一定时间后自动执行RDB&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;如采用&lt;strong&gt;主从复制过程&lt;/strong&gt;，会&lt;strong&gt;自动执行RDB&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Redis执行shutdown时，在未开启AOF后会执行RDB&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;redis-事务&#34;&gt;Redis 事务&lt;/h2&gt;
+&lt;p&gt;Redis 可以通过 &lt;strong&gt;MULTI，EXEC，DISCARD 和 WATCH&lt;/strong&gt; 等命令来实现事务(transaction)功能。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;12&#34;&gt;&lt;img src=&#34;D:%5Cnote%5C%E9%9D%A2%E8%AF%95%5C%E9%9D%A2%E8%AF%95.assets%5Cimage-20230203111358081.png&#34; alt=&#34;image-20230203111358081&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;使⽤ &lt;strong&gt;MULTI&lt;/strong&gt;命令后可以输⼊多个命令。Redis不会⽴即执⾏这些命令，⽽是将它们放到队列，当调⽤了&lt;strong&gt;EXEC&lt;/strong&gt;命令将执⾏所有命令。&lt;/p&gt;
+&lt;p&gt;但是Redis 的事务和我们平时理解的关系型数据库的事务不同于我们知道事务具有四大特性&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Redis 是不⽀持 roll back 的因⽽不满⾜原⼦性的（⽽且不满⾜持久性）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Redis官⽹也解释了⾃⼰为啥不⽀持回滚。简单来说就是Redis开发者们觉得没必要⽀持回滚，这样更简单便捷并且性能更好。&lt;strong&gt;Redis开发者觉得即使命令执⾏错误也应该在开发过程中就被发现⽽不是⽣产过程中&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;你可以将Redis中的事务就理解为 ：&lt;strong&gt;Redis事务提供了⼀种将多个命令请求打包的功能 ，将这些任务放到队列里面就不会出现被打断的现象 并且任务会按照顺序执行&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;多数事务失败是由语法错误或者数据结构类型错误导致的，语法错误说明在命令入队前就进行检测的，而类型错误是在执行时检测的，Redis为提升性能而采用这种简单的事务，这是不同于关系型数据库的，特别要注意区分&lt;/p&gt;
+&lt;h2 id=&#34;缓存穿透&#34;&gt;缓存穿透&lt;/h2&gt;
+&lt;h3 id=&#34;什么是缓存穿透&#34;&gt;什么是缓存穿透&lt;/h3&gt;
+&lt;p&gt;缓存穿透说简单点就是⼤量请求的 key 根本&lt;strong&gt;不存在于缓存中&lt;/strong&gt;，导致请求直接到了数据库上，根本没有经过缓存这⼀层。举个例⼦：某个⿊客故意制造我们缓存中不存在的 key 发起⼤量请求，导致⼤量请求落到数据库。&lt;/p&gt;
+&lt;h3 id=&#34;缓冲穿透情况的处理流程&#34;&gt;缓冲穿透情况的处理流程&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;13&#34;&gt;&lt;img src=&#34;D:%5Cnote%5C%E9%9D%A2%E8%AF%95%5C%E9%9D%A2%E8%AF%95.assets%5Cimage-20230203111412798.png&#34; alt=&#34;image-20230203111412798&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;解决缓存穿透的方法&#34;&gt;解决缓存穿透的方法&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;解决方案：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;对参数进行校验。错误的参数直接过滤&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;缓存无效key&lt;/strong&gt;，&lt;strong&gt;并设置过期时间&lt;/strong&gt;。
+&lt;ul&gt;
+&lt;li&gt;缺点：会导致大量的无效缓存&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;布隆过滤器&lt;/strong&gt;：把所有可能存在的请求的值都存放在布隆过滤器中,当用户请求过来,先判断用户发来的请求的值是否存在于布隆过滤器中。不存在的话,直接返回请求参数错误信息给客户端,存在的话才会走下面的流程。
+&lt;ul&gt;
+&lt;li&gt;缺点：可能会导致误判&lt;/li&gt;
+&lt;li&gt;布隆过滤器通过哈希函数计算key的哈系值然后获取相应的位置。并把位置的值置为1。由于会存在哈希冲突，所以布隆过滤器说某个元素存在，小概率会误判。布隆过滤器说某个元素不在，那么这个元素一定不在。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;缓存雪崩&#34;&gt;缓存雪崩&lt;/h2&gt;
+&lt;h3 id=&#34;什么是缓存雪崩&#34;&gt;什么是缓存雪崩&lt;/h3&gt;
+&lt;p&gt;缓存在同⼀时间⼤⾯积的失效，后⾯的请求都直接落到了数据库上，造成数据库短时间内承受⼤量请求。 这就好⽐雪崩⼀样，摧枯拉朽之势数据库的压⼒可想⽽知，可能直接就被这么多请求弄宕机了。&lt;/p&gt;
+&lt;p&gt;举个例⼦：系统的缓存模块出了问题⽐如宕机导致不可⽤。造成系统的所有访问，都要⾛数据库。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;还有⼀种缓存雪崩的场景&lt;/strong&gt;是：有⼀些被⼤量访问数据（热点缓存）在某⼀时刻⼤⾯积失效，导致对应的请求直接落到了数据库上。 这样的情况，有下⾯⼏种解决办法：举个例⼦ ：秒杀开始 12 个⼩时之前，我们统⼀存放了⼀批商品到 Redis 中，设置的缓存过期时间也是 12 个⼩时，那么秒杀开始的时候，这些秒杀的商品的访问直接就失效了。导致的情况就是，相应的请求直接就落到了数据库上，就像雪崩⼀样可怕。&lt;/p&gt;
+&lt;h3 id=&#34;解决方法&#34;&gt;解决方法&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;解决方案：
+&lt;ul&gt;
+&lt;li&gt;加锁：如果缓存失效的话，则对操作进行加锁，然后获取数据。&lt;/li&gt;
+&lt;li&gt;Redis集群：使用redis集群并设置不同的失效时间比如随机设置缓存的失效时间。&lt;/li&gt;
+&lt;li&gt;随机指数退避算法：如果发现缓存失效，则随机一个很短的时间，并sleep，再次查询，如果失败再执行更新。&lt;/li&gt;
+&lt;li&gt;双缓存：我们有两个缓存，缓存A和缓存B。缓存A的失效时间为20分钟，缓存B不设失效时间。自己做缓存预热操作。然后细分以下几个小点：
+&lt;ul&gt;
+&lt;li&gt;从缓存A读数据，有则直接返回&lt;/li&gt;
+&lt;li&gt;A没有数据，直接从B读数据，直接返回，并且异步启动一个更新线程。&lt;/li&gt;
+&lt;li&gt;更新线程同时更新缓存A和缓存B。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;缓存击穿&#34;&gt;缓存击穿&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;key对应的数据存在，但在redis中过期，此时若有大量并发请求过来，这些请求发现缓存过期一般都会从后端DB加载数据并回设到缓存，这个时候大并发的请求可能会瞬间把后端DB压垮。&lt;/li&gt;
+&lt;li&gt;解决方案：
+&lt;ul&gt;
+&lt;li&gt;热点数据设置永不过期&lt;/li&gt;
+&lt;li&gt;加锁：如果缓存失效的话，则对操作进行加锁，然后获取数据。&lt;/li&gt;
+&lt;li&gt;Redis集群：使用redis集群并设置不同的失效时间比如随机设置缓存的失效时间。&lt;/li&gt;
+&lt;li&gt;随机指数退避算法：如果发现缓存失效，则随机一个很短的时间，并sleep，再次查询，如果失败再执行更新。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;如何保证缓存和数据库数据的一致性&#34;&gt;如何保证缓存和数据库数据的⼀致性&lt;/h2&gt;
+&lt;p&gt;https://blog.csdn.net/v123411739/article/details/124237900&lt;/p&gt;
+&lt;p&gt;https://blog.csdn.net/lans_g/article/details/124652284&lt;/p&gt;
+&lt;h2 id=&#34;redis集群策略&#34;&gt;Redis集群策略&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;主从复制&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;主数据库可以进行读写操作&lt;/strong&gt;，当读写操作导致数据变化时会自动将数据同步给从数据库&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;slave从数据库一般都是只读&lt;/strong&gt;的，并且接收主数据库同步过来的数据&lt;/li&gt;
+&lt;li&gt;一个master可以拥有多个slave，但是一个slave只能对应一个master&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;哨兵模式&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;监控主从数据库是否正常运行&lt;/li&gt;
+&lt;li&gt;master出现故障时，自动将slave转化为master&lt;/li&gt;
+&lt;li&gt;多哨兵配置的时候，哨兵之间也会自动监控&lt;/li&gt;
+&lt;li&gt;多个哨兵可以监控同一个redis&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;集群模式&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Redis的集群部署可以将数据划分为多个子集存在不同的节点上，每个节点负责自己整个数据的一部分。&lt;/li&gt;
+&lt;li&gt;Redis Cluster采用哈希分区规则中的虚拟槽分区。虚拟槽分区巧妙地使用了哈希空间，使用分散度良好的哈希函数把所有的数据映射到一个固定范围内的整数集合，整数定义为槽（slot）。Redis的槽的范围是（0 - 16383，2^14-1）。槽是集群内数据管理和迁移的基本单位。所有的键根据哈希函数映射到哈希槽，每个节点负责维护一部分的槽和其映射的键值数据。&lt;/li&gt;
+&lt;li&gt;计算规则为：key = CRC16 % 16384&lt;/li&gt;
+&lt;li&gt;哈希槽让在集群中添加和移除节点非常容易。例如，如果我想添加一个新节点 D ，我需要从节点 A 、B、C 移动一些哈希槽到节点 D。同样地，如果我想从集群中移除节点 A ，我只需要移动 A 的哈希槽到 B 和 C。当节点 A 变成空的以后，我就可以从集群中彻底删除它。因为从一个节点向另一个节点移动哈希槽并不需要停止操作，所以添加和移除节点，或者改变节点持有的哈希槽百分比，都不需要任何停机时间（downtime）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;主从同步&#34;&gt;主从同步&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;全量同步：
+&lt;ul&gt;
+&lt;li&gt;流程：
+&lt;ul&gt;
+&lt;li&gt;从服务器连接主服务器，发送SYNC命令&lt;/li&gt;
+&lt;li&gt;主服务器收到SYNC命令，开始执行BGSAVE命令，生成RDB文件，并使用缓冲区记录备份过程中执行的所有命令。&lt;/li&gt;
+&lt;li&gt;主服务器BGSAVE完成后，向所有从服务器发送快照文件，并在发送期间继续记录被执行的写命令。&lt;/li&gt;
+&lt;li&gt;从服务器收到快照文件后丢弃所有旧数据，载入收到的快照&lt;/li&gt;
+&lt;li&gt;主服务器快照发送完毕后向从服务器发送写命令，将BGSAVE期间收到的命令发送给从服务器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;增量同步：
+&lt;ul&gt;
+&lt;li&gt;主服务器执行一个写命令，并且向从服务器发送相同的写命令，从服务器收到后就会执行收到的写命令&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;redis高并发和快速的原因&#34;&gt;Redis高并发和快速的原因&lt;/h2&gt;
+&lt;p&gt;参考https://www.cnblogs.com/angelyan/p/10450885.html&lt;/p&gt;
+&lt;p&gt;1.redis是基于&lt;strong&gt;内存&lt;/strong&gt;的，内存的读写速度非常快；&lt;/p&gt;
+&lt;p&gt;2.redis是&lt;strong&gt;单线程&lt;/strong&gt;的，省去了很多上下文切换线程的时间；&lt;/p&gt;
+&lt;p&gt;3.redis使用&lt;strong&gt;多路复用技术，可以处理并发的连接&lt;/strong&gt;。非阻塞IO 内部实现采用epoll，采用了epoll+自己实现的简单的事件框架。epoll中的读、写、关闭、连接都转化成了事件，然后利用epoll的多路复用特性，绝不在io上浪费一点时间。&lt;/p&gt;
+&lt;h2 id=&#34;什么情况下使用redis-2&#34;&gt;什么情况下使用&lt;a href=&#34;https://www.nowcoder.com/jump/super-jump/word?word=redis&#34;&gt;redis&lt;/a&gt;&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;针对热点数据进行缓存&lt;/li&gt;
+&lt;li&gt;对于特定限时数据的存放&lt;/li&gt;
+&lt;li&gt;针对带热点权值数据的&lt;a href=&#34;https://www.nowcoder.com/jump/super-jump/word?word=%E6%8E%92%E5%BA%8F&#34;&gt;排序&lt;/a&gt;list&lt;/li&gt;
+&lt;li&gt;分布式锁&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;什么是缓存与数据库双写一致问题&#34;&gt;什么是缓存与数据库双写一致问题？&lt;/h2&gt;
+&lt;p&gt;如果仅仅查询的话，缓存的数据和数据库的数据是没问题的。但是，当我们要&lt;strong&gt;更新&lt;/strong&gt;时候呢？各种情况很可能就&lt;strong&gt;造成数据库和缓存的数据不一致&lt;/strong&gt;了。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;这里不一致指的是：&lt;strong&gt;数据库的数据跟缓存的数据不一致&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qpic.cn/mmbiz_png/2BGWl1qPxib2l33BGMSoKYvGQ9LHw02ZOqNExlaAAtCUfWtuYW3qEPnv3wOs7Raz11wy7jlGhu9HJzplBaia72pw/640?wx_fmt=png&amp;amp;tp=webp&amp;amp;wxfrom=5&amp;amp;wx_lazy=1&amp;amp;wx_co=1&#34; alt=&#34;图片&#34; loading=&#34;lazy&#34;&gt;数据库和缓存的数据不一致&lt;/p&gt;
+&lt;p&gt;从理论上说，只要我们设置了&lt;strong&gt;键的过期时间&lt;/strong&gt;，我们就能保证缓存和数据库的数据&lt;strong&gt;最终是一致&lt;/strong&gt;的。因为只要缓存数据过期了，就会被删除。随后读的时候，因为缓存里没有，就可以查数据库的数据，然后将数据库查出来的数据写入到缓存中。&lt;/p&gt;
+&lt;p&gt;除了设置过期时间，我们还需要做更多的措施来&lt;strong&gt;尽量避免&lt;/strong&gt;数据库与缓存处于不一致的情况发生。&lt;/p&gt;
+&lt;h2 id=&#34;redis怎么保证和mysql数据一致&#34;&gt;Redis怎么保证和Mysql数据一致&lt;/h2&gt;
+&lt;p&gt;参考 https://www.cnblogs.com/lingqin/p/10279393.html&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1.第一种方案：采用延时双删策略&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在写库前后都进行redis.del(key)操作，并且设定合理的超时时间。&lt;/p&gt;
+&lt;p&gt;伪代码如下&lt;/p&gt;
+&lt;p&gt;public &lt;a href=&#34;https://mb.yidianzixun.com/channel/w/void&#34;&gt;void&lt;/a&gt; write(String key,&lt;a href=&#34;https://mb.yidianzixun.com/channel/w/object&#34;&gt;Object&lt;/a&gt; data){ redis.delKey(key); db.updateData(data); Thread.sleep(500); redis.delKey(key); }&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2.具体的步骤就是：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;1）先删除缓存&lt;/p&gt;
+&lt;p&gt;2）再写数据库&lt;/p&gt;
+&lt;p&gt;3）休眠500毫秒&lt;/p&gt;
+&lt;p&gt;4）再次删除缓存&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;那么，这个500毫秒怎么确定的，具体该休眠多久呢？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;需要评估自己的项目的读数据业务逻辑的耗时。这么做的目的，就是确保读请求结束，写请求可以删除读请求造成的缓存脏数据。&lt;/p&gt;
+&lt;p&gt;当然这种策略还要考虑redis和数据库主从同步的耗时。最后的的写数据的休眠时间：则在读数据业务逻辑的耗时基础上，加几百ms即可。比如：休眠1秒。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3.设置缓存过期时间&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;从理论上来说，给缓存设置过期时间，是保证最终一致性的解决方案。所有的写操作以数据库为准，只要到达缓存过期时间，则后面的读请求自然会从数据库中读取新值然后回填缓存。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4.该方案的弊端&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;结合双删策略+缓存超时设置，这样最差的情况就是在超时时间内数据存在不一致，而且又增加了写请求的耗时。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2、第二种方案：异步更新缓存(基于订阅binlog的同步机制)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1.技术整体思路：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;[MySQL binlog](https://mb.yidianzixun.com/channel/w/mysql binlog)增量订阅消费+消息队列+增量数据更新到redis&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1）读Redis&lt;/strong&gt;：热数据基本都在Redis&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2）写MySQL&lt;/strong&gt;:增删改都是操作MySQL&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3）更新Redis数据&lt;/strong&gt;：MySQ的数据操作binlog，来更新到Redis&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2.Redis更新&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1）数据操作主要分为两大块：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一个是全量(将全部数据一次写入到redis)&lt;/li&gt;
+&lt;li&gt;一个是增量（实时更新）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这里说的是增量,指的是mysql的update、insert、delate变更数据。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2）读取binlog后分析 ，利用消息队列,推送更新各台的redis缓存数据。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这样一旦MySQL中产生了新的写入、更新、删除等操作，就可以把binlog相关的消息推送至Redis，Redis再根据binlog中的记录，对Redis进行更新。&lt;/p&gt;
+&lt;p&gt;其实这种机制，很类似MySQL的主从备份机制，因为MySQL的主备也是通过binlog来实现的数据一致性。&lt;/p&gt;
+&lt;p&gt;这里可以结合使用canal(阿里的一款开源框架)，通过该框架可以对MySQL的binlog进行订阅，而canal正是模仿了&lt;a href=&#34;https://mb.yidianzixun.com/channel/w/mysql&#34;&gt;mysql&lt;/a&gt;的slave&lt;a href=&#34;https://mb.yidianzixun.com/channel/w/%E6%95%B0%E6%8D%AE%E5%BA%93&#34;&gt;数据库&lt;/a&gt;的备份请求，使得Redis的数据更新达到了相同的效果。&lt;/p&gt;
+&lt;p&gt;当然，这里的消息推送工具你也可以采用别的第三方：&lt;a href=&#34;https://mb.yidianzixun.com/channel/w/kafka&#34;&gt;kafka&lt;/a&gt;、&lt;a href=&#34;https://mb.yidianzixun.com/channel/w/rabbitmq&#34;&gt;rabbitMQ&lt;/a&gt;等来实现推送更新&lt;a href=&#34;https://mb.yidianzixun.com/channel/w/redis&#34;&gt;Redis&lt;/a&gt;&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;14&#34;&gt;&lt;img src=&#34;https://img-blog.csdnimg.cn/img_convert/5185e1f165b06e570dcffe57c993a6d3.png&#34; alt=&#34;image-20220508181331250&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;save命令&#34;&gt;save命令&lt;/h2&gt;
+&lt;p&gt;save命令是&lt;a href=&#34;&#34;&gt;redis&lt;/a&gt;手动触发RDB过程的命令。使用该命令后**，服务器阻塞，直到RDB过程完成后终止。该过程占用内存较多**。&lt;/p&gt;
+&lt;h2 id=&#34;bgsave命令&#34;&gt;bgsave命令&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;bgsave命令不阻塞主进程&lt;/strong&gt;（严格意义上也不是完全不阻塞，详看下面过程），该命令fork一个子进程用于执行RDB过程。其具体过程为：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;判断此时有没有子进程用于RDB，有的话直接返回。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;&#34;&gt;redis&lt;/a&gt;进行fork子进程过程，此时父进程处于阻塞状态。&lt;/li&gt;
+&lt;li&gt;子进程创建RDB文件，完成后返回给父进程 ·&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;如何实现分布式锁&#34;&gt;如何实现分布式锁&lt;/h2&gt;
+&lt;p&gt;https://www.cnblogs.com/javazhiyin/p/11737403.html&lt;/p&gt;
+&lt;h2 id=&#34;redis常用命令&#34;&gt;Redis常用命令&lt;/h2&gt;
+&lt;p&gt;https://blog.csdn.net/u010191034/article/details/83383448&lt;/p&gt;
+&lt;h2 id=&#34;redis设置过期时间&#34;&gt;Redis设置过期时间&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;EXPIRE&lt;/strong&gt; 接口定义：EXPIRE key &amp;quot;seconds&amp;quot;&lt;br&gt;
+　　　　接口描述：设置一个key在当前时间&amp;quot;seconds&amp;quot;(秒)之后过期。返回1代表设置成功，返回0代表key不存在或者无法设置过期时间&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;PEXPIRE&lt;/strong&gt; 接口定义：PEXPIRE key &amp;quot;milliseconds&amp;quot;&lt;br&gt;
+　　　　接口描述：设置一个key在当前时间&amp;quot;milliseconds&amp;quot;(毫秒)之后过期。返回1代表设置成功，返回0代表key不存在或者无法设置过期时间。&lt;/p&gt;
+&lt;p&gt;参考&lt;/p&gt;
+&lt;h2 id=&#34;redis的使用注意点总结&#34;&gt;redis的使用注意点总结&lt;/h2&gt;
+&lt;p&gt;https://blog.csdn.net/WR0309/article/details/122819361&lt;/p&gt;
+&lt;h3 id=&#34;如何使用redis更节省内存&#34;&gt;如何使用redis更节省内存&lt;/h3&gt;
+&lt;p&gt;redis之所以快是因为它是一款内存数据库，但是一台机器内存都是有限且比较珍贵的资源，使用redis的时候需要合理的规划对应的内存优化策略。&lt;/p&gt;
+&lt;p&gt;1、控制key的长度，当key的量级很大的时候，合理的控制key的长度可以节省很大的空间。&lt;/p&gt;
+&lt;p&gt;2、避免存储bigkey，除了控制key的长度，value的大小也要关注，string的大小控制在10kb以下，list、hash、set、zset也要控制。&lt;/p&gt;
+&lt;p&gt;3、合理的选择数据类型&lt;/p&gt;
+&lt;p&gt;String、Set 在存储 int 数据时，会采用整数编码存储。Hash、ZSet 在元素数量比较少时（可配置），会采用压缩列表（ziplist）存储，在存储比较多的数据时，才会转换为哈希表和跳表。&lt;/p&gt;
+&lt;p&gt;String、Set：尽可能存储 int 类型数据&lt;br&gt;
+Hash、ZSet：存储的元素数量控制在转换阈值之下，以压缩列表存储，节约内存&lt;br&gt;
+4、把redis尽可能的当成缓存使用&lt;/p&gt;
+&lt;p&gt;5、实例设置maxmemory+淘汰策略&lt;/p&gt;
+&lt;p&gt;虽然使用redis的时候会设置key的过期时间，但是如果业务写入量比较大的话，那么短期内redis的内存依旧会快速增加。需要提前预估业务数据量，然后给实例设置maxmemory控制实例的内存上限，然后需要设置内存过期策略。&lt;/p&gt;
+&lt;p&gt;volatile-lru / allkeys-lru：优先保留最近访问过的数据&lt;br&gt;
+volatile-lfu / allkeys-lfu：优先保留访问次数最频繁的数据（4.0+版本支持）&lt;br&gt;
+volatile-ttl ：优先淘汰即将过期的数据&lt;br&gt;
+volatile-random / allkeys-random：随机淘汰数据&lt;br&gt;
+6、数据压缩后写入redis&lt;/p&gt;
+&lt;h3 id=&#34;如何持续的发挥redis的高性能&#34;&gt;如何持续的发挥redis的高性能&lt;/h3&gt;
+&lt;p&gt;1、避免存储bigkey&lt;/p&gt;
+&lt;p&gt;redis是单线程的，当写入一个bigkey的时候，redis会用更多的时间消耗在内存分配上，同样删除的时候也会比较耗时，另外就是客户端在读取bigkey的时候，在网络数据传输上比较耗时。&lt;/p&gt;
+&lt;p&gt;2、开启lazy-free机制&lt;/p&gt;
+&lt;p&gt;如果无法避免的使用bigkey的时候，可以开启lazy-free机制，当删除bigkey的时候，释放内存的操作会交给后台线程执行，这样可以最大程度上避免对主线程的影响。&lt;/p&gt;
+&lt;p&gt;3、不适用复杂度过高的命令&lt;/p&gt;
+&lt;p&gt;4、执行O（N）级别的命令的时候，要关注以下N的大小&lt;/p&gt;
+&lt;p&gt;对于容器类型（List/Hash/Set/ZSet），在元素数量未知的情况下，一定不要无脑执行 LRANGE key 0 -1 / HGETALL / SMEMBERS / ZRANGE key 0 -1&lt;/p&gt;
+&lt;p&gt;在查询数据时，你要遵循以下原则：&lt;/p&gt;
+&lt;p&gt;先查询数据元素的数量（LLEN/HLEN/SCARD/ZCARD）&lt;br&gt;
+元素数量较少，可一次性查询全量数据&lt;br&gt;
+元素数量非常多，分批查询数据（LRANGE/HASCAN/SSCAN/ZSCAN）&lt;br&gt;
+5、关注del的时间复杂度&lt;/p&gt;
+&lt;p&gt;当你删除的是一个 String 类型 key 时，时间复杂度确实是 O(1)。&lt;/p&gt;
+&lt;p&gt;但当你要删除的 key 是 List/Hash/Set/ZSet 类型，它的复杂度其实为 O(N)，N 代表元素个数。&lt;/p&gt;
+&lt;p&gt;也就是说，删除一个 key，其元素数量越多，执行 DEL 也就越慢！&lt;/p&gt;
+&lt;p&gt;List类型：执行多次 LPOP/RPOP，直到所有元素都删除完成&lt;br&gt;
+Hash/Set/ZSet类型：先执行 HSCAN/SSCAN/SCAN 查询元素，再执行 HDEL/SREM/ZREM 依次删除每个元素&lt;br&gt;
+6、批量的命令代替单个命令&lt;/p&gt;
+&lt;p&gt;String / Hash 使用 MGET/MSET 替代 GET/SET，HMGET/HMSET 替代 HGET/HSET&lt;br&gt;
+其它数据类型使用 Pipeline，打包一次性发送多个命令到服务端执行&lt;br&gt;
+7、避免集中过期key&lt;/p&gt;
+&lt;p&gt;如果业务中有大量的key集中过期，这个会阻塞主线程，可以在设置过期时间的时候增加一个随机时间，将过期时间打散。&lt;/p&gt;
+&lt;p&gt;8、使用长链接操作redis，合理配置连接池&lt;/p&gt;
+&lt;p&gt;尽量避免短链接，因为每次都是tcp，三次握手和四次挥手，这个过程会增加操作消耗。&lt;/p&gt;
+&lt;p&gt;9、只使用db0&lt;/p&gt;
+&lt;p&gt;在一个连接上操作多个 db 数据时，每次都需要先执行 SELECT，这会给 Redis 带来额外的压力&lt;br&gt;
+使用多个 db 的目的是，按不同业务线存储数据，那为何不拆分多个实例存储呢？拆分多个实例部署，多个业务线不会互相影响，还能提高 Redis 的访问性能&lt;br&gt;
+Redis Cluster 只支持 db0，如果后期你想要迁移到 Redis Cluster，迁移成本高&lt;br&gt;
+10、使用读写分离+分片集群&lt;/p&gt;
+&lt;p&gt;如果读业务很大，可以采用部署多个从库的方式，实现读写分离，让从库分担读压力，提升性能。&lt;/p&gt;
+&lt;p&gt;如果写业务的请求很大，单个redis的实例无法支持大的流量，可以使用分片集群，分担写压力。&lt;/p&gt;
+&lt;p&gt;11、不开启AOF或AOF配置成每秒刷盘&lt;/p&gt;
+&lt;p&gt;对于丢失数据不敏感的业务，不建议开启AOF，如果确实需要开启，可以配置成 appendfsync everysec，将持久化放在后台线程中。&lt;/p&gt;
+&lt;p&gt;12、使用物理机部署redis&lt;/p&gt;
+&lt;p&gt;redis使用rdb持久化的时候，采用子进程的方式，虚拟机支持fork比较耗时。&lt;/p&gt;
+&lt;p&gt;13、关闭操作系统内存大页机制&lt;/p&gt;
+&lt;h3 id=&#34;如何保证redis的高可用&#34;&gt;如何保证redis的高可用&lt;/h3&gt;
+&lt;p&gt;redis可靠性也是不难，难点是持续的稳定。&lt;/p&gt;
+&lt;p&gt;1、按照业务线进行部署实例&lt;/p&gt;
+&lt;p&gt;不同的业务采用不同的redis的实例，有问题的时候互不干扰。&lt;/p&gt;
+&lt;p&gt;2、部署主从集群&lt;/p&gt;
+&lt;p&gt;主库和从库也最好放在不同的机器上。&lt;/p&gt;
+&lt;p&gt;3、合理的设置主从复制参数&lt;/p&gt;
+&lt;p&gt;设置合理的 repl-backlog 参数：过小的 repl-backlog 在写流量比较大的场景下，主从复制中断会引发全量复制数据的风险&lt;br&gt;
+设置合理的 slave client-output-buffer-limit：当从库复制发生问题时，过小的 buffer 会导致从库缓冲区溢出，从而导致复制中断&lt;br&gt;
+4、部署哨兵集群，实现故障自动转移&lt;/p&gt;
+&lt;p&gt;只部署了主从节点，但故障发生时是无法自动切换的，所以，你还需要部署哨兵集群，实现故障的「自动切换」。&lt;/p&gt;
+&lt;p&gt;而且，多个哨兵节点需要分布在不同机器上，实例为奇数个，防止哨兵选举失败，影响切换时间。&lt;/p&gt;
+&lt;p&gt;日常运维redis需要注意什么&lt;br&gt;
+1、禁止使用 KEYS/FLUSHALL/FLUSHDB 命令，会阻塞主线程，影响线上业务&lt;/p&gt;
+&lt;p&gt;SCAN 替换 KEYS&lt;br&gt;
+4.0+版本可使用 FLUSHALL/FLUSHDB ASYNC，清空数据的操作放在后台线程执行&lt;br&gt;
+2、扫描线上实例时，设置休眠时间&lt;/p&gt;
+&lt;p&gt;不管你是使用 SCAN 扫描线上实例，还是对实例做 bigkey 统计分析，我建议你在扫描时一定记得设置休眠时间。&lt;/p&gt;
+&lt;p&gt;防止在扫描过程中，实例 OPS 过高对 Redis 产生性能抖动。&lt;/p&gt;
+&lt;p&gt;3、慎用monitor命令&lt;/p&gt;
+&lt;p&gt;4、从库必现设置成slave-read-only，避免从库写入导致数据不一致。&lt;/p&gt;
+&lt;p&gt;5、合理配置 timeout 和 tcp-keepalive 参数，&lt;/p&gt;
+&lt;p&gt;如果因为网络原因，导致你的大量客户端连接与 Redis 意外中断，恰好你的 Redis 配置的 maxclients 参数比较小，此时有可能导致客户端无法与服务端建立新的连接（服务端认为超过了 maxclients）。&lt;/p&gt;
+&lt;p&gt;造成这个问题原因在于，客户端与服务端每建立一个连接，Redis 都会给这个客户端分配了一个 client fd。&lt;/p&gt;
+&lt;p&gt;当客户端与服务端发生网络问题，服务端不会立即释放client fd。&lt;/p&gt;
+&lt;p&gt;不要配置过高的 timeout：让服务端尽快把无效的 client fd 清理掉&lt;br&gt;
+Redis 开启 tcp-keepalive：这样服务端会定时给客户端发送 TCP 心跳包，检测连接连通性，当网络异常时，可以尽快清理僵尸 client fd&lt;br&gt;
+6、调整maxmemory时，注意主从库的调整顺序&lt;/p&gt;
+&lt;p&gt;Redis 5.0 以下版本存在这样一个问题：从库内存如果超过了 maxmemory，也会触发数据淘汰。&lt;/p&gt;
+&lt;p&gt;在某些场景下，从库是可能优先主库达到 maxmemory 的（例如在从库执行 MONITOR 命令，输出缓冲区占用大量内存），那么此时从库开始淘汰数据，主从库就会产生不一致。&lt;/p&gt;
+&lt;p&gt;要想避免此问题，在调整 maxmemory 时，一定要注意主从库的修改顺序：&lt;/p&gt;
+&lt;p&gt;调大 maxmemory：先修改从库，再修改主库&lt;br&gt;
+调小 maxmemory：先修改主库，再修改从库&lt;br&gt;
+直到 Redis 5.0，Redis 才增加了一个配置 replica-ignore-maxmemory，默认从库超过 maxmemory 不会淘汰数据，才解决了此问题。&lt;/p&gt;
+&lt;h3 id=&#34;redis安全问题&#34;&gt;redis安全问题&lt;/h3&gt;
+&lt;p&gt;不要把 Redis 部署在公网可访问的服务器上&lt;br&gt;
+部署时不使用默认端口 6379&lt;br&gt;
+以普通用户启动 Redis 进程，禁止 root 用户启动&lt;br&gt;
+限制 Redis 配置文件的目录访问权限&lt;br&gt;
+推荐开启密码认证&lt;br&gt;
+禁用/重命名危险命令（KEYS/FLUSHALL/FLUSHDB/CONFIG/EVAL）&lt;/p&gt;
+">Redis</a>
+      </div>
+      
+      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://lindamao.cn/post/rabbitmq/"" data-c="
-          &lt;h1 id=&#34;一-中间件&#34;&gt;一、中间件&lt;/h1&gt;
-&lt;h2 id=&#34;1-什么是中间件&#34;&gt;1. 什么是中间件&lt;/h2&gt;
+          &lt;h2 id=&#34;1-什么是中间件&#34;&gt;1. 什么是中间件&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;什么是中间件&lt;/p&gt;
 &lt;/blockquote&gt;
