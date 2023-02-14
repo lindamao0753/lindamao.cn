@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://lindamao.cn</id>
     <title>lindamao</title>
-    <updated>2023-02-14T07:39:05.648Z</updated>
+    <updated>2023-02-14T08:41:58.863Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://lindamao.cn"/>
     <link rel="self" href="https://lindamao.cn/atom.xml"/>
@@ -21,10 +21,10 @@
 第3步：选第二种输入法，可以“跳过”<br>
 第4步：联网界面：按下键盘的Shift+F10或Fn+Shift+F10<br>
 （能插网线的电脑先不插网线，过程可能会自动重启电脑）<br>
-会弹出管理员框框，用键盘输入：taskmgr  再按回车键（Enter）<br>
+会弹出管理员框，用键盘输入：taskmgr  再按回车键（Enter）<br>
 此时会出现任务管理器 点击详细信息<br>
 找到网络连接流，鼠标右键点击——结束任务，即可跳过联网<br>
-到这一步 已经跳过联网了 后面的步骤根据自己狄电脑的需求进行修改 验完机可以再联网</p>
+到这一步 已经跳过联网了 后面的步骤根据自己的电脑的需求进行修改 验完机可以再联网</p>
 ]]></content>
     </entry>
     <entry>
