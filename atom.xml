@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://lindamao.cn</id>
     <title>lindamao</title>
-    <updated>2023-02-14T11:45:43.008Z</updated>
+    <updated>2023-02-14T12:35:33.517Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://lindamao.cn"/>
     <link rel="self" href="https://lindamao.cn/atom.xml"/>
@@ -25,6 +25,65 @@
 此时会出现任务管理器 点击详细信息<br>
 找到网络连接流，鼠标右键点击——结束任务，即可跳过联网<br>
 到这一步 已经跳过联网了 后面的步骤根据自己的电脑的需求进行修改 验完机可以再联网</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[消息中间件]]></title>
+        <id>https://lindamao.cn/post/xiao-xi-zhong-jian-jian/</id>
+        <link href="https://lindamao.cn/post/xiao-xi-zhong-jian-jian/">
+        </link>
+        <updated>2022-09-23T12:18:36.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="消息中间件">消息中间件</h1>
+<p><strong>定义</strong><br>
+消息中间件属于分布式系统中一个字系统，关注于数据的发送和接收，利用高效可靠的异步信息传递机制对分布式系统中的其余各个子系统进行集成。</p>
+<figure data-type="image" tabindex="1"><img src="https://img-blog.csdnimg.cn/20210624200708280.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzU2MTA2MA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" loading="lazy"></figure>
+<p><strong>为什么要用消息中间件</strong><br>
+假设一个电商交易的场景，用户下单之后调用库存系统减库存，然后需要调用物流系统进行发货，如果交易、库存、物流是属于一个系统的，那么就是接口调用。但是随着系统的发展，各个模块越来越庞大、业务逻辑越来越复杂，必然是要做服务化和业务拆分的。这个时候就需要考虑这些系统之间如何交互，第一反应就是RPC（Remote Procedure Call）。系统继续发展，可能一笔交易后续需要调用几十个接口来执行业务，比如还有风控系统、短信服务等等。这个时候就需要消息中间件登场来解决问题了。</p>
+<p>所以消息中间件主要解决分布式系统之间信息的传递，同时为分布式系统中其他子系统提供了伸缩性和拓展性。为系统带来了：<br>
+低耦合，不管是程序还是模块之间，使用信息中间件进行间接通信。</p>
+<p>异步通信能力，使得子系统之间得以充分执行之间的逻辑而无需等待。</p>
+<p>缓冲能力：消息中间件像是一个巨大的蓄水池，将高峰期大量的请求存储下来，慢慢交给后台进行处理，对于秒杀业务来说尤为重要。</p>
+<p><strong>和RPC有何区别？</strong><br>
+RPC和消息中间件的场景的差异很大程度上在于”依赖性“和”同步性“。</p>
+<p>消息中间件出现以后对于交易场景可能是调用库存中心等强依赖系统执行业务，之后发布一条消息（这条消息存储于消息中间件中）。像是短信通知服务、数据统计服务等等都是依赖于消息中间件去消费这条消息来完成自己的业务逻辑。</p>
+<p>RPC方式是典型的同步方式，让远程调用像本地调用。消息中间件方式属于异步方式。消息队列是系统级、模块级的通信。RPC是对象级、函数级通信。</p>
+<p><strong>消息中间件使用场景</strong><br>
+<strong>异步处理</strong><br>
+场景说明：用户注册后，需要发注册邮件和注册短信。传统的做法有两种：<br>
+（1）串行方式：将注册信息写入数据库成功后，发送注册邮件，再发送注册短信。以上三个任务全部完成后，返回给客户端。</p>
+<figure data-type="image" tabindex="2"><img src="https://img-blog.csdnimg.cn/20210624202633404.png" alt="在这里插入图片描述" loading="lazy"></figure>
+<p>（2）并行方式：将注册信息写入数据库成功后，发送注册邮件的同时，发送注册短信。以上三个任务完成后，返回给客户端。与串行的差别是，并行的方式可以提高处理的时间。</p>
+<figure data-type="image" tabindex="3"><img src="https://img-blog.csdnimg.cn/20210624202908586.png" alt="在这里插入图片描述" loading="lazy"></figure>
+<p>假设三个业务节点每个使用50毫秒钟，不考虑网络等其他开销，则串行方式的时间是150毫秒，并行的时间可能是100毫秒。</p>
+<p>小结：如以上案例描述，传统的方式系统的性能（并发量，吞吐量，响应时间）会有瓶颈。如何解决这个问题呢？<br>
+引入消息队列，将不是必须的业务逻辑，异步处理。</p>
+<figure data-type="image" tabindex="4"><img src="https://img-blog.csdnimg.cn/20210624203003151.png" alt="img" loading="lazy"></figure>
+<p><strong>应用解耦</strong><br>
+场景说明：用户下单后，订单系统需要通知库存系统。传统的做法是订单系统调用库存系统的接口。<br>
+传统模式的缺点：<br>
+（1）假如库存系统无法访问，则订单减库存将失败，从而导致订单失败。<br>
+（2）订单系统与库存系统耦合。</p>
+<figure data-type="image" tabindex="5"><img src="https://img-blog.csdnimg.cn/20210624203743355.png" alt="在这里插入图片描述" loading="lazy"></figure>
+<p>如何解决以上问题呢？引入应用消息队列后的方案<br>
+订单系统：用户下单后，订单系统完成持久化处理，将消息写入消息队列，返回用户订单下单成功。<br>
+库存系统：订阅下单的消息，采用拉/推的方式，获取下单信息，库存系统根据下单信息，进行库存操作。</p>
+<figure data-type="image" tabindex="6"><img src="https://img-blog.csdnimg.cn/20210624204123569.png" alt="在这里插入图片描述" loading="lazy"></figure>
+<p>假如：在下单时库存系统不能正常使用。也不影响正常下单，因为下单后，订单系统写入消息队列就不再关心其他的后续操作了。实现订单系统与库存系统的应用解耦。</p>
+<p><strong>流量削峰</strong><br>
+流量削峰也是消息队列中的常用场景，一般在秒杀或团抢活动中使用广泛。<br>
+应用场景：秒杀活动，一般会因为流量过大，导致流量暴增，应用挂掉。为解决这个问题，一般需要在应用前端加入消息队列：可以控制活动的人数；可以缓解短时间内高流量压垮应用。</p>
+<figure data-type="image" tabindex="7"><img src="https://img-blog.csdnimg.cn/20210624205023329.png" alt="在这里插入图片描述" loading="lazy"></figure>
+<p>用户的请求，服务器接收后，首先写入消息队列。假如消息队列长度超过最大数量，则直接抛弃用户请求或跳转到错误页面；秒杀业务根据消息队列中的请求信息，再做后续处理。</p>
+<p><strong>日志处理</strong><br>
+日志处理是指将消息队列用在日志处理中，比如Kafka的应用，解决大量日志传输的问题。架构简化如下：</p>
+<figure data-type="image" tabindex="8"><img src="https://img-blog.csdnimg.cn/20210624205131419.png" alt="在这里插入图片描述" loading="lazy"></figure>
+<p>日志采集客户端，负责日志数据采集，定时写入Kafka队列；<br>
+Kafka消息队列：负责日志数据的接收，存储和转发；<br>
+日志处理应用：订阅并消费kafka队列中的日志数据。</p>
+<p><strong>信息通讯</strong><br>
+消息通讯是指，消息队列一般都内置了高效的通信机制，因此也可以用在纯的消息通讯。比如实现点对点消息队列，或者聊天室等。</p>
+<p>点对点通讯：客户端A和客户端B使用同一队列，进行消息通讯。<br>
+聊天室通讯：客户端A，客户端B，客户端N订阅同一主题，进行消息发布和接收。实现类似聊天室效果。</p>
 ]]></content>
     </entry>
     <entry>
@@ -251,6 +310,56 @@ git merge -
 ]]></content>
     </entry>
     <entry>
+        <title type="html"><![CDATA[RPC]]></title>
+        <id>https://lindamao.cn/post/rpc/</id>
+        <link href="https://lindamao.cn/post/rpc/">
+        </link>
+        <updated>2022-06-09T12:18:47.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="什么是-rpc">什么是 RPC？</h2>
+<p>RPC 的全称是 Remote Procedure Call，即远程过程调用。简单解读字面上的意思，远程肯定是指要跨机器而非本机，所以需要用到网络编程才能实现，但是不是只要通过网络通信访问到另一台机器的应用程序，就可以称之为 RPC 调用了？显然并不够。</p>
+<p><strong>我理解的 RPC 是帮助我们屏蔽网络编程细节，实现调用远程方法就跟调用本地一样的体验</strong>，我们不需要因为这个方法是远程调用就需要编写很多与业务无关的代码。</p>
+<p>这就好比建在小河上的桥一样连接着河的两岸，如果没有小桥，我们需要通过划船、绕道等其他方式才能到达对面，但是有了小桥之后，我们就能像在路面上一样行走到达对面，并且跟在路面上行走的体验没有区别。所以我认为，RPC 的作用就是体现在这样两个方面：</p>
+<ul>
+<li>屏蔽远程调用跟本地调用的区别，让我们感觉就是调用项目内的方法；</li>
+<li>隐藏底层网络通信的复杂性，让我们更专注于业务逻辑。</li>
+</ul>
+<h2 id="rpc-通信流程">RPC 通信流程</h2>
+<p>理解了什么是 RPC，接下来我们讲下 RPC 框架的通信流程，方便我们进一步理解 RPC。</p>
+<p>如前面所讲，RPC 能帮助我们的应用透明地完成远程调用，发起调用请求的那一方叫做调用方，被调用的一方叫做服务提供方。为了实现这个的目标，我们就需要在 RPC 框架里面对整个通信细节进行封装，那一个完整的RPC 会涉及到哪些步骤呢？</p>
+<p>我们已经知道 RPC 是一个远程调用，那肯定就需要通过网络来传输数据，并且 RPC 常用于业务系统之间的数据交互，需要保证其可靠性，所以 <strong>RPC 一般默认采用 TCP 来传输</strong>。我们常用的 HTTP 协议也是建立在 TCP 之上的。</p>
+<p>网络传输的数据必须是二进制数据，但调用方请求的出入参数都是对象。对象是肯定没法直接在网络中传输的，需要提前把它转成可传输的二进制，并且要求转换算法是可逆的，这个过程我们一般叫做“序列化”。</p>
+<p>调用方持续地把请求参数序列化成二进制后，经过 TCP 传输给了服务提供方。服务提供方从 TCP 通道里面收到二进制数据，那如何知道一个请求的数据到哪里结束，是一个什么类型的请求呢？</p>
+<p>在这里我们可以想想高速公路，它上面有很多出口，为了让司机清楚地知道从哪里出去，管理部门会在路上建立很多指示牌，并在指示牌上标明下一个出口是哪里、还有多远。那回到数据包识别这个场景，我们是不是也可以建立一些“指示牌”，并在上面标明数据包的类型和长度，这样就可以正确的解析数据了。确实可以，并且我们把数据格式的约定内容叫做“协议”。大多数的协议会分成两部分，分别是数据头和消息体。数据头一般用于身份识别，包括协议标识、数据大小、请求类型、序列化类型等信息；消息体主要是请求的业务参数信息和扩展属性等。</p>
+<p>根据协议格式，服务提供方就可以正确地从二进制数据中分割出不同的请求来，同时根据请求类型和序列化类型，把二进制的消息体逆向还原成请求对象。这个过程叫作“反序列化”。</p>
+<p>服务提供方再根据反序列化出来的请求对象找到对应的实现类，完成真正的方法调用，然后把执行结果序列化后，回写到对应的 TCP 通道里面。调用方获取到应答的数据包后，再反序列化成应答对象，这样调用方就完成了一次 RPC 调用。</p>
+<p><strong>那上述几个流程就组成了一个完整的 RPC 吗？</strong></p>
+<p>在我看来，还缺点东西。因为对于研发人员来说，这样做要掌握太多的 RPC 底层细节，需要手动写代码去构造请求、调用序列化，并进行网络调用，整个 API 非常不友好。</p>
+<p>那我们有什么办法来简化 API，屏蔽掉 RPC 细节，让使用方只需要关注业务接口，像调用本地一样来调用远程呢？</p>
+<p>如果你了解 Spring，一定对其 AOP 技术很佩服，其核心是采用动态代理的技术，通过字节码增强对方法进行拦截增强，以便于增加需要的额外处理逻辑。其实这个技术也可以应用到 RPC 场景来解决我们刚才面临的问题。</p>
+<p><strong>由服务提供者给出业务接口声明，在调用方的程序里面，RPC 框架根据调用的服务接口提前生成动态代理实现类，并通过依赖注入等技术注入到声明了该接口的相关业务逻辑里面。该代理实现类会拦截所有的方法调用，在提供的方法处理逻辑里面完成一整套的远程调用，并把远程调用结果返回给调用方，这样调用方在调用远程方法的时候就获得了像调用本地接口一样的体验。</strong></p>
+<p>到这里，一个简单版本的 RPC 框架就实现了。上述流程如下图：</p>
+<figure data-type="image" tabindex="1"><img src="https://img-blog.csdnimg.cn/20200917105417654.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmdtZW5nMTk5Nw==,size_16,color_FFFFFF,t_70#pic_left" alt="在这里插入图片描述" loading="lazy"></figure>
+<h2 id="rpc-在架构中的位置">RPC 在架构中的位置</h2>
+<p>围绕 RPC 我们讲了这么多，那 RPC 在架构中究竟处于什么位置呢？</p>
+<p>如刚才所讲，RPC 是解决应用间通信的一种方式，而无论是在一个大型的分布式应用系统还是中小型系统中，应用架构最终都会从“单体”演进成“微服务化”，整个应用系统会被拆分为多个不同功能的应用，并将它们部署在不同的服务器中，而应用之间会通过 RPC 进行通信，可以说 <strong>RPC 对应的是整个分布式应用系统，就像是“经络”一样的存在</strong>。</p>
+<p>那么如果没有 RPC，我们现实中的开发过程是怎样的一个体验呢？</p>
+<p>所有的功能代码都会被我们堆砌在一个大项目中，开发过程中你可能要改一行代码，但改完后编译会花掉你 2 分钟，编译完想运行起来验证下结果可能要 5 分钟，是不是很酸爽？更难受的是在人数比较多的团队里面，多人协同开发的时候，如果团队其他人把接口定义改了，你连编译通过的机会都没有，系统直接报错，从而导致整个团队的开发效率都会非常低下。而且当我们准备要上线发版本的时候，QA 也很难评估这次的测试范围，为了保险起见我们只能把所有的功能进行回归测试，这样会导致我们上线新功能的整体周期都特别长。</p>
+<p>无论你是研发还是架构师，我相信这种系统架构我们肯定都不能接受，那怎么才能解决这个问题呢？</p>
+<p>我们首先都会想到可以采用“分而治之”的思想来进行拆分，但是拆分完的系统怎么保持跟未拆分前的调用方式一样呢？我们总不能因为架构升级，就把所有的代码都推倒重写一遍吧。</p>
+<p>**RPC 框架能够帮助我们解决系统拆分后的通信问题，并且能让我们像调用本地一样去调用远程方法。**利用 RPC 我们不仅可以很方便地将应用架构从“单体”演进成“微服务化”，而且还能解决实际开发过程中的效率低下、系统耦合等问题，这样可以使得我们的系统架构整体清晰、健壮，应用可运维度增强。</p>
+<p>当然 RPC 不仅可以用来解决通信问题，它还被用在了很多其他场景，比如：MQ、分布式缓存、数据库等。比如下面的应用架构图：</p>
+<figure data-type="image" tabindex="2"><img src="https://img-blog.csdnimg.cn/20200917110912736.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmdtZW5nMTk5Nw==,size_16,color_FFFFFF,t_70#pic_left" alt="在这里插入图片描述" loading="lazy"></figure>
+<p>在这个应用中，使用了 MQ 来处理异步流程、Redis 缓存热点数据、MySQL 持久化数据，还有就是在系统中调用另外一个业务系统的接口，对我的应用来说这些都是属于 RPC调用，而 MQ、MySQL 持久化的数据也会存在于一个分布式文件系统中，他们之间的调用也是需要用 RPC 来完成数据交互的。</p>
+<p>由此可见，RPC 确实是我们日常开发中经常接触的东西，只是被包装成了各种框架，导致我们很少意识到这就是 RPC，让 RPC 变成了我们最“熟悉的陌生人”。现在，回过头想想，我说 RPC 是整个应用系统的“经络”，这不为过吧？我们真的很有必要学好 RPC，不仅因为 RPC 是构建复杂系统的基石，还是提升自身认知的利器。</p>
+<h2 id="总结">总结</h2>
+<p>本篇博客讲了下 RPC 的原理，RPC 就是提供一种透明调用机制，让使用者不必显式地区分本地调用和远程调用。RPC 虽然可以帮助开发者屏蔽远程调用跟本地调用的区别，但毕竟涉及到远程网络通信，所以这里还是有很多使用上的区别，比如：</p>
+<p>调用过程中超时了怎么处理业务？<br>
+什么场景下最适合使用 RPC？<br>
+什么时候才需要考虑开启压缩？<br>
+无论你是一个初级开发者还是高级开发者，RPC 都应该是你日常开发过程中绕不开的一个话题，所以作为软件开发者的我们，真的很有必要详细地了解 RPC 实现细节。只有这样，才能帮助我们更好地在日常工作中使用 RPC。</p>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Jrebel配置远程热部署]]></title>
         <id>https://lindamao.cn/post/jrebel-pei-zhi-yuan-cheng-re-bu-shu/</id>
         <link href="https://lindamao.cn/post/jrebel-pei-zhi-yuan-cheng-re-bu-shu/">
@@ -310,6 +419,239 @@ File -&gt; JRebel &amp; Xrebel -&gt; Jrebel Remote Servers -&gt; 点+添加新�
 </code></pre>
 </li>
 </ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Liquibase]]></title>
+        <id>https://lindamao.cn/post/liquibase/</id>
+        <link href="https://lindamao.cn/post/liquibase/">
+        </link>
+        <updated>2022-03-10T12:12:44.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="开始使用-sql-脚本">开始使用 SQL 脚本</h1>
+<h2 id="第1步创建一个sql文件夹">第1步创建一个sql文件夹</h2>
+<p>在解压的<code>Liquibase</code> 的文件夹中 ，创建一个 <code>sql</code> 文件夹。在这个文件夹中你将放置 <code>Liquibase</code>将跟踪、版本和部署的<code>SQL</code>脚本。</p>
+<h2 id="第2步建立一个change-log">第2步建立一个Change Log</h2>
+<p>这是一次性步骤，用于配置更改日志以指向将包含 <code>SQL</code> 脚本的 <code>sql</code> 文件夹。在解压的<code>*.zip</code> 或<code>*.tar.gz</code>的 <code>Liquibase</code> 的目录中创建并保存文件名为 <code>myChangeLog.xml</code> 的文件 。<code>myChangeLog.xml</code> 的内容应如下所示：</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;databaseChangeLog
+  xmlns=&quot;http://www.liquibase.org/xml/ns/dbchangelog&quot;
+  xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+  xsi:schemaLocation=&quot;http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd&quot;&gt;
+
+  &lt;includeAll path=&quot;/sql&quot;/&gt;
+&lt;/databaseChangeLog&gt;
+
+</code></pre>
+<h2 id="第3步在sql文件中新增一个sql脚本">第3步在SQL文件中新增一个SQL脚本</h2>
+<p>使用教程设置中的 <code>liquibase.properties</code> 文件以及新创建的<code>myChangeLog.xml</code>，我们现在已准备好开始向 <code>sql</code>文件夹添加<code>SQL</code>脚本。<code>Liquibase</code> 将在文件夹中按字母数字顺序排列脚本。使用以下内容创建 <code>001_create_person_table.sql</code> 并将其保存在 <code>sql</code>文件夹中：</p>
+<pre><code class="language-sql">create table PERSON (
+    ID int not null,
+    FNAME varchar(100) not null
+);
+
+</code></pre>
+<h2 id="第4步-部署你的第一个修改">第4步 部署你的第一个修改</h2>
+<p>现在，我们已准备好部署我们的第一个脚本！打开终端，如果在 <code>UNIX</code>系统上则运行 <code>./liquibase update</code>或 如果在 Windows 上则运行<code>liquibase.bat update</code>。</p>
+<h2 id="第5步-检查你的数据库">第5步 检查你的数据库</h2>
+<p>您将看到您的数据库现在包含一个名为<code>PERSON</code>的表。要将作为本教程一部分的 <code>H2</code> 数据库写入内容，请打开一个终端，导航到您提取的 <code>Liquibase``*.zip</code> 或 <code>*.tar.gz</code>的文件夹，并运行 <code>java -jar h2-1.4.199.jar</code>注意：输入您下载的 <code>h2*.jar</code> 的特定版本！输入<code>JDBC URL</code>、用户名和密码，从 <code>liquibase.properties</code> 文件输入您根据教程设置创建的属性文件。您会注意到还创建了另外两个表：<code>databasechangeloglock</code>和<code>databasechangeloglock</code>。<code>databasechangelog</code>表包含针对数据库运行的所有更改的列表。<code>databasechangeloglock</code>表用于确保两台计算机不会同时尝试修改数据库。</p>
+<h1 id="使用-liquibase-函数入门">使用 Liquibase 函数入门</h1>
+<p>本教程使用<code>Liquibase</code>函数。更改将在 <code>XML</code> 中定义，而不是使用 <code>SQL</code>。<code>Liquibase</code> 将根据定义的<code>changeSet(s)</code>生成 <code>SQL</code>，并将该 <code>SQL</code> 部署到目标数据库。所有迁移都在更改日志中显式跟踪和排序。</p>
+<h2 id="第一步创建一个changelog文件">第一步创建一个Changelog文件</h2>
+<p>database changelog文件是列出所有数据库更改的位置。创建一个名为 <code>myChangeLog.xml</code>的文件，其中包含以下内容：</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+
+&lt;databaseChangeLog
+  xmlns=&quot;http://www.liquibase.org/xml/ns/dbchangelog&quot;
+  xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+  xsi:schemaLocation=&quot;http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd&quot;&gt;
+
+&lt;/databaseChangeLog&gt;
+</code></pre>
+<h2 id="第2步-添加一个change-set">第2步 添加一个Change Set</h2>
+<p>每个<code>changeSet</code>都由<code>id</code>属性和<code>author</code>属性进行唯一标识。这两个标记以及更改日志文件的名称和包唯一地标识了更改。如果只需要指定一个<code>id</code>，则很容易意外重用它们，尤其是在处理多个开发人员和代码分支时。包括<code>author</code>属性可最大程度地减少重复的可能性。</p>
+<p>将每个<code>changeSet</code>视为要应用于数据库的原子更改。通常最好在<code>changeSet</code>中只包含一个更改，但如果插入多个行时，这些行一起有作为单个事务添加的意义，则允许进行更多更改。<code>Liquibase</code> 将尝试将每个<code>changeSet</code>运行为单个事务，但对于某些命令，许多数据库将静默地提交和回滚事务（创建表、删除表等）。</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+
+&lt;databaseChangeLog
+  xmlns=&quot;http://www.liquibase.org/xml/ns/dbchangelog&quot;
+  xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+  xsi:schemaLocation=&quot;http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd&quot;&gt;
+
+    &lt;changeSet id=&quot;1&quot; author=&quot;bob&quot;&gt;
+        &lt;createTable tableName=&quot;department&quot;&gt;
+            &lt;column name=&quot;id&quot; type=&quot;int&quot;&gt;
+                &lt;constraints primaryKey=&quot;true&quot; nullable=&quot;false&quot;/&gt;
+            &lt;/column&gt;
+            &lt;column name=&quot;name&quot; type=&quot;varchar(50)&quot;&gt;
+                &lt;constraints nullable=&quot;false&quot;/&gt;
+            &lt;/column&gt;
+            &lt;column name=&quot;active&quot; type=&quot;boolean&quot; defaultValueBoolean=&quot;true&quot;/&gt;
+        &lt;/createTable&gt;
+    &lt;/changeSet&gt;
+
+&lt;/databaseChangeLog&gt;
+  
+</code></pre>
+<h2 id="第3步-运行change-set">第3步 运行change Set</h2>
+<p>如果是在<code>UNIX</code>操作系统，可以使用<code>./liquibase update</code>命令来执行<code>myChangeLog.xml</code>；如果是在<code>Windows</code>操作系统上，可以使用<code>liquibase.bat update</code>来运行<code>myChangeLog.xml</code></p>
+<h2 id="检查你的数据库">检查你的数据库</h2>
+<p>您将看到您的数据库现在包含一个名为<code>PERSON</code>的表。要将作为本教程一部分的 <code>H2</code> 数据库入内容，请打开一个终端，导航到您提取的 <code>Liquibase``*.zip</code> 或 <code>*.tar.gz</code>的文件夹，并运行 <code>java -jar h2-1.4.199.jar</code>注意：输入您下载的 <code>h2*.jar</code> 的特定版本！输入<code>JDBC URL</code>、用户名和密码，从 <code>liquibase.properties</code> 文件输入您根据教程设置创建的属性文件。您会注意到还创建了另外两个表：<code>databasechangeloglock</code>和<code>databasechangeloglock</code>。<code>databasechangelog</code>表包含针对数据库运行的所有更改的列表。<code>databasechangeloglock</code>表用于确保两台计算机不会同时尝试修改数据库。</p>
+<h1 id="标准模板">标准模板</h1>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;databaseChangeLog
+        xmlns=&quot;http://www.liquibase.org/xml/ns/dbchangelog&quot;
+        xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+        xsi:schemaLocation=&quot;http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd&quot;&gt;
+    &lt;property name=&quot;now&quot; value=&quot;now()&quot; dbms=&quot;mysql&quot;/&gt;
+
+    &lt;changeSet id=&quot;&quot; author=&quot;修改者&quot;&gt;
+        &lt;tagDatabase tag=&quot;数据库tag&quot;/&gt;
+    &lt;/changeSet&gt;
+
+    &lt;changeSet id=&quot;id唯一&quot; author=&quot;修改者&quot; runOnChange=&quot;false&quot;&gt;
+        &lt;preConditions onFail=&quot;MARK_RAN&quot;&gt;
+            &lt;not&gt;
+                &lt;columnExists tableName=&quot;&quot; columnName=&quot;&quot;/&gt;
+            &lt;/not&gt;
+        &lt;/preConditions&gt;
+        &lt;comment&gt;此次修改的备注&lt;/comment&gt;
+        &lt;sql&gt;
+        此次修改的sql语句
+        &lt;/sql&gt;
+        &lt;rollback&gt;
+            失败回滚的语句
+        &lt;/rollback&gt;
+    &lt;/changeSet&gt;
+
+&lt;/databaseChangeLog&gt;
+</code></pre>
+<p>changeSetid 为需求的日期加上 tag版本 和jiar版本</p>
+<h1 id="命令">命令</h1>
+<p>在对应模块下执行<br>
+mvn install -Pupdatedb -Ddb.schema=数据库名称 -Dusername=root -Dpassword=数据库密码</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[自定义日志实现切面]]></title>
+        <id>https://lindamao.cn/post/zi-ding-yi-ri-zhi-shi-xian-qie-mian/</id>
+        <link href="https://lindamao.cn/post/zi-ding-yi-ri-zhi-shi-xian-qie-mian/">
+        </link>
+        <updated>2022-01-14T12:30:37.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="自定义注解实现日志切面">自定义注解实现日志切面</h1>
+<h2 id="注解概念">注解概念</h2>
+<h3 id="一-注解概念">一、注解概念</h3>
+<p>注解（Annotation），也叫元数据。一种代码级别的说明。它是JDK1.5及以后版本引入的一个特性，与类、接口、枚举是在同一个层次。它可以声明在包、类、字段、方法、局部变量、方法参数等的前面，用来对这些元素进行说明，注释。</p>
+<h3 id="二-注解分类">二、注解分类</h3>
+<p>在Java中，注解分为两种，元注解和自定义注解。</p>
+<h3 id="三-常用元注解作用-jdk提供的元注解">三、常用元注解作用 (jdk提供的元注解)</h3>
+<h4 id="1target描述当前注解能够作用的位置">1.@Target:描述当前注解能够作用的位置</h4>
+<p>ElementType.TYPE:可以作用在类上<br>
+ElementType.METHOD:可以作用在方法上<br>
+ElementType.FIELD:可以作用在成员变量上</p>
+<h4 id="2retention-描述注解被保留到的阶段">2.@Retention: 描述注解被保留到的阶段</h4>
+<p>SOURCE &lt; CLASS &lt; RUNTIME<br>
+SOURCE:表示当前注解只在代码阶段有效<br>
+CLASS:表示该注解会被保留到字节码阶段<br>
+RUNTIME:表示该注解会被保留到运行阶段 JVM<br>
+自定义的注解：RetentionPolicy.RUNTIME</p>
+<p>3.@Documented:描述注解是否被抽取到JavaDoc api中<br>
+4.@inherited:描述注解是否可以被子类继承</p>
+<h1 id="代码实现">代码实现</h1>
+<h2 id="第一步自定义注解">第一步自定义注解</h2>
+<pre><code class="language-java">package com.lin.demo.aop;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+/**
+ * @author linmouzhi
+ * @create 2022/11/24 15:09
+ */
+@Target({ElementType.METHOD, ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface UserAccess {
+    String desc() default &quot;无信息&quot;;
+}
+</code></pre>
+<p>第二步 设定一个切面</p>
+<p>@Aspect 注解将此类定义为一个切面</p>
+<p>@Pointcut 切入点注解 定义方法作为一个切点 这里的参数为controller下的所有的公共类方法  还需定义一个方法</p>
+<p>其他注解得在切入点的方法之下做一些修改 即可做出对应响应</p>
+<pre><code class="language-json">package com.lin.demo.aop;
+
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.*;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
+
+/**
+ * @author linmouzhi
+ * @create 2022/11/24 15:10
+ */
+@Aspect
+@Component
+public class LogAspect {
+    // 这个目前是对从 com.xncoding.aop.controller.* 下的都进行切入，如果想对上面的自定义注解进行切入，只需改成相对应的路径
+    // 例如：@Pointcut(value = &quot;@annotation(com.xncoding.aop.aspect.UserAccess)&quot;)
+    @Pointcut(&quot;execution(public * com.lin.demo.controller.*.*(..))&quot;)
+    public void webLog(){}
+
+    @Before(&quot;webLog()&quot;)
+    public void deBefore(JoinPoint joinPoint) throws Throwable {
+        // 接收到请求，记录请求内容
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = attributes.getRequest();
+        // 记录下请求内容
+        System.out.println(&quot;URL : &quot; + request.getRequestURL().toString());
+        System.out.println(&quot;HTTP_METHOD : &quot; + request.getMethod());
+        System.out.println(&quot;IP : &quot; + request.getRemoteAddr());
+        System.out.println(&quot;CLASS_METHOD : &quot; + joinPoint.getSignature().getDeclaringTypeName() + &quot;.&quot; + joinPoint.getSignature().getName());
+        System.out.println(&quot;ARGS : &quot; + Arrays.toString(joinPoint.getArgs()));
+    }
+
+    @AfterReturning(returning = &quot;ret&quot;, pointcut = &quot;webLog()&quot;)
+    public void doAfterReturning(Object ret) throws Throwable {
+        // 处理完请求，返回内容
+        System.out.println(&quot;方法的返回值 : &quot; + ret);
+    }
+
+    //后置异常通知
+    @AfterThrowing(&quot;webLog()&quot;)
+    public void throwss(JoinPoint jp){
+        System.out.println(&quot;方法异常时执行.....&quot;);
+    }
+
+    //后置最终通知,final增强，不管是抛出异常或者正常退出都会执行
+    @After(&quot;webLog()&quot;)
+    public void after(JoinPoint jp){
+        System.out.println(&quot;方法最后执行.....&quot;);
+    }
+
+    //环绕通知,环绕增强，相当于MethodInterceptor
+    @Around(&quot;webLog()&quot;)
+    public Object arround(ProceedingJoinPoint pjp) throws Throwable{
+        System.out.println(&quot;方法环绕start.....&quot;);
+        try {
+            Object o =  pjp.proceed();
+            System.out.println(&quot;方法环绕proceed，结果是 :&quot; + o);
+            return o;
+        } catch (Throwable e) {
+            throw e;
+        }
+    }
+}
+
+</code></pre>
 ]]></content>
     </entry>
     <entry>
@@ -2214,1808 +2556,6 @@ Redis 开启 tcp-keepalive：这样服务端会定时给客户端发送 TCP 心�
 限制 Redis 配置文件的目录访问权限<br>
 推荐开启密码认证<br>
 禁用/重命名危险命令（KEYS/FLUSHALL/FLUSHDB/CONFIG/EVAL）</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[SpringBoot]]></title>
-        <id>https://lindamao.cn/post/springboot/</id>
-        <link href="https://lindamao.cn/post/springboot/">
-        </link>
-        <updated>2021-01-17T06:25:33.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="springboot启动流程">springboot启动流程</h2>
-<p>SpringBoot启动的时候，会构造一个SpringApplication的实例，然后调用这个实例的run方法，在run方法调用之前，也就是构造SpringApplication的时候会进行初始化的工作，初始化的时候会做以下几件事：</p>
-<p>(1)把参数sources设置到SpringApplication属性中，这个sources可以是任何类型的参数.<br>
-(2)判断是否是web程序，并设置到webEnvironment的boolean属性中.<br>
-(3)创建并初始化ApplicationInitializer，设置到initializers属性中 。<br>
-(4)创建并初始化ApplicationListener，设置到listeners属性中 。<br>
-(5)初始化主类mainApplicatioClass。</p>
-<h2 id="springboot的自动装配原理">SpringBoot的自动装配原理</h2>
-<p>Spring Boot关于自动配置的源码在spring-boot-autoconfigure-x.x.x.x.jar中</p>
-<p>Spring Boot的启动类上有一个@<strong>SpringBootApplication</strong>注解，这个注解是Spring Boot项目必不可少的注解。那么自动配置原理一定和这个注解有着千丝万缕的联系！</p>
-<p>其关键点是注解@EnableAutoConfiguration当中的导入import的<strong>AutoConfigurationImportSelector</strong>中的selectImports方法 通过<strong>SpringFactoriesLoader.loadFactoryNames()<strong>扫描所有具有</strong>META-INF/spring.factories</strong>的jar包</p>
-<p>在spring-boot-autoconfigure-x.x.x.x.jar里就有一个这样的spring.factories文件。</p>
-<p>这个spring.factories文件也是一组一组的key=value的形式，其中一个key是EnableAutoConfiguration类的全类名，而它的value是一个xxxxAutoConfiguration的类名的列表，这些类名以逗号分隔</p>
-<p>类似于下图</p>
-<figure data-type="image" tabindex="1"><img src="https://i.imgtg.com/2023/02/14/dqf9l.png" alt="dqf9l.png" loading="lazy"></figure>
-<p>这个@EnableAutoConfiguration注解通过@SpringBootApplication被间接的标记在了Spring Boot的启动类上。在SpringApplication.run(...)的内部就会执行selectImports()方法，找到所有JavaConfig自动配置类的全限定名对应的class，然后将所有自动配置类加载到Spring容器中。</p>
-<p><strong>总结：</strong></p>
-<p>Spring Boot启动的时候会通过@EnableAutoConfiguration注解找到META-INF/spring.factories配置文件中的所有自动配置类，并对其进行加载，而这些自动配置类都是以AutoConfiguration结尾来命名的，它实际上就是一个JavaConfig形式的Spring容器配置类，它能通过以Properties结尾命名的类中取得在全局配置文件中配置的属性如：server.port，而XxxxProperties类是通过@ConfigurationProperties注解与全局配置文件中对应的属性进行绑定的。</p>
-<p>https://blog.csdn.net/u014745069/article/details/83820511</p>
-<h2 id="简单介绍一下-spring有啥缺点">简单介绍⼀下 Spring?有啥缺点?</h2>
-<p>缺点是集成度较高，使用过程中不太容易了解底层。</p>
-<p><strong>ioc和aop配置复杂</strong></p>
-<h2 id="说出使用-spring-boot-的主要优点">说出使⽤ Spring Boot 的主要优点</h2>
-<p>(1)简化配置，不需要编写太多的xml配置文件；</p>
-<p>(2)基于Spring构建，使开发者快速入门，门槛很低；</p>
-<p>(3)SpringBoot可以创建独立运行的应用而不需要依赖于容器；</p>
-<p>(4)内置tomcat服务器，不需要打包成war包，可以直接放到tomcat中运行；</p>
-<p>(5)提供maven极简配置，以及可视化的相关监控功能，比如性能监控，应用的健康程度等；</p>
-<p>(6)为微服务SpringCloud奠定了基础，使得微服务的构建变得简单；</p>
-<p>(7)Spring可以整合很多各式各样的框架，并能很好的集成；</p>
-<p>(8)活跃的社区与论坛，以及丰富的开发文档；</p>
-<h2 id="什么是-spring-boot-starters">什么是 Spring Boot Starters?</h2>
-<p>starter是SpringBoot中的一个新发明，它有效的降低了项目开发过程的复杂程度，对于简化开发操作有着非常好的效果。</p>
-<p>参考连接：https://stackoverflow.com/questions/28273543/what-are-spring-boot-starter-jars/28273660#28273660</p>
-<h2 id="spring-boot-支持哪些内嵌-servlet-容器">Spring Boot ⽀持哪些内嵌 Servlet 容器？</h2>
-<p>Spring Boot支持Tomcat、Jetty和Undertow三种Servlet容器嵌入到Web应用程序中，开发者使用starter即可方便嵌入，默认情况下，嵌入服务器的访问端口为8080。</p>
-<h2 id="如何在-spring-boot-应用程序中使用-jetty-而不是-tomcat">如何在 Spring Boot 应⽤程序中使⽤ Jetty ⽽不是 Tomcat?</h2>
-<p>就是在pom.xml文件中，在引用的spring-boot-starter-web排除Tomcat的依赖包，然后再引入Jetty容器的依赖包，如下：</p>
-<pre><code class="language-xml">&lt;dependencies&gt;          &lt;dependency&gt;              &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;              &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;              &lt;exclusions&gt;                  &lt;exclusion&gt;                      &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;                      &lt;artifactId&gt;spring-boot-starter-tomcat&lt;/artifactId&gt;                  &lt;/exclusion&gt;              &lt;/exclusions&gt;          &lt;/dependency&gt;            &lt;!-- Jetty适合长连接应用，就是聊天类的长连接 --&gt;          &lt;!-- 使用Jetty，需要在spring-boot-starter-web排除spring-boot-starter-tomcat，因为SpringBoot默认使用tomcat --&gt;          &lt;dependency&gt;              &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;              &lt;artifactId&gt;spring-boot-starter-jetty&lt;/artifactId&gt;          &lt;/dependency&gt;          &lt;dependency&gt;              &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;              &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;              &lt;scope&gt;test&lt;/scope&gt;          &lt;/dependency&gt;  &lt;/dependencies&gt;  
-</code></pre>
-<p><strong>把容器修改为undertow</strong></p>
-<pre><code class="language-xml">&lt;dependencies&gt;          &lt;dependency&gt;              &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;              &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;              &lt;exclusions&gt;                  &lt;exclusion&gt;                      &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;                      &lt;artifactId&gt;spring-boot-starter-tomcat&lt;/artifactId&gt;                  &lt;/exclusion&gt;              &lt;/exclusions&gt;          &lt;/dependency&gt;                    &lt;!-- undertow不支持jsp --&gt;          &lt;!-- 使用undertow，需要在spring-boot-starter-web排除spring-boot-starter-tomcat，因为SpringBoot默认使用tomcat --&gt;          &lt;dependency&gt;              &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;              &lt;artifactId&gt;spring-boot-starter-undertow&lt;/artifactId&gt;          &lt;/dependency&gt;                    &lt;dependency&gt;              &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;              &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;              &lt;scope&gt;test&lt;/scope&gt;          &lt;/dependency&gt;  &lt;/dependencies&gt;  
-</code></pre>
-<p>参考:</p>
-<p>https://www.cnblogs.com/fanshuyao/p/8668059.html</p>
-<h2 id="介绍一下springbootapplication-注解">介绍⼀下@SpringBootApplication 注解</h2>
-<p>@SpringBootApplication注解包含三个注解：</p>
-<ul>
-<li>@ComponentScan扫描当前包和子包中的组件，自动注册到ioc中</li>
-<li>@SpringBootConfiguration，它其实也是一个configuration，说明启动类也是一个配置类</li>
-<li>@EnableAutoConfiguration，这个注解是实现自动配置的最主要的注解。这个注解里包含**@AutoConfigurationPackage自动配置包**还有@import一个AutoConfigurationImportSelector.class。这个类中通过loadFactoryNames读取meta-inf中的spring。factories文件中自动装配的类。而这些类是pom文件中导入了start之后才能生效。这些类都是XXXautoconfiguration，中还绑定了有属性的xxx.properties，这些properties有一些默认的属性。我们也可以在配置文件yml或者properties中修改这些属性。<br>
-SpringApplication.run一共做了两件事</li>
-</ul>
-<ol>
-<li>创建SpringApplication对象；在对象初始化时保存事件监听器，容器初始化类以及判断是否为web应用，保存包含main方法的主配置类。</li>
-<li>调用run方法；准备spring的上下文，完成容器的初始化，创建，加载等。会在不同的时机触发监听器的不同事件。</li>
-</ol>
-<h2 id="spring-boot-的自动配置是如何实现的">Spring Boot 的⾃动配置是如何实现的?</h2>
-<p>参考：https://blog.csdn.net/u014534808/article/details/105961992/</p>
-<h2 id="开发-restful-web-服务常用的注解有哪些">开发 RESTful Web 服务常⽤的注解有哪些？</h2>
-<ul>
-<li>@GetMapping，处理 Get 请求</li>
-<li>@PostMapping，处理 Post 请求</li>
-<li>@PutMapping，⽤用于更新资源</li>
-<li>@DeleteMapping，处理删除请求</li>
-<li>@PatchMapping，用于更新部分资源</li>
-</ul>
-<h2 id="spirng-boot-常用的两种配置文件">Spirng Boot 常⽤的两种配置⽂件</h2>
-<p><strong>properties</strong></p>
-<p><strong>yaml</strong></p>
-<h2 id="什么是-yamlyaml-配置的优势在哪里">什么是 YAML？YAML 配置的优势在哪⾥ ?</h2>
-<p>YAML是一种人类可读的数据序列化语言。它通常用于配置文件。与属性文件相比，如果我们想要在配置文件中添加复杂的属性，YAML文件就更加结构化，而且更少混淆。可以看出YAML具有分层配置数据。</p>
-<ul>
-<li>配置有序，在一些特殊的场景下，配置有序很关键</li>
-<li>支持数组，数组中的元素可以是基本数据类型也可以是对象 简洁 相比 properties</li>
-<li>相比properties配置文件，YAML还有一个缺点，就是不支持@PropertySource注解导入自定义的YAML配置。</li>
-</ul>
-<h2 id="spring-boot-常用的读取配置文件的方法有哪些">Spring Boot 常⽤的读取配置⽂件的⽅法有哪些？</h2>
-<ol>
-<li>通过<strong>获取环境变量</strong>来获取配置参数</li>
-<li>通过<strong>注解获取配置</strong>文件信息</li>
-</ol>
-<p><a href="https://blog.csdn.net/github_35169934/article/details/78233421?utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-1.control&amp;dist_request_id=&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-1.control">参考链接</a></p>
-<h2 id="spring-boot-加载配置文件的优先级了解么">Spring Boot 加载配置⽂件的优先级了解么？</h2>
-<ol>
-<li>
-<p>file:/config/</p>
-</li>
-<li>
-<p>file:/</p>
-</li>
-<li>
-<p>classpath:/config/</p>
-</li>
-<li>
-<p>classpath:/</p>
-</li>
-</ol>
-<h2 id="常用的-bean-映射工具有哪些">常⽤的 Bean 映射⼯具有哪些？</h2>
-<p>BeanUtils---先用 jdk 的 java.beans.Introspector类的getBeanInfo()方法获取对象的属性信息及属性get/set方法，接着使用反射（Method的invoke(Object obj, Object… args)）方法进行赋值</p>
-<p>BeanCopier---直接使用ASM的MethodVisitor直接编写各属性的get/set方法</p>
-<p>mybatis</p>
-<h2 id="spring-boot-如何监控系统实际运行状况">Spring Boot 如何监控系统实际运⾏状况？</h2>
-<p>组件 Spring Boot Actuator 负责监控应⽤的各项静态和动态的变量</p>
-<h2 id="spring-boot-如何做请求参数校验">Spring Boot 如何做请求参数校验？</h2>
-<p><strong>spring-boot-starter-validation</strong></p>
-<h2 id="如何使用-spring-boot-实现全局异常处理">如何使⽤ Spring Boot 实现全局异常处理？</h2>
-<p>使⽤ <strong>@ControllerAdvice</strong> 定义统⼀的异常处理类，⽽不是在每个Controller中逐个定义</p>
-<p>@ExceptionHandler ⽤来定义函数针对的异常类型</p>
-<h2 id="spring-boot-中如何实现定时任务">Spring Boot 中如何实现定时任务 ?</h2>
-<p>一种是使用 Spring 自带的定时任务处理器 @Scheduled 注解，另一种就是使用第三方框架 Quartz</p>
-<p><a href="https://www.cnblogs.com/lenve/p/10728897.html">参考链接</a></p>
-<h2 id="分布式系统session一致性问题">分布式系统session一致性问题</h2>
-<ul>
-<li><strong>session同步法</strong>：多台web-server相互同步数据</li>
-<li>**客户端存储法：**一个用户只存储自己的数据</li>
-<li>**反向代理hash一致性：**四层hash和七层hash都可以做，保证一个用户的请求落在一台web-server上</li>
-<li>**后端统一存储：**web-server重启和扩容，session也不会丢失</li>
-</ul>
-<p><a href="https://www.cnblogs.com/study-everyday/p/7853145.html">参考</a></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Spring]]></title>
-        <id>https://lindamao.cn/post/spring/</id>
-        <link href="https://lindamao.cn/post/spring/">
-        </link>
-        <updated>2020-12-12T06:17:03.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="maven中package和install的区别">Maven中Package和Install的区别</h2>
-<p>​	Package是打包，打成Jar或War</p>
-<p>​	Install表示将Jar或War安装到本地仓库中</p>
-<h2 id="什么是spring框架">什么是spring框架</h2>
-<p>Spring 是⼀种轻量级开发框架，旨在提⾼开发⼈员的开发效率以及系统的可维护性。Spring 官⽹：https://spring.io/。</p>
-<p>我们⼀般说 Spring 框架指的都是 Spring Framework，它是很多模块的集合，使⽤这些模块可以很⽅便地协助我们进⾏开发。</p>
-<p>这些模块是：核⼼容器、数据访问/集成,、Web、AOP（⾯向切⾯编程）、⼯具、消息和测试模块。⽐如：Core Container 中的 Core 组件是Spring 所有组件的核⼼，Beans 组件和 Context 组件是实现IOC和依赖注⼊的基础，AOP组件⽤来实现⾯向切⾯编程。</p>
-<p><strong>Spring 官⽹列出的 Spring 的 6 个特征:</strong></p>
-<p>核⼼技术 ：依赖注⼊(DI)，AOP，事件(events)，资源，i18n，验证，数据绑定，类型转换，SpEL。</p>
-<ul>
-<li>测试 ：模拟对象，TestContext框架，Spring MVC 测试，WebTestClient。</li>
-<li>数据访问 ：事务，DAO⽀持，JDBC，ORM，编组XML。</li>
-<li>Web⽀持 : Spring MVC和Spring WebFlux Web框架</li>
-<li>集成 ：远程处理，JMS，JCA，JMX，电⼦邮件，任务，调度，缓存。</li>
-<li>语⾔ ：Kotlin，Groovy，动态语⾔。</li>
-</ul>
-<h2 id="列举一些重要的spring模块">列举⼀些重要的Spring模块？</h2>
-<ul>
-<li>Spring Core： 基础,可以说 Spring 其他所有的功能都需要依赖于该类库。主要提供 IoC 依<br>
-赖注⼊功能。</li>
-<li>Spring Aspects ： 该模块为与AspectJ的集成提供⽀持。</li>
-<li>Spring AOP ：提供了⾯向切⾯的编程实现。</li>
-<li>Spring JDBC : Java数据库连接。</li>
-<li>Spring JMS ：Java消息服务。</li>
-<li>Spring ORM : ⽤于⽀持Hibernate等ORM⼯具。</li>
-<li>Spring Web : 为创建Web应⽤程序提供⽀持。</li>
-<li>Spring Test : 提供了对 JUnit 和 TestNG 测试的⽀持。</li>
-</ul>
-<h2 id="restcontroller-vs-controller">@RestController vs @Controller</h2>
-<p><strong>Controller 返回⼀个⻚⾯</strong><br>
-单独使⽤ @Controller 不加 @ResponseBody 的话⼀般使⽤在要返回⼀个视图的情况，这种情况属于⽐᫾传统的Spring MVC 的应⽤，对应于前后端不分离的情况</p>
-<p><strong>@RestController 返回JSON 或 XML 形式数据</strong><br>
-但 @RestController 只返回对象，对象数据直接以 JSON 或 XML 形式写⼊ HTTP 响应(Response)中，这种情况属于 RESTful Web服务，这也是⽬前⽇常开发所接触的最常⽤的情况（前后端分离）</p>
-<p><strong>@Controller +@ResponseBody 返回JSON 或 XML 形式数据</strong><br>
-如果你需要在Spring4之前开发 RESTful Web服务的话，你需要使⽤ @Controller 并结合 @ResponseBody 注解，也就是说 @Controller + @ResponseBody = @RestController （Spring 4）之后新加的注解</p>
-<p><strong>@ResponseBody 注解</strong>的作⽤是将 Controller 的⽅法返回的对象通过适当的转换器转换为指定的格式之后，写⼊到HTTP 响应(Response)对象的 body 中，通常⽤来返回 JSON 或者XML 数据，返回 JSON 数据的情况比较多。</p>
-<h2 id="常用注解">常用注解</h2>
-<h2 id="spring依赖注入的方式">Spring依赖注入的方式</h2>
-<p>非注解方式注入：</p>
-<ol>
-<li>Set方法注入</li>
-<li>构造器注入</li>
-<li>静态工厂的方法注入</li>
-<li>实例工厂的方法注入</li>
-</ol>
-<p>注解方式注入：</p>
-<p>1.@Autowired是自动注入，自动从spring的上下文找到合适的bean来注入 @Autowired(required=true)表示必须找到匹配的Bean，否则将报异常。</p>
-<p><strong>@Autowired默认按类型匹配注入Bean</strong></p>
-<p><strong>在Spring中，@Autowired注入的类型可以是接口</strong></p>
-<p>比如，在Service层中注入Dao，如下示：</p>
-<pre><code>@Autowired
-private UserDao userDao;
-</code></pre>
-<p>2.@Resource要求提供一个Bean名称的属性，如果属性为空，自动采用标注处的变量名和方法名作为Bean的名称 。</p>
-<p><strong>@Resource默认按名称匹配注入Bean</strong></p>
-<p>比如，在Controller层中注入Service，名称为Service的实现类，如下示</p>
-<pre><code>@Resource(name = &quot;userServiceImpl&quot;)
- private UserService userService;
-</code></pre>
-<p>另外要注意，@Resource是java自带的注解，不是Spring中的注解。@Resource注解完整的包路径为import  javax.annotation.Resource;</p>
-<p>3.<strong>@Qualifier 指定注入bean的名称</strong></p>
-<p>比如，在Controller层中注入Service，名称为Service的实现类，如下示</p>
-<pre><code> @Autowired
- @Qualifier(&quot;userServiceImp&quot;)
- private UserSerevice userService;
-4.@Service，@Controller，@Repository分别标记类是Service层，Controller层，Dao层的类，spring扫描注解配置时，会标记这些类要生成bean。
-</code></pre>
-<p>@Repository用于标注数据访问组件，即DAO组件</p>
-<p><strong>@Service，@Controller 这些注解要放在接口的实现类上，而不是接口上面。</strong><br>
-5.@Component是一种泛指，标记类是组件，spring扫描注解配置时，会标记这些类要生成bean。</p>
-<p>6.@<strong>Scope</strong>用于指定Bean的作用范围</p>
-<p>7.@Autowired和@Resource是用来修饰字段，构造函数，或者设置方法，并做注入的。</p>
-<p>而@Service，@Controller，@Repository，@Component则是用来修饰类，标记这些类要生成bean。</p>
-<h2 id="spring-ioc-aop">Spring IOC &amp; AOP</h2>
-<p>IOC参考：</p>
-<p>AOP参考：https://www.cnblogs.com/joy99/p/10941543.html</p>
-<h3 id="谈谈自己对于-spring-ioc-和-aop-的理解">谈谈⾃⼰对于 Spring IoC 和 AOP 的理解</h3>
-<p><strong>IoC</strong><br>
-IoC（Inverse of Control:控制反转）是⼀种设计思想，就是 将原本在程序中⼿动创建对象的控制权，交由Spring框架来管理。 IoC 在其他语⾔中也有应⽤，并⾮ Spring 特有。 IoC 容器是Spring ⽤来实现 IoC 的载体， IoC 容器实际上就是个Map（key，value）,Map 中存放的是各种对象。</p>
-<p><strong>AOP(Aspect-Oriented Programming:⾯向切⾯编程)</strong></p>
-<p>能够将那些与业务⽆关，却为业务模块所共同调⽤的逻辑或责任（例如事务处理、⽇志管理、权限控制等）封装起来，便于减少系统的重复代码，降低模块间的耦合度，并有利于未来的可拓展性和可维护性。</p>
-<p>相关概念：</p>
-<ul>
-<li>切面（aspect） ： 类是对物体特征的抽象，切面就是对横切关注点的抽象</li>
-<li>横切关注点： 对哪些方法进行拦截，拦截后怎么处理，这些关注点称之为横切关注点。</li>
-<li>连接点（joinpoint） ： 被拦截到的点，具体要拦截的东西，因为 Spring 只支持方法类型的连接点，所以在 Spring中连接点指的就是被拦截到的方法，实际上连接点还可以是字段或者构造器。</li>
-<li>切入点（pointcut） ： 对连接点进行拦截的定义</li>
-<li>通知（advice） ： 所谓通知指的就是指拦截到连接点之后要执行的代码， 通知分为前置、后置、异常、最终、环绕通知五类。</li>
-<li>目标对象： 代理的目标对象</li>
-<li>织入（weave） ： 将切面应用到目标对象并导致代理对象创建的过程</li>
-<li>引入（introduction） ： 在不修改代码的前提下，引入可以在运行期为类动态地添加一些方法或字段</li>
-</ul>
-<h3 id="spring-aop-和-aspectj-aop-有什么区别">Spring AOP 和 AspectJ AOP 有什么区别？</h3>
-<p><strong>Spring AOP 属于运⾏时增强，⽽ AspectJ 是编译时增强</strong>。 Spring AOP 基于代理(Proxying)，⽽ AspectJ 基于字节码操作(Bytecode Manipulation)。</p>
-<p><strong>注</strong>：Spring中的AspectJ不是真正的使用了AspectJ，只是使用了AspectJ的指示器作为标识创建代理的方式而已，实际上实现AOP还是通过Cglib或JDK来实现的</p>
-<p>两者区别：</p>
-<table>
-<thead>
-<tr>
-<th>Spring AOP</th>
-<th>AspectJ</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>在纯 Java 中实现</td>
-<td>使用 Java 编程语言的扩展实现</td>
-</tr>
-<tr>
-<td>不需要单独的编译过程</td>
-<td>除非设置 LTW，否则需要 AspectJ 编译器 (ajc)</td>
-</tr>
-<tr>
-<td>只能使用运行时织入</td>
-<td>运行时织入不可用。支持编译时、编译后和加载时织入</td>
-</tr>
-<tr>
-<td>功能不强-仅支持方法级编织</td>
-<td>更强大 - 可以编织字段、方法、构造函数、静态初始值设定项、最终类/方法等......。</td>
-</tr>
-<tr>
-<td>只能在由 Spring 容器管理的 bean 上实现</td>
-<td>可以在所有域对象上实现</td>
-</tr>
-<tr>
-<td>仅支持方法执行切入点</td>
-<td>支持所有切入点</td>
-</tr>
-<tr>
-<td>代理是由目标对象创建的, 并且切面应用在这些代理上</td>
-<td>在执行应用程序之前 (在运行时) 前, 各方面直接在代码中进行织入</td>
-</tr>
-<tr>
-<td>比 AspectJ 慢多了</td>
-<td>更好的性能</td>
-</tr>
-<tr>
-<td>易于学习和应用</td>
-<td>相对于 Spring AOP 来说更复杂</td>
-</tr>
-</tbody>
-</table>
-<h3 id="spring-aop-实现原理">Spring AOP 实现原理</h3>
-<p>AOP技术利用一种称为“横切”的技术，剖解开封装的对象内部，并将那些影响了多个类的公共行为封装到一个可重用模块，并将其名为“Aspect”，即方面。</p>
-<p>实现AOP的技术，主要分为两大类：一是采用动态代理技术，利用截取消息的方式，对该消息进行装饰，以取代原有对象行为的执行；</p>
-<p>二是采用静态织入的方式，引入特定的语法创建“方面”，从而使得编译器可以在编译期间织入有关“方面”的代码。</p>
-<h3 id="aop使用场景">AOP使用场景</h3>
-<p>日志记录、监控优化<br>
-2） 权限控制<br>
-3） 事务管理<br>
-4） 缓存<br>
-5） 持久化</p>
-<h3 id="spring的ioc是单例模式的么">Spring的IOC是单例模式的么？</h3>
-<p>IOC默认使用单例模式创建Bean，默认在spring容器启动时会自动创建对象。</p>
-<p>但是也可以通过注解的方式实现多例模式，使用@Scope(value=&quot;prototype&quot;)</p>
-<p>使用多例模式，在容器启动时不会创建bean，而在使用bean时才会去创建。</p>
-<h3 id="aop代理可以是jdk动态代理或者cglib代理">AOP代理可以是JDK动态代理或者CGLIB代理。</h3>
-<p>参考：https://blog.csdn.net/moreevan/article/details/11977115/</p>
-<h3 id="cglib和jdk动态代理区别有哪些">cglib和jdk动态代理区别有哪些</h3>
-<p>1、Jdk动态代理：利用拦截器（必须实现InvocationHandler）加上反射机制生成一个代理接口的匿名类，在调用具体方法前调用InvokeHandler来处理</p>
-<p>2、 Cglib动态代理：利用ASM框架，对代理对象类生成的class文件加载进来，通过修改其字节码生成子类来处理</p>
-<p>什么时候用cglib什么时候用jdk动态代理？</p>
-<p>1、目标对象生成了接口 默认用JDK动态代理</p>
-<p>2、如果目标对象使用了接口，可以强制使用cglib</p>
-<p>3、如果目标对象没有实现接口，必须采用cglib库，Spring会自动在JDK动态代理和cglib之间转换</p>
-<p>JDK动态代理和cglib字节码生成的区别？</p>
-<p>1、JDK动态代理只能对实现了接口的类生成代理，而不能针对类</p>
-<p>2、Cglib是针对类实现代理，主要是对指定的类生成一个子类，覆盖其中的方法，并覆盖其中方法的增强，但是因为采用的是继承，所以该类或方法最好不要生成final，对于final类或方法，是无法继承的</p>
-<p>Cglib比JDK快？</p>
-<p>1、cglib底层是ASM字节码生成框架，但是字节码技术生成代理类，在JDL1.6之前比使用java反射的效率要高</p>
-<p>2、在jdk6之后逐步对JDK动态代理进行了优化，在调用次数比较少时效率高于cglib代理效率</p>
-<p>3、只有在大量调用的时候cglib的效率高，但是在1.8的时候JDK的效率已高于cglib</p>
-<p>4、Cglib不能对声明final的方法进行代理，因为cglib是动态生成代理对象，final关键字修饰的类不可变只能被引用不能被修改</p>
-<h2 id="spring-bean">Spring bean</h2>
-<h3 id="spring-中的-bean-的作用域有哪些">Spring 中的 bean 的作⽤域有哪些?</h3>
-<ul>
-<li>singleton : 唯⼀ bean 实例，Spring 中的 bean 默认都是单例的。</li>
-<li>prototype : 每次请求都会创建⼀个新的 bean 实例。</li>
-<li>request : 每⼀次HTTP请求都会产⽣⼀个新的bean，该bean仅在当前HTTP request内有效。</li>
-<li>session : 每⼀次HTTP请求都会产⽣⼀个新的 bean，该bean仅在当前 HTTP session 内有效。</li>
-<li>global-session： 全局session作⽤域，仅仅在基于portlet的web应⽤中才有意义，Spring5已经没有了。Portlet是能够⽣成语义代码(例如：HTML)⽚段的⼩型Java Web插件。它们基于portlet容器，可以像servlet⼀样处理HTTP请求。但是，与 servlet 不同，每个 portlet 都有不同的会话</li>
-</ul>
-<h3 id="spring-中的单例-bean-的线程安全问题了解吗">Spring 中的单例 bean 的线程安全问题了解吗？</h3>
-<p>⼤部分时候我们并没有在系统中使⽤多线程，所以很少有⼈会关注这个问题。单例 bean 存在线程问题，主要是因为当多个线程操作同⼀个对象的时候，对这个对象的⾮静态成员变量的写操作会存在线程安全问题。<br>
-<strong>常⻅的有两种解决办法：</strong></p>
-<p>​	1. 在Bean对象中尽量避免定义可变的成员变量（不太现实）。</p>
-<ol>
-<li>在类中定义⼀个ThreadLocal成员变量，将需要的可变成员变量保存在 ThreadLocal 中（推荐的⼀种⽅式）。</li>
-</ol>
-<h3 id="component-和-bean-的区别是什么">@Component 和 @Bean 的区别是什么？</h3>
-<ol>
-<li>作⽤对象不同: @<strong>Component 注解作⽤于类</strong>，⽽ @<strong>Bean 注解作⽤于⽅法</strong>。</li>
-<li>@Component 通常是通过类路径扫描来⾃动侦测以及⾃动装配到Spring容器中（我们可以使⽤ @ComponentScan 注解定义要扫描的路径从中找出标识了需要装配的类⾃动装配到Spring 的 bean 容器中）。 @Bean 注解通常是我们在标有该注解的⽅法中定义产⽣这个bean, @Bean 告诉了Spring这是某个类的示例，当我需要⽤它的时候还给我。</li>
-<li>@Bean 注解⽐ Component 注解的⾃定义性更强，⽽且很多地⽅我们只能通过 @Bean 注解来注册bean。⽐如当我们引⽤第三⽅库中的类需要装配到 Spring 容器时，则只能通过@Bean 来实现。</li>
-</ol>
-<h3 id="将一个类声明为spring的-bean-的注解有哪些">将⼀个类声明为Spring的 bean 的注解有哪些?</h3>
-<p>我们⼀般使⽤ @Autowired 注解⾃动装配 bean，要想把类标识成可⽤于 @Autowired 注解⾃动装配的 bean 的类,采⽤以下注解可实现：</p>
-<ul>
-<li>@Component ：通⽤的注解，可标注任意类为 Spring 组件。如果⼀个Bean不知道属于哪个层，可以使⽤ @Component 注解标注。</li>
-<li>@Repository : 对应<strong>持久层</strong>即 <strong>Dao</strong> 层，主要⽤于数据库相关操作。</li>
-<li>@Service : 对应<strong>服务层</strong>，主要涉及⼀些复杂的逻辑，需要⽤到 Dao层。</li>
-<li>@Controller : 对应 <strong>Spring MVC 控制层</strong>，主要⽤户接受⽤户请求并调⽤ Service 层返回数据给前端⻚⾯。</li>
-</ul>
-<h2 id="spring-中的-bean-生命周期">Spring 中的 bean ⽣命周期</h2>
-<figure data-type="image" tabindex="1"><img src="https://i.imgtg.com/2023/02/14/dqSOI.png" alt="dqSOI.png" loading="lazy"></figure>
-<figure data-type="image" tabindex="2"><img src="https://i.imgtg.com/2023/02/14/dq0ND.png" alt="dq0ND.png" loading="lazy"></figure>
-<ul>
-<li>
-<p>Bean 容器找到配置⽂件中 Spring Bean 的定义。</p>
-</li>
-<li>
-<p>Bean 容器利⽤ Java Reflection API 创建⼀个Bean的实例。</p>
-</li>
-<li>
-<p>如果涉及到⼀些属性值 利⽤ set() ⽅法设置⼀些属性值</p>
-</li>
-<li>
-<p>如果 Bean 实现了 BeanNameAware 接⼝，调⽤ setBeanName() ⽅法，传⼊Bean的名字。</p>
-</li>
-<li>
-<p>如果 Bean 实现了 BeanClassLoaderAware 接⼝，调⽤ setBeanClassLoader() ⽅法，传<br>
-ClassLoader 对象的实例。</p>
-</li>
-<li>
-<p>与上⾯的类似，如果实现了其他 *.Aware 接⼝，就调⽤相应的⽅法。</p>
-</li>
-<li>
-<p>如果有和加载这个 Bean 的 Spring 容器相关的 BeanPostProcessor 对象，执<br>
-⾏ postProcessBeforeInitialization() ⽅法</p>
-</li>
-<li>
-<p>如果Bean实现了 InitializingBean 接⼝，执⾏ afterPropertiesSet() ⽅法。</p>
-</li>
-<li>
-<p>如果 Bean 在配置⽂件中的定义包含 init-method 属性，执⾏指定的⽅法</p>
-</li>
-<li>
-<p>如果有和加载这个 Bean的 Spring 容器相关的 BeanPostProcessor 对象，执<br>
-⾏ postProcessAfterInitialization() ⽅法</p>
-</li>
-<li>
-<p>当要销毁 Bean 的时候，如果 Bean 实现了 DisposableBean 接⼝，执⾏ destroy() ⽅法。</p>
-</li>
-<li>
-<p>当要销毁 Bean 的时候，如果 Bean 在配置⽂件中的定义包含 destroy-method 属性，执⾏指<br>
-定的⽅法。</p>
-</li>
-</ul>
-<p>Spring Bean的生命周期分为<code>四个阶段</code>和<code>多个扩展点</code>。扩展点又可以分为<code>影响多个Bean</code>和<code>影响单个Bean</code>。整理如下：<br>
-四个阶段</p>
-<ul>
-<li>实例化 Instantiation</li>
-<li>属性赋值 Populate</li>
-<li>初始化 Initialization</li>
-<li>销毁 Destruction</li>
-</ul>
-<p>多个扩展点</p>
-<ul>
-<li>影响多个Bean
-<ul>
-<li>BeanPostProcessor</li>
-<li>InstantiationAwareBeanPostProcessor</li>
-</ul>
-</li>
-<li>影响单个Bean
-<ul>
-<li>Aware
-<ul>
-<li>Aware Group1
-<ul>
-<li>BeanNameAware</li>
-<li>BeanClassLoaderAware</li>
-<li>BeanFactoryAware</li>
-</ul>
-</li>
-<li>Aware Group2
-<ul>
-<li>EnvironmentAware</li>
-<li>EmbeddedValueResolverAware</li>
-<li>ApplicationContextAware(ResourceLoaderAware\ApplicationEventPublisherAware\MessageSourceAware)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>生命周期
-<ul>
-<li>InitializingBean</li>
-<li>DisposableBean</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p><strong>主要过程</strong></p>
-<ol>
-<li>实例化 Instantiation</li>
-<li>属性赋值 Populate</li>
-<li>初始化 Initialization</li>
-<li>销毁 Destruction</li>
-</ol>
-<p><strong>实例化 -&gt; 属性赋值 -&gt; 初始化 -&gt; 销毁</strong></p>
-<p>主要逻辑都在doCreate()方法中，逻辑很清晰，就是顺序调用以下三个方法，这三个方法与三个生命周期阶段一一对应</p>
-<ol>
-<li>createBeanInstance() -&gt; 实例化</li>
-<li>populateBean() -&gt; 属性赋值</li>
-<li>initializeBean() -&gt; 初始化</li>
-</ol>
-<p>InstantiationAwareBeanPostProcessor作用于<strong>实例化</strong>阶段的前后，BeanPostProcessor作用于<strong>初始化</strong>阶段的前后。正好和第一、第三个生命周期阶段对应。通过图能更好理解：</p>
-<figure data-type="image" tabindex="3"><img src="https://i.imgtg.com/2023/02/14/dqcEF.png" alt="dqcEF.png" loading="lazy"></figure>
-<p>InstantiationAwareBeanPostProcessor<strong>实际上继 承了</strong>BeanPostProcessor接口</p>
-<p>InstantiationAwareBeanPostProcessor方法分析</p>
-<p>在InstantiationAwareBeanPostProcessor当中 postProcess<strong>Before</strong>Instantiation方法	在<strong>doCreateBean之前</strong>调用，也就是在bean实例化之前调用的，英文源码注释解释道该方法的返回值会替换原本的Bean作为代理，这也是<strong>Aop</strong>等功能实现的关键点。</p>
-<p>之后执行<strong>populateBean</strong> 也就是赋值阶段 continueWithPropertyPopulation 初始的boolean值为true</p>
-<p>postProcessAfterInstantiation方法在属性赋值方法内，但是在真正执行赋值操作之前。其返回值为boolean，返回false时可以阻断属性赋值阶段 也就是说当实例化阶段之后还没完成的情况下是不能继续执行属性赋值</p>
-<p>注意点：</p>
-<p>spring aop替换对象的时候并不在postProcessBefore<strong>Instantiation</strong>替换对象，而是在 postProcess<strong>AfterInitialization</strong>处理的</p>
-<p>一般情况下是在postProcessAfterInitialization替换代理类，自定义了TargetSource的情况下在postProcessBeforeInstantiation替换代理类。具体逻辑在AbstractAutoProxyCreator类中。</p>
-<p><strong>Aware接口</strong></p>
-<p>Aware类型的接口的作用就是让我们能够拿到Spring容器中的一些资源。基本都能够见名知意，Aware之前的名字就是可以拿到什么资源，例如<code>BeanNameAware</code>可以拿到BeanName，以此类推。调用时机需要注意：所有的Aware方法都是在<strong>初始化阶段之前调用</strong>的！</p>
-<p>在<strong>initializeBean</strong>方法中有一个<strong>invokeAwareMethods</strong>方法 这个方法是在初始化bean的阶段之前完成的</p>
-<p>但是不是所有的Aware接口都使用同样的方式调用。Bean××Aware都是在代码中直接调用的，而ApplicationContext相关的Aware都是通过BeanPostProcessor#postProcessBeforeInitialization()实现的。</p>
-<p>之后BeanPostProcessor的调用机制就开始体现出来了 通过<strong>invokeInitMethod</strong>方法的实现在 applyBeanPostProcessors<strong>BeforeInitialization</strong> 和 applyBeanPostProcessors<strong>AfterInitialization</strong> 之间进行完成</p>
-<p>参考连接：</p>
-<p>https://www.jianshu.com/p/1dec08d290c1</p>
-<h2 id="applicationcontext和beanfactory的区别">ApplicationContext和BeanFactory的区别</h2>
-<p><strong>BeanFactory：</strong></p>
-<p>是Spring里面最低层的接口，提供了最简单的容器的功能，只提供了实例化对象和拿对象的功能；</p>
-<p><strong>ApplicationContext：</strong></p>
-<p>应用上下文，继承BeanFactory接口，它是Spring的一各更高级的容器，提供了更多的有用的功能；</p>
-<ol>
-<li>
-<p>国际化（MessageSource）</p>
-</li>
-<li>
-<p>访问资源，如URL和文件（ResourceLoader）</p>
-</li>
-<li>
-<p>载入多个（有继承关系）上下文 ，使得每一个上下文都专注于一个特定的层次，比如应用的web层</p>
-</li>
-<li>
-<p>消息发送、响应机制（ApplicationEventPublisher）</p>
-</li>
-<li>
-<p>AOP（拦截器）</p>
-</li>
-</ol>
-<p><strong>两者装载bean的区别</strong></p>
-<p><strong>BeanFactory：</strong></p>
-<p>BeanFactory在启动的时候不会去实例化Bean，中有从容器中拿Bean的时候才会去实例化；</p>
-<p><strong>ApplicationContext：</strong></p>
-<p>ApplicationContext在启动的时候就把所有的Bean全部实例化了。它还可以为Bean配置lazy-init=true来让Bean延迟实例化；</p>
-<p><strong>我们该用BeanFactory还是ApplicationContent</strong></p>
-<p>延迟实例化的优点：（<strong>BeanFactory</strong>）</p>
-<p>应用启动的时候占用资源很少；对资源要求较高的应用，比较有优势；</p>
-<p>不延迟实例化的优点： （<strong>ApplicationContext</strong>）</p>
-<ol>
-<li>所有的Bean在启动的时候都加载，系统运行的速度快；</li>
-<li>在启动的时候所有的Bean都加载了，我们就能在系统启动的时候，尽早的发现系统中的配置问题</li>
-<li>建议web应用，在启动的时候就把所有的Bean都加载了。（把费时的操作放到系统启动中完成）</li>
-</ol>
-<p>https://blog.csdn.net/pythias_/article/details/82752881</p>
-<h2 id="spring如何解决循环依赖问题">spring如何解决循环依赖问题</h2>
-<p>简言之，两个池子：一个成品池子，一个半成品池子。能解决循环依赖的前提是：spring开启了allowCircularReferences，那么一个正在被创建的bean才会被放在半成品池子里。在注入bean，向容器获取bean的时候，优先向成品池子要，要不到，再去向半成品池子要。</p>
-<p>出现循环依赖一定是你的业务设计有问题。高层业务和底层业务的划分不够清晰，一般，业务的依赖方向一定是无环的，有环的业务，在后续的维护和拓展一定非常鸡肋</p>
-<p>参考连接：</p>
-<ol>
-<li>
-<p>https://blog.csdn.net/qq_41630866/article/details/104332517</p>
-<p>https://blog.csdn.net/chaitoudaren/article/details/105060882</p>
-<p>https://blog.csdn.net/likun557/article/details/113977261</p>
-<p>https://cloud.tencent.com/developer/article/1497692</p>
-<figure data-type="image" tabindex="4"><img src="https://note.mxecy.cn/docs/%E5%9B%BE%E7%89%87/Spring%E5%85%A8%E5%AE%B6%E6%A1%B6%EF%BC%88%E9%9D%A2%E8%AF%95%E7%89%88%EF%BC%89/Spring%E8%A7%A3%E5%86%B3%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96.png" alt="img" loading="lazy"></figure>
-<figure data-type="image" tabindex="5"><img src="https://note.mxecy.cn/docs/%E5%9B%BE%E7%89%87/Spring%E5%85%A8%E5%AE%B6%E6%A1%B6%EF%BC%88%E9%9D%A2%E8%AF%95%E7%89%88%EF%BC%89/Spring%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96.png" alt="img" loading="lazy"></figure>
-<ul>
-<li>
-<p>Spring使用了三级缓存 + 提前暴露对象的方式来解决循环依赖的问题。</p>
-</li>
-<li>
-<p>Spring解决循环依赖的条件：</p>
-<ul>
-<li>出现循环依赖的Bean必须是单例的。</li>
-<li>依赖注入的方式不能全是构造器注入的方式。</li>
-</ul>
-</li>
-<li>
-<p>相关的重要属性：位于<code>DefaultSingletonBeanRegistry</code>类中</p>
-<ul>
-<li>
-<p>Spring内部维护了三个Map，所谓的三重缓存。</p>
-<ul>
-<li>
-<pre><code>Map&lt;String, Object&gt; singletonObjects
-</code></pre>
-<p>：单例池容器，用于缓存单例Bean的地方。一级缓存。</p>
-<ul>
-<li>这里的bean是已经创建完成的，该bean经历过实例化-&gt;属性填充-&gt;初始化以及各类的后置处理。因此，一旦需要获取bean时，我们第一时间就会寻找一级缓存</li>
-</ul>
-</li>
-<li>
-<pre><code>Map&lt;String, Object&gt; earlySingletonObjects
-</code></pre>
-<p>：早期的单例Bean。二级缓存。</p>
-<ul>
-<li>这里跟一级缓存的区别在于，该缓存所获取到的bean是提前曝光出来的，是还没创建完成的。也就是说获取到的bean只能确保已经进行了实例化，但是属性填充跟初始化肯定还没有做完，因此该bean还没创建完成，仅仅能作为指针提前曝光，被其他bean所引用</li>
-</ul>
-</li>
-<li>
-<pre><code>Map&lt;String, ObjectFactory&lt;?&gt;&gt; singletonFactories
-</code></pre>
-<p>：创建中单例Bean的原始工厂。三级缓存。</p>
-<ul>
-<li>在bean实例化完之后，属性填充以及初始化之前，如果允许提前曝光，spring会将实例化后的bean提前曝光，也就是把该bean转换成beanFactory并加入到三级缓存。在需要引用提前曝光对象时再通过singletonFactory.getObject()获取。</li>
-<li>当其他的bean从三级缓存中获取了Bean后，<strong>当前的Bean就会从三级缓存中放入到二级缓存</strong>。并且从三级缓存中取出的时候会调用<code>SmartInstantiationAwareBeanPostProcessor#getEarlyBeanReference</code>方法。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><code>Set&lt;String&gt; singletonsCurrentlyInCreation</code>：保存了当前正在创建的单例对象的名称。</p>
-</li>
-<li>
-<p><code>Map&lt;String, Set&lt;String&gt;&gt; dependentBeanMap</code>：保存了一个bean对其他的bean的依赖。</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>注意：</strong></p>
-<ul>
-<li>第一级缓存（singletonObjects）是用来缓存创建好的单例Bean的</li>
-<li>第二级缓存（earlySingletonObjects）是用来发现在当前Bean被暴露的时间里，有没有被其他Bean引用，如果被其他Bean引用，其他Bean又是引用的一个错误版本，就抛出一个异常。</li>
-<li>第三级缓存（singletonFactories），这个才是SP真正用来解决循环依赖的，并且可以延迟代理的时机。</li>
-</ul>
-<pre><code class="language-java">// AbstractAutowireCapableBeanFactory#doCreateBean
-/*忽略部分代码*/
-// 创建实例包装
-if (instanceWrapper == null) {
-    instanceWrapper = createBeanInstance(beanName, mbd, args);
-}
-// 从实例包装后获取Bean
-Object bean = instanceWrapper.getWrappedInstance();
-/*忽略部分代码*/
-if (earlySingletonExposure) {
-    /*忽略部分代码*/
-    // 如果允许暴露，则将其加入二级缓存。在调用被取出来的时候会调用SmartInstantiationAwareBeanPostProcessor#getEarlyBeanReference方法，默认实现只有AbstractAutoProxyCreator，创建代理。因此，如果在被暴露的过程中，有其他Bean调用getSingleton(当前对象)，则当前对象会被代理（如果有的话），然后放入二级缓存。
-    addSingletonFactory(beanName, () -&gt; getEarlyBeanReference(beanName, mbd, bean));
-}
-/*忽略部分代码*/
-Object exposedObject = bean;
-try {
-    // 填充属性
-    populateBean(beanName, mbd, instanceWrapper);
-    // 实例化Bean，请注意这里，实例化Bean的时候可能会导致exposedObject的改变！！！
-    exposedObject = initializeBean(beanName, exposedObject, mbd);
-}
-catch (Throwable ex) {
-    /*忽略部分代码*/
-}
-
-if (earlySingletonExposure) {
-    // 直接从二级缓存或一级缓存中获取Bean，注意，这里如果不为null，只有一种可能，在暴露出去的时间里，在其他Bean的初始化过程中调用了getSingleton(当前Bean)。
-    Object earlySingletonReference = getSingleton(beanName, false);
-    if (earlySingletonReference != null) {
-        // 判断exposedObject在经过initializeBean后是否和原来的Bean是一个对象。
-        if (exposedObject == bean) {
-            // 如果bean没有在initializeBean改变，那么将当前Bean替换为代理后（如果有代理过的话）的Bean。
-            exposedObject = earlySingletonReference;
-        }
-        else if (!this.allowRawInjectionDespiteWrapping &amp;&amp; hasDependentBean(beanName)) {
-            /*忽略部分代码*/
-            // 注意：到了这里，说明了一种情况，当前暴露出去的Bean（可能被代理过后）被其他Bean引用了，但是在实例化Bean的时候，Bean和暴露出去的Bean已经不是一个Bean的，即其他Bean引用的Bean是一个错误的Bean。因此如果有其他的Bean实际引用了当前Bean，则应该抛出一个异常。为什么是实际引用呢？因为这里可能其他Bean只是实现了Aware之类的接口，并在里面调用了getSingleton(当前Bean)，并没有实际引用。
-        }
-    }
-}Copy to clipboardErrorCopied
-</code></pre>
-</li>
-<li>
-<p>问题：</p>
-<ul>
-<li>
-<p>如何解决循环依赖的：</p>
-<ul>
-<li>通过提前曝光解决循环依赖，当AB循环依赖的时候，先将A的半成品曝光出去，让B先完成初始化，然后在使得初始化完成后的B注入到A中。</li>
-</ul>
-</li>
-<li>
-<p>为什么要三级缓存：（<strong>以下为自己理解，不一定准确，事实上，添加三级缓存的地方的注释也标注了三级缓存是用来解决潜在的循环依赖的。</strong>）</p>
-<ul>
-<li>
-<p>很多博文说三级缓存是为了解决AOP的循环依赖，但事实上不是这样的，即使没有三级缓存，Spring也可以通过提前暴露代理对象的方法来解决AOP的循环依赖。</p>
-</li>
-<li>
-<p>所以三级缓存的作用主要是：延迟对实例化阶段生成的对象的代理，只有真正发生循环依赖的时候，才去提前生成代理对象，否则只会创建一个工厂并将其放入到三级缓存中，但是不会去通过这个工厂去真正创建对象。</p>
-</li>
-<li>
-<p>对于代理过的对象，如果在被暴露出去的时候被其他的Bean所引用了，就会在从三级缓存中移除的时候创建代理；如果没有被引用的话，则在初始化Bean的时候创建代理。</p>
-</li>
-<li>
-<p>三级缓存作用：（三级缓存并非非要不可）</p>
-<ul>
-<li>通过<code>SmartInstantiationAwareBeanPostProcessor</code>对Bean进行扩展。</li>
-<li>尽量可能的延迟AOP的初始化。</li>
-</ul>
-</li>
-<li>
-<figure data-type="image" tabindex="6"><img src="https://note.mxecy.cn/docs/%E5%9B%BE%E7%89%87/Spring%E5%85%A8%E5%AE%B6%E6%A1%B6%EF%BC%88%E9%9D%A2%E8%AF%95%E7%89%88%EF%BC%89/%E5%9C%A8InstantiationBean%E4%B8%AD%E6%94%B9%E5%8F%98%E4%BA%86Bean.png" alt="img" loading="lazy"></figure>
-<pre><code class="language-java">// AbstractAutowireCapableBeanFactory#doCreateBean
-// 忽略部分代码
-if (earlySingletonExposure) {
-    if (logger.isTraceEnabled()) {
-        logger.trace(&quot;Eagerly caching bean '&quot; + beanName +
-                     &quot;' to allow for resolving potential circular references&quot;);
-    }
-    // 添加三级缓存
-    addSingletonFactory(beanName, () -&gt; getEarlyBeanReference(beanName, mbd, bean));
-}
-// 忽略部分代码
-
-// AbstractAutowireCapableBeanFactory#getEarlyBeanReference
-protected Object getEarlyBeanReference(String beanName, RootBeanDefinition mbd, Object bean) {
-    Object exposedObject = bean;
-    if (!mbd.isSynthetic() &amp;&amp; hasInstantiationAwareBeanPostProcessors()) {
-        for (SmartInstantiationAwareBeanPostProcessor bp : getBeanPostProcessorCache().smartInstantiationAware) {
-            // 这里实现了getEarlyBeanReference的只有一个AbstractAutoProxyCreator.java
-            exposedObject = bp.getEarlyBeanReference(exposedObject, beanName);
-        }
-    }
-    return exposedObject;
-}
-</code></pre>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="spring-mvc">Spring MVC</h2>
-<h3 id="说说自己对于-spring-mvc-了解">说说⾃⼰对于 Spring MVC 了解?</h3>
-<p>谈到这个问题，我们不得不提提之前 Model1 和 Model2 这两个没有 Spring MVC 的时代。</p>
-<ul>
-<li>Model1 时代 : 很多学 Java 后端⽐᫾晚的朋友可能并没有接触过 Model1 模式下的JavaWeb 应⽤开发。在 Model1 模式下，整个 Web 应⽤⼏乎全部⽤ JSP ⻚⾯组成，只⽤少量的 JavaBean 来处理数据库连接、访问等操作。这个模式下 JSP 即是控制层⼜是表现层。显⽽易⻅，这种模式存在很多问题。⽐如①将控制逻辑和表现逻辑混杂在⼀起，导致代码重⽤率极低；②前端和后端相互依赖，难以进⾏测试并且开发效率极低；</li>
-<li>Model2 时代 ：学过 Servlet 并做过相关 Demo 的朋友应该了解“Java Bean(Model)+JSP（View,）+Servlet（Controller） ”这种开发模式,这就是早期的 JavaWeb MVC 开发模式。Model:系统涉及的数据，也就是 dao 和 bean。View：展示模型中的数据，只是⽤来展。Controller：处理⽤户请求都发送给 ，返回数据给 JSP 并展示给⽤户。</li>
-</ul>
-<p>Model2 模式下还存在很多问题，Model2的抽象和封装程度还远远不够，使⽤Model2进⾏开发时不可避免地会重复造轮⼦，这就⼤⼤降低了程序的可维护性和复⽤性。于是很多JavaWeb开发相关的 MVC 框架应运⽽⽣⽐如Struts2，但是 Struts2 ⽐᫾笨重。随着 Spring 轻量级开发框架的流⾏，Spring ⽣态圈出现了 Spring MVC 框架， Spring MVC 是当前最优秀的 MVC 框架。相⽐于Struts2 ， Spring MVC 使⽤更加简单和⽅便，开发效率更⾼，并且 Spring MVC 运⾏速度更快。MVC 是⼀种设计模式,Spring MVC 是⼀款很优秀的 MVC 框架。Spring MVC 可以帮助我们进⾏更简洁的Web层的开发，并且它天⽣与 Spring 框架集成。Spring MVC 下我们⼀般把后端项⽬分为 Service层（处理业务）、Dao层（数据库操作）、Entity层（实体类）、Controller层(控制层，返回数据给前台⻚⾯)。</p>
-<p>SpringMVC ⼯作原理了解吗?</p>
-<figure data-type="image" tabindex="7"><img src="https://i.imgtg.com/2023/02/14/dqdu6.png" alt="dqdu6.png" loading="lazy"></figure>
-<p>流<strong>程：</strong></p>
-<ol>
-<li>客户端（浏览器）发送请求，直接请求到 <strong>DispatcherServlet</strong> 。</li>
-<li>DispatcherServlet 根据请求信息调⽤ <strong>HandlerMapping</strong> ，解析请求对应的 <strong>Handler</strong> 。</li>
-<li>解析到对应的 <strong>Handler</strong> （也就是我们平常说的 <strong>Controller</strong> 控制器）后，开始<strong>HandlerAdapter</strong> 适配器处理。</li>
-<li>HandlerAdapter 会根据 Handler 来调⽤真正的处理器开处理请求，并处理相应的业务逻辑。</li>
-<li>处理器处理完业务后，会返回⼀个 ModelAndView 对象， Model 是返回的数据对象， View 是个逻辑上的 View 。</li>
-<li><strong>ViewResolver</strong> 会根据逻辑 View 查找实际的 View 。</li>
-<li><strong>DispaterServlet</strong> 把返回的 Model 传给 View （视图渲染）。</li>
-<li>把 View 返回给请求者（浏览器）</li>
-</ol>
-<h2 id="spring-springmvc和springboot区别">Spring SpringMVC和SpringBoot区别</h2>
-<h3 id="一-概念">一、概念</h3>
-<p><strong>1、Spring</strong></p>
-<p>Spring是一个开源容器框架，可以接管web层，业务层，dao层，持久层的组件，并且可以配置各种bean,和维护bean与bean之间的关系。其核心就是控制反转(IOC),和面向切面(AOP),简单的说就是一个分层的轻量级开源框架。</p>
-<p><strong>2、SpringMVC</strong></p>
-<p>Spring MVC属于SpringFrameWork的后续产品，已经融合在Spring Web Flow里面。SpringMVC是一种web层mvc框架，用于替代servlet（处理|响应请求，获取表单参数，表单校验等。SpringMVC是一个MVC的开源框架，SpringMVC=struts2+spring，springMVC就相当于是Struts2加上Spring的整合。</p>
-<p><strong>3、SpringBoot</strong></p>
-<p>Springboot是一个微服务框架，延续了spring框架的核心思想IOC和AOP，简化了应用的开发和部署。Spring Boot是为了简化Spring应用的创建、运行、调试、部署等而出现的，使用它可以做到专注于Spring应用的开发，而无需过多关注XML的配置。提供了一堆依赖打包，并已经按照使用习惯解决了依赖问题—&gt;习惯大于约定。</p>
-<h3 id="二区别与总结">二区别与总结</h3>
-<p><strong>1.简单理解为：Spring包含了SpringMVC，而SpringBoot又包含了Spring或者说是在Spring的基础上做得一个扩展。</strong></p>
-<p><img src="https://img-blog.csdnimg.cn/20200920140600599.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ1MjcwNjY3,size_1,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述" loading="lazy"><br>
-<strong>2、关系大概就是这样：</strong></p>
-<p>spring mvc &lt; spring &lt; springboot</p>
-<h2 id="spring-框架中用到了哪些设计模式">Spring 框架中⽤到了哪些设计模式</h2>
-<p>1.<strong>工厂设计模式</strong>：Spring使用工厂模式通过BeanFactory和ApplicationContext创建bean对象。</p>
-<p>2.<strong>代理设计模式</strong>：Spring AOP功能的实现。</p>
-<p>3.<strong>单例设计模式</strong>：Spring中的bean默认都是单例的。</p>
-<p>4.<strong>模板方法模式</strong>：Spring中的jdbcTemplate、hibernateTemplate等以Template结尾的对数据库操作的类，它们就使用到了模板模式。</p>
-<p>5.<strong>包装器设计模式</strong>：我们的项目需要连接多个数据库，而且不同的客户在每次访问中根据需要会去访问不同的数据库。这种模式让我们可以根据客户的需求能够动态切换不同的数据源。</p>
-<p>6.<strong>观察者模式</strong>：Spring<strong>事件驱动模型</strong>就是观察者模式很经典的一个应用。</p>
-<p>7.<strong>适配器模式</strong>：Spring AOP的增强或通知（Advice）使用到了适配器模式、Spring MVC中也是用到了适配器模式适配Controller。</p>
-<p>https://blog.csdn.net/fei1234456/article/details/106693892</p>
-<h2 id="spring-事务">Spring 事务</h2>
-<h3 id="spring-管理事务的方式有几种">Spring 管理事务的⽅式有⼏种？</h3>
-<ol>
-<li><strong>编程式事务</strong>，在代码中硬编码。(不推荐使⽤)</li>
-<li><strong>声明式事务</strong>，在配置⽂件中配置（推荐使⽤）</li>
-</ol>
-<p><strong>声明式事务</strong>⼜分为两种：</p>
-<ol>
-<li>基于<strong>XML</strong>的声明式事务</li>
-<li>基于<strong>注解</strong>的声明式事务 <strong>Transactional</strong></li>
-</ol>
-<h3 id="spring-事务中的隔离级别有哪几种">Spring 事务中的隔离级别有哪⼏种?</h3>
-<ul>
-<li>TransactionDefinition.I <strong>SOLATION_DEFAUL</strong>T: 使⽤后端数据库默认的隔离级别，Mysql默认采⽤的 <strong>REPEATABLE_READ</strong>隔离级别 Oracle 默认采⽤的 READ_COMMITTED隔离级别.</li>
-<li>TransactionDefinition.ISOLATION_READ_UNCOMMITTED: 最低的隔离级别，允许读取尚未提交的数据变更，可能会导致脏读、幻读或不可重复读</li>
-<li>TransactionDefinition.ISOLATION_READ_COMMITTED: 允许读取并发事务已经提交的数据，可以阻⽌脏读，但是幻读或不可重复读仍有可能发⽣</li>
-<li>TransactionDefinition.ISOLATION_REPEATABLE_READ: 对同⼀字段的多次读取结果都是⼀致的，除⾮数据是被本身事务⾃⼰所修改，可以阻⽌脏读和不可重复读，但幻读仍有可能发⽣。</li>
-<li>TransactionDefinition.ISOLATION_SERIALIZABLE: 最⾼的隔离级别，完全服从ACID的隔离级别。所有的事务依次逐个执⾏，这样事务之间就完全不可能产⽣⼲扰，也就是说，该级别可以防⽌脏读、不可重复读以及幻读。但是这将严重影响程序的性能。通常情况下也不会⽤到该级别。</li>
-</ul>
-<h3 id="spring-事务中哪几种事务传播行为">Spring 事务中哪⼏种事务传播⾏为?</h3>
-<p><strong>⽀持当前事务的情况：</strong></p>
-<ul>
-<li>TransactionDefinition.PROPAGATION_REQUIRED： 如果当前存在事务，则加⼊该事务；如果当前没有事务，则创建⼀个新的事务。</li>
-<li>TransactionDefinition.PROPAGATION_SUPPORTS： 如果当前存在事务，则加⼊该事务；如果当前没有事务，则以⾮事务的⽅式继续运⾏。</li>
-<li>TransactionDefinition.PROPAGATION_MANDATORY： 如果当前存在事务，则加⼊该事务；如果当前没有事务，则抛出异常。（mandatory：强制性）</li>
-</ul>
-<p><strong>不⽀持当前事务的情况</strong>：</p>
-<ul>
-<li>TransactionDefinition.PROPAGATION_REQUIRES_NEW： 创建⼀个新的事务，如果当前存在事务，则把当前事务挂起。</li>
-<li>TransactionDefinition.PROPAGATION_NOT_SUPPORTED： 以⾮事务⽅式运⾏，如果当前存在事务，则把当前事务挂起。</li>
-<li>TransactionDefinition.PROPAGATION_NEVER： 以⾮事务⽅式运⾏，如果当前存在事务，则抛出异常。</li>
-</ul>
-<p><strong>其他情况：</strong></p>
-<ul>
-<li>TransactionDefinition.PROPAGATION_NESTED： 如果当前存在事务，则创建⼀个事务作为当前事务的嵌套事务来运⾏；如果当前没有事务，则该取值等价于TransactionDefinition.PROPAGATION_REQUIRED。</li>
-</ul>
-<h3 id="transactionalrollbackfor-exceptionclass注解了解吗">@Transactional(rollbackFor = Exception.class)注解了解吗？</h3>
-<p>我们知道：Exception分为运⾏时异常RuntimeException和⾮运⾏时异常。事务管理对于企业应⽤来说是⾄关重要的，即使出现异常情况，它也可以保证数据的⼀致性。</p>
-<p>当 @Transactional 注解作⽤于类上时，该类的所有 public ⽅法将都具有该类型的事务属性，同时，我们也可以在⽅法级别使⽤该标注来覆盖类级别的定义。如果类或者⽅法加了这个注解，那么这个类⾥⾯的⽅法抛出异常，就会回滚，数据库⾥⾯的数据也会回滚。</p>
-<p>在 @Transactional 注解中如果不配置 rollbackFor 属性,那么事物只会在遇到 <strong>RuntimeException 的时候才会回滚</strong>,加上 rollbackFor=Exception.class ,可以让事物在遇到⾮运⾏时异常时也</p>
-<h3 id="springboot和spring-mvc的区别是什么">springboot和spring MVC的区别是什么</h3>
-<p>Spring 最初利用“工厂模式”（DI）和“代理模式”（AOP）解耦应用组件。大家觉得挺好用，于是按照这种模式搞了一个 MVC框架（一些用Spring 解耦的组件），用开发 web 应用（ SpringMVC ）。然后发现每次开发都写很多样板代码，为了简化工作流程，于是开发出了一些“懒人整合包”（starter），这套就是 Spring Boot。</p>
-<p>所以，用最简练的语言概括就是：</p>
-<p>Spring 是一个“引擎”；</p>
-<p>Spring MVC 是基于Spring的一个 MVC 框架；</p>
-<p>Spring Boot 是基于Spring4的条件注册的一套快速开发整合</p>
-<h2 id="jpa">JPA</h2>
-<h2 id="如何使用jpa在数据库中非持久化一个字段">如何使⽤JPA在数据库中⾮持久化⼀个字段？</h2>
-<p>假如我们有有下⾯⼀个类：</p>
-<figure data-type="image" tabindex="8"><img src="https://i.imgtg.com/2023/02/14/dqVFP.png" alt="dqVFP.png" loading="lazy"></figure>
-<p>如果我们想让 secrect 这个字段不被持久化，也就是不被数据库存储怎么办？我们可以采⽤下⾯⼏种⽅法：</p>
-<figure data-type="image" tabindex="9"><img src="https://i.imgtg.com/2023/02/14/dqYRb.png" alt="dqYRb.png" loading="lazy"></figure>
-<h2 id="spring线程安全问题"><a href="https://blog.csdn.net/weixin_43030522/article/details/107614334">spring线程安全问题</a></h2>
-<p>spring 的 bean 的scope<br>
-spring容器中管理的bean有五种作用域：<br>
-1、<strong>singleton</strong>：单例、也是默认的<br>
-2、<strong>prototype</strong>：原型，即每次需要该bean都会创建一个新的bean<br>
-3、request：请求级别，即每次请求创建一个bean，适用于WebApplicationContext<br>
-4、session：session会话级别，同一个session共享一个bean<br>
-5、application：应用程序级别，同一个程序共享一个bean</p>
-<p>从单例与原型Bean,去说线程安全<br>
-对于原型模式的Bean,每次都会创建一个新对象，也就是线程之间并不存在Bean共享，不会有线程安全的问题。<br>
-对于单例Bean,所有线程都共享一个单例实例Bean,因此是存在资源的竞争。<br>
-如果单例Bean,是一个无状态Bean，也就是线程中的操作不会对Bean的成员执行查询以外的操作，那么这个单例Bean是线程安全的。<br>
-<strong>比如spring mvc 的 Controller、Service、Dao等，这些Bean大多是无状态的，只关注于方法本身。</strong><br>
-<strong>对于有状态的bean，spring官方提供的bean，一般提供了通过ThreadLocal去解决线程安全的方法。</strong><br>
-比如RequestContextHolder、TransactionSynchronizationManager、LocaleContextHolder等。<br>
-使用ThreadLocal的好处是使得多线程场景下，多个线程对这个单例Bean的成员变量并不存在资源的竞争，因为ThreadLocal为每个线程保存线程私有的数据。这是一种以空间换时间的方式。</p>
-<h2 id="spring中-单例模式和原型模式的区别">spring中 单例模式和原型模式的区别</h2>
-<p>简单说来，单例就是用的一个对象。 原型就是拷贝的这个对象。</p>
-<p><strong>单例模式和原型模式多次调用hashcode相同么</strong><br>
-单例模式多次调用hashcode是相同的。</p>
-<p>原型模式多次调用hashcode是不同的。</p>
-<p>如何在spring中验证原型模式hashcode不同<br>
-在2个类中，分别注入一个原型模式的对象，打印hashcode就可以看出来。</p>
-<p>注： 一个类中是看不出来的，因为一个类中注入的时候只调用一次。</p>
-<p><strong>有个需求，当每次调用这个对象的时候，生成一个新日期，用bean的形式好么</strong><br>
-这个要区分下情况。<br>
-如果this.date=new Date(); 写在构造器里是不好用的，因为bean只加载一次。 这个new Date()只在spring创建对象的时候执行一次。 所以一直不变。</p>
-<p>解决方案：<br>
-可以把this.date=new Date(); 写在一个方法里，然后再返回该bean对象，方法每次调用都会执行一遍逻辑，所以date会变化。</p>
-<p><strong>原型模式</strong><br>
-存在一个对象，每次新建对象都是拷贝这个对象的属性值<br>
-分为浅复制与深复制<br>
-区别在于对象里面的引用类型对象属性是否是同一个</p>
-<h2 id="jwt原理">JWT原理</h2>
-<p>参考https://blog.csdn.net/lh_hebine/article/details/99695927</p>
-<p>JWT是为了在网络应用环境之间传递声明而执行的一种基于JSON 的开放标准</p>
-<p>JWT组成</p>
-<p><strong>头部</strong></p>
-<p>​	声明类型</p>
-<p>​	加密算法</p>
-<p>再进行base加密得到第一部分</p>
-<p><strong>载荷</strong> 用于存放有效的信息 不存放敏感的信息</p>
-<p>​	标准中注册的声明</p>
-<p>​	公共的声明</p>
-<p>​	私有的声明</p>
-<p>再进行base加密得到第二部分</p>
-<p><strong>签证</strong></p>
-<p>header base加密后</p>
-<p>payload base加密后</p>
-<p>secret</p>
-<p>通过前两者的加密后字符串 再通过头部声明的加密算法进行加密组成第三部分</p>
-<h2 id="jwt认证流程">JWT认证流程</h2>
-<p>在前后端分离的项目中：前端将用户的登录信息发送给服务器；服务器接受请求后为用户生成独一无二的认证信息--token，传给客户端浏览器；客户端将token保存在cookie或者storage中；在之后访问客户端都携带这个token请求服务器；服务器验证token的值，如果验证成功则给客户端返回数据。服务器并不保存token。</p>
-<h2 id="maven是怎样解决依赖冲突的">maven是怎样解决依赖冲突的</h2>
-<p>用Maven Helper插件，在插件安装好之后，我们打开pom.xml文件，在底部会多出一个Dependency Analyzer选项</p>
-<p>点击 Dependency Analyzer，通过点击conflicts发现冲突，通过如下的方式在解决冲突；</p>
-<h2 id="maven自动解决依赖冲突的规则是什么">maven自动解决依赖冲突的规则是什么？</h2>
-<h3 id="第一原则路径最近者优先">第一原则：路径最近者优先</h3>
-<p>项目A有如下的依赖关系：</p>
-<p>A-&gt;B-&gt;C-&gt;X(1.0)</p>
-<p>A-&gt;D-&gt;X(2.0)</p>
-<p>则该例子中，X的版本是2.0</p>
-<h3 id="第二原则路径相等先声明者优先">第二原则：路径相等，先声明者优先</h3>
-<p>项目A有如下的依赖关系：</p>
-<p>A-&gt;B-&gt;Y(1.0)</p>
-<p>A-&gt;C-&gt;Y(2.0)</p>
-<p>若pom文件中B的依赖坐标先于C进行声明，则最终Y的版本为1.0</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Mybatis]]></title>
-        <id>https://lindamao.cn/post/mybatis/</id>
-        <link href="https://lindamao.cn/post/mybatis/">
-        </link>
-        <updated>2020-11-14T06:25:02.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="和的区别是什么">#{}和${}的区别是什么？</h2>
-<p>1）#{}是预编译处理，$ {}是字符串替换。</p>
-<p>2）MyBatis在处理#{}时，会将SQL中的#{}替换为?号，使用<strong>PreparedStatement</strong>的set方法来赋值；MyBatis在处理 $ { } 时，就是把 ${ } 替换成变量的值。</p>
-<p>3）使用 #{} 可以有效的防止SQL注入，提高系统安全性。</p>
-<p>项目实战中使用,请阅读我博客中Java项目实战分类中的--<a href="https://www.cnblogs.com/liaowenhui/p/12217400.html">MySQL中in('5,6,7')只取第一个id为5对应的数据的思考</a>一文，谢谢。</p>
-<p>要理解记忆这个题目,我觉得要抓住两点：</p>
-<p>（1）$ 符号一般用来当作占位符，常使用Linux脚本的同学应该对此有更深的体会吧。既然是占位符，当然就是被用来替换的。知道了这点就能很容易区分$和#，从而不容易记错了。</p>
-<p>（2）预编译的机制。预编译是提前对SQL语句进行预编译，而其后注入的参数将不会再进行SQL编译。我们知道，SQL注入是发生在编译的过程中，因为恶意注入了某些特殊字符，最后被编译成了恶意的执行操作。而预编译机制则可以很好的防止SQL注入。在某些特殊场合下只能用${}，不能用#{}。例如：在使用排序时ORDER BY ${id}，如果使用#{id}，则会被解析成ORDER BY “id”,这显然是一种错误的写法。</p>
-<h2 id="xml-映射文件中除了常的-selectinsertupdaedelete-标签之外还有哪些标签">Xml 映射⽂件中，除了常⻅的 select|insert|updae|delete 标签之外，还有哪些标签？</h2>
-<p>答：还有很多其他的标签， <resultMap> 、 <parameterMap> 、 <sql> 、 <include> 、 <selectKey> ，加上动态 sql 的 9个标签， trim|where|set|foreach|if|choose|when|otherwise|bind 等，其中为 sql ⽚段标签，通过<br>
-<include> 标签引⼊ sql ⽚段， <selectKey> 为不⽀持⾃增的主键⽣成策略标</p>
-<h2 id="最佳实践中通常一个-xml-映射文件都会写一个-dao-接口与之对应请问这个-dao-接口的工作原理是什么dao-接口里的方法参数不同时方法能重载吗">最佳实践中，通常⼀个 Xml 映射⽂件，都会写⼀个 Dao 接⼝与之对应，请问，这个 Dao 接⼝的⼯作原理是什么？Dao 接⼝⾥的⽅法，参数不同时，⽅法能重载吗？</h2>
-<p>Dao 接⼝，是⼈们常说的 Mapper 接⼝，接⼝的全限名，就是映射⽂件中的 namespace的值，接⼝的⽅法名，就是映射⽂件中 MappedStatement 的 id 值，接⼝⽅法内的参数，就是传递给 sql 的参数。 Mapper 接⼝是没有实现类的，当调⽤接⼝⽅法时，接⼝全限名+⽅法名拼接字符串作为 key 值，可唯⼀定位⼀个 MappedStatement ，举com.mybatis3.mappers.StudentDao.findStudentById ，可以唯⼀找到 namespace为 com.mybatis3.mappers.StudentDao 下⾯ id = findStudentById 的 MappedStatement 。在 Mybatis<br>
-中，每⼀个 <select> 、 <insert> 、 <update> 、 <delete> 标签，都会被解析为⼀个 MappedStatement 对象。</p>
-<p><strong>Dao 接⼝⾥的⽅法，是不能重载的，因为是全限名+⽅法名的保存和寻找策略。</strong></p>
-<p><strong>Dao 接⼝的⼯作原理是 JDK 动态代理</strong>，Mybatis 运⾏时会使⽤ JDK 动态代理为 Dao 接⼝⽣成代理 proxy 对象，代理对象 proxy 会拦截接⼝⽅法，转⽽执⾏ MappedStatement 所代表的 sql，然后将 sql 执⾏结果返回。</p>
-<h2 id="mybatis工作流程">Mybatis工作流程</h2>
-<p>1.通过SqlSessionFactoryBuilder创建SqlSessionFactory对象</p>
-<p>2.通过SqlSessionFactory创建SqlSession对象</p>
-<p>3.通过SqlSession拿到Mapper代理对象</p>
-<p>4.通过MapperProxy调用Mapper中增删改查的方法</p>
-<p>[参考](</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Mysql]]></title>
-        <id>https://lindamao.cn/post/mysql/</id>
-        <link href="https://lindamao.cn/post/mysql/">
-        </link>
-        <updated>2020-09-14T05:42:58.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="关系型数据库和非关系型数据库的区别">关系型数据库和非关系型数据库的区别</h2>
-<ol>
-<li>
-<p><strong>数据存储结构</strong>：<br>
-首先关系型数据库一般都有固定的表结构，并且需要通过DDL语句来修改表结构，不是很容易进行扩展，而非关系型数据库的存储机制就有很多了，比如基于文档的，K-V键值对的，还有基于图的等，对于数据的格式十分灵活没有固定的表结构，方便扩展，因此如果业务的数据结构并不是固定的或者经常变动比较大的，那么非关系型数据库是个好的选择</p>
-<p>关系型数据库存储结构比较固定,不容易拓展</p>
-<p>非关系型数据库结构不固定，容易拓展</p>
-</li>
-<li>
-<p><strong>可扩展性</strong><br>
-传统的关系型数据库给人一种横向扩展难，不好对数据进行分片等，而一些非关系型数据库则原生就支持数据的水平扩展(比如mongodb的sharding机制)，并且这可能也是很多NoSQL的一大卖点，其实象Mysql这种关系型数据库的水平扩展也并不是难，即使NoSQL水平扩展容易但对于向跨分片进行joins这种场景都没有什么太好的解决办法，不管是关系型还是非关系型数据库，解决水平扩展或者跨分片Joins这种场景，在应用层和数据库层中间加一层中间件来做数据处理也许是个好的办法</p>
-</li>
-<li>
-<p><strong>数据一致性</strong><br>
-关系型数据库一般强调的是数据最终一致性，而不没有像ACID一样强调数据的强一致性，从非关系型数据库中读到的有可能还是处于一个中间态的数据，因此如果你的业务对于数据的一致性要求很高，那么非关系型数据库并不一个很好的选择，非关系型数据库可能更多的偏向于OLAP场景，而关系型数据库更多偏向于OLTP场景</p>
-<p>关系型数据库强调数据的一致性</p>
-<p>非关系数据库不是很强调</p>
-</li>
-</ol>
-<h2 id="三大范式">三大范式</h2>
-<p>第一范式是最基本的范式。如果数据库表中的所有<strong>字段值都是不可分解的原子值</strong>，就说明该数据库表满足了第一范式。</p>
-<p>数据库第二范式：<strong>关系模式必须满足第一范式，并且所有非主属性都完全依赖于主码</strong>。注意，符合第二范式的关系模型可能还存在数据冗余、更新异常等问题。关系模型（学号，姓名，专业编号，专业名称）中，姓名依赖于学号，而专业名称依赖于专业编号，不满足数据库第二范式</p>
-<p>数据库第三范式：<strong>关系模型满足第二范式</strong>，所有非主属性对任何候选关键字都不存在传递依赖。即<strong>每个属性都跟主键有直接关系而不是间接关系</strong>。接着以学生表举例，对于关系模型（学号，姓名，年龄，性别，所在院校，院校地址，院校电话）院校地址，院校电话和学号不存在直接关系，因此不满足第三范式。</p>
-<p>第一范式：数据具<strong>有原子</strong>性，不可再分。</p>
-<p>第二范式：不允许出现部分依赖，即不允许出现复合主键。</p>
-<p>第三范式：不存在传递依赖，即不允许出现某个字段依赖非主键。</p>
-<h2 id="mysql的架构">MySQL的架构</h2>
-<p>MySQL可以分为应用层,逻辑层,数据库引擎层,物理层。</p>
-<p><strong>应用层</strong>：负责和<a href="">客户端</a>，响应<a href="">客户端</a>请求，建立连接，返回数据。</p>
-<p><strong>逻辑层</strong>：包括SQK接口，解析器，优化器，Cache与buffer。</p>
-<p><strong>数据库引擎层</strong>：有常见的MyISAM,InnoDB等等。</p>
-<p><strong>物理层</strong>：负责文件存储，日志等等。</p>
-<h2 id="存储引擎">存储引擎</h2>
-<h3 id="一些常用命令">⼀些常⽤命令</h3>
-<p>查看MySQL提供的所有存储引擎</p>
-<p><strong>show engines</strong></p>
-<p>查看MySQL当前默认的存储引擎</p>
-<p><strong>show variables like '%storage_engine</strong></p>
-<p>查看表的存储引擎</p>
-<p><strong>show table status like &quot;tablename&quot;</strong></p>
-<h3 id="myisam和innodb区别">MyISAM和InnoDB区别</h3>
-<p><strong>MyISAM</strong>是MySQL的默认数据库引擎（5.5版之前）。虽然性能极佳，⽽且提供了⼤量的特性，包括全⽂索引、压缩、空间函数等，但MyISAM不⽀持事务和⾏级锁，⽽且最⼤的缺陷就是崩溃后⽆法安全恢复。不过，5.5版本之后，MySQL引⼊了<strong>InnoDB</strong>（事务性数据库引擎），MySQL5.5版本后默认的存储引擎为<strong>InnoDB</strong>。⼤多数时候我们使⽤的都是 <strong>InnoDB</strong> 存储引擎，但是在某些情况下使⽤ MyISAM 也是合适的⽐如读密集的情况下。（如果你不介意 MyISAM 崩溃恢复问题的话）。</p>
-<p><strong>两者对比</strong></p>
-<ol>
-<li>
-<p>是<strong>否⽀持⾏级锁</strong> : MyISAM 只有表级锁(table-level locking)，⽽InnoDB ⽀持⾏级锁(rowlevel locking)和表级锁,默认为⾏级锁。</p>
-<p>InnoDB的行锁是实现在索引上的，而不是锁在物理行记录上。潜台词是，如果访问没有命中索引，也无法使用行锁，将要退化为表锁。</p>
-</li>
-<li>
-<p><strong>是否⽀持事务和崩溃后的安全恢复</strong>： MyISAM 强调的是性能，每次查询具有原⼦性,其执⾏速度⽐InnoDB类型更快，但是不提供事务⽀持。但是InnoDB 提供事务⽀持事务，外部键等⾼级数据库功能。 具有事务(commit)、回滚(rollback)和<strong>崩溃修复能⼒</strong>(crashrecoverycapabilities)的事务安全(transaction-safe (ACID compliant))型表。</p>
-</li>
-<li>
-<p><strong>是否⽀持外键</strong>： MyISAM不⽀持，⽽InnoDB⽀持</p>
-</li>
-<li>
-<p><strong>是否⽀持MVCC</strong> ：仅 InnoDB ⽀持。应对⾼并发事务, MVCC⽐单纯的加锁更⾼效;MVCC只在 READ COMMITTED 和 REPEATABLE READ 两个隔离级别下⼯作;MVCC可以使⽤ 乐观(optimistic)锁 和 悲观(pessimistic)锁来实现;各数据库中MVCC实现并不统⼀。</p>
-</li>
-<li>
-<p>I<strong>nnoDB是聚集索引</strong>，使用B+Tree作为索引结构，数据文件是和（主键）索引绑在一起的（表数据文件本身就是按B+Tree组织的一个索引结构），必须要有主键，通过主键索引效率很高。但是<strong>辅助索引需要两次查询</strong>，先查询到主键，然后再通过主键查询到数据。因此，主键不应该过大，因为主键太大，其他索引也都会很大。</p>
-<p>MyISAM是非聚集索引，也是使用B+Tree作为索引结构，<strong>索引和数据文件是分离</strong>的，索引保存的是数据文件的<strong>指针</strong>。主键索引和辅助索引是独立的。</p>
-<p>也就是说：InnoDB的B+树<strong>主键索引的叶子节点就是数据文件</strong>，<strong>辅助索引的叶子节点是主键的值</strong>；而MyISAM的B+树主键索引和辅助索引的叶子节点都是数据文件的地址指针。</p>
-</li>
-</ol>
-<figure data-type="image" tabindex="1"><img src="https://img-blog.csdn.net/20180923094753224?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1NjQyMDM2/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img" loading="lazy"></figure>
-<figure data-type="image" tabindex="2"><img src="https://img-blog.csdn.net/20180923094753230?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1NjQyMDM2/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img" loading="lazy"></figure>
-<p>​	6.<strong>Innodb不支持全文索引，而MyISAM支持全文索引，在涉及全文索引领域的查询效率上MyISAM速度更快高；PS：5.7以后的InnoDB支持全文索引了</strong></p>
-<p>​	7.<strong>MyISAM表格可以被压缩后进行查询操作</strong></p>
-<p>​	8.<strong>InnoDB表必须有唯一索引（如主键）（用户没有指定的话会自己找/生产一个隐藏列Row_id来充当默认主键），而Myisam可以没有</strong></p>
-<p>​	9.<strong>Innodb存储文件有frm、ibd，而Myisam是frm、MYD、MYI</strong></p>
-<p>​    <strong>Innodb：frm是表定义文件，ibd是数据文件</strong></p>
-<p>​    <strong>Myisam：frm是表定义文件，myd是数据文件，myi是索引文件</strong></p>
-<h3 id="如何在两者之间选择">如何在两者之间选择</h3>
-<ol>
-<li>是否要支持事务，如果要请选择innodb，如果不需要可以考虑MyISAM；</li>
-<li>如果表中绝大多数都只是读查询，可以考虑MyISAM，如果既有读也有写，请使用InnoDB。</li>
-<li>系统奔溃后，MyISAM恢复起来更困难，能否接受；</li>
-<li>MySQL5.5版本开始Innodb已经成为Mysql的默认引擎(之前是MyISAM)，说明其优势是有目共睹的，如果你不知道用什么，那就用InnoDB，至少不会差。</li>
-</ol>
-<h3 id="innodb为什么推荐使用自增id作为主键">InnoDB为什么推荐使用自增ID作为主键？</h3>
-<p><strong>答：自增ID可以保证每次插入时B+索引是从右边扩展的，可以避免B+树和频繁合并和分裂（对比使用UUID）。如果使用字符串主键和随机主键，会使得数据随机插入，效率比较差。</strong></p>
-<h3 id="innodb引擎的4大特性"><strong>innodb引擎的4大特性</strong></h3>
-<ul>
-<li><strong>插入缓冲（insert buffer)</strong></li>
-<li><strong>二次写(double write)</strong></li>
-<li><strong>自适应哈希索引(ahi)</strong></li>
-<li><strong>预读(read ahead)</strong></li>
-</ul>
-<h3 id="innodb如何保证事务的原子性-持久性和一致性">InnoDB如何保证事务的原子性、持久性和一致性？</h3>
-<ul>
-<li>
-<p><strong>undo log保障原子性</strong>。该log保存了事务发生之前的数据的一个版本，可以用于回滚，从而保证事务原子性。</p>
-</li>
-<li>
-<p><strong>redo log保证事务的持久性</strong>，该log关注于事务的恢复.在重启mysql服务的时候，根据redo log进行重做，从而使事务有持久性。</p>
-</li>
-<li>
-<p><strong>undo log+redo log保障一致性</strong>。事务中的执行需要redo log，如果执行失败，需要undo log 回滚。</p>
-</li>
-</ul>
-<h3 id="hash索引和b树索引">Hash索引和B+树索引</h3>
-<p>首先要知道Hash索引和B+树索引的底层实现原理:</p>
-<p>hash索引底层就是hash表,进行查找时,调用一次hash函数就可以获取到相应的键值,之后进行回表查询获得实际数据.</p>
-<p>B+树底层实现是多路平衡查找树.对于每一次的查询都是从根节点出发,查找到叶子节点方可以获得所查键值,然后根据查询判断是否需要回表查询数据.</p>
-<p><strong>不同点</strong>:</p>
-<ul>
-<li>hash索引进行等值查询更快(一般情况下),但是却无法进行范围查询.</li>
-</ul>
-<p>因为在hash索引中经过hash函数建立索引之后,索引的顺序与原顺序无法保持一致,不能支持范围查询.而B+树的的所有节点皆遵循(左节点小于父节点,右节点大于父节点,多叉树也类似),天然支持范围.</p>
-<ul>
-<li>hash索引不支持模糊查询以及多列索引的最左前缀匹配.原理也是因为hash函数的不可预测.<strong>AAAA</strong>和<strong>AAAAB</strong>的索引没有相关性.</li>
-<li>hash索引任何时候都避免不了回表查询数据,而B+树在符合某些条件(聚簇索引,覆盖索引等)的时候可以只通过索引完成查询.</li>
-<li>hash索引虽然在等值查询上较快,但是不稳定.性能不可预测,当某个键值存在<strong>大量重复</strong>的时候,发生hash碰撞,此时效率可能极差.而B+树的查询效率比较稳定,对于所有的查询都是从根节点到叶子节点,且树的高度较低.</li>
-</ul>
-<p>因此,在大多数情况下,直接选择B+树索引可以获得<strong>稳定且较好</strong>的查询速度.而不需要使用hash索引.</p>
-<h3 id="为什么使用b树">为什么使用B+树</h3>
-<ul>
-<li>虽然哈希索引是O(1)，树索引是O(log(n))，但SQL有很多“有序”需求，故数据库使用树型索引</li>
-<li>很适合磁盘存储，能够充分利用<strong>局部性原理，磁盘预读</strong>
-<ul>
-<li><strong>局部性原理</strong>：软件设计要尽量遵循“数据读取集中”与“使用到一个数据，大概率会使用其附近的数据”，这样磁盘预读能充分提高磁盘IO</li>
-<li><strong>数据预读</strong>：磁盘读写并不是按需读取，而是按页预读，一次会读一页的数据，每次加载更多的数据，以便未来减少磁盘IO</li>
-</ul>
-</li>
-<li><strong>很低的树高度，能够存储大量数据，同时能有效的减少IO操作</strong>。</li>
-<li><strong>索引本身占用的内存很小</strong></li>
-<li>能够很好的支持<strong>单点查询，范围查询，有序性查询</strong></li>
-<li><strong>查询效率稳定</strong></li>
-<li>B+树存放数据数计算（https://blog.csdn.net/csdnlijingran/article/details/102309593）</li>
-<li>不用B树的原因是因为<strong>B树不支持范围查找</strong>，B+树的范围查找只需要遍历叶子节点就行，而B树则需要中序遍历</li>
-</ul>
-<h2 id="一颗b树能存多少数据">一颗B+树能存多少数据</h2>
-<p>https://blog.csdn.net/weixin_51867896/article/details/122799836</p>
-<h2 id="字符集及校对规则">字符集及校对规则</h2>
-<p>字符集指的是⼀种从⼆进制编码到某类字符符号的映射。校对规则则是指某种字符集下的排序规则。MySQL中每⼀种字符集都会对应⼀系列的校对规则。</p>
-<p>MySQL采⽤的是类似继承的⽅式指定字符集的默认值，每个数据库以及每张数据表都有⾃⼰的默认值，他们逐层继承。⽐如：某个库中所有表的默认字符集将是该数据库所指定的字符集（这些表在没有指定字符集的情况下，才会采⽤默认字符集）</p>
-<h2 id="查询缓存的使用">查询缓存的使⽤</h2>
-<p>执⾏查询语句的时候，会先查询缓存。不过，MySQL 8.0 版本后移除，因为这个功能不太实⽤</p>
-<p><strong>my.cnf</strong>加⼊以下配置，重启MySQL开启查询缓存</p>
-<pre><code class="language-mysql">query_cache_size = 30M
-
-query_cache_type=1
-</code></pre>
-<p>MySQL执⾏以下命令也可以开启查询缓存</p>
-<figure data-type="image" tabindex="3"><img src="https://i.imgtg.com/2023/02/14/dqZTt.png" alt="dqZTt.png" loading="lazy"></figure>
-<p><strong>开启查询缓存后在同样的查询条件以及数据情况下，会直接在缓存中返回结果</strong>。</p>
-<p>这⾥的查询条件包括查询本身、当前要查询的数据库、客户端协议版本号等⼀些可能影响结果的信息。因此任何两个查询在任何字符上的不同都会导致缓存不命中。</p>
-<p>此外，如果查询中包含任何⽤户⾃定义函数、存储函数、⽤户变量、临时表、MySQL库中的系统表，其查询结果也不会被缓存。</p>
-<p>缓存建⽴之后，MySQL的查询缓存系统会跟踪查询中涉及的每张表，如果这些表（数据或结构）发⽣变化，那么和这张表相关的所有缓存数据都将失效。</p>
-<p><strong>缓存虽然能够提升数据库的查询性能，但是缓存同时也带来了额外的开销，每次查询后都要做⼀次缓存操作，失效后还要销毁</strong>。</p>
-<p>因此，开启缓存查询要谨慎，尤其对于写密集的应⽤来说更是如此。如果开启，要注意合理控制缓存空间⼤⼩，⼀般来说其⼤⼩设置为<strong>⼏⼗MB</strong>比较合适。</p>
-<p>此外，还可以通过<strong>sql_cache和sql_no_cache</strong>来控制某个查询语句是否需要缓存</p>
-<h2 id="事务">事务</h2>
-<h3 id="什么是事务">什么是事务?</h3>
-<p>事务是逻辑上的⼀组操作，要么都执⾏，要么都不执⾏。</p>
-<h3 id="事物的四大特性acid">事物的四⼤特性(ACID)</h3>
-<p>1**.原⼦性（Atomicity**）： 事务是最⼩的执⾏单位，不允许分割。事务的原⼦性确保动作要么	全部完成，要么完全不起作⽤；</p>
-<ol start="2">
-<li><strong>⼀致性（Consistency）</strong>： 执⾏事务前后，数据保持⼀致，多个事务对同⼀个数据读取的结果是相同的；</li>
-<li><strong>隔离性（Isolation）</strong>： 并发访问数据库时，⼀个⽤户的事务不被其他事务所⼲扰，各并发事务之间数据库是独⽴的；</li>
-<li><strong>持久性（Durability</strong>）： ⼀个事务被提交之后。它对数据库中数据的改变是持久的，即使数据库发⽣故障也不应该对其有任何影响。</li>
-</ol>
-<h3 id="并发事务带来哪些问题">并发事务带来哪些问题?</h3>
-<ul>
-<li><strong>脏读(Dirty read</strong>): 当一个事务正在访问数据并且对数据进行了修改,而这种修改还没有提 交到数据库中,这时另外一个事务也访问了这个数据,然后使用了这个数据。因为这个数据 是还没有提交的数据,那么另外一个事务读到的这个数据是“脏数据”,依据“脏数据”所做的 操作可能是不正确的。<strong>一改一读</strong></li>
-<li><strong>丢失修改(Lost to modify)</strong>: 指在一个事务读取一个数据时,另外一个事务也访问了该数 据,那么在第一个事务中修改了这个数据后,第二个事务也修改了这个数据。这样第一个事 务内的修改结果就被丢失,因此称为丢失修改。 例如:事务1读取某表中的数据A=20,事 务2也读取A=20,事务1修改A=A-1,事务2也修改A=A-1,最终结果A=19,事务1的修改被丢失。<strong>两个改</strong></li>
-<li><strong>不可重复读(Unrepeatable read):</strong> 指在一个事务内多次读同一数据。在这个事务还没有结 束时,另一个事务也访问该数据。那么,在第一个事务中的两次读数据之间,由于第二个事 务的修改导致第一个事务两次读取的数据可能不太一样。这就发生了在一个事务内两次读到 的数据是不一样的情况,因此称为不可重复读。<strong>一改一读</strong></li>
-<li><strong>幻读(Phantom read)</strong>: 幻读与不可重复读类似。它发 生在一个事务(T1)读取了几行数 据,接着另一个并发事务(T2)插入了一些数据时。在随后的查询中,第一个事务(T1) 就会发现多了一些原本不存在的记录,就好像发生了幻觉一样,所以称为幻读。<strong>一改一读</strong>
-<ul>
-<li><strong>不可重复读的重点</strong>是修改比如多次读取一条记录发现其中某些列的值被修改,幻读的重点在于新增或者删除比如多次读取一条记录发现记录增多或减少了。</li>
-<li><strong>幻读的问题存在</strong>是因为新增或者更新操作，这时如果进<strong>行范围查询的时候</strong>（加锁查询），会出现不一致的问题</li>
-</ul>
-</li>
-</ul>
-<h3 id="事务隔离级别有哪些mysql的默认隔离级别是">事务隔离级别有哪些?MySQL的默认隔离级别是?</h3>
-<ul>
-<li>
-<p>READ-UNCOMMITTED(<strong>读取未提交</strong>)： 最低的隔离级别，允许读取尚未提交的数据变更，可能会导致脏读、幻读或不可重复读。</p>
-<ul>
-<li><strong>一个事务还没提交，它做的变更就能被别的事务看到</strong></li>
-</ul>
-</li>
-<li>
-<p>READ-COMMITTED(<strong>读取已提交</strong>)： 允许读取并发事务已经提交的数据，可以阻⽌脏读，但是幻读或不可重复读仍有可能发⽣。</p>
-<ul>
-<li><strong>一个事务提交后，它做的变更才能被别的事务看到</strong></li>
-</ul>
-</li>
-<li>
-<p>REPEATABLE-READ(<strong>可重复读</strong>)： 对同⼀字段的多次读取结果都是⼀致的，除⾮数据是被本身事务⾃⼰所修改，可以阻⽌脏读和不可重复读，但幻读仍有可能发⽣</p>
-<ul>
-<li><strong>一个事务执行过程中看到的数据总是和事务启动时看到的数据是一致的。在这个级别下事务未提交，做出的变更其它事务也看不到</strong>。</li>
-</ul>
-</li>
-<li>
-<p>SERIALIZABLE(<strong>可串⾏化</strong>)： 最⾼的隔离级别，完全服从ACID的隔离级别。所有的事务依次逐个执⾏，这样事务之间就完全不可能产⽣⼲扰，也就是说，该级别可以防⽌脏读、不可重复读以及幻读。</p>
-<ul>
-<li><strong>对于同一行记录进行读写会分别加读写锁，当发生读写锁冲突，后面执行的事务需等前面执行的事务完成才能继续执行。</strong><br>
-<img src="https://i.imgtg.com/2023/02/14/dqvvx.png" alt="dqvvx.png" loading="lazy"></li>
-</ul>
-</li>
-</ul>
-<p>MySQL InnoDB 存储引擎的<strong>默认</strong>⽀持的隔离级别是 <strong>REPEATABLE-READ（可重读</strong>）.</p>
-<p><strong>SELECT @@tx_isolation</strong>查看支持的默认的隔离级别</p>
-<figure data-type="image" tabindex="4"><img src="https://i.imgtg.com/2023/02/14/dqmOp.png" alt="dqmOp.png" loading="lazy"></figure>
-<p>这⾥需要注意的是：与 SQL 标准不同的地⽅在于 InnoDB 存储引擎在 <strong>REPEATABLE-READ（可重读）</strong></p>
-<p>事务隔离级别下使⽤的是<strong>Next-Key Lock 锁算法，因此可以避免幻读的产⽣</strong>，这与其他数据库系统(如 SQL Server)是不同的。</p>
-<p>所以说InnoDB 存储引擎的默认⽀持的隔离级别是 REPEATABLE-READ（可重读）已经可以完全保证事务的隔离性要求，即达到了SQL标准的 SERIALIZABLE(可串⾏化) 隔离级别。</p>
-<p>因为隔离级别越低，事务请求的锁越少，所以⼤部分数据库系统的隔离级别都READCOMMITTED(读取提交内容) ，但是你要知道的是InnoDB 存储引擎默认使⽤ REPEAaTABLE-READ（可重读） 并不会有任何性能损失。</p>
-<p>InnoDB 存储引擎在 <strong>分布式事务</strong> 的情况下⼀般会⽤到 <strong>SERIALIZABLE(可串⾏化)</strong> 隔离级别。</p>
-<h3 id="可重复读的实现原理">可重复读的实现原理</h3>
-<p><em>Repeatable Read</em>（可重复读）：一个事务在执行过程中可以看到其他事务已经提交的新插入的记录（读已经提交的，其实是读早于本事务开始且已经提交的），<strong>但是不能看到其他事务对已有记录的更新（即晚于本事务开始的）</strong>，并且，该事务不要求与其他事务是“可串行化”的。</p>
-<p><strong>简单的来说就是当前事务在堆当前的某条数据在其他事务的影响下重读的结果是一样的</strong></p>
-<p><strong>解决方法</strong></p>
-<p>使用MVCC（多版本并发控制）。<strong>InnoDB为每行记录添加了一个版本号（系统版本号</strong>），每当修改数据时，版本号加一。<br>
-在读取事务开始时，系统会给事务一个当前版本号，<strong>事务会读取版本号&lt;=当前版本号的数</strong>据，这时就算另一个事务插入一个数据，并立马提交，新插入这条数据的版本号会比读取事务的版本号高，因此读取事务读的数据还是不会变。</p>
-<p>InnoDB 的可重复读的实现，利用了实现 MVCC 技术的快照技术。这是 MVCC 和基于封锁技术这两个并非控制技术的结合之处。</p>
-<p>在<em>RR</em>隔离级别下为事务设置了一个“一致性读视图（即快照）”，之后读取数据，就是根据这个快照来获取，这样，就不能看到他晚于本事务的事务对已有记录的更新（更新生成新版本，必然不在旧的快照所限定的范围内）。</p>
-<p>根据隔离级别判断是不是要使用一个新的快照，如果是可重复读，则不使用新快照，沿用老的快照，这样就能保证所有的读操作看到的是同一个数据状态；同时也确保了读已提交隔离级别下一个事务块内的不同语句的读操作看到的不是同一个数据状态。</p>
-<p>总结：</p>
-<p>参考 https://blog.csdn.net/huanghanqian/article/details/79517480</p>
-<h2 id="mysql锁">Mysql锁</h2>
-<p>按锁粒度分类：<br>
-1. ⾏锁：锁某⾏数据，锁粒度最⼩，并发度⾼<br>
-2. 表锁：锁整张表，锁粒度最⼤，并发度低<br>
-3. <strong>间隙锁</strong>：锁的是⼀个区间</p>
-<p>还可以分为：<br>
-1. 共享锁：也就是读锁，⼀个事务给某⾏数据加了读锁，其他事务也可以读，但是不能写<br>
-2. 排它锁：也就是写锁，⼀个事务给某⾏数据加了写锁，其他事务不能读，也不能写</p>
-<p>还可以分为：<br>
-1. 乐观锁：并不会真正的去锁某⾏记录，⽽是通过⼀个版本号来实现的<br>
-2. 悲观锁：上⾯所的⾏锁、表锁等都是悲观锁</p>
-<p>在事务的隔离级别实现中，就需要利⽤锁来解决幻读</p>
-<h3 id="锁机制与innodb锁算法">锁机制与InnoDB锁算法</h3>
-<p><strong>MyISAM和InnoDB存储引擎使⽤的锁：</strong></p>
-<ul>
-<li>MyISAM采⽤表级锁(table-level locking)。</li>
-<li>InnoDB⽀持⾏级锁(row-level locking)和表级锁,默认为⾏级锁</li>
-</ul>
-<p><strong>表级锁和⾏级锁对⽐：</strong></p>
-<ul>
-<li>表级锁： MySQL中锁定 <strong>粒度最⼤</strong> 的⼀种锁，对当前操作的整张表加锁，实现简单，资源消<br>
-耗也比较少，加锁快，不会出现死锁。其锁定粒度最⼤，触发锁冲突的概率最⾼，并发度最<br>
-低，MyISAM和 InnoDB引擎都⽀持表级锁。</li>
-<li>⾏级锁： MySQL中锁定 <strong>粒度最⼩</strong> 的⼀种锁，只针对当前操作的⾏进⾏加锁。 ⾏级锁能⼤<br>
-⼤减少数据库操作的冲突。其加锁粒度最⼩，并发度⾼，但加锁的开销也最⼤，加锁慢，会<br>
-出现死锁。</li>
-</ul>
-<p><strong>InnoDB存储引擎的锁的算法有三种：</strong></p>
-<ul>
-<li>Record lock：<strong>单个⾏记录上的锁</strong></li>
-<li>Gap lock：<strong>间隙锁，锁定⼀个范围，不包括记录本身 目的是为了防止同一个事物的两次当前读，出现幻读的情况</strong></li>
-<li>Next-key lock：<strong>record+gap 锁定⼀个范围，包含记录本身</strong></li>
-</ul>
-<p><strong>相关知识点</strong></p>
-<ol>
-<li>innodb对于⾏的查询使⽤next-key lock</li>
-<li>Next-locking keying为了解决Phantom Problem幻读问题</li>
-<li>当查询的索引含有唯⼀属性时，将next-key lock降级为record key</li>
-<li><strong>Gap锁设计的⽬的是为了阻⽌多个事务将记录插⼊到同⼀范围内，⽽这会导致幻读问题的产⽣</strong></li>
-<li>有两种⽅式显式关闭gap锁：（除了外键约束和唯⼀性检查外，其余情况仅使⽤recordlock）  不推荐
-<ol>
-<li>将事务隔离级别设置为RC(可重复读)</li>
-<li>将参数innodb_locks_unsafe_for_binlog设置为1</li>
-</ol>
-</li>
-</ol>
-<h2 id="间隙锁死锁">间隙锁死锁</h2>
-<p>https://blog.csdn.net/java_beautiful/article/details/125572280</p>
-<h3 id="mysql中的按粒度的锁分类">MySQL中的按粒度的锁分类</h3>
-<ul>
-<li>
-<p>表级锁: 对当前操作的整张表加锁,实现简单，加锁快，但并发能力低。</p>
-</li>
-<li>
-<p>行锁: 锁住某一行，如果表存在索引，那么记录锁是锁在索引上的，如果表没有索引，那么 InnoDB 会创建一个隐藏的聚簇索引加锁。行级锁能大大减少数据库操作的冲突。其加锁粒度最小，并发度高，但加锁的开销也最大，加锁慢，会出现死锁。</p>
-</li>
-<li>
-<p>Gap 锁：也称为间隙锁: 锁定一个范围但不包括记录本身。其目的是为了防止同一事物的两次当前读出现幻读的情况。</p>
-</li>
-<li>
-<p>Next-key Lock： 行锁+gap锁。</p>
-</li>
-</ul>
-<h3 id="如何解决数据库死锁">如何解决数据库死锁</h3>
-<ol>
-<li><strong>预先检测到死锁的循环依赖，并立即返回一个错误</strong>。</li>
-<li><strong>当查询的时间达到锁等待超时的设定后放弃锁请求</strong>。</li>
-</ol>
-<h2 id="解释一下什么是池化设计思想-什么是数据库连接池-为什么需要数据库连接池">解释⼀下什么是池化设计思想 什么是数据库连接池 为什么需要数据库连接池</h2>
-<p>池化设计应该不是⼀个新名词。我们常⻅的如java线程池、jdbc连接池、redis连接池等就是这类设计的代表实现。</p>
-<p>这种设计会初始预设资源，解决的问题就是抵消每次获取资源的消耗，如创建线程的开销，获取远程连接的开销等。就好⽐你去⻝堂打饭，打饭的⼤妈会先把饭盛好⼏份放那⾥，你来了就直接拿着饭盒加菜即可，不⽤再临时⼜盛饭⼜打菜，效率就⾼了。</p>
-<p>除了初始化资源，池化设计还包括如下这些特征：池⼦的初始值、池⼦的活跃值、池⼦的最⼤值等，这些特征可以直接映射到java线程池和数据库连接池的成员属性中。</p>
-<p><strong>数据库连接本质就是⼀个 socket 的连接</strong>。数据库服务端还要维护⼀些缓存和⽤户权限信息之类的 所以占⽤了⼀些内存。我们可以把数据库连接池是看做是<strong>维护的数据库连接的缓存</strong>，以便将来需要对数据库的请求时可以重⽤这些连接。为每个⽤户打开和维护数据库连接，尤其是对动态数据库驱动的⽹站应⽤程序的请求，既昂贵⼜浪费资源。</p>
-<p><strong>在连接池中，创建连接后，将其放置在池</strong>中，<strong>并再次使⽤它，因此不必建⽴新的连接。如果使⽤了所有连接，则会建⽴⼀个新连接并将其添加到池中</strong>。 连接池还减少了⽤户必须等待建⽴与数据库的连接的时间。</p>
-<h2 id="分库分表之后id-主键如何处理">分库分表之后,id 主键如何处理</h2>
-<p>因为要是分成多个表之后，每个表都是从 1 开始累加，这样是不对的，我们需要⼀个全局唯⼀的id 来⽀持。<br>
-<strong>⽣成全局 id 有下⾯这⼏种⽅式：</strong></p>
-<ul>
-<li>
-<p><strong>UUID</strong>：不适合作为主键，因为太⻓了，并且⽆序不可读，查询效率低。比较适合⽤于⽣成唯⼀的名字的标示⽐如⽂件的名字。</p>
-</li>
-<li>
-<p><strong>数据库⾃增 id</strong> : 两台数据库分别设置不同步⻓，⽣成不重复ID的策略来实现⾼可⽤。这种⽅式⽣成的 id 有序，但是需要独⽴部署数据库实例，成本⾼，还会有性能瓶颈。</p>
-</li>
-<li>
-<p><strong>利⽤ redis ⽣成 id</strong> : 性能比较好，灵活⽅便，不依赖于数据库。但是，引⼊了新的组件造成系统更加复杂，可⽤性降低，编码更加复杂，增加了系统成本。</p>
-</li>
-<li>
-<p><strong>Twitter的snowflake算法</strong> ：Github 地址：https://github.com/twitter-archive/snowflake。</p>
-</li>
-<li>
-<p><strong>美团的Leaf分布式ID⽣成系统</strong> ：Leaf 是美团开源的分布式ID⽣成器，能保证全局唯⼀性、趋势递增、单调递增、信息安全，⾥⾯也提到了⼏种分布式⽅案的对⽐，但也需要依赖关系数据库、Zookeeper等中间件。感觉还不错。</p>
-<ul>
-<li>美团技术团队的⼀篇⽂章：https://tech.meituan.com/2017/04/21/mt-leaf.html 。</li>
-</ul>
-</li>
-</ul>
-<h2 id="一条sql语句执行得很慢的原因有哪些">⼀条SQL语句执⾏得很慢的原因有哪些</h2>
-<p>参考连接：https://www.cnblogs.com/kubidemanong/p/10734045.html</p>
-<p>1、大多数情况下很正常，<strong>偶尔很慢</strong>，则有如下原因</p>
-<p>(1)、<strong>数据库在刷新脏页</strong>，例如 redo log 写满了需要同步到磁盘。</p>
-<p>(2)、<strong>执行的时候</strong>，<strong>遇到锁</strong>，如表锁、行锁。</p>
-<p>2、这条 SQL 语句一直执行的很慢，则有如下原因。</p>
-<p>(1)、<strong>没有用上索引</strong>：例如该字段没有索引导致走全表扫描；由于对字段进行运算（select * from t where c - 1 = 1000;）、函数操作（pow(c,2) = 1000;）导致无法用索引。</p>
-<p>(2)、<strong>数据库选错了索引</strong>。</p>
-<h2 id="索引">索引</h2>
-<h3 id="mysql有哪些常见索引类型">Mysql有哪些常见索引类型？</h3>
-<ul>
-<li>
-<p>数据结构角度</p>
-<p>B-Tree索引</p>
-<p>哈希索引</p>
-<p>R-Tree索引</p>
-<p>全文索引</p>
-</li>
-<li>
-<p>物理存储角度</p>
-<p>主键索引（聚簇索引）：叶子节点存的是整行的数据</p>
-<p>非主键索引（二级索引）：叶子节点存的主键的值</p>
-</li>
-</ul>
-<h3 id="在哪些情况下会发生针对该列创建了索引但是在查询的时候并没有使用呢"><strong>在哪些情况下会发生针对该列创建了索引但是在查询的时候并没有使用呢?</strong></h3>
-<ul>
-<li>
-<p>使用不等于查询,</p>
-</li>
-<li>
-<p>不匹配最左前缀原则</p>
-</li>
-<li>
-<p>列参与了数学运算或者函数</p>
-</li>
-<li>
-<p>在字符串like时左边是通配符.类似于'%aaa'.</p>
-</li>
-<li>
-<p>当mysql分析<strong>全表扫描比使用索引快的时候不使用索引</strong></p>
-</li>
-<li>
-<p>当使用联合索引,前面一个条件为范围查询,后面的即使符合最左前缀原则,也无法使用索引</p>
-<p>参考https://blog.csdn.net/c1776167012/article/details/120788728</p>
-</li>
-</ul>
-<h3 id="简述hash索引">简述Hash索引</h3>
-<p>哈希索引对于<strong>每一行数据计算一个哈希码</strong>，<strong>并将所有的哈希码存储在索引中</strong>，同时在哈希表中保存指向每个数据行的指针。只有 Memory 引擎显式支持哈希索引。</p>
-<p>Hash索引<strong>不支持范围查询</strong>，无法用于<a href="">排序</a>，也不支持部分索引列匹配查找。</p>
-<h3 id="简述自适应hash索引">简述自适应Hash索引</h3>
-<p><strong>InnoDB对于频繁使用的某些索引值，会在内存中基于 B-Tree 索引之上再创键一个哈希索引，这也被称为自适应Hash索引。</strong></p>
-<h3 id="简述聚集索引和稀疏索引">简述聚集索引和稀疏索引</h3>
-<p>聚集索引按每张表的主键构建一棵B+树，数据库中的每个搜索键值都有一个索引记录，每个数据页通过双向链表连接。表数据访问更快，但表更新代价高。</p>
-<p>稀疏索引不会为每个搜索关键字创建索引记录。搜索过程需要，我们<strong>首先按索引记录进行操作</strong>，并按顺序搜索，直到找到所需的数据为止。</p>
-<h3 id="简述辅助索引与回表查询">简述辅助索引与回表查询</h3>
-<p>辅助索引是非聚集索引，叶子节点不包含记录的全部数据，<strong>包含了一个书签用来告诉InnoDB哪里可以找到与索引相对应的行数据</strong>。</p>
-<p>通过辅助索引查询，先通过书签查到聚集索引，再根据聚集索引查对应的值，需要两次，也称为<strong>回表查询</strong>。</p>
-<h3 id="简述联合索引和最左匹配原则">简述联合索引和最左匹配原则</h3>
-<p><strong>联合索引是指对表上的多个列的关键词进行索引</strong>。</p>
-<p>对于联合索引的查询，如果精确匹配联合索引的左边连续一列或者多列，则mysql会一直向右匹配直到遇到范围查询（&lt;,between,like）就停止匹配。Mysql会对第一个索引字段数据进行排序，在第一个字段基础上，再对第二个字段排序。</p>
-<p>参考：https://blog.csdn.net/sinat_41917109/article/details/88944290</p>
-<figure data-type="image" tabindex="5"><img src="https://i.imgtg.com/2023/02/14/dqpNU.png" alt="dqpNU.png" loading="lazy"></figure>
-<h3 id="简述覆盖索引">简述覆盖索引</h3>
-<p>**覆盖索引指一个索引包含或覆盖了所有需要查询的字段的值，**不需要回表查询，即索引本身存了对应的值。</p>
-<h3 id="基于主键索引的查询和非主键索引的查询有什么区别">基于主键索引的查询和非主键索引的查询有什么区别？</h3>
-<p>对于select * from 主键=XX，基于主键的普通查询仅查找主键这棵树</p>
-<p>对于select * from 非主键=XX，基于非主键的查询有可能存在回表过程（回到主键索引树搜索的过程称为回表）<strong>，因为非主键索引叶子节点仅存主键值，无整行全部信息。</strong></p>
-<h3 id="非主键索引的查询一定会回表吗">非主键索引的查询一定会回表吗？</h3>
-<p>不一定，当查询语句的要求字段全部命中索引，不用回表查询。<strong>如select 主键 from 非主键=XX，此时非主键索引叶子节点即可拿到主键信息，不用回表。</strong></p>
-<h2 id="为什么数据库不用红黑树-用b树">为什么数据库不用红黑树 用B+树</h2>
-<p>红黑树的出度为 2，而 B Tree 的出度一般都非常大**。红黑树的树高 h 很明显比 B Tree 大非常多，IO次数很多，导致会比较慢，因此检索的次数也就更多**。</p>
-<p><strong>B+Tree 相比于 B-Tree 更适合外存索引，拥有更大的出度</strong>，IO次数较少，检索效率会更高。</p>
-<h3 id="创建的索引有没有被使用到或者说怎么才可以知道这条语句运行很慢的原因"><strong>创建的索引有没有被使用到?或者说怎么才可以知道这条语句运行很慢的原因?</strong></h3>
-<p>MySQL提供了<strong>explain</strong>命令来查看语句的执行计划,MySQL在执行某个语句之前,会将该语句过一遍查询优化器,之后会拿到对语句的分析,也就是执行计划,其中包含了许多信息. <strong>可以通过其中和索引有关的信息来分析是否命中了索引</strong>,例如possilbe_key,key,key_len等字段,分别说明了此语句可能会使用的索引,实际使用的索引以及使用的索引长度.</p>
-<h3 id="主键索引和唯一索引的区别">主键索引和唯一索引的区别</h3>
-<p>1.主键为一种约束，唯一索引为一种索引，本质上就不同；</p>
-<p>2.主键创建后一定包含唯一性索引，而唯一索引不一定就是主键；</p>
-<p>3.主键不允许空值，唯一索引可以为空；</p>
-<p>4.<strong>主键可以被其他表引用，而唯一索引不可以</strong>；</p>
-<p>5.一个表最多只能创建一个主键，而可以创建多个唯一索引；</p>
-<p>6.主键和索引都是键，<strong>主键是逻辑键</strong>，索引为物理键，即主键不实际存在。</p>
-<h2 id="简述mysql使用explain-的关键字段">简述MySQL使用EXPLAIN 的关键字段</h2>
-<p>explain关键字用于分析sql语句的执行情况，可以通过他进行sql语句的性能分析。</p>
-<p>type：表示连接类型，从好到差的类型<a href="">排序</a>为</p>
-<ul>
-<li>system：系统表，数据已经加载到内存里。</li>
-<li>const：常量连接，通过索引一次就找到。</li>
-<li>eq_ref：唯一性索引扫描，返回所有匹配某个单独值的行。</li>
-<li>ref：非主键非唯一索引等值扫描，const或eq_ref改为普通非唯一索引。</li>
-<li>range：范围扫描，在索引上扫码特定范围内的值。</li>
-<li>index：索引树扫描，扫描索引上的全部数据。</li>
-<li>all：全表扫描。</li>
-</ul>
-<p>key：显示MySQL实际决定使用的键。</p>
-<p>key_len：显示MySQL决定使用的键长度，长度越短越好</p>
-<p>Extra：额外信息</p>
-<ul>
-<li>Using filesort：MySQL使用外部的索引<a href="">排序</a>，很慢需要优化。</li>
-<li>Using temporary：使用了临时表保存中间结果，很慢需要优化。</li>
-<li>Using index：使用了覆盖索引。</li>
-<li>Using where：使用了where。</li>
-</ul>
-<h2 id="mysql插入数据的流程">MySQL插入数据的流程</h2>
-<p>https://blog.csdn.net/zhaoliang831214/article/details/82711350</p>
-<p>https://blog.csdn.net/weixin_40581617/article/details/80623276</p>
-<ol>
-<li><strong>会话状态转换为update</strong></li>
-<li><strong>激活事物状态由 not_active 变为 active</strong></li>
-<li><strong>查找定位数据</strong></li>
-<li><strong>进行乐观插入</strong></li>
-</ol>
-<h2 id="mysql语句执行流程">Mysql语句执行流程</h2>
-<ul>
-<li>
-<p>流程：</p>
-<ul>
-<li>
-<p><strong>连接器：</strong> 身份认证和权限相关(登录 MySQL 的时候)。</p>
-</li>
-<li>
-<p><strong>查询缓存:</strong> 执行查询语句的时候，会先查询缓存（MySQL 8.0 版本后移除，因为这个功能不太实用）。</p>
-</li>
-<li>
-<p><strong>分析器</strong>:</p>
-<p>没有命中缓存的话，SQL 语句就会经过分析器，分析器说白了就是要先看你的 SQL 语句要干嘛，再检查你的 SQL 语句语法是否正确。</p>
-<ul>
-<li><strong>第一步，词法分析</strong>，一条 SQL 语句有多个字符串组成，首先要<strong>提取关键字</strong>，比如 select，提出查询的表，提出字段名，提出查询条件等等。做完这些操作后，就会进入第二步。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>第二步，语法分析</strong>，主要就是<strong>判断你输入的 sql 是否正确</strong>，是否符合 MySQL 的语法。完成这 2 步之后，MySQL 就准备开始执行了，但是如何执行，怎么执行是最好的结果呢？这个时候就需要优化器上场了。</p>
-<ul>
-<li>
-<p><strong>优化器</strong>：</p>
-<p>按照 MySQL 认为最优的方案去执行。</p>
-<ul>
-<li>https://zhuanlan.zhihu.com/p/192707721</li>
-</ul>
-</li>
-<li>
-<p>MySQL 会帮我去使用他自己认为的最好的方式去优化这条 SQL 语句，并生成一条条的执行计划。</p>
-<ul>
-<li>创建了多个索引，MySQL 会依据成本最小原则来选择使用对应的索引，这里的成本主要包括两个方面, IO 成本和 CPU 成本
-<ul>
-<li><strong>IO 成本</strong>: 即从磁盘把数据加载到内存的成本，默认情况下，读取数据页的 IO 成本是 1，MySQL 是以页的形式读取数据的，即当用到某个数据时，并不会只读取这个数据，而会把这个数据相邻的数据也一起读到内存中，这就是有名的程序局部性原理，所以 MySQL 每次会读取一整页，一页的成本就是 1。所以 IO 的成本主要和页的大小有关</li>
-<li><strong>CPU 成本</strong>：将数据读入内存后，还要检测数据是否满足条件和排序等 CPU 操作的成本，显然它与行数有关，默认情况下，检测记录的成本是 0.2。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>执行器:</strong> 执行语句，然后从存储引擎返回数据。</p>
-</li>
-</ul>
-</li>
-</ul>
-<figure data-type="image" tabindex="6"><img src="http://note.mxecy.cn/docs/%E5%9B%BE%E7%89%87/MySql/Mysql%E6%9F%A5%E8%AF%A2%E8%BF%87%E7%A8%8B.png" alt="img" loading="lazy"></figure>
-<p><strong>总结</strong></p>
-<ol>
-<li><a href="">客户端</a>首先通过连接器进行<strong>身份认证和权限相关</strong></li>
-<li>如果是执行查询语句的时候，<strong>会先查询缓存</strong>，但MySQL 8.0 版本后该步骤移除。</li>
-<li>没有命中缓存的话，<strong>SQL 语句就会经过解析器，分析语句，包括语法检查等等</strong>。</li>
-<li>通过<strong>优化器</strong>，将用户的SQL语句按照 MySQL 认为最优的方案去执行。</li>
-<li><strong>执行语句</strong>，并从存储引擎返回数据。</li>
-</ol>
-<h2 id="简述mysql优化流程">简述MySQL优化流程</h2>
-<ol>
-<li>通过<strong>慢日志</strong>定位执行较慢的SQL语句  HOW VARIABLES LIKE '%query%'   查询慢日志相关信息</li>
-<li>利用<strong>explain对这些关键字段进行分析</strong></li>
-<li>根据分析结果进行优化</li>
-</ol>
-<h2 id="sql执行顺序">SQL执行顺序</h2>
-<pre><code class="language-sql">-- 语法顺序
-select distinct 
-        &lt;select_list&gt;
-from
-    &lt;left_table&gt;&lt;join_type&gt;
-join &lt;right_table&gt; on &lt;join_condition&gt;
-where
-    &lt;where_condition&gt;
-group by
-    &lt;group_by_list&gt;
-having
-    &lt;having_condition&gt;
-order by
-    &lt;order_by_condition&gt;
-limit &lt;limit number&gt;
-
-
--- 执行顺序
-1、from &lt;left_table&gt;&lt;join_type&gt;
-2、on &lt;join_condition&gt;
-3、&lt;join_type&gt; join &lt;right_table&gt;
-4、where &lt;where_condition&gt;
-5、group by &lt;group_by_list&gt;
-6、having &lt;having_condition&gt;
-7、select
-8、distinct &lt;select_list&gt;
-9、order by &lt;order_by_condition&gt;
-10、limit &lt;limit_number&gt;
-</code></pre>
-<h2 id="基本优化">基本优化</h2>
-<p>参考</p>
-<p>https://mp.weixin.qq.com/s?__biz=Mzg2OTA0Njk0OA==&amp;mid=2247485117&amp;idx=1&amp;sn=92361755b7c3de488b415ec4c5f46d73&amp;chksm=cea24976f9d5c060babe50c3747616cce63df5d50947903a262704988143c2eeb4069ae45420&amp;token=79317275&amp;lang=zh_CN%23rd</p>
-<ul>
-<li>
-<p>数据类型选择：选择能够满足业务需求的最小数据类型。同时对于数值类型，如果没有负数，则使用<code>unsigned</code></p>
-</li>
-<li>
-<p>如果只查询一条记录，如是否存在，需要加上<code>limit</code>阻断后续的查找。</p>
-</li>
-<li>
-<p>禁止使用 SELECT * 必须使用 SELECT &lt;字段列表&gt; 查询统计所有 count（*）会统计值为NULL的行，而count（列名）不会统计值为NULL的行。</p>
-</li>
-<li>
-<p>主键外键约束在<strong>应用层解决</strong>。</p>
-</li>
-<li>
-<p>O<strong>R改写成IN</strong>：OR的效率是n级别，IN的效率是log(n)级别，in的个数建议控制在200以内</p>
-</li>
-<li>
-<p>尽量避免在WHERE子句中使用!=或&lt; &gt;操作符，否则将引擎放弃使用索引而进行全表扫描 &lt;&gt;等价于!=</p>
-</li>
-<li>
-<p>对于连续数值，使用BETWEEN不用IN：SELECT id FROM t WHERE num BETWEEN 1 AND 5</p>
-</li>
-<li>
-<p>单表数据保持在500w以内，如果大了就进行分表</p>
-</li>
-<li>
-<p><strong>禁止数据库中存储图片，图片等二进制数据</strong></p>
-</li>
-<li>
-<p><strong>尽可能把所有列定义为 NOT NULL</strong>：<strong>索引 NULL 列需要额外的空间来保存</strong>，所以要占用更多的空间进行比较和计算时要对 NULL 值做特别的处理</p>
-</li>
-<li>
-<p>财务相关数据使用decimal类型</p>
-<ul>
-<li><strong>单表索引不要超过5个</strong></li>
-</ul>
-</li>
-<li>
-<p><strong>禁止给表的每一列建立单独的索引</strong>。使用联合索引代替</p>
-</li>
-<li>
-<p><strong>建立联合索引</strong>：</p>
-<ul>
-<li>将区分度高的放在最左侧。（区分度=列中不同值的数量/列的总行数）</li>
-<li>尽量把字段长度小的列放在联合索引的最左侧（因为字段长度越小，一页能存储的数据量越大，IO 性能也就越好）</li>
-<li>使用最频繁的列放到联合索引的左侧（这样可以比较少的建立一些索引）</li>
-</ul>
-</li>
-<li>
-<p><strong>避免使用子查询，可以把子查询优化为 join 操作</strong>：通常子查询在 in 子句中，且子查询中为简单 SQL(不包含 union、group by、order by、limit 从句) 时,才可以把子查询转化为关联查询进行优化。</p>
-<ul>
-<li><strong>子查询的结果集无法使用索引，通常子查询的结果集会被存储到临时表中，不论是内存临时表还是磁盘临时表都不会存在索引，所以查询性能会受到一定的影响。特别是对于返回结果集比较大的子查询，其对查询性能的影响也就越大</strong>。</li>
-</ul>
-</li>
-<li>
-<p>避免使用 JOIN 关联太多的表</p>
-</li>
-<li>
-<p>WHERE 从句中禁止对列进行函数转换和计算</p>
-</li>
-<li>
-<p>超 100 万行的批量写 (UPDATE,DELETE,INSERT) 操作,要分批多次进行操作</p>
-<ul>
-<li><strong>大批量操作可能会造成严重的主从延迟</strong>：主从环境中,大批量操作可能会造成严重的主从延迟，大批量的写操作一般都需要执行一定长的时间， 而只有当主库上执行完成后，才会在其他从库上执行，所以会造成主库与从库长时间的延迟情况</li>
-<li><strong>binlog 日志为 row 格式时会产生大量的日志</strong>：大批量写操作会产生大量日志，特别是对于 row 格式二进制数据而言，由于在 row 格式中会记录每一行数据的修改，我们一次修改的数据越多，产生的日志量也就会越多，日志的传输和恢复所需要的时间也就越长，这也是造成主从延迟的一个原因</li>
-<li><strong>避免产生大事务操作</strong>：大批量修改数据，一定是在一个事务中进行的，这就会造成表中大批量数据进行锁定，从而导致大量的阻塞，阻塞会对 MySQL 的性能产生非常大的影响。特别是长时间的阻塞会占满所有数据库的可用连接，这会使生产环境中的其他应用无法连接到数据库，因此一定要注意大批量写操作要进行分批</li>
-</ul>
-</li>
-<li>
-<p>将or条件改写成<code>union all</code></p>
-</li>
-<li>
-<p>将<code>xx is not null</code>改写成<code>ifnull((xx,0) &gt; 0)</code></p>
-</li>
-<li>
-<p>少用内联子查询（select后有子查询），因为Sql返回多少行，内联子查询就要执行多少次</p>
-</li>
-<li>
-<p>基于成本的优化器CBO对子查询的处理能力比较弱，可以使用inner join</p>
-</li>
-</ul>
-<h3 id="limit">Limit</h3>
-<ul>
-<li>
-<p>原因：Limit分页时，如<code>limit offset, size</code>会扫描前<code>offset + size</code>行，然后去掉前面的<code>offset</code>行，返回最后的<code>size</code>行。当<code>offset</code>过大的时候，或者有<code>where</code>条件的时候会走全表查询。效率极低。</p>
-</li>
-<li>
-<p>解决方案：</p>
-<ul>
-<li>
-<p>利用<strong>覆盖索引</strong>进行优化：</p>
-<ul>
-<li>
-<pre><code class="language-sql">SELECT * FROM tableName
-WHERE id &gt;= (SELECT id FROM tableName ORDER BY id LIMIT 500000 , 1)
-LIMIT 2;
--- 其中，id为主键，在子查询中，只查询了id，因此可以利用覆盖索引查询出第500000的id的位置（不用回表查询）。然后通过id走索引会表查询出数据
-</code></pre>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="like">Like</h3>
-<ul>
-<li>
-<p>原因：<strong>因为B+树的最左前缀匹配。导致全模糊查询以及左模糊查询无法生效。会触发全表查询。</strong></p>
-</li>
-<li>
-<p><strong>解决方案：</strong></p>
-<ul>
-<li>
-<p><strong>利用覆盖索引优化</strong>（同上，在要模糊的字段上加索引，减少回表查询）：</p>
-<ul>
-<li>
-<pre><code class="language-sql">explain select * from tableName where id in (select id FROM tableName where name like &quot;%searchKey%&quot;);
-</code></pre>
-</li>
-</ul>
-</li>
-<li>
-<p>干掉左边的模糊匹配：<a href="https://jeffkemponoracle.com/2008/01/like-with-wildcard-at-start-can-use-an-index/">参考</a></p>
-</li>
-<li>
-<p>使用全文索引（建立全文索引 + ES分词）：</p>
-<ul>
-<li>
-<pre><code class="language-sql">SELECT * FROM tableName WHERE MATCH(`name`) AGAINST('searchKey')
-</code></pre>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="大表优化">大表优化</h3>
-<p>当MySQL单表记录数过⼤时，数据库的CRUD性能会明显下降，⼀些常⻅的优化措施如下</p>
-<ul>
-<li>
-<p><strong>限制数据范围</strong>：务必禁止不带任何限制数据范围条件的查询语句。比如:我们当用户在查询订单历史的时候,我们可以控制在一个月的范围内;</p>
-</li>
-<li>
-<p><strong>读写分离</strong>：经典的数据库拆分方案,主库负责写,从库负责读;</p>
-</li>
-<li>
-<p><strong>垂直分区</strong>：<strong>简单来说垂直拆分是指数据表列的拆分,把一张列比较多的表拆分为多张表</strong>。例如,用户表中既有用户的登录信息又有用户的基本信息,可以将用户表拆分成两个单独的表,甚至放到单独的库做分库。（<strong>数据库范式</strong>）</p>
-</li>
-</ul>
-<figure data-type="image" tabindex="7"><img src="https://i.imgtg.com/2023/02/14/dqJLY.png" alt="dqJLY.png" loading="lazy"></figure>
-<p>​	<strong>垂直拆分的优点</strong>： 可以使得列数据变⼩，在查询时减少读取的Block数，减少I/O次数。此外，垂直分区可以简化表的结构，易于维护。</p>
-<p>​	<strong>垂直拆分的缺点：</strong> 主键会出现冗余，需要管理冗余列，并会引起Join操作，可以通过在应⽤层进⾏Join来解决。此外，垂直分区会让事务变得更加复杂；</p>
-<ul>
-<li>
-<p>保持数据表结构不变,通过某种策略存储数据分片。这样每一片数据分散到不同的表或者库中,达到了分布式的目的。 水平拆分可以支撑非常大的数据量。（<strong>分表</strong>）</p>
-</li>
-<li>
-<p>⽔平分区 ：保持数据表结构不变，通过某种策略存储数据分⽚。这样每⼀⽚数据分散到不同的表或者库中，达到了分布式的⽬的。 ⽔平拆分可以⽀撑⾮常⼤的数据量。⽔平拆分是指数据表⾏的拆分，表的⾏数超过200万⾏时，就会变慢，这时可以把⼀张的表的数<br>
-据拆成多张表来存放。举个例⼦：我们可以将⽤户信息表拆分成多个⽤户信息表，这样就可以避免单⼀表数据量过⼤对性能造成影响。</p>
-</li>
-</ul>
-<figure data-type="image" tabindex="8"><img src="https://i.imgtg.com/2023/02/14/dqPuv.png" alt="dqPuv.png" loading="lazy"></figure>
-<p>⽔平拆分可以⽀持⾮常⼤的数据量。需要注意的⼀点是：分表仅仅是解决了单⼀表数据过⼤的问题，但由于表的数据还是在同⼀台机器上，其实对于提升MySQL并发能⼒没有什么意义，所以<br>
-<strong>⽔平拆分最好分库 。</strong><br>
-⽔平拆分能够 <strong>⽀持⾮常⼤的数据量存储，应⽤端改造也少，但 分⽚事务难以解决</strong> ，跨节点Join性能差，逻辑复杂。<strong>尽量不要对数据进⾏分⽚</strong>，<strong>因为拆分会带来逻辑、部署、运维的各种复杂度</strong> ，⼀般的数据表在优化得当的情况下⽀撑千万以下的数据量是没有太⼤问题的。如果实在要分⽚，尽量选择客户端分⽚架构，这样可以减少⼀次和中间件的⽹络I/O。<br>
-<strong>下⾯补充⼀下数据库分⽚的两种常⻅⽅案：</strong></p>
-<p>​	<strong>客户端代理</strong>： <strong>分⽚逻辑在应⽤端，封装在jar包中，通过修改或者封装JDBC层来实现</strong>。 当<br>
-当⽹的 <strong>Sharding-JDBC</strong> 、阿⾥的TDDL是两种⽐᫾常⽤的实现。</p>
-<p>​	<strong>中间件代理</strong>： <strong>在应⽤和数据中间加了⼀个代理层。分⽚逻辑统⼀维护在中间件服务中</strong>。 我<br>
-们现在谈的 Mycat 、360的Atlas、⽹易的DDB等等都是这种架构的实现。</p>
-<h2 id="清理表碎片">清理表碎片</h2>
-<h3 id="mysql中删除">Mysql中删除</h3>
-<ul>
-<li>Mysql可以通过<strong>drop</strong>、<strong>truncate</strong>、<strong>delete</strong>删除数据
-<ul>
-<li><code>drop table table_name</code>：不管是innoDB还是MyISAM都会立刻释放空间</li>
-<li><code>truncate table table_name</code>：不管是innoDB还是MyISAM都会立刻释放空间</li>
-<li><code>delete from table_name</code>：删除表的全部数据，对于MyISAM会立刻释放磁盘空间，对于InnoDB不会释放磁盘空间</li>
-<li><code>delete from table_name where xxx</code>：带条件的删除，不管是InnoDB还是MyISAM都不会释放磁盘空间</li>
-<li><code>delete</code> 操作后，使用<code>optimize table table_name</code>会立即释放磁盘空间，不管是InnoDB还是MyISAM</li>
-</ul>
-</li>
-<li>对于delete的数据虽然没有释放磁盘空间，但是下次插入数据时，仍然可以使用这部分空间。</li>
-</ul>
-<h3 id="mysql表碎片">Mysql表碎片</h3>
-<ul>
-<li>产生原因：删除的原因导致的
-<ul>
-<li>删除一行内容后，该段空间就会变为空白、被留空，在一段时间内的大量删除操作，会是的留空的空间比存储列表内容所使用的空间更大。</li>
-<li>执行插入操作时，MySql会尝试使用空白空间，但如果某个空白空间一直没有被大小合适的数据占用，就会产生碎片</li>
-</ul>
-</li>
-<li><strong>当碎片多的时候，将会影响b+树查询性能</strong>（如果是SSD的话则不会）。</li>
-</ul>
-<h2 id="mysql读取">Mysql读取</h2>
-<ul>
-<li>Mysql预读：Mysql的<strong>预读分为线性预读（单位为extend）<strong>和</strong>随机预读（单位为页）</strong>
-<ul>
-<li>线性预读（linear read-ahead）：线性预读的读取单位为extend，可以通过<code>innodb_read_ahead_threshold</code>来指定大小，默认为56。如果一个extend中顺序读取的page大于等于该变量时，MySQL就会把下一个extend预读到buffer pool中（<strong>注意MySql buffer pool的变种LRU机制</strong>）</li>
-<li>随机预读（randomread-ahead）：随机预读方式则是表示当同一个extent中的一些page在buffer pool中发现时，Innodb会将该extent中的剩余page一并读到buffer pool中。
-<ul>
-<li>由于随机预读方式给innodb code带来了一些不必要的复杂性，同时在性能也存在不稳定性，在5.5中已经将这种预读方式废弃，默认是OFF。若要启用此功能，即将配置变量设置innodb_random_read_ahead为ON。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="mvcc">MVCC</h2>
-<p>参考https://www.jianshu.com/p/8845ddca3b23</p>
-<ul>
-<li>
-<p>MVCC（Multi-Version Concurrency Control）多版本并发控制，MVCC 是一种并发控制的方法，一般在数据库管理系统中，实现对数据库的并发访问，它在不同的数据库引擎中有不同的实现。MySQL中MVCC只能在Repeatable Read（读可重复读）、Read Committed（读可提交）这两个隔离级别下工作。</p>
-<ul>
-<li><strong>读提交总是读取数据的最新行</strong>，而不是复合当前事务版本的数据行</li>
-<li><strong>序列化会对所有的读取操作加锁</strong></li>
-</ul>
-</li>
-<li>
-<p>在MVCC中，删除语句并不会导致要删除的记录真正被删除，而是在丢弃相应的undo log时，才会删除相应的行及索引记录。</p>
-</li>
-</ul>
-<p><strong>实现原理</strong></p>
-<ul>
-<li>数据库隐藏字段：
-<ul>
-<li>DB_TRX_ID：6byte，最近修改(修改/插入)事务ID：记录创建这条记录/最后一次修改该记录的事务ID</li>
-<li>DB_ROLL_PTR：7byte，回滚指针，指向这条记录的上一个版本（存储于rollback segment里）</li>
-<li>DB_ROW_ID：6byte，隐含的自增ID（隐藏主键），如果数据表没有主键，InnoDB会自动以DB_ROW_ID产生一个聚簇索引</li>
-</ul>
-</li>
-</ul>
-<h3 id="mysql-mvcc具体实现方式是哪一种">MySQL MVCC具体实现方式是哪一种</h3>
-<p>参考:https://blog.csdn.net/SnailMann/article/details/94724197</p>
-<p><strong>隐式字段</strong></p>
-<p><strong>undo日志</strong></p>
-<p><strong>Read View(读视图)</strong></p>
-<h3 id="mvcc能解决什么问题好处是">MVCC能解决什么问题，好处是？</h3>
-<h4 id="数据库并发场景有三种分别为">数据库并发场景有三种，分别为：</h4>
-<ul>
-<li>读-读：不存在任何问题，也不需要并发控制</li>
-<li>读-写：有线程安全问题，可能会造成事务隔离性问题，可能遇到脏读，幻读，不可重复读</li>
-<li>写-写：有线程安全问题，可能会存在更新丢失问题，比如第一类更新丢失，第二类更新丢失</li>
-</ul>
-<h4 id="mvcc带来的好处是">MVCC带来的好处是？</h4>
-<p>**多版本并发控制（MVCC）**是一种用来解决读-写冲突的无锁并发控制，也就是为事务分配单向增长的时间戳，<strong>为每个修改保存一个版本，版本与事务时间戳关联</strong>，读操作只读该事务开始前的数据库的快照。 所以MVCC可以为数据库解决以下问题</p>
-<ul>
-<li>
-<p>在并发读写数据库时，可以做到在读操作时不用阻塞写操作，写操作也不用阻塞读操作，提高了数据库并发读写的性能</p>
-</li>
-<li>
-<p>同时还可以解决脏读，幻读，不可重复读等事务隔离问题，但不能解决<strong>更新丢失问题</strong></p>
-</li>
-</ul>
-<h4 id="小结一下咯">小结一下咯</h4>
-<p>总之，MVCC就是因为大牛们，不满意只让数据库采用悲观锁这样性能不佳的形式去解决读-写冲突问题，而提出的解决方案，所以在数据库中，因为有了MVCC，所以我们可以形成两个组合：</p>
-<ul>
-<li>MVCC + 悲观锁<br>
-MVCC解决读写冲突，悲观锁解决写写冲突</li>
-<li>MVCC + 乐观锁<br>
-MVCC解决读写冲突，乐观锁解决写写冲突<br>
-这种组合的方式就可以最大程度的提高数据库并发性能，并解决读写冲突，和写写冲突导致的问题</li>
-</ul>
-<h3 id="读提交和可重复读都基于mvcc实现有什么区别">读提交和可重复读都基于MVCC实现，有什么区别？</h3>
-<p>在可重复读级别下，只会在<strong>事务开始前创建视图</strong>，事务中后续的查询共用一个视图。</p>
-<p>而读提交级别下<strong>每个语句执行前都会创建新的视图</strong>。因此对于可重复读，查询只能看到事务创建前就已经提交的数据。</p>
-<h2 id="简述mysql中的日志log">简述MySQL中的日志log</h2>
-<p><strong>redo log</strong>: 存储引擎级别的log（InnoDB有，MyISAM没有），该<strong>log关注于事务</strong>的<strong>恢复</strong>.在重启mysql服务的时候，根据redo log进行<strong>重做</strong>，从而使事务有<strong>持久性</strong>。</p>
-<p><strong>undo</strong> log：是存储引擎级别的log（InnoDB有，MyISAM没有）<strong>保证数据的原子性</strong>，该log保存了事务发生之前的数据的一个版本，可以用于<strong>回滚</strong>，<strong>是MVCC的重要实现方法之一</strong>。</p>
-<p><strong>bin log</strong>：数据库级别的log，关注<strong>恢复数据库的数据</strong>。</p>
-<h2 id="mysql是如何保证主备一致的">MySQL是如何保证主备一致的</h2>
-<p><strong>MySQL通过bin log（二进制日志）实现主备一致</strong>。bin log记录了<strong>所有修改了数据库或可能修改数据库的语句</strong>，而不会记录select、show这种不会修改数据库的语句。</p>
-<p>在备份的过程中，<strong>主库A会有一个专门的线程将主库A的bin log发送给 备库B进行备份</strong>。其中bin log有三种记录格式：</p>
-<ul>
-<li><strong>statement</strong>:记录对数据库进行修改的语句本身，有可能会记录一些额外的相关信息。
-<ul>
-<li>优点是binlog日志量少，IO压力小，性能较高。</li>
-<li>缺点是由于记录的信息相对较少，在不同库执行时由于上下文的环境不同可能导致主备不一致。</li>
-</ul>
-</li>
-<li><strong>row</strong>:记录对数据库做出修改的语句所影响到的数据行以及对这些行的修改。比如当修改涉及多行数据，会把涉及的每行数据都记录到bin log。
-<ul>
-<li>优点是能够完全的还原或者复制日志被记录时的操作。</li>
-<li>缺点是日志量占用空间较大，IO压力大，性能消耗较大。</li>
-</ul>
-</li>
-<li><strong>mixed</strong>:混合使用上述两种模式，一般的语句使用statment方式进行保存，如果遇到一些特殊的函数，则使用row模式进行记录。MySQL自己会判断这条SQL语句是否可能引起主备不一致，如果有可能，就用row格式， 否则就用statement格式。但是在生产环境中，一般会使用row模式。</li>
-</ul>
-<h2 id="redo-log与bin-log的区别">redo log与bin log的区别？</h2>
-<ol>
-<li>redo log是<strong>InnoDB引擎特</strong>有的，只记录该引擎中表的<strong>修改记录</strong>。bin log是MySQL的<strong>Server层</strong>实现的，会记录<strong>所有引擎</strong>对数据库的修改。</li>
-<li>redo log是<strong>物理</strong>日志，记录的是在具体某个数据页上做了什么修改；bin log是<strong>逻辑</strong>日志，记录的是这个语句的原始逻辑。</li>
-<li>redo log是<strong>循环</strong>写的，<strong>空间固定会用完</strong>；bin log是可以追加写入的，bin log文件写到一定大小后会<strong>切换</strong>到下一个，<strong>并不会覆盖以前的日志</strong>。</li>
-</ol>
-<h2 id="什么时候redo-log会触发写磁盘">什么时候redo log会触发写磁盘</h2>
-<p>https://blog.csdn.net/wuzhenwei0419/article/details/105258902/</p>
-<h2 id="crash-safe能力是什么">crash-safe能力是什么</h2>
-<p>InnoDB通过redo log保证即使数据库发生异常重启，之前<strong>提交的记录</strong>都不会丢失，这个能力称为crash-safe。</p>
-<h2 id="wal技术是什么">WAL技术是什么</h2>
-<p>WAL的全称是Write-Ahead Logging，它的关键点就是**先写日志，再写磁盘。**事务在提交写入磁盘前，会先写到redo log里面去。如果直接写入磁盘涉及磁盘的随机I/O访问，涉及磁盘随机I/O访问是非常消耗时间的一个过程，相比之下先写入redo log，后面再找合适的时机批量刷盘能提升性能。</p>
-<h2 id="两阶段提交是什么">两阶段提交是什么</h2>
-<p>为了<strong>保证binl og和redo log两份日志的逻辑一致</strong>，最终保证恢复到主备数据库的数据是一致的，采用两阶段提交的机制。</p>
-<ol>
-<li>执行器调用存储引擎接口，存储引擎将修改更新到内存中后，将修改操作记录redo log中，此时redo log处于<strong>prepare</strong>状态。</li>
-<li>存储引擎告知<strong>执行器执行完毕</strong>，执行器生成这个操作对应的bin log，并把binlog写入磁盘。</li>
-<li>执行器调用引擎的<strong>提交事务接口</strong>，引擎把刚刚写入的redo log改成提交<strong>commit</strong>状态，更新完成。</li>
-</ol>
-<h2 id="只靠bin-log可以支持数据库崩溃恢复吗">只靠bin log可以支持数据库崩溃恢复吗</h2>
-<p>不可以。 历史原因：</p>
-<ol>
-<li>InnoDB在作为MySQL的插件加入MySQL引擎家族之前，就已经是一个提供了崩溃恢复和事务支持的引擎了。InnoDB接入了MySQL后，发现既然bin log没有崩溃恢复的能力，那引入InnoDB原有的redo log来保证崩溃恢复能力。 实现原因：</li>
-<li><strong>bin log没有记录数据页修改的详细信息，不具备恢复数据页的能力</strong>。binlog记录着数据行的增删改，但是不记录事务对数据页的改动，这样细致的改动只记录在redo log中。当一个事务做增删改时，其实涉及到的数据页改动非常细致和复杂，包括行的字段改动以及行头部以及数据页头部的改动，甚至b+tree会因为插入一行而发生若干次页面分裂，那么事务也会把所有这些改动记录下来到redo log中。因为数据库系统进程crash时刻，磁盘上面页面镜像可以非常混乱，其中有些页面含有一些正在运行着的事务的改动，而一些已提交的事务的改动并没有刷上磁盘。事务恢复过程可以理解为是要把没有提交的事务的页面改动都去掉，并把已经提交的事务的页面改动都加上去这样一个过程。这些信息，都是binlog中没有记录的，只记录在了存储引擎的redo log中。</li>
-<li>操作写入binlog可细分为write和fsync两个过程，write指的就是指把日志写入到文件系统的page cache，并没有把数据持久化到磁盘,fsync才是将数据持久化到磁盘的操作。通过参数设置sync_binlog为0的时候，表示每次提交事务都只write，不fsync。此时数据库崩溃可能导致部分提交的事务以及binlog日志由于没有持久化而丢失。</li>
-</ol>
-<h2 id="简述mysql主从复制">简述MySQL主从复制</h2>
-<p>MySQL提供主从复制功能，可以方便的<strong>实现数据的多处自动备份</strong>，不仅能增加数据库的安全性，还能进行<strong>读写分离</strong>，提升<strong>数据库负载性能</strong>。</p>
-<p>主从复制流程：</p>
-<ol>
-<li>在事务完成之前，主库在<strong>bin log</strong>上记录这些改变，<strong>完成bin log写入过程后，主库通知存储引擎提交事物</strong></li>
-<li>从库将主库的bin log复制到对应的中继日志，即开辟一个I/O工作线程，I/O线程在主库上打开一个普通的连接，然后开始bin log dump process，将这些事件写入中继日志。从主库的bin log中读取事件，如果已经读到最新了，线程进入睡眠并等待ma主库产生新的事件。</li>
-</ol>
-<p><strong>读写分离：即只在MySQL主库上写，只在MySQL从库上读，以减少数据库压力，提高性能。</strong></p>
-<h2 id="sql-truncate-delete和drop的异同">SQL truncate 、delete和drop的异同</h2>
-<p>https://blog.csdn.net/biglxl/article/details/73301965</p>
-<p><strong>相同点</strong></p>
-<p>1.truncate和不带where子句的delete、以及drop都会删除表内的数据。</p>
-<p>2.drop、truncate都是DDL语句(数据定义语言),执行后会自动提交。</p>
-<p><strong>不同点</strong></p>
-<p>1.truncate 和 delete 只删除数据不删除表的结构(定义)<br>
-drop 语句将删除表的结构被依赖的约束(constrain)、触发器(trigger)、索引(index)；依赖于该表的存储过程/函数将保留,但是变为 invalid 状态（无效状态）。</p>
-<p>2.delete 语句是数据库操作语言(dml)，这个操作会放到 rollback segement 中，事务提交之后才生效；如果有相应的 trigger（触发器），执行的时候将被触发。</p>
-<p>truncate、drop 是数据库定义语言(ddl)，操作立即生效，原数据不放到 rollback segment 中，不能回滚，操作不触发 trigger（触发器）。<br>
-（rollback segment可以理解为是一个存储状态的区域，它相当于保存操作前数据库的状态信息，当操作执行成功后继续存储当前状态，当操作失败时回滚即恢复到操作之前保存的状态）</p>
-<p>3.速度，一般来说: drop&gt; truncate &gt; delete<br>
-原因：<br>
-drop 删除了表的数据及表的结构即从数据库中删除该表<br>
-truncate 只删除数据<br>
-delete 有条件的删除表中数据（没有条件即没有where语句即删除表中所有数据）</p>
-<h2 id="数据模型描述">数据模型描述</h2>
-<p>数据模型的组成要素有：</p>
-<p>1**.数据结构**，描述数据库的组成对象以及对象之间的联系，数据结构是所描述的对象类型的集合，是对系统静态特征的描述</p>
-<p>2.<strong>数据操作</strong>，是指对数据库中各种对象的实例允许执行的操作的集合，主要有查询和更新。</p>
-<p>3.<strong>数据的完整性约束条件</strong>，是一组完整性规则的集合。完整性规则是给定的数据模型中数据及其联系所具有的之约和依存规则，用以限定符合数据模型的数据库状态以及状态的变化，以保证数据的正确、有效、相容。</p>
-<h2 id="异常">异常</h2>
-<p>删除操作异常是指不该删除的数据被删除；</p>
-<p>插入操作异常是指应该插入的数据未被插入；</p>
-<h2 id="having条件">Having条件</h2>
-<p>having和group by 区别</p>
-<p>having是对于group by分组后结果进行筛选，group by是进行分组</p>
-<p>where 子句和 having子句区别</p>
-<p>where是对查询进行限制条件，<strong>having只是对于group by后的结果进行限制</strong></p>
-<p>所以用having就一定要和group by连用，且是先group by XXX 再having XXX，用group by不一有having（<strong>它只是一个筛选条件用的</strong>）</p>
-<p>where后不可以加聚合函数，但是having可以添加聚合函数</p>
-<p><strong>都是实际的比预期操作的少</strong>3</p>
-<h2 id="select执行顺序">select执行顺序</h2>
-<p>写法顺序：select--from--where--group by--having--order by</p>
-<p>执行顺序：from--where--group by--having--select--order by  就是select要放后面，如果有order by，则order by放最后，因为order by 是对结果进行排序</p>
-<h2 id="用于调用存储过程的对象">用于调用存储过程的对象</h2>
-<p>CallableStatemet 用于调用存储过程的对象</p>
-<p><a href="https://www.cnblogs.com/borter/p/9562391.html">Statement和PreparedStatement都是用来发送和执行SQL语句的</a></p>
-<p><a href="https://www.cnblogs.com/borter/p/9562403.html">ResultSet是结果集对象</a></p>
-<h2 id="sql注入和解决方法">SQL注入和解决方法</h2>
-<p><strong>什么是SQL注入？</strong></p>
-<p>SQL注入就是在系统登陆窗口或其他一切可输入文本中输入一段SQL语句，由于“SQL注入”是利用未过滤/未审核用户输入的攻击方法，其实就是让应用运行本不应该运行的SQL代码，如果应用毫无防备地创建了SQL字符串并且运行了它们，就会造成一些出人意料的结果。</p>
-<p><strong>简单的sql注入语句</strong></p>
-<p>String sql = &quot;select * from user_table where username=</p>
-<p>' &quot;+userName+&quot; ' and password=' &quot;+password+&quot; '&quot;;</p>
-<p>改写成</p>
-<p>SELECT * FROM user_table WHERE username=</p>
-<p>'’or 1 = 1 -- and password='’</p>
-<p><strong>SQL注入解决方法</strong><br>
-解决SQL注入问题的关键是对所有可能来自用户输入的数据进行严格的检查、对数据库配置使用最小权限原则。</p>
-<p>1、所有的查询语句都使用数据库提供的参数化查询接口，参数化的语句使用参数而不是将用户输入变量嵌入到SQL语句中。当前几乎所有的数据库系统都提供了参数化SQL语句执行接口，使用此接口可以非常有效的防止SQL注入攻击。</p>
-<p>​	MyBatis提供了两种支持动态 sql 的语法 #{} 和 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow></mrow><mi mathvariant="normal">，</mi><mi mathvariant="normal">其</mi><mi mathvariant="normal">中</mi></mrow><annotation encoding="application/x-tex">{}，其中</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord"></span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">其</span><span class="mord cjk_fallback">中</span></span></span></span>{} 是简单的<a href="https://so.csdn.net/so/search?q=%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9B%BF%E6%8D%A2&amp;spm=1001.2101.3001.7020">字符串替换</a>，而 #{} 在预处理时，会把参数部分用一个占位符 ? 代替，可以有效的防止sql的注入</p>
-<p>2、对进入数据库的特殊字符（’”\尖括号&amp;*;等）进行转义处理，或编码转换。</p>
-<p>3、严格限制变量类型，比如整型变量就采用intval()函数过滤，数据库中的存储字段必须对应为int型。</p>
-<p>4、数据长度应该严格规定，能在一定程度上防止比较长的SQL注入语句无法正确执行。</p>
-<p>5、网站每个数据层的编码统一，建议全部使用UTF-8编码，上下层编码不一致有可能导致一些过滤模型被绕过。</p>
-<p>6、严格限制网站用户的数据库的操作权限，给此用户提供仅仅能够满足其工作的权限，从而最大限度的减少注入攻击对数据库的危害。</p>
-<p>7、避免网站显示SQL错误信息，比如类型错误、字段不匹配等，防止攻击者利用这些错误信息进行一些判断。</p>
-<p>8、在网站发布之前建议使用一些专业的SQL注入检测工具进行检测，及时修补这些SQL注入漏洞。</p>
-<p>9、确认PHP配置文件中的magicquotesgpc选项保持开启</p>
-<h2 id="log日志有几个级别">log日志有几个级别</h2>
-<p>https://blog.csdn.net/jYF_666/article/details/102776645</p>
-<p>log4j定义了8个级别的log（除去OFF和ALL，可以说分为6个级别），优先级从高到低依次为：OFF、FATAL、ERROR、WARN、INFO、DEBUG、TRACE、 ALL。<br>
-Log4j建议只使用四个级别，优先级从高到低分别是 <strong>ERROR、WARN、INFO、DEBUG</strong>。</p>
-<h2 id="mysql常用函数">Mysql常用函数</h2>
-<p>https://www.bilibili.com/read/cv3838568/</p>
-<p>1.<strong>聚合函数</strong><br>
-聚合函数是平时比较常用的一类函数，这里列举如下：</p>
-<p>COUNT(col)   统计查询结果的行数</p>
-<p>MIN(col)   查询指定列的最小值</p>
-<p>MAX(col)   查询指定列的最大值</p>
-<p>SUM(col)   求和，返回指定列的总和</p>
-<p>AVG(col)   求平均值，返回指定列数据的平均值</p>
-<p>2.<strong>数值型函数</strong><br>
-数值型函数主要是对数值型数据进行处理，得到我们想要的结果，常用的几个列举如下，具体使用方法大家可以试试看。</p>
-<p>ABS(x)   返回x的绝对值</p>
-<p>BIN(x)   返回x的二进制</p>
-<p>CEILING(x)   返回大于x的最小整数值</p>
-<p>EXP(x)   返回值e（自然对数的底）的x次方</p>
-<p>FLOOR(x)   返回小于x的最大整数值</p>
-<p>GREATEST(x1,x2,...,xn)   返回集合中最大的值</p>
-<p>LEAST(x1,x2,...,xn)   返回集合中最小的值</p>
-<p>LN(x)   返回x的自然对数</p>
-<p>LOG(x,y)   返回x的以y为底的对数</p>
-<p>MOD(x,y)   返回x/y的模（余数）</p>
 ]]></content>
     </entry>
 </feed>

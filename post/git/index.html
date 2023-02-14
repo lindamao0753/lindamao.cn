@@ -9,7 +9,7 @@
 <meta name="description" content="">
 <meta name="theme-color" content="#000">
 <title>Git | lindamao</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1676374319079">
+<link rel="shortcut icon" href="/favicon.ico?v=1676378116754">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -201,7 +201,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">15</span>
+        <span class="site-item-stat-count">19</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -787,8 +787,8 @@ git merge -
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="Jrebel配置远程热部署" href="https://lindamao.cn/post/jrebel-pei-zhi-yuan-cheng-re-bu-shu/">Jrebel配置远程热部署</a>
-        <a class="nav-mobile-next" title="Jrebel配置远程热部署" href="https://lindamao.cn/post/jrebel-pei-zhi-yuan-cheng-re-bu-shu/">下一篇</a>
+        <a class="nav-pc-next" title="RPC" href="https://lindamao.cn/post/rpc/">RPC</a>
+        <a class="nav-mobile-next" title="RPC" href="https://lindamao.cn/post/rpc/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
@@ -1294,6 +1294,62 @@ git merge -
       </div>
       
       <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://lindamao.cn/post/xiao-xi-zhong-jian-jian/"" data-c="
+          &lt;h1 id=&#34;消息中间件&#34;&gt;消息中间件&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;定义&lt;/strong&gt;&lt;br&gt;
+消息中间件属于分布式系统中一个字系统，关注于数据的发送和接收，利用高效可靠的异步信息传递机制对分布式系统中的其余各个子系统进行集成。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://img-blog.csdnimg.cn/20210624200708280.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzU2MTA2MA==,size_16,color_FFFFFF,t_70&#34; alt=&#34;在这里插入图片描述&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;为什么要用消息中间件&lt;/strong&gt;&lt;br&gt;
+假设一个电商交易的场景，用户下单之后调用库存系统减库存，然后需要调用物流系统进行发货，如果交易、库存、物流是属于一个系统的，那么就是接口调用。但是随着系统的发展，各个模块越来越庞大、业务逻辑越来越复杂，必然是要做服务化和业务拆分的。这个时候就需要考虑这些系统之间如何交互，第一反应就是RPC（Remote Procedure Call）。系统继续发展，可能一笔交易后续需要调用几十个接口来执行业务，比如还有风控系统、短信服务等等。这个时候就需要消息中间件登场来解决问题了。&lt;/p&gt;
+&lt;p&gt;所以消息中间件主要解决分布式系统之间信息的传递，同时为分布式系统中其他子系统提供了伸缩性和拓展性。为系统带来了：&lt;br&gt;
+低耦合，不管是程序还是模块之间，使用信息中间件进行间接通信。&lt;/p&gt;
+&lt;p&gt;异步通信能力，使得子系统之间得以充分执行之间的逻辑而无需等待。&lt;/p&gt;
+&lt;p&gt;缓冲能力：消息中间件像是一个巨大的蓄水池，将高峰期大量的请求存储下来，慢慢交给后台进行处理，对于秒杀业务来说尤为重要。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;和RPC有何区别？&lt;/strong&gt;&lt;br&gt;
+RPC和消息中间件的场景的差异很大程度上在于”依赖性“和”同步性“。&lt;/p&gt;
+&lt;p&gt;消息中间件出现以后对于交易场景可能是调用库存中心等强依赖系统执行业务，之后发布一条消息（这条消息存储于消息中间件中）。像是短信通知服务、数据统计服务等等都是依赖于消息中间件去消费这条消息来完成自己的业务逻辑。&lt;/p&gt;
+&lt;p&gt;RPC方式是典型的同步方式，让远程调用像本地调用。消息中间件方式属于异步方式。消息队列是系统级、模块级的通信。RPC是对象级、函数级通信。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;消息中间件使用场景&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;异步处理&lt;/strong&gt;&lt;br&gt;
+场景说明：用户注册后，需要发注册邮件和注册短信。传统的做法有两种：&lt;br&gt;
+（1）串行方式：将注册信息写入数据库成功后，发送注册邮件，再发送注册短信。以上三个任务全部完成后，返回给客户端。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://img-blog.csdnimg.cn/20210624202633404.png&#34; alt=&#34;在这里插入图片描述&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;（2）并行方式：将注册信息写入数据库成功后，发送注册邮件的同时，发送注册短信。以上三个任务完成后，返回给客户端。与串行的差别是，并行的方式可以提高处理的时间。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://img-blog.csdnimg.cn/20210624202908586.png&#34; alt=&#34;在这里插入图片描述&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;假设三个业务节点每个使用50毫秒钟，不考虑网络等其他开销，则串行方式的时间是150毫秒，并行的时间可能是100毫秒。&lt;/p&gt;
+&lt;p&gt;小结：如以上案例描述，传统的方式系统的性能（并发量，吞吐量，响应时间）会有瓶颈。如何解决这个问题呢？&lt;br&gt;
+引入消息队列，将不是必须的业务逻辑，异步处理。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://img-blog.csdnimg.cn/20210624203003151.png&#34; alt=&#34;img&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;应用解耦&lt;/strong&gt;&lt;br&gt;
+场景说明：用户下单后，订单系统需要通知库存系统。传统的做法是订单系统调用库存系统的接口。&lt;br&gt;
+传统模式的缺点：&lt;br&gt;
+（1）假如库存系统无法访问，则订单减库存将失败，从而导致订单失败。&lt;br&gt;
+（2）订单系统与库存系统耦合。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://img-blog.csdnimg.cn/20210624203743355.png&#34; alt=&#34;在这里插入图片描述&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;如何解决以上问题呢？引入应用消息队列后的方案&lt;br&gt;
+订单系统：用户下单后，订单系统完成持久化处理，将消息写入消息队列，返回用户订单下单成功。&lt;br&gt;
+库存系统：订阅下单的消息，采用拉/推的方式，获取下单信息，库存系统根据下单信息，进行库存操作。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://img-blog.csdnimg.cn/20210624204123569.png&#34; alt=&#34;在这里插入图片描述&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;假如：在下单时库存系统不能正常使用。也不影响正常下单，因为下单后，订单系统写入消息队列就不再关心其他的后续操作了。实现订单系统与库存系统的应用解耦。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;流量削峰&lt;/strong&gt;&lt;br&gt;
+流量削峰也是消息队列中的常用场景，一般在秒杀或团抢活动中使用广泛。&lt;br&gt;
+应用场景：秒杀活动，一般会因为流量过大，导致流量暴增，应用挂掉。为解决这个问题，一般需要在应用前端加入消息队列：可以控制活动的人数；可以缓解短时间内高流量压垮应用。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://img-blog.csdnimg.cn/20210624205023329.png&#34; alt=&#34;在这里插入图片描述&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;用户的请求，服务器接收后，首先写入消息队列。假如消息队列长度超过最大数量，则直接抛弃用户请求或跳转到错误页面；秒杀业务根据消息队列中的请求信息，再做后续处理。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;日志处理&lt;/strong&gt;&lt;br&gt;
+日志处理是指将消息队列用在日志处理中，比如Kafka的应用，解决大量日志传输的问题。架构简化如下：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://img-blog.csdnimg.cn/20210624205131419.png&#34; alt=&#34;在这里插入图片描述&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;日志采集客户端，负责日志数据采集，定时写入Kafka队列；&lt;br&gt;
+Kafka消息队列：负责日志数据的接收，存储和转发；&lt;br&gt;
+日志处理应用：订阅并消费kafka队列中的日志数据。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;信息通讯&lt;/strong&gt;&lt;br&gt;
+消息通讯是指，消息队列一般都内置了高效的通信机制，因此也可以用在纯的消息通讯。比如实现点对点消息队列，或者聊天室等。&lt;/p&gt;
+&lt;p&gt;点对点通讯：客户端A和客户端B使用同一队列，进行消息通讯。&lt;br&gt;
+聊天室通讯：客户端A，客户端B，客户端N订阅同一主题，进行消息发布和接收。实现类似聊天室效果。&lt;/p&gt;
+">消息中间件</a>
+      </div>
+      
+      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://lindamao.cn/post/shu-ju-ku-lian-jie-chao-shi-wen-ti-jie-jue/"" data-c="
           &lt;p&gt;今天上班在产线上遇到了这么一个bug&lt;br&gt;
 com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure&lt;br&gt;
@@ -1511,6 +1567,53 @@ git merge -
       </div>
       
       <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://lindamao.cn/post/rpc/"" data-c="
+          &lt;h2 id=&#34;什么是-rpc&#34;&gt;什么是 RPC？&lt;/h2&gt;
+&lt;p&gt;RPC 的全称是 Remote Procedure Call，即远程过程调用。简单解读字面上的意思，远程肯定是指要跨机器而非本机，所以需要用到网络编程才能实现，但是不是只要通过网络通信访问到另一台机器的应用程序，就可以称之为 RPC 调用了？显然并不够。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;我理解的 RPC 是帮助我们屏蔽网络编程细节，实现调用远程方法就跟调用本地一样的体验&lt;/strong&gt;，我们不需要因为这个方法是远程调用就需要编写很多与业务无关的代码。&lt;/p&gt;
+&lt;p&gt;这就好比建在小河上的桥一样连接着河的两岸，如果没有小桥，我们需要通过划船、绕道等其他方式才能到达对面，但是有了小桥之后，我们就能像在路面上一样行走到达对面，并且跟在路面上行走的体验没有区别。所以我认为，RPC 的作用就是体现在这样两个方面：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;屏蔽远程调用跟本地调用的区别，让我们感觉就是调用项目内的方法；&lt;/li&gt;
+&lt;li&gt;隐藏底层网络通信的复杂性，让我们更专注于业务逻辑。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;rpc-通信流程&#34;&gt;RPC 通信流程&lt;/h2&gt;
+&lt;p&gt;理解了什么是 RPC，接下来我们讲下 RPC 框架的通信流程，方便我们进一步理解 RPC。&lt;/p&gt;
+&lt;p&gt;如前面所讲，RPC 能帮助我们的应用透明地完成远程调用，发起调用请求的那一方叫做调用方，被调用的一方叫做服务提供方。为了实现这个的目标，我们就需要在 RPC 框架里面对整个通信细节进行封装，那一个完整的RPC 会涉及到哪些步骤呢？&lt;/p&gt;
+&lt;p&gt;我们已经知道 RPC 是一个远程调用，那肯定就需要通过网络来传输数据，并且 RPC 常用于业务系统之间的数据交互，需要保证其可靠性，所以 &lt;strong&gt;RPC 一般默认采用 TCP 来传输&lt;/strong&gt;。我们常用的 HTTP 协议也是建立在 TCP 之上的。&lt;/p&gt;
+&lt;p&gt;网络传输的数据必须是二进制数据，但调用方请求的出入参数都是对象。对象是肯定没法直接在网络中传输的，需要提前把它转成可传输的二进制，并且要求转换算法是可逆的，这个过程我们一般叫做“序列化”。&lt;/p&gt;
+&lt;p&gt;调用方持续地把请求参数序列化成二进制后，经过 TCP 传输给了服务提供方。服务提供方从 TCP 通道里面收到二进制数据，那如何知道一个请求的数据到哪里结束，是一个什么类型的请求呢？&lt;/p&gt;
+&lt;p&gt;在这里我们可以想想高速公路，它上面有很多出口，为了让司机清楚地知道从哪里出去，管理部门会在路上建立很多指示牌，并在指示牌上标明下一个出口是哪里、还有多远。那回到数据包识别这个场景，我们是不是也可以建立一些“指示牌”，并在上面标明数据包的类型和长度，这样就可以正确的解析数据了。确实可以，并且我们把数据格式的约定内容叫做“协议”。大多数的协议会分成两部分，分别是数据头和消息体。数据头一般用于身份识别，包括协议标识、数据大小、请求类型、序列化类型等信息；消息体主要是请求的业务参数信息和扩展属性等。&lt;/p&gt;
+&lt;p&gt;根据协议格式，服务提供方就可以正确地从二进制数据中分割出不同的请求来，同时根据请求类型和序列化类型，把二进制的消息体逆向还原成请求对象。这个过程叫作“反序列化”。&lt;/p&gt;
+&lt;p&gt;服务提供方再根据反序列化出来的请求对象找到对应的实现类，完成真正的方法调用，然后把执行结果序列化后，回写到对应的 TCP 通道里面。调用方获取到应答的数据包后，再反序列化成应答对象，这样调用方就完成了一次 RPC 调用。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;那上述几个流程就组成了一个完整的 RPC 吗？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在我看来，还缺点东西。因为对于研发人员来说，这样做要掌握太多的 RPC 底层细节，需要手动写代码去构造请求、调用序列化，并进行网络调用，整个 API 非常不友好。&lt;/p&gt;
+&lt;p&gt;那我们有什么办法来简化 API，屏蔽掉 RPC 细节，让使用方只需要关注业务接口，像调用本地一样来调用远程呢？&lt;/p&gt;
+&lt;p&gt;如果你了解 Spring，一定对其 AOP 技术很佩服，其核心是采用动态代理的技术，通过字节码增强对方法进行拦截增强，以便于增加需要的额外处理逻辑。其实这个技术也可以应用到 RPC 场景来解决我们刚才面临的问题。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;由服务提供者给出业务接口声明，在调用方的程序里面，RPC 框架根据调用的服务接口提前生成动态代理实现类，并通过依赖注入等技术注入到声明了该接口的相关业务逻辑里面。该代理实现类会拦截所有的方法调用，在提供的方法处理逻辑里面完成一整套的远程调用，并把远程调用结果返回给调用方，这样调用方在调用远程方法的时候就获得了像调用本地接口一样的体验。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;到这里，一个简单版本的 RPC 框架就实现了。上述流程如下图：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://img-blog.csdnimg.cn/20200917105417654.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmdtZW5nMTk5Nw==,size_16,color_FFFFFF,t_70#pic_left&#34; alt=&#34;在这里插入图片描述&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;rpc-在架构中的位置&#34;&gt;RPC 在架构中的位置&lt;/h2&gt;
+&lt;p&gt;围绕 RPC 我们讲了这么多，那 RPC 在架构中究竟处于什么位置呢？&lt;/p&gt;
+&lt;p&gt;如刚才所讲，RPC 是解决应用间通信的一种方式，而无论是在一个大型的分布式应用系统还是中小型系统中，应用架构最终都会从“单体”演进成“微服务化”，整个应用系统会被拆分为多个不同功能的应用，并将它们部署在不同的服务器中，而应用之间会通过 RPC 进行通信，可以说 &lt;strong&gt;RPC 对应的是整个分布式应用系统，就像是“经络”一样的存在&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;那么如果没有 RPC，我们现实中的开发过程是怎样的一个体验呢？&lt;/p&gt;
+&lt;p&gt;所有的功能代码都会被我们堆砌在一个大项目中，开发过程中你可能要改一行代码，但改完后编译会花掉你 2 分钟，编译完想运行起来验证下结果可能要 5 分钟，是不是很酸爽？更难受的是在人数比较多的团队里面，多人协同开发的时候，如果团队其他人把接口定义改了，你连编译通过的机会都没有，系统直接报错，从而导致整个团队的开发效率都会非常低下。而且当我们准备要上线发版本的时候，QA 也很难评估这次的测试范围，为了保险起见我们只能把所有的功能进行回归测试，这样会导致我们上线新功能的整体周期都特别长。&lt;/p&gt;
+&lt;p&gt;无论你是研发还是架构师，我相信这种系统架构我们肯定都不能接受，那怎么才能解决这个问题呢？&lt;/p&gt;
+&lt;p&gt;我们首先都会想到可以采用“分而治之”的思想来进行拆分，但是拆分完的系统怎么保持跟未拆分前的调用方式一样呢？我们总不能因为架构升级，就把所有的代码都推倒重写一遍吧。&lt;/p&gt;
+&lt;p&gt;**RPC 框架能够帮助我们解决系统拆分后的通信问题，并且能让我们像调用本地一样去调用远程方法。**利用 RPC 我们不仅可以很方便地将应用架构从“单体”演进成“微服务化”，而且还能解决实际开发过程中的效率低下、系统耦合等问题，这样可以使得我们的系统架构整体清晰、健壮，应用可运维度增强。&lt;/p&gt;
+&lt;p&gt;当然 RPC 不仅可以用来解决通信问题，它还被用在了很多其他场景，比如：MQ、分布式缓存、数据库等。比如下面的应用架构图：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://img-blog.csdnimg.cn/20200917110912736.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmdtZW5nMTk5Nw==,size_16,color_FFFFFF,t_70#pic_left&#34; alt=&#34;在这里插入图片描述&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;在这个应用中，使用了 MQ 来处理异步流程、Redis 缓存热点数据、MySQL 持久化数据，还有就是在系统中调用另外一个业务系统的接口，对我的应用来说这些都是属于 RPC调用，而 MQ、MySQL 持久化的数据也会存在于一个分布式文件系统中，他们之间的调用也是需要用 RPC 来完成数据交互的。&lt;/p&gt;
+&lt;p&gt;由此可见，RPC 确实是我们日常开发中经常接触的东西，只是被包装成了各种框架，导致我们很少意识到这就是 RPC，让 RPC 变成了我们最“熟悉的陌生人”。现在，回过头想想，我说 RPC 是整个应用系统的“经络”，这不为过吧？我们真的很有必要学好 RPC，不仅因为 RPC 是构建复杂系统的基石，还是提升自身认知的利器。&lt;/p&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+&lt;p&gt;本篇博客讲了下 RPC 的原理，RPC 就是提供一种透明调用机制，让使用者不必显式地区分本地调用和远程调用。RPC 虽然可以帮助开发者屏蔽远程调用跟本地调用的区别，但毕竟涉及到远程网络通信，所以这里还是有很多使用上的区别，比如：&lt;/p&gt;
+&lt;p&gt;调用过程中超时了怎么处理业务？&lt;br&gt;
+什么场景下最适合使用 RPC？&lt;br&gt;
+什么时候才需要考虑开启压缩？&lt;br&gt;
+无论你是一个初级开发者还是高级开发者，RPC 都应该是你日常开发过程中绕不开的一个话题，所以作为软件开发者的我们，真的很有必要详细地了解 RPC 实现细节。只有这样，才能帮助我们更好地在日常工作中使用 RPC。&lt;/p&gt;
+">RPC</a>
+      </div>
+      
+      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://lindamao.cn/post/jrebel-pei-zhi-yuan-cheng-re-bu-shu/"" data-c="
           &lt;h1 id=&#34;jrebel配置远程热部署&#34;&gt;Jrebel配置远程热部署&lt;/h1&gt;
 &lt;ul&gt;
@@ -1567,6 +1670,233 @@ File -&amp;gt; JRebel &amp;amp; Xrebel -&amp;gt; Jrebel Remote Servers -&amp;gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 ">Jrebel配置远程热部署</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://lindamao.cn/post/liquibase/"" data-c="
+          &lt;h1 id=&#34;开始使用-sql-脚本&#34;&gt;开始使用 SQL 脚本&lt;/h1&gt;
+&lt;h2 id=&#34;第1步创建一个sql文件夹&#34;&gt;第1步创建一个sql文件夹&lt;/h2&gt;
+&lt;p&gt;在解压的&lt;code&gt;Liquibase&lt;/code&gt; 的文件夹中 ，创建一个 &lt;code&gt;sql&lt;/code&gt; 文件夹。在这个文件夹中你将放置 &lt;code&gt;Liquibase&lt;/code&gt;将跟踪、版本和部署的&lt;code&gt;SQL&lt;/code&gt;脚本。&lt;/p&gt;
+&lt;h2 id=&#34;第2步建立一个change-log&#34;&gt;第2步建立一个Change Log&lt;/h2&gt;
+&lt;p&gt;这是一次性步骤，用于配置更改日志以指向将包含 &lt;code&gt;SQL&lt;/code&gt; 脚本的 &lt;code&gt;sql&lt;/code&gt; 文件夹。在解压的&lt;code&gt;*.zip&lt;/code&gt; 或&lt;code&gt;*.tar.gz&lt;/code&gt;的 &lt;code&gt;Liquibase&lt;/code&gt; 的目录中创建并保存文件名为 &lt;code&gt;myChangeLog.xml&lt;/code&gt; 的文件 。&lt;code&gt;myChangeLog.xml&lt;/code&gt; 的内容应如下所示：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;databaseChangeLog
+  xmlns=&amp;quot;http://www.liquibase.org/xml/ns/dbchangelog&amp;quot;
+  xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+  xsi:schemaLocation=&amp;quot;http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd&amp;quot;&amp;gt;
+
+  &amp;lt;includeAll path=&amp;quot;/sql&amp;quot;/&amp;gt;
+&amp;lt;/databaseChangeLog&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;第3步在sql文件中新增一个sql脚本&#34;&gt;第3步在SQL文件中新增一个SQL脚本&lt;/h2&gt;
+&lt;p&gt;使用教程设置中的 &lt;code&gt;liquibase.properties&lt;/code&gt; 文件以及新创建的&lt;code&gt;myChangeLog.xml&lt;/code&gt;，我们现在已准备好开始向 &lt;code&gt;sql&lt;/code&gt;文件夹添加&lt;code&gt;SQL&lt;/code&gt;脚本。&lt;code&gt;Liquibase&lt;/code&gt; 将在文件夹中按字母数字顺序排列脚本。使用以下内容创建 &lt;code&gt;001_create_person_table.sql&lt;/code&gt; 并将其保存在 &lt;code&gt;sql&lt;/code&gt;文件夹中：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;create table PERSON (
+    ID int not null,
+    FNAME varchar(100) not null
+);
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;第4步-部署你的第一个修改&#34;&gt;第4步 部署你的第一个修改&lt;/h2&gt;
+&lt;p&gt;现在，我们已准备好部署我们的第一个脚本！打开终端，如果在 &lt;code&gt;UNIX&lt;/code&gt;系统上则运行 &lt;code&gt;./liquibase update&lt;/code&gt;或 如果在 Windows 上则运行&lt;code&gt;liquibase.bat update&lt;/code&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;第5步-检查你的数据库&#34;&gt;第5步 检查你的数据库&lt;/h2&gt;
+&lt;p&gt;您将看到您的数据库现在包含一个名为&lt;code&gt;PERSON&lt;/code&gt;的表。要将作为本教程一部分的 &lt;code&gt;H2&lt;/code&gt; 数据库写入内容，请打开一个终端，导航到您提取的 &lt;code&gt;Liquibase``*.zip&lt;/code&gt; 或 &lt;code&gt;*.tar.gz&lt;/code&gt;的文件夹，并运行 &lt;code&gt;java -jar h2-1.4.199.jar&lt;/code&gt;注意：输入您下载的 &lt;code&gt;h2*.jar&lt;/code&gt; 的特定版本！输入&lt;code&gt;JDBC URL&lt;/code&gt;、用户名和密码，从 &lt;code&gt;liquibase.properties&lt;/code&gt; 文件输入您根据教程设置创建的属性文件。您会注意到还创建了另外两个表：&lt;code&gt;databasechangeloglock&lt;/code&gt;和&lt;code&gt;databasechangeloglock&lt;/code&gt;。&lt;code&gt;databasechangelog&lt;/code&gt;表包含针对数据库运行的所有更改的列表。&lt;code&gt;databasechangeloglock&lt;/code&gt;表用于确保两台计算机不会同时尝试修改数据库。&lt;/p&gt;
+&lt;h1 id=&#34;使用-liquibase-函数入门&#34;&gt;使用 Liquibase 函数入门&lt;/h1&gt;
+&lt;p&gt;本教程使用&lt;code&gt;Liquibase&lt;/code&gt;函数。更改将在 &lt;code&gt;XML&lt;/code&gt; 中定义，而不是使用 &lt;code&gt;SQL&lt;/code&gt;。&lt;code&gt;Liquibase&lt;/code&gt; 将根据定义的&lt;code&gt;changeSet(s)&lt;/code&gt;生成 &lt;code&gt;SQL&lt;/code&gt;，并将该 &lt;code&gt;SQL&lt;/code&gt; 部署到目标数据库。所有迁移都在更改日志中显式跟踪和排序。&lt;/p&gt;
+&lt;h2 id=&#34;第一步创建一个changelog文件&#34;&gt;第一步创建一个Changelog文件&lt;/h2&gt;
+&lt;p&gt;database changelog文件是列出所有数据库更改的位置。创建一个名为 &lt;code&gt;myChangeLog.xml&lt;/code&gt;的文件，其中包含以下内容：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+
+&amp;lt;databaseChangeLog
+  xmlns=&amp;quot;http://www.liquibase.org/xml/ns/dbchangelog&amp;quot;
+  xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+  xsi:schemaLocation=&amp;quot;http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd&amp;quot;&amp;gt;
+
+&amp;lt;/databaseChangeLog&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;第2步-添加一个change-set&#34;&gt;第2步 添加一个Change Set&lt;/h2&gt;
+&lt;p&gt;每个&lt;code&gt;changeSet&lt;/code&gt;都由&lt;code&gt;id&lt;/code&gt;属性和&lt;code&gt;author&lt;/code&gt;属性进行唯一标识。这两个标记以及更改日志文件的名称和包唯一地标识了更改。如果只需要指定一个&lt;code&gt;id&lt;/code&gt;，则很容易意外重用它们，尤其是在处理多个开发人员和代码分支时。包括&lt;code&gt;author&lt;/code&gt;属性可最大程度地减少重复的可能性。&lt;/p&gt;
+&lt;p&gt;将每个&lt;code&gt;changeSet&lt;/code&gt;视为要应用于数据库的原子更改。通常最好在&lt;code&gt;changeSet&lt;/code&gt;中只包含一个更改，但如果插入多个行时，这些行一起有作为单个事务添加的意义，则允许进行更多更改。&lt;code&gt;Liquibase&lt;/code&gt; 将尝试将每个&lt;code&gt;changeSet&lt;/code&gt;运行为单个事务，但对于某些命令，许多数据库将静默地提交和回滚事务（创建表、删除表等）。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+
+&amp;lt;databaseChangeLog
+  xmlns=&amp;quot;http://www.liquibase.org/xml/ns/dbchangelog&amp;quot;
+  xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+  xsi:schemaLocation=&amp;quot;http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd&amp;quot;&amp;gt;
+
+    &amp;lt;changeSet id=&amp;quot;1&amp;quot; author=&amp;quot;bob&amp;quot;&amp;gt;
+        &amp;lt;createTable tableName=&amp;quot;department&amp;quot;&amp;gt;
+            &amp;lt;column name=&amp;quot;id&amp;quot; type=&amp;quot;int&amp;quot;&amp;gt;
+                &amp;lt;constraints primaryKey=&amp;quot;true&amp;quot; nullable=&amp;quot;false&amp;quot;/&amp;gt;
+            &amp;lt;/column&amp;gt;
+            &amp;lt;column name=&amp;quot;name&amp;quot; type=&amp;quot;varchar(50)&amp;quot;&amp;gt;
+                &amp;lt;constraints nullable=&amp;quot;false&amp;quot;/&amp;gt;
+            &amp;lt;/column&amp;gt;
+            &amp;lt;column name=&amp;quot;active&amp;quot; type=&amp;quot;boolean&amp;quot; defaultValueBoolean=&amp;quot;true&amp;quot;/&amp;gt;
+        &amp;lt;/createTable&amp;gt;
+    &amp;lt;/changeSet&amp;gt;
+
+&amp;lt;/databaseChangeLog&amp;gt;
+  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;第3步-运行change-set&#34;&gt;第3步 运行change Set&lt;/h2&gt;
+&lt;p&gt;如果是在&lt;code&gt;UNIX&lt;/code&gt;操作系统，可以使用&lt;code&gt;./liquibase update&lt;/code&gt;命令来执行&lt;code&gt;myChangeLog.xml&lt;/code&gt;；如果是在&lt;code&gt;Windows&lt;/code&gt;操作系统上，可以使用&lt;code&gt;liquibase.bat update&lt;/code&gt;来运行&lt;code&gt;myChangeLog.xml&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;检查你的数据库&#34;&gt;检查你的数据库&lt;/h2&gt;
+&lt;p&gt;您将看到您的数据库现在包含一个名为&lt;code&gt;PERSON&lt;/code&gt;的表。要将作为本教程一部分的 &lt;code&gt;H2&lt;/code&gt; 数据库入内容，请打开一个终端，导航到您提取的 &lt;code&gt;Liquibase``*.zip&lt;/code&gt; 或 &lt;code&gt;*.tar.gz&lt;/code&gt;的文件夹，并运行 &lt;code&gt;java -jar h2-1.4.199.jar&lt;/code&gt;注意：输入您下载的 &lt;code&gt;h2*.jar&lt;/code&gt; 的特定版本！输入&lt;code&gt;JDBC URL&lt;/code&gt;、用户名和密码，从 &lt;code&gt;liquibase.properties&lt;/code&gt; 文件输入您根据教程设置创建的属性文件。您会注意到还创建了另外两个表：&lt;code&gt;databasechangeloglock&lt;/code&gt;和&lt;code&gt;databasechangeloglock&lt;/code&gt;。&lt;code&gt;databasechangelog&lt;/code&gt;表包含针对数据库运行的所有更改的列表。&lt;code&gt;databasechangeloglock&lt;/code&gt;表用于确保两台计算机不会同时尝试修改数据库。&lt;/p&gt;
+&lt;h1 id=&#34;标准模板&#34;&gt;标准模板&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;
+&amp;lt;databaseChangeLog
+        xmlns=&amp;quot;http://www.liquibase.org/xml/ns/dbchangelog&amp;quot;
+        xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+        xsi:schemaLocation=&amp;quot;http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd&amp;quot;&amp;gt;
+    &amp;lt;property name=&amp;quot;now&amp;quot; value=&amp;quot;now()&amp;quot; dbms=&amp;quot;mysql&amp;quot;/&amp;gt;
+
+    &amp;lt;changeSet id=&amp;quot;&amp;quot; author=&amp;quot;修改者&amp;quot;&amp;gt;
+        &amp;lt;tagDatabase tag=&amp;quot;数据库tag&amp;quot;/&amp;gt;
+    &amp;lt;/changeSet&amp;gt;
+
+    &amp;lt;changeSet id=&amp;quot;id唯一&amp;quot; author=&amp;quot;修改者&amp;quot; runOnChange=&amp;quot;false&amp;quot;&amp;gt;
+        &amp;lt;preConditions onFail=&amp;quot;MARK_RAN&amp;quot;&amp;gt;
+            &amp;lt;not&amp;gt;
+                &amp;lt;columnExists tableName=&amp;quot;&amp;quot; columnName=&amp;quot;&amp;quot;/&amp;gt;
+            &amp;lt;/not&amp;gt;
+        &amp;lt;/preConditions&amp;gt;
+        &amp;lt;comment&amp;gt;此次修改的备注&amp;lt;/comment&amp;gt;
+        &amp;lt;sql&amp;gt;
+        此次修改的sql语句
+        &amp;lt;/sql&amp;gt;
+        &amp;lt;rollback&amp;gt;
+            失败回滚的语句
+        &amp;lt;/rollback&amp;gt;
+    &amp;lt;/changeSet&amp;gt;
+
+&amp;lt;/databaseChangeLog&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;changeSetid 为需求的日期加上 tag版本 和jiar版本&lt;/p&gt;
+&lt;h1 id=&#34;命令&#34;&gt;命令&lt;/h1&gt;
+&lt;p&gt;在对应模块下执行&lt;br&gt;
+mvn install -Pupdatedb -Ddb.schema=数据库名称 -Dusername=root -Dpassword=数据库密码&lt;/p&gt;
+">Liquibase</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://lindamao.cn/post/zi-ding-yi-ri-zhi-shi-xian-qie-mian/"" data-c="
+          &lt;h1 id=&#34;自定义注解实现日志切面&#34;&gt;自定义注解实现日志切面&lt;/h1&gt;
+&lt;h2 id=&#34;注解概念&#34;&gt;注解概念&lt;/h2&gt;
+&lt;h3 id=&#34;一-注解概念&#34;&gt;一、注解概念&lt;/h3&gt;
+&lt;p&gt;注解（Annotation），也叫元数据。一种代码级别的说明。它是JDK1.5及以后版本引入的一个特性，与类、接口、枚举是在同一个层次。它可以声明在包、类、字段、方法、局部变量、方法参数等的前面，用来对这些元素进行说明，注释。&lt;/p&gt;
+&lt;h3 id=&#34;二-注解分类&#34;&gt;二、注解分类&lt;/h3&gt;
+&lt;p&gt;在Java中，注解分为两种，元注解和自定义注解。&lt;/p&gt;
+&lt;h3 id=&#34;三-常用元注解作用-jdk提供的元注解&#34;&gt;三、常用元注解作用 (jdk提供的元注解)&lt;/h3&gt;
+&lt;h4 id=&#34;1target描述当前注解能够作用的位置&#34;&gt;1.@Target:描述当前注解能够作用的位置&lt;/h4&gt;
+&lt;p&gt;ElementType.TYPE:可以作用在类上&lt;br&gt;
+ElementType.METHOD:可以作用在方法上&lt;br&gt;
+ElementType.FIELD:可以作用在成员变量上&lt;/p&gt;
+&lt;h4 id=&#34;2retention-描述注解被保留到的阶段&#34;&gt;2.@Retention: 描述注解被保留到的阶段&lt;/h4&gt;
+&lt;p&gt;SOURCE &amp;lt; CLASS &amp;lt; RUNTIME&lt;br&gt;
+SOURCE:表示当前注解只在代码阶段有效&lt;br&gt;
+CLASS:表示该注解会被保留到字节码阶段&lt;br&gt;
+RUNTIME:表示该注解会被保留到运行阶段 JVM&lt;br&gt;
+自定义的注解：RetentionPolicy.RUNTIME&lt;/p&gt;
+&lt;p&gt;3.@Documented:描述注解是否被抽取到JavaDoc api中&lt;br&gt;
+4.@inherited:描述注解是否可以被子类继承&lt;/p&gt;
+&lt;h1 id=&#34;代码实现&#34;&gt;代码实现&lt;/h1&gt;
+&lt;h2 id=&#34;第一步自定义注解&#34;&gt;第一步自定义注解&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.lin.demo.aop;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+/**
+ * @author linmouzhi
+ * @create 2022/11/24 15:09
+ */
+@Target({ElementType.METHOD, ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface UserAccess {
+    String desc() default &amp;quot;无信息&amp;quot;;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;第二步 设定一个切面&lt;/p&gt;
+&lt;p&gt;@Aspect 注解将此类定义为一个切面&lt;/p&gt;
+&lt;p&gt;@Pointcut 切入点注解 定义方法作为一个切点 这里的参数为controller下的所有的公共类方法  还需定义一个方法&lt;/p&gt;
+&lt;p&gt;其他注解得在切入点的方法之下做一些修改 即可做出对应响应&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;package com.lin.demo.aop;
+
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.*;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
+
+/**
+ * @author linmouzhi
+ * @create 2022/11/24 15:10
+ */
+@Aspect
+@Component
+public class LogAspect {
+    // 这个目前是对从 com.xncoding.aop.controller.* 下的都进行切入，如果想对上面的自定义注解进行切入，只需改成相对应的路径
+    // 例如：@Pointcut(value = &amp;quot;@annotation(com.xncoding.aop.aspect.UserAccess)&amp;quot;)
+    @Pointcut(&amp;quot;execution(public * com.lin.demo.controller.*.*(..))&amp;quot;)
+    public void webLog(){}
+
+    @Before(&amp;quot;webLog()&amp;quot;)
+    public void deBefore(JoinPoint joinPoint) throws Throwable {
+        // 接收到请求，记录请求内容
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = attributes.getRequest();
+        // 记录下请求内容
+        System.out.println(&amp;quot;URL : &amp;quot; + request.getRequestURL().toString());
+        System.out.println(&amp;quot;HTTP_METHOD : &amp;quot; + request.getMethod());
+        System.out.println(&amp;quot;IP : &amp;quot; + request.getRemoteAddr());
+        System.out.println(&amp;quot;CLASS_METHOD : &amp;quot; + joinPoint.getSignature().getDeclaringTypeName() + &amp;quot;.&amp;quot; + joinPoint.getSignature().getName());
+        System.out.println(&amp;quot;ARGS : &amp;quot; + Arrays.toString(joinPoint.getArgs()));
+    }
+
+    @AfterReturning(returning = &amp;quot;ret&amp;quot;, pointcut = &amp;quot;webLog()&amp;quot;)
+    public void doAfterReturning(Object ret) throws Throwable {
+        // 处理完请求，返回内容
+        System.out.println(&amp;quot;方法的返回值 : &amp;quot; + ret);
+    }
+
+    //后置异常通知
+    @AfterThrowing(&amp;quot;webLog()&amp;quot;)
+    public void throwss(JoinPoint jp){
+        System.out.println(&amp;quot;方法异常时执行.....&amp;quot;);
+    }
+
+    //后置最终通知,final增强，不管是抛出异常或者正常退出都会执行
+    @After(&amp;quot;webLog()&amp;quot;)
+    public void after(JoinPoint jp){
+        System.out.println(&amp;quot;方法最后执行.....&amp;quot;);
+    }
+
+    //环绕通知,环绕增强，相当于MethodInterceptor
+    @Around(&amp;quot;webLog()&amp;quot;)
+    public Object arround(ProceedingJoinPoint pjp) throws Throwable{
+        System.out.println(&amp;quot;方法环绕start.....&amp;quot;);
+        try {
+            Object o =  pjp.proceed();
+            System.out.println(&amp;quot;方法环绕proceed，结果是 :&amp;quot; + o);
+            return o;
+        } catch (Throwable e) {
+            throw e;
+        }
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+">自定义日志实现切面</a>
       </div>
       
       <div class="item">
