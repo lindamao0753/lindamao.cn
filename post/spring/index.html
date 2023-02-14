@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="">
 <meta name="theme-color" content="#000">
-<title>lindamao</title>
+<title>Spring | lindamao</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1676360177994">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -41,6 +41,8 @@
 
 
 
+  <meta name="description" content="Spring" />
+  <meta name="keywords" content="" />
 </head>
 
 <body>
@@ -76,7 +78,7 @@
             
               
             
-            <li class="nav-item nav-item-active">
+            <li class="nav-item ">
               
               
                 <a href="/" target="_self">
@@ -175,8 +177,24 @@
     <div
       class="section-layout gemini ">
       <div class="section-layout-wrapper">
-        <div id="sidebarMeta" class="sidebar">
-    
+        
+
+<div class="sidebar">
+  
+    <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
+      
+        <div class="post-list-sidebar">
+          <div class="sidebar-title">
+            <span id="tocSideBar" class="sidebar-title-item sidebar-title-active language" data-lan="index">文章目录</span>
+            <span id="metaSideBar" class="sidebar-title-item language" data-lan="preview">站点概览</span>
+          </div>
+        </div>
+      
+      <div class="sidebar-body gemini" id="sidebar_body">
+        
+          
+            <div class="post-side-meta" id="post_side_meta">
+              
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -215,398 +233,342 @@
 
 
 </div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper  auto"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#maven%E4%B8%ADpackage%E5%92%8Cinstall%E7%9A%84%E5%8C%BA%E5%88%AB">Maven中Package和Install的区别</a></li>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AFspring%E6%A1%86%E6%9E%B6">什么是spring框架</a></li>
+<li><a href="#%E5%88%97%E4%B8%BE%E4%B8%80%E4%BA%9B%E9%87%8D%E8%A6%81%E7%9A%84spring%E6%A8%A1%E5%9D%97">列举⼀些重要的Spring模块？</a></li>
+<li><a href="#restcontroller-vs-controller">@RestController vs @Controller</a></li>
+<li><a href="#%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3">常用注解</a></li>
+<li><a href="#spring%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E7%9A%84%E6%96%B9%E5%BC%8F">Spring依赖注入的方式</a></li>
+<li><a href="#spring-ioc-aop">Spring IOC &amp; AOP</a>
+<ul>
+<li><a href="#%E8%B0%88%E8%B0%88%E8%87%AA%E5%B7%B1%E5%AF%B9%E4%BA%8E-spring-ioc-%E5%92%8C-aop-%E7%9A%84%E7%90%86%E8%A7%A3">谈谈⾃⼰对于 Spring IoC 和 AOP 的理解</a></li>
+<li><a href="#spring-aop-%E5%92%8C-aspectj-aop-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB">Spring AOP 和 AspectJ AOP 有什么区别？</a></li>
+<li><a href="#spring-aop-%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86">Spring AOP 实现原理</a></li>
+<li><a href="#aop%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF">AOP使用场景</a></li>
+<li><a href="#spring%E7%9A%84ioc%E6%98%AF%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E4%B9%88">Spring的IOC是单例模式的么？</a></li>
+<li><a href="#aop%E4%BB%A3%E7%90%86%E5%8F%AF%E4%BB%A5%E6%98%AFjdk%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E6%88%96%E8%80%85cglib%E4%BB%A3%E7%90%86">AOP代理可以是JDK动态代理或者CGLIB代理。</a></li>
+<li><a href="#cglib%E5%92%8Cjdk%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E5%8C%BA%E5%88%AB%E6%9C%89%E5%93%AA%E4%BA%9B">cglib和jdk动态代理区别有哪些</a></li>
+</ul>
+</li>
+<li><a href="#spring-bean">Spring bean</a>
+<ul>
+<li><a href="#spring-%E4%B8%AD%E7%9A%84-bean-%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E6%9C%89%E5%93%AA%E4%BA%9B">Spring 中的 bean 的作⽤域有哪些?</a></li>
+<li><a href="#spring-%E4%B8%AD%E7%9A%84%E5%8D%95%E4%BE%8B-bean-%E7%9A%84%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%E4%BA%86%E8%A7%A3%E5%90%97">Spring 中的单例 bean 的线程安全问题了解吗？</a></li>
+<li><a href="#component-%E5%92%8C-bean-%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88">@Component 和 @Bean 的区别是什么？</a></li>
+<li><a href="#%E5%B0%86%E4%B8%80%E4%B8%AA%E7%B1%BB%E5%A3%B0%E6%98%8E%E4%B8%BAspring%E7%9A%84-bean-%E7%9A%84%E6%B3%A8%E8%A7%A3%E6%9C%89%E5%93%AA%E4%BA%9B">将⼀个类声明为Spring的 bean 的注解有哪些?</a></li>
+</ul>
+</li>
+<li><a href="#spring-%E4%B8%AD%E7%9A%84-bean-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">Spring 中的 bean ⽣命周期</a></li>
+<li><a href="#applicationcontext%E5%92%8Cbeanfactory%E7%9A%84%E5%8C%BA%E5%88%AB">ApplicationContext和BeanFactory的区别</a></li>
+<li><a href="#spring%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96%E9%97%AE%E9%A2%98">spring如何解决循环依赖问题</a></li>
+<li><a href="#spring-mvc">Spring MVC</a>
+<ul>
+<li><a href="#%E8%AF%B4%E8%AF%B4%E8%87%AA%E5%B7%B1%E5%AF%B9%E4%BA%8E-spring-mvc-%E4%BA%86%E8%A7%A3">说说⾃⼰对于 Spring MVC 了解?</a></li>
+</ul>
+</li>
+<li><a href="#spring-springmvc%E5%92%8Cspringboot%E5%8C%BA%E5%88%AB">Spring SpringMVC和SpringBoot区别</a>
+<ul>
+<li><a href="#%E4%B8%80-%E6%A6%82%E5%BF%B5">一、概念</a></li>
+<li><a href="#%E4%BA%8C%E5%8C%BA%E5%88%AB%E4%B8%8E%E6%80%BB%E7%BB%93">二区别与总结</a></li>
+</ul>
+</li>
+<li><a href="#spring-%E6%A1%86%E6%9E%B6%E4%B8%AD%E7%94%A8%E5%88%B0%E4%BA%86%E5%93%AA%E4%BA%9B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F">Spring 框架中⽤到了哪些设计模式</a></li>
+<li><a href="#spring-%E4%BA%8B%E5%8A%A1">Spring 事务</a>
+<ul>
+<li><a href="#spring-%E7%AE%A1%E7%90%86%E4%BA%8B%E5%8A%A1%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9C%89%E5%87%A0%E7%A7%8D">Spring 管理事务的⽅式有⼏种？</a></li>
+<li><a href="#spring-%E4%BA%8B%E5%8A%A1%E4%B8%AD%E7%9A%84%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D">Spring 事务中的隔离级别有哪⼏种?</a></li>
+<li><a href="#spring-%E4%BA%8B%E5%8A%A1%E4%B8%AD%E5%93%AA%E5%87%A0%E7%A7%8D%E4%BA%8B%E5%8A%A1%E4%BC%A0%E6%92%AD%E8%A1%8C%E4%B8%BA">Spring 事务中哪⼏种事务传播⾏为?</a></li>
+<li><a href="#transactionalrollbackfor-exceptionclass%E6%B3%A8%E8%A7%A3%E4%BA%86%E8%A7%A3%E5%90%97">@Transactional(rollbackFor = Exception.class)注解了解吗？</a></li>
+<li><a href="#springboot%E5%92%8Cspring-mvc%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88">springboot和spring MVC的区别是什么</a></li>
+</ul>
+</li>
+<li><a href="#jpa">JPA</a></li>
+<li><a href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8jpa%E5%9C%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E9%9D%9E%E6%8C%81%E4%B9%85%E5%8C%96%E4%B8%80%E4%B8%AA%E5%AD%97%E6%AE%B5">如何使⽤JPA在数据库中⾮持久化⼀个字段？</a></li>
+<li><a href="#spring%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98">spring线程安全问题</a></li>
+<li><a href="#spring%E4%B8%AD-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E5%92%8C%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB">spring中 单例模式和原型模式的区别</a></li>
+<li><a href="#jwt%E5%8E%9F%E7%90%86">JWT原理</a></li>
+<li><a href="#jwt%E8%AE%A4%E8%AF%81%E6%B5%81%E7%A8%8B">JWT认证流程</a></li>
+<li><a href="#maven%E6%98%AF%E6%80%8E%E6%A0%B7%E8%A7%A3%E5%86%B3%E4%BE%9D%E8%B5%96%E5%86%B2%E7%AA%81%E7%9A%84">maven是怎样解决依赖冲突的</a></li>
+<li><a href="#maven%E8%87%AA%E5%8A%A8%E8%A7%A3%E5%86%B3%E4%BE%9D%E8%B5%96%E5%86%B2%E7%AA%81%E7%9A%84%E8%A7%84%E5%88%99%E6%98%AF%E4%BB%80%E4%B9%88">maven自动解决依赖冲突的规则是什么？</a>
+<ul>
+<li><a href="#%E7%AC%AC%E4%B8%80%E5%8E%9F%E5%88%99%E8%B7%AF%E5%BE%84%E6%9C%80%E8%BF%91%E8%80%85%E4%BC%98%E5%85%88">第一原则：路径最近者优先</a></li>
+<li><a href="#%E7%AC%AC%E4%BA%8C%E5%8E%9F%E5%88%99%E8%B7%AF%E5%BE%84%E7%9B%B8%E7%AD%89%E5%85%88%E5%A3%B0%E6%98%8E%E8%80%85%E4%BC%98%E5%85%88">第二原则：路径相等，先声明者优先</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
 </div>
+
 <script>
-  let sidebarMeta = document.querySelector('#sidebarMeta');
-  let scheme = 'gemini';
-  let sidebarWrapper = document.querySelector('.sidebar-wrapper');
-  if (sidebarMeta && (scheme === 'pisces' || scheme === 'gemini')) {
-    document.addEventListener('scroll', function(e) {
-      if (document.scrollingElement.scrollTop > parseInt(sidebarMeta.style.marginTop) + 10) {
-        sidebarWrapper.classList.add('home-sidebar-fixed')
-      } else {
-        sidebarWrapper.classList.remove('home-sidebar-fixed')
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
       }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0] && elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
     });
   }
-  </script>
-        <div class="section-box gemini">
-          <section class="section  posts-expand slide-down-in">
-            
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <section class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://lindamao.cn/post/winsdows11-tiao-guo-lian-wang/"> Winsdows11跳过联网 </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2023-02-10 14:39:39">2023-02-10</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span
-        >1<span class="language" data-lan="minute"
-          >分钟</span
-        ></span
-      >
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span
-        >230<span class="pc-show language" data-lan="words"
-          >字数</span
-        ></span
-      >
-    </span>
-    
-  </div>
-</section>
 
-      <div class="post-body">
-        
-        
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
+    }
+  }
+
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
+    }
+  }
+
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
+  }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
+
+</script>
+            </div>
           
         
-        
-        <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://lindamao.cn/post/winsdows11-tiao-guo-lian-wang/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
       </div>
-      
     </div>
-  </article>
+  
+</div>
+<script>
+  const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
+  const SIDEBAR_BODY_ACTIVE = 'sidebar-body-active';
+  const SLIDE_UP_IN = 'slide-up-in';
 
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <section class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://lindamao.cn/post/shu-ju-ku-lian-jie-chao-shi-wen-ti-jie-jue/"> 数据库连接超时问题解决 </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2022-08-16 15:13:08">2022-08-16</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span
-        >2<span class="language" data-lan="minute"
-          >分钟</span
-        ></span
-      >
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span
-        >473<span class="pc-show language" data-lan="words"
-          >字数</span
-        ></span
-      >
-    </span>
-    
-  </div>
-</section>
+  let sidebar = document.querySelector('#sidebar'),
+  tocSideBar = document.querySelector('#tocSideBar'),
+  metaSideBar = document.querySelector('#metaSideBar'),
+  postToc = document.querySelector('#post_toc'),
+  postSiteMeta = document.querySelector('#post_side_meta'),
+  sidebarTitle = document.querySelector('.sidebar-title'),
+  sidebarBody = document.querySelector('#sidebar_body');
 
-      <div class="post-body">
-        
-        
-          
-        
-        
-        <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://lindamao.cn/post/shu-ju-ku-lian-jie-chao-shi-wen-ti-jie-jue/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-    </div>
-  </article>
+  tocSideBar && tocSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
 
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <section class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://lindamao.cn/post/git/"> Git </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2022-07-12 15:32:32">2022-07-12</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span
-        >8<span class="language" data-lan="minute"
-          >分钟</span
-        ></span
-      >
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span
-        >1811<span class="pc-show language" data-lan="words"
-          >字数</span
-        ></span
-      >
-    </span>
-    
-  </div>
-</section>
+  metaSideBar && metaSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
 
-      <div class="post-body">
-        
-        
-          
-        
-        
-        <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://lindamao.cn/post/git/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-    </div>
-  </article>
+  function toggleSidebar(e) {
+    let currentTitle = document.querySelector("."+SIDEBAR_TITLE_ACTIVE);
+    if (currentTitle == e.srcElement) {
+      return ;
+    }
+    let current, showElement, hideElement;
+    if (e.srcElement == metaSideBar) {
+      showElement = postSiteMeta;
+      hideElement = postToc;
+    } else if (e.srcElement == tocSideBar){
+      showElement = postToc;
+      hideElement = postSiteMeta;
+    }
+    currentTitle.classList.remove(SIDEBAR_TITLE_ACTIVE);
+    e.srcElement.classList.add(SIDEBAR_TITLE_ACTIVE);
 
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <section class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://lindamao.cn/post/jrebel-pei-zhi-yuan-cheng-re-bu-shu/"> Jrebel配置远程热部署 </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2022-04-08 14:36:11">2022-04-08</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span
-        >2<span class="language" data-lan="minute"
-          >分钟</span
-        ></span
-      >
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span
-        >259<span class="pc-show language" data-lan="words"
-          >字数</span
-        ></span
-      >
-    </span>
-    
-  </div>
-</section>
+    jQuery.Velocity(hideElement, 'stop');
+    jQuery.Velocity(hideElement, 'transition.slideUpOut', {
+      display: 'none',
+      duration: 200,
+      complete: function () {
+        jQuery.Velocity(showElement, 'transition.slideDownIn', {
+          duration: 200
+        });
+      }
+    })
+    hideElement.classList.remove(SIDEBAR_BODY_ACTIVE);
+    showElement.classList.add(SIDEBAR_BODY_ACTIVE);
+  }
 
-      <div class="post-body">
-        
-        
-          
-        
-        
-        <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://lindamao.cn/post/jrebel-pei-zhi-yuan-cheng-re-bu-shu/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-    </div>
-  </article>
+  postToc && postToc.addEventListener('transitionend', function() {
+    this.classList.remove(SLIDE_UP_IN);
+  });
 
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <section class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://lindamao.cn/post/rabbitmq/"> RabbitMq </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-05-22 14:06:58">2021-05-22</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span
-        >50<span class="language" data-lan="minute"
-          >分钟</span
-        ></span
-      >
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span
-        >12993<span class="pc-show language" data-lan="words"
-          >字数</span
-        ></span
-      >
-    </span>
-    
-  </div>
-</section>
-
-      <div class="post-body">
-        
-        
-          
-        
-        
-        <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://lindamao.cn/post/rabbitmq/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-    </div>
-  </article>
-
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <section class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://lindamao.cn/post/redis/"> Redis </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-03-11 14:13:43">2021-03-11</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span
-        >45<span class="language" data-lan="minute"
-          >分钟</span
-        ></span
-      >
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span
-        >12424<span class="pc-show language" data-lan="words"
-          >字数</span
-        ></span
-      >
-    </span>
-    
-  </div>
-</section>
-
-      <div class="post-body">
-        
-        
-          
-        
-        
-        <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://lindamao.cn/post/redis/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-    </div>
-  </article>
-
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <section class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://lindamao.cn/post/springboot/"> SpringBoot </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-01-17 14:25:33">2021-01-17</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span
-        >9<span class="language" data-lan="minute"
-          >分钟</span
-        ></span
-      >
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span
-        >2192<span class="pc-show language" data-lan="words"
-          >字数</span
-        ></span
-      >
-    </span>
-    
-  </div>
-</section>
-
-      <div class="post-body">
-        
-        
-          
-        
-        
-        <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://lindamao.cn/post/springboot/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-    </div>
-  </article>
-
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <section class="post-header">
+  if (sidebarBody) {
+    if (sidebarBody.classList.contains('pisces') || sidebarBody.classList.contains('gemini')) {
+      let hasFix = false;
+      let scrollEl = document.querySelector('.main-continer');
+      let limitTop = document.querySelector('#nav_ul').children.length * 42 + 162;
+      window.addEventListener('scroll', function(e) {
+        if (document.scrollingElement.scrollTop >= limitTop) {
+          if (!hasFix) {
+            sidebar.classList.add('sidebar-fixed');
+            hasFix = true;
+          }
+        } else {
+          if (hasFix) {
+            sidebar.classList.remove('sidebar-fixed');
+            hasFix = false;
+          }
+        }
+      });
+    }
+  }
+  
+</script>
+        <div class="section-box box-shadow-wrapper">
+          <div class="section bg-color post post-page">
+            <section class="post-header">
   <h1 class="post-title">
     <a class="post-title-link" href="https://lindamao.cn/post/spring/"> Spring </a>
   </h1>
@@ -640,159 +602,754 @@
   </div>
 </section>
 
-      <div class="post-body">
-        
-        
-          
-        
-        
-        <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://lindamao.cn/post/spring/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-    </div>
-  </article>
+            <div class="post-body next-md-body" id="post_body">
+              <h2 id="maven中package和install的区别">Maven中Package和Install的区别</h2>
+<p>​	Package是打包，打成Jar或War</p>
+<p>​	Install表示将Jar或War安装到本地仓库中</p>
+<h2 id="什么是spring框架">什么是spring框架</h2>
+<p>Spring 是⼀种轻量级开发框架，旨在提⾼开发⼈员的开发效率以及系统的可维护性。Spring 官⽹：https://spring.io/。</p>
+<p>我们⼀般说 Spring 框架指的都是 Spring Framework，它是很多模块的集合，使⽤这些模块可以很⽅便地协助我们进⾏开发。</p>
+<p>这些模块是：核⼼容器、数据访问/集成,、Web、AOP（⾯向切⾯编程）、⼯具、消息和测试模块。⽐如：Core Container 中的 Core 组件是Spring 所有组件的核⼼，Beans 组件和 Context 组件是实现IOC和依赖注⼊的基础，AOP组件⽤来实现⾯向切⾯编程。</p>
+<p><strong>Spring 官⽹列出的 Spring 的 6 个特征:</strong></p>
+<p>核⼼技术 ：依赖注⼊(DI)，AOP，事件(events)，资源，i18n，验证，数据绑定，类型转换，SpEL。</p>
+<ul>
+<li>测试 ：模拟对象，TestContext框架，Spring MVC 测试，WebTestClient。</li>
+<li>数据访问 ：事务，DAO⽀持，JDBC，ORM，编组XML。</li>
+<li>Web⽀持 : Spring MVC和Spring WebFlux Web框架</li>
+<li>集成 ：远程处理，JMS，JCA，JMX，电⼦邮件，任务，调度，缓存。</li>
+<li>语⾔ ：Kotlin，Groovy，动态语⾔。</li>
+</ul>
+<h2 id="列举一些重要的spring模块">列举⼀些重要的Spring模块？</h2>
+<ul>
+<li>Spring Core： 基础,可以说 Spring 其他所有的功能都需要依赖于该类库。主要提供 IoC 依<br>
+赖注⼊功能。</li>
+<li>Spring Aspects ： 该模块为与AspectJ的集成提供⽀持。</li>
+<li>Spring AOP ：提供了⾯向切⾯的编程实现。</li>
+<li>Spring JDBC : Java数据库连接。</li>
+<li>Spring JMS ：Java消息服务。</li>
+<li>Spring ORM : ⽤于⽀持Hibernate等ORM⼯具。</li>
+<li>Spring Web : 为创建Web应⽤程序提供⽀持。</li>
+<li>Spring Test : 提供了对 JUnit 和 TestNG 测试的⽀持。</li>
+</ul>
+<h2 id="restcontroller-vs-controller">@RestController vs @Controller</h2>
+<p><strong>Controller 返回⼀个⻚⾯</strong><br>
+单独使⽤ @Controller 不加 @ResponseBody 的话⼀般使⽤在要返回⼀个视图的情况，这种情况属于⽐᫾传统的Spring MVC 的应⽤，对应于前后端不分离的情况</p>
+<p><strong>@RestController 返回JSON 或 XML 形式数据</strong><br>
+但 @RestController 只返回对象，对象数据直接以 JSON 或 XML 形式写⼊ HTTP 响应(Response)中，这种情况属于 RESTful Web服务，这也是⽬前⽇常开发所接触的最常⽤的情况（前后端分离）</p>
+<p><strong>@Controller +@ResponseBody 返回JSON 或 XML 形式数据</strong><br>
+如果你需要在Spring4之前开发 RESTful Web服务的话，你需要使⽤ @Controller 并结合 @ResponseBody 注解，也就是说 @Controller + @ResponseBody = @RestController （Spring 4）之后新加的注解</p>
+<p><strong>@ResponseBody 注解</strong>的作⽤是将 Controller 的⽅法返回的对象通过适当的转换器转换为指定的格式之后，写⼊到HTTP 响应(Response)对象的 body 中，通常⽤来返回 JSON 或者XML 数据，返回 JSON 数据的情况比较多。</p>
+<h2 id="常用注解">常用注解</h2>
+<h2 id="spring依赖注入的方式">Spring依赖注入的方式</h2>
+<p>非注解方式注入：</p>
+<ol>
+<li>Set方法注入</li>
+<li>构造器注入</li>
+<li>静态工厂的方法注入</li>
+<li>实例工厂的方法注入</li>
+</ol>
+<p>注解方式注入：</p>
+<p>1.@Autowired是自动注入，自动从spring的上下文找到合适的bean来注入 @Autowired(required=true)表示必须找到匹配的Bean，否则将报异常。</p>
+<p><strong>@Autowired默认按类型匹配注入Bean</strong></p>
+<p><strong>在Spring中，@Autowired注入的类型可以是接口</strong></p>
+<p>比如，在Service层中注入Dao，如下示：</p>
+<pre><code>@Autowired
+private UserDao userDao;
+</code></pre>
+<p>2.@Resource要求提供一个Bean名称的属性，如果属性为空，自动采用标注处的变量名和方法名作为Bean的名称 。</p>
+<p><strong>@Resource默认按名称匹配注入Bean</strong></p>
+<p>比如，在Controller层中注入Service，名称为Service的实现类，如下示</p>
+<pre><code>@Resource(name = &quot;userServiceImpl&quot;)
+ private UserService userService;
+</code></pre>
+<p>另外要注意，@Resource是java自带的注解，不是Spring中的注解。@Resource注解完整的包路径为import  javax.annotation.Resource;</p>
+<p>3.<strong>@Qualifier 指定注入bean的名称</strong></p>
+<p>比如，在Controller层中注入Service，名称为Service的实现类，如下示</p>
+<pre><code> @Autowired
+ @Qualifier(&quot;userServiceImp&quot;)
+ private UserSerevice userService;
+4.@Service，@Controller，@Repository分别标记类是Service层，Controller层，Dao层的类，spring扫描注解配置时，会标记这些类要生成bean。
+</code></pre>
+<p>@Repository用于标注数据访问组件，即DAO组件</p>
+<p><strong>@Service，@Controller 这些注解要放在接口的实现类上，而不是接口上面。</strong><br>
+5.@Component是一种泛指，标记类是组件，spring扫描注解配置时，会标记这些类要生成bean。</p>
+<p>6.@<strong>Scope</strong>用于指定Bean的作用范围</p>
+<p>7.@Autowired和@Resource是用来修饰字段，构造函数，或者设置方法，并做注入的。</p>
+<p>而@Service，@Controller，@Repository，@Component则是用来修饰类，标记这些类要生成bean。</p>
+<h2 id="spring-ioc-aop">Spring IOC &amp; AOP</h2>
+<p>IOC参考：</p>
+<p>AOP参考：https://www.cnblogs.com/joy99/p/10941543.html</p>
+<h3 id="谈谈自己对于-spring-ioc-和-aop-的理解">谈谈⾃⼰对于 Spring IoC 和 AOP 的理解</h3>
+<p><strong>IoC</strong><br>
+IoC（Inverse of Control:控制反转）是⼀种设计思想，就是 将原本在程序中⼿动创建对象的控制权，交由Spring框架来管理。 IoC 在其他语⾔中也有应⽤，并⾮ Spring 特有。 IoC 容器是Spring ⽤来实现 IoC 的载体， IoC 容器实际上就是个Map（key，value）,Map 中存放的是各种对象。</p>
+<p><strong>AOP(Aspect-Oriented Programming:⾯向切⾯编程)</strong></p>
+<p>能够将那些与业务⽆关，却为业务模块所共同调⽤的逻辑或责任（例如事务处理、⽇志管理、权限控制等）封装起来，便于减少系统的重复代码，降低模块间的耦合度，并有利于未来的可拓展性和可维护性。</p>
+<p>相关概念：</p>
+<ul>
+<li>切面（aspect） ： 类是对物体特征的抽象，切面就是对横切关注点的抽象</li>
+<li>横切关注点： 对哪些方法进行拦截，拦截后怎么处理，这些关注点称之为横切关注点。</li>
+<li>连接点（joinpoint） ： 被拦截到的点，具体要拦截的东西，因为 Spring 只支持方法类型的连接点，所以在 Spring中连接点指的就是被拦截到的方法，实际上连接点还可以是字段或者构造器。</li>
+<li>切入点（pointcut） ： 对连接点进行拦截的定义</li>
+<li>通知（advice） ： 所谓通知指的就是指拦截到连接点之后要执行的代码， 通知分为前置、后置、异常、最终、环绕通知五类。</li>
+<li>目标对象： 代理的目标对象</li>
+<li>织入（weave） ： 将切面应用到目标对象并导致代理对象创建的过程</li>
+<li>引入（introduction） ： 在不修改代码的前提下，引入可以在运行期为类动态地添加一些方法或字段</li>
+</ul>
+<h3 id="spring-aop-和-aspectj-aop-有什么区别">Spring AOP 和 AspectJ AOP 有什么区别？</h3>
+<p><strong>Spring AOP 属于运⾏时增强，⽽ AspectJ 是编译时增强</strong>。 Spring AOP 基于代理(Proxying)，⽽ AspectJ 基于字节码操作(Bytecode Manipulation)。</p>
+<p><strong>注</strong>：Spring中的AspectJ不是真正的使用了AspectJ，只是使用了AspectJ的指示器作为标识创建代理的方式而已，实际上实现AOP还是通过Cglib或JDK来实现的</p>
+<p>两者区别：</p>
+<table>
+<thead>
+<tr>
+<th>Spring AOP</th>
+<th>AspectJ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>在纯 Java 中实现</td>
+<td>使用 Java 编程语言的扩展实现</td>
+</tr>
+<tr>
+<td>不需要单独的编译过程</td>
+<td>除非设置 LTW，否则需要 AspectJ 编译器 (ajc)</td>
+</tr>
+<tr>
+<td>只能使用运行时织入</td>
+<td>运行时织入不可用。支持编译时、编译后和加载时织入</td>
+</tr>
+<tr>
+<td>功能不强-仅支持方法级编织</td>
+<td>更强大 - 可以编织字段、方法、构造函数、静态初始值设定项、最终类/方法等......。</td>
+</tr>
+<tr>
+<td>只能在由 Spring 容器管理的 bean 上实现</td>
+<td>可以在所有域对象上实现</td>
+</tr>
+<tr>
+<td>仅支持方法执行切入点</td>
+<td>支持所有切入点</td>
+</tr>
+<tr>
+<td>代理是由目标对象创建的, 并且切面应用在这些代理上</td>
+<td>在执行应用程序之前 (在运行时) 前, 各方面直接在代码中进行织入</td>
+</tr>
+<tr>
+<td>比 AspectJ 慢多了</td>
+<td>更好的性能</td>
+</tr>
+<tr>
+<td>易于学习和应用</td>
+<td>相对于 Spring AOP 来说更复杂</td>
+</tr>
+</tbody>
+</table>
+<h3 id="spring-aop-实现原理">Spring AOP 实现原理</h3>
+<p>AOP技术利用一种称为“横切”的技术，剖解开封装的对象内部，并将那些影响了多个类的公共行为封装到一个可重用模块，并将其名为“Aspect”，即方面。</p>
+<p>实现AOP的技术，主要分为两大类：一是采用动态代理技术，利用截取消息的方式，对该消息进行装饰，以取代原有对象行为的执行；</p>
+<p>二是采用静态织入的方式，引入特定的语法创建“方面”，从而使得编译器可以在编译期间织入有关“方面”的代码。</p>
+<h3 id="aop使用场景">AOP使用场景</h3>
+<p>日志记录、监控优化<br>
+2） 权限控制<br>
+3） 事务管理<br>
+4） 缓存<br>
+5） 持久化</p>
+<h3 id="spring的ioc是单例模式的么">Spring的IOC是单例模式的么？</h3>
+<p>IOC默认使用单例模式创建Bean，默认在spring容器启动时会自动创建对象。</p>
+<p>但是也可以通过注解的方式实现多例模式，使用@Scope(value=&quot;prototype&quot;)</p>
+<p>使用多例模式，在容器启动时不会创建bean，而在使用bean时才会去创建。</p>
+<h3 id="aop代理可以是jdk动态代理或者cglib代理">AOP代理可以是JDK动态代理或者CGLIB代理。</h3>
+<p>参考：https://blog.csdn.net/moreevan/article/details/11977115/</p>
+<h3 id="cglib和jdk动态代理区别有哪些">cglib和jdk动态代理区别有哪些</h3>
+<p>1、Jdk动态代理：利用拦截器（必须实现InvocationHandler）加上反射机制生成一个代理接口的匿名类，在调用具体方法前调用InvokeHandler来处理</p>
+<p>2、 Cglib动态代理：利用ASM框架，对代理对象类生成的class文件加载进来，通过修改其字节码生成子类来处理</p>
+<p>什么时候用cglib什么时候用jdk动态代理？</p>
+<p>1、目标对象生成了接口 默认用JDK动态代理</p>
+<p>2、如果目标对象使用了接口，可以强制使用cglib</p>
+<p>3、如果目标对象没有实现接口，必须采用cglib库，Spring会自动在JDK动态代理和cglib之间转换</p>
+<p>JDK动态代理和cglib字节码生成的区别？</p>
+<p>1、JDK动态代理只能对实现了接口的类生成代理，而不能针对类</p>
+<p>2、Cglib是针对类实现代理，主要是对指定的类生成一个子类，覆盖其中的方法，并覆盖其中方法的增强，但是因为采用的是继承，所以该类或方法最好不要生成final，对于final类或方法，是无法继承的</p>
+<p>Cglib比JDK快？</p>
+<p>1、cglib底层是ASM字节码生成框架，但是字节码技术生成代理类，在JDL1.6之前比使用java反射的效率要高</p>
+<p>2、在jdk6之后逐步对JDK动态代理进行了优化，在调用次数比较少时效率高于cglib代理效率</p>
+<p>3、只有在大量调用的时候cglib的效率高，但是在1.8的时候JDK的效率已高于cglib</p>
+<p>4、Cglib不能对声明final的方法进行代理，因为cglib是动态生成代理对象，final关键字修饰的类不可变只能被引用不能被修改</p>
+<h2 id="spring-bean">Spring bean</h2>
+<h3 id="spring-中的-bean-的作用域有哪些">Spring 中的 bean 的作⽤域有哪些?</h3>
+<ul>
+<li>singleton : 唯⼀ bean 实例，Spring 中的 bean 默认都是单例的。</li>
+<li>prototype : 每次请求都会创建⼀个新的 bean 实例。</li>
+<li>request : 每⼀次HTTP请求都会产⽣⼀个新的bean，该bean仅在当前HTTP request内有效。</li>
+<li>session : 每⼀次HTTP请求都会产⽣⼀个新的 bean，该bean仅在当前 HTTP session 内有效。</li>
+<li>global-session： 全局session作⽤域，仅仅在基于portlet的web应⽤中才有意义，Spring5已经没有了。Portlet是能够⽣成语义代码(例如：HTML)⽚段的⼩型Java Web插件。它们基于portlet容器，可以像servlet⼀样处理HTTP请求。但是，与 servlet 不同，每个 portlet 都有不同的会话</li>
+</ul>
+<h3 id="spring-中的单例-bean-的线程安全问题了解吗">Spring 中的单例 bean 的线程安全问题了解吗？</h3>
+<p>⼤部分时候我们并没有在系统中使⽤多线程，所以很少有⼈会关注这个问题。单例 bean 存在线程问题，主要是因为当多个线程操作同⼀个对象的时候，对这个对象的⾮静态成员变量的写操作会存在线程安全问题。<br>
+<strong>常⻅的有两种解决办法：</strong></p>
+<p>​	1. 在Bean对象中尽量避免定义可变的成员变量（不太现实）。</p>
+<ol>
+<li>在类中定义⼀个ThreadLocal成员变量，将需要的可变成员变量保存在 ThreadLocal 中（推荐的⼀种⽅式）。</li>
+</ol>
+<h3 id="component-和-bean-的区别是什么">@Component 和 @Bean 的区别是什么？</h3>
+<ol>
+<li>作⽤对象不同: @<strong>Component 注解作⽤于类</strong>，⽽ @<strong>Bean 注解作⽤于⽅法</strong>。</li>
+<li>@Component 通常是通过类路径扫描来⾃动侦测以及⾃动装配到Spring容器中（我们可以使⽤ @ComponentScan 注解定义要扫描的路径从中找出标识了需要装配的类⾃动装配到Spring 的 bean 容器中）。 @Bean 注解通常是我们在标有该注解的⽅法中定义产⽣这个bean, @Bean 告诉了Spring这是某个类的示例，当我需要⽤它的时候还给我。</li>
+<li>@Bean 注解⽐ Component 注解的⾃定义性更强，⽽且很多地⽅我们只能通过 @Bean 注解来注册bean。⽐如当我们引⽤第三⽅库中的类需要装配到 Spring 容器时，则只能通过@Bean 来实现。</li>
+</ol>
+<h3 id="将一个类声明为spring的-bean-的注解有哪些">将⼀个类声明为Spring的 bean 的注解有哪些?</h3>
+<p>我们⼀般使⽤ @Autowired 注解⾃动装配 bean，要想把类标识成可⽤于 @Autowired 注解⾃动装配的 bean 的类,采⽤以下注解可实现：</p>
+<ul>
+<li>@Component ：通⽤的注解，可标注任意类为 Spring 组件。如果⼀个Bean不知道属于哪个层，可以使⽤ @Component 注解标注。</li>
+<li>@Repository : 对应<strong>持久层</strong>即 <strong>Dao</strong> 层，主要⽤于数据库相关操作。</li>
+<li>@Service : 对应<strong>服务层</strong>，主要涉及⼀些复杂的逻辑，需要⽤到 Dao层。</li>
+<li>@Controller : 对应 <strong>Spring MVC 控制层</strong>，主要⽤户接受⽤户请求并调⽤ Service 层返回数据给前端⻚⾯。</li>
+</ul>
+<h2 id="spring-中的-bean-生命周期">Spring 中的 bean ⽣命周期</h2>
+<figure data-type="image" tabindex="1"><img src="https://i.imgtg.com/2023/02/14/dqSOI.png" alt="dqSOI.png" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://i.imgtg.com/2023/02/14/dq0ND.png" alt="dq0ND.png" loading="lazy"></figure>
+<ul>
+<li>
+<p>Bean 容器找到配置⽂件中 Spring Bean 的定义。</p>
+</li>
+<li>
+<p>Bean 容器利⽤ Java Reflection API 创建⼀个Bean的实例。</p>
+</li>
+<li>
+<p>如果涉及到⼀些属性值 利⽤ set() ⽅法设置⼀些属性值</p>
+</li>
+<li>
+<p>如果 Bean 实现了 BeanNameAware 接⼝，调⽤ setBeanName() ⽅法，传⼊Bean的名字。</p>
+</li>
+<li>
+<p>如果 Bean 实现了 BeanClassLoaderAware 接⼝，调⽤ setBeanClassLoader() ⽅法，传<br>
+ClassLoader 对象的实例。</p>
+</li>
+<li>
+<p>与上⾯的类似，如果实现了其他 *.Aware 接⼝，就调⽤相应的⽅法。</p>
+</li>
+<li>
+<p>如果有和加载这个 Bean 的 Spring 容器相关的 BeanPostProcessor 对象，执<br>
+⾏ postProcessBeforeInitialization() ⽅法</p>
+</li>
+<li>
+<p>如果Bean实现了 InitializingBean 接⼝，执⾏ afterPropertiesSet() ⽅法。</p>
+</li>
+<li>
+<p>如果 Bean 在配置⽂件中的定义包含 init-method 属性，执⾏指定的⽅法</p>
+</li>
+<li>
+<p>如果有和加载这个 Bean的 Spring 容器相关的 BeanPostProcessor 对象，执<br>
+⾏ postProcessAfterInitialization() ⽅法</p>
+</li>
+<li>
+<p>当要销毁 Bean 的时候，如果 Bean 实现了 DisposableBean 接⼝，执⾏ destroy() ⽅法。</p>
+</li>
+<li>
+<p>当要销毁 Bean 的时候，如果 Bean 在配置⽂件中的定义包含 destroy-method 属性，执⾏指<br>
+定的⽅法。</p>
+</li>
+</ul>
+<p>Spring Bean的生命周期分为<code>四个阶段</code>和<code>多个扩展点</code>。扩展点又可以分为<code>影响多个Bean</code>和<code>影响单个Bean</code>。整理如下：<br>
+四个阶段</p>
+<ul>
+<li>实例化 Instantiation</li>
+<li>属性赋值 Populate</li>
+<li>初始化 Initialization</li>
+<li>销毁 Destruction</li>
+</ul>
+<p>多个扩展点</p>
+<ul>
+<li>影响多个Bean
+<ul>
+<li>BeanPostProcessor</li>
+<li>InstantiationAwareBeanPostProcessor</li>
+</ul>
+</li>
+<li>影响单个Bean
+<ul>
+<li>Aware
+<ul>
+<li>Aware Group1
+<ul>
+<li>BeanNameAware</li>
+<li>BeanClassLoaderAware</li>
+<li>BeanFactoryAware</li>
+</ul>
+</li>
+<li>Aware Group2
+<ul>
+<li>EnvironmentAware</li>
+<li>EmbeddedValueResolverAware</li>
+<li>ApplicationContextAware(ResourceLoaderAware\ApplicationEventPublisherAware\MessageSourceAware)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>生命周期
+<ul>
+<li>InitializingBean</li>
+<li>DisposableBean</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>主要过程</strong></p>
+<ol>
+<li>实例化 Instantiation</li>
+<li>属性赋值 Populate</li>
+<li>初始化 Initialization</li>
+<li>销毁 Destruction</li>
+</ol>
+<p><strong>实例化 -&gt; 属性赋值 -&gt; 初始化 -&gt; 销毁</strong></p>
+<p>主要逻辑都在doCreate()方法中，逻辑很清晰，就是顺序调用以下三个方法，这三个方法与三个生命周期阶段一一对应</p>
+<ol>
+<li>createBeanInstance() -&gt; 实例化</li>
+<li>populateBean() -&gt; 属性赋值</li>
+<li>initializeBean() -&gt; 初始化</li>
+</ol>
+<p>InstantiationAwareBeanPostProcessor作用于<strong>实例化</strong>阶段的前后，BeanPostProcessor作用于<strong>初始化</strong>阶段的前后。正好和第一、第三个生命周期阶段对应。通过图能更好理解：</p>
+<figure data-type="image" tabindex="3"><img src="https://i.imgtg.com/2023/02/14/dqcEF.png" alt="dqcEF.png" loading="lazy"></figure>
+<p>InstantiationAwareBeanPostProcessor<strong>实际上继 承了</strong>BeanPostProcessor接口</p>
+<p>InstantiationAwareBeanPostProcessor方法分析</p>
+<p>在InstantiationAwareBeanPostProcessor当中 postProcess<strong>Before</strong>Instantiation方法	在<strong>doCreateBean之前</strong>调用，也就是在bean实例化之前调用的，英文源码注释解释道该方法的返回值会替换原本的Bean作为代理，这也是<strong>Aop</strong>等功能实现的关键点。</p>
+<p>之后执行<strong>populateBean</strong> 也就是赋值阶段 continueWithPropertyPopulation 初始的boolean值为true</p>
+<p>postProcessAfterInstantiation方法在属性赋值方法内，但是在真正执行赋值操作之前。其返回值为boolean，返回false时可以阻断属性赋值阶段 也就是说当实例化阶段之后还没完成的情况下是不能继续执行属性赋值</p>
+<p>注意点：</p>
+<p>spring aop替换对象的时候并不在postProcessBefore<strong>Instantiation</strong>替换对象，而是在 postProcess<strong>AfterInitialization</strong>处理的</p>
+<p>一般情况下是在postProcessAfterInitialization替换代理类，自定义了TargetSource的情况下在postProcessBeforeInstantiation替换代理类。具体逻辑在AbstractAutoProxyCreator类中。</p>
+<p><strong>Aware接口</strong></p>
+<p>Aware类型的接口的作用就是让我们能够拿到Spring容器中的一些资源。基本都能够见名知意，Aware之前的名字就是可以拿到什么资源，例如<code>BeanNameAware</code>可以拿到BeanName，以此类推。调用时机需要注意：所有的Aware方法都是在<strong>初始化阶段之前调用</strong>的！</p>
+<p>在<strong>initializeBean</strong>方法中有一个<strong>invokeAwareMethods</strong>方法 这个方法是在初始化bean的阶段之前完成的</p>
+<p>但是不是所有的Aware接口都使用同样的方式调用。Bean××Aware都是在代码中直接调用的，而ApplicationContext相关的Aware都是通过BeanPostProcessor#postProcessBeforeInitialization()实现的。</p>
+<p>之后BeanPostProcessor的调用机制就开始体现出来了 通过<strong>invokeInitMethod</strong>方法的实现在 applyBeanPostProcessors<strong>BeforeInitialization</strong> 和 applyBeanPostProcessors<strong>AfterInitialization</strong> 之间进行完成</p>
+<p>参考连接：</p>
+<p>https://www.jianshu.com/p/1dec08d290c1</p>
+<h2 id="applicationcontext和beanfactory的区别">ApplicationContext和BeanFactory的区别</h2>
+<p><strong>BeanFactory：</strong></p>
+<p>是Spring里面最低层的接口，提供了最简单的容器的功能，只提供了实例化对象和拿对象的功能；</p>
+<p><strong>ApplicationContext：</strong></p>
+<p>应用上下文，继承BeanFactory接口，它是Spring的一各更高级的容器，提供了更多的有用的功能；</p>
+<ol>
+<li>
+<p>国际化（MessageSource）</p>
+</li>
+<li>
+<p>访问资源，如URL和文件（ResourceLoader）</p>
+</li>
+<li>
+<p>载入多个（有继承关系）上下文 ，使得每一个上下文都专注于一个特定的层次，比如应用的web层</p>
+</li>
+<li>
+<p>消息发送、响应机制（ApplicationEventPublisher）</p>
+</li>
+<li>
+<p>AOP（拦截器）</p>
+</li>
+</ol>
+<p><strong>两者装载bean的区别</strong></p>
+<p><strong>BeanFactory：</strong></p>
+<p>BeanFactory在启动的时候不会去实例化Bean，中有从容器中拿Bean的时候才会去实例化；</p>
+<p><strong>ApplicationContext：</strong></p>
+<p>ApplicationContext在启动的时候就把所有的Bean全部实例化了。它还可以为Bean配置lazy-init=true来让Bean延迟实例化；</p>
+<p><strong>我们该用BeanFactory还是ApplicationContent</strong></p>
+<p>延迟实例化的优点：（<strong>BeanFactory</strong>）</p>
+<p>应用启动的时候占用资源很少；对资源要求较高的应用，比较有优势；</p>
+<p>不延迟实例化的优点： （<strong>ApplicationContext</strong>）</p>
+<ol>
+<li>所有的Bean在启动的时候都加载，系统运行的速度快；</li>
+<li>在启动的时候所有的Bean都加载了，我们就能在系统启动的时候，尽早的发现系统中的配置问题</li>
+<li>建议web应用，在启动的时候就把所有的Bean都加载了。（把费时的操作放到系统启动中完成）</li>
+</ol>
+<p>https://blog.csdn.net/pythias_/article/details/82752881</p>
+<h2 id="spring如何解决循环依赖问题">spring如何解决循环依赖问题</h2>
+<p>简言之，两个池子：一个成品池子，一个半成品池子。能解决循环依赖的前提是：spring开启了allowCircularReferences，那么一个正在被创建的bean才会被放在半成品池子里。在注入bean，向容器获取bean的时候，优先向成品池子要，要不到，再去向半成品池子要。</p>
+<p>出现循环依赖一定是你的业务设计有问题。高层业务和底层业务的划分不够清晰，一般，业务的依赖方向一定是无环的，有环的业务，在后续的维护和拓展一定非常鸡肋</p>
+<p>参考连接：</p>
+<ol>
+<li>
+<p>https://blog.csdn.net/qq_41630866/article/details/104332517</p>
+<p>https://blog.csdn.net/chaitoudaren/article/details/105060882</p>
+<p>https://blog.csdn.net/likun557/article/details/113977261</p>
+<p>https://cloud.tencent.com/developer/article/1497692</p>
+<figure data-type="image" tabindex="4"><img src="https://note.mxecy.cn/docs/%E5%9B%BE%E7%89%87/Spring%E5%85%A8%E5%AE%B6%E6%A1%B6%EF%BC%88%E9%9D%A2%E8%AF%95%E7%89%88%EF%BC%89/Spring%E8%A7%A3%E5%86%B3%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96.png" alt="img" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://note.mxecy.cn/docs/%E5%9B%BE%E7%89%87/Spring%E5%85%A8%E5%AE%B6%E6%A1%B6%EF%BC%88%E9%9D%A2%E8%AF%95%E7%89%88%EF%BC%89/Spring%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96.png" alt="img" loading="lazy"></figure>
+<ul>
+<li>
+<p>Spring使用了三级缓存 + 提前暴露对象的方式来解决循环依赖的问题。</p>
+</li>
+<li>
+<p>Spring解决循环依赖的条件：</p>
+<ul>
+<li>出现循环依赖的Bean必须是单例的。</li>
+<li>依赖注入的方式不能全是构造器注入的方式。</li>
+</ul>
+</li>
+<li>
+<p>相关的重要属性：位于<code>DefaultSingletonBeanRegistry</code>类中</p>
+<ul>
+<li>
+<p>Spring内部维护了三个Map，所谓的三重缓存。</p>
+<ul>
+<li>
+<pre><code>Map&lt;String, Object&gt; singletonObjects
+</code></pre>
+<p>：单例池容器，用于缓存单例Bean的地方。一级缓存。</p>
+<ul>
+<li>这里的bean是已经创建完成的，该bean经历过实例化-&gt;属性填充-&gt;初始化以及各类的后置处理。因此，一旦需要获取bean时，我们第一时间就会寻找一级缓存</li>
+</ul>
+</li>
+<li>
+<pre><code>Map&lt;String, Object&gt; earlySingletonObjects
+</code></pre>
+<p>：早期的单例Bean。二级缓存。</p>
+<ul>
+<li>这里跟一级缓存的区别在于，该缓存所获取到的bean是提前曝光出来的，是还没创建完成的。也就是说获取到的bean只能确保已经进行了实例化，但是属性填充跟初始化肯定还没有做完，因此该bean还没创建完成，仅仅能作为指针提前曝光，被其他bean所引用</li>
+</ul>
+</li>
+<li>
+<pre><code>Map&lt;String, ObjectFactory&lt;?&gt;&gt; singletonFactories
+</code></pre>
+<p>：创建中单例Bean的原始工厂。三级缓存。</p>
+<ul>
+<li>在bean实例化完之后，属性填充以及初始化之前，如果允许提前曝光，spring会将实例化后的bean提前曝光，也就是把该bean转换成beanFactory并加入到三级缓存。在需要引用提前曝光对象时再通过singletonFactory.getObject()获取。</li>
+<li>当其他的bean从三级缓存中获取了Bean后，<strong>当前的Bean就会从三级缓存中放入到二级缓存</strong>。并且从三级缓存中取出的时候会调用<code>SmartInstantiationAwareBeanPostProcessor#getEarlyBeanReference</code>方法。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><code>Set&lt;String&gt; singletonsCurrentlyInCreation</code>：保存了当前正在创建的单例对象的名称。</p>
+</li>
+<li>
+<p><code>Map&lt;String, Set&lt;String&gt;&gt; dependentBeanMap</code>：保存了一个bean对其他的bean的依赖。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>注意：</strong></p>
+<ul>
+<li>第一级缓存（singletonObjects）是用来缓存创建好的单例Bean的</li>
+<li>第二级缓存（earlySingletonObjects）是用来发现在当前Bean被暴露的时间里，有没有被其他Bean引用，如果被其他Bean引用，其他Bean又是引用的一个错误版本，就抛出一个异常。</li>
+<li>第三级缓存（singletonFactories），这个才是SP真正用来解决循环依赖的，并且可以延迟代理的时机。</li>
+</ul>
+<pre><code class="language-java">// AbstractAutowireCapableBeanFactory#doCreateBean
+/*忽略部分代码*/
+// 创建实例包装
+if (instanceWrapper == null) {
+    instanceWrapper = createBeanInstance(beanName, mbd, args);
+}
+// 从实例包装后获取Bean
+Object bean = instanceWrapper.getWrappedInstance();
+/*忽略部分代码*/
+if (earlySingletonExposure) {
+    /*忽略部分代码*/
+    // 如果允许暴露，则将其加入二级缓存。在调用被取出来的时候会调用SmartInstantiationAwareBeanPostProcessor#getEarlyBeanReference方法，默认实现只有AbstractAutoProxyCreator，创建代理。因此，如果在被暴露的过程中，有其他Bean调用getSingleton(当前对象)，则当前对象会被代理（如果有的话），然后放入二级缓存。
+    addSingletonFactory(beanName, () -&gt; getEarlyBeanReference(beanName, mbd, bean));
+}
+/*忽略部分代码*/
+Object exposedObject = bean;
+try {
+    // 填充属性
+    populateBean(beanName, mbd, instanceWrapper);
+    // 实例化Bean，请注意这里，实例化Bean的时候可能会导致exposedObject的改变！！！
+    exposedObject = initializeBean(beanName, exposedObject, mbd);
+}
+catch (Throwable ex) {
+    /*忽略部分代码*/
+}
 
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <section class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://lindamao.cn/post/mybatis/"> Mybatis </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-11-14 14:25:02">2020-11-14</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span
-        >3<span class="language" data-lan="minute"
-          >分钟</span
-        ></span
-      >
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span
-        >747<span class="pc-show language" data-lan="words"
-          >字数</span
-        ></span
-      >
-    </span>
-    
-  </div>
-</section>
+if (earlySingletonExposure) {
+    // 直接从二级缓存或一级缓存中获取Bean，注意，这里如果不为null，只有一种可能，在暴露出去的时间里，在其他Bean的初始化过程中调用了getSingleton(当前Bean)。
+    Object earlySingletonReference = getSingleton(beanName, false);
+    if (earlySingletonReference != null) {
+        // 判断exposedObject在经过initializeBean后是否和原来的Bean是一个对象。
+        if (exposedObject == bean) {
+            // 如果bean没有在initializeBean改变，那么将当前Bean替换为代理后（如果有代理过的话）的Bean。
+            exposedObject = earlySingletonReference;
+        }
+        else if (!this.allowRawInjectionDespiteWrapping &amp;&amp; hasDependentBean(beanName)) {
+            /*忽略部分代码*/
+            // 注意：到了这里，说明了一种情况，当前暴露出去的Bean（可能被代理过后）被其他Bean引用了，但是在实例化Bean的时候，Bean和暴露出去的Bean已经不是一个Bean的，即其他Bean引用的Bean是一个错误的Bean。因此如果有其他的Bean实际引用了当前Bean，则应该抛出一个异常。为什么是实际引用呢？因为这里可能其他Bean只是实现了Aware之类的接口，并在里面调用了getSingleton(当前Bean)，并没有实际引用。
+        }
+    }
+}Copy to clipboardErrorCopied
+</code></pre>
+</li>
+<li>
+<p>问题：</p>
+<ul>
+<li>
+<p>如何解决循环依赖的：</p>
+<ul>
+<li>通过提前曝光解决循环依赖，当AB循环依赖的时候，先将A的半成品曝光出去，让B先完成初始化，然后在使得初始化完成后的B注入到A中。</li>
+</ul>
+</li>
+<li>
+<p>为什么要三级缓存：（<strong>以下为自己理解，不一定准确，事实上，添加三级缓存的地方的注释也标注了三级缓存是用来解决潜在的循环依赖的。</strong>）</p>
+<ul>
+<li>
+<p>很多博文说三级缓存是为了解决AOP的循环依赖，但事实上不是这样的，即使没有三级缓存，Spring也可以通过提前暴露代理对象的方法来解决AOP的循环依赖。</p>
+</li>
+<li>
+<p>所以三级缓存的作用主要是：延迟对实例化阶段生成的对象的代理，只有真正发生循环依赖的时候，才去提前生成代理对象，否则只会创建一个工厂并将其放入到三级缓存中，但是不会去通过这个工厂去真正创建对象。</p>
+</li>
+<li>
+<p>对于代理过的对象，如果在被暴露出去的时候被其他的Bean所引用了，就会在从三级缓存中移除的时候创建代理；如果没有被引用的话，则在初始化Bean的时候创建代理。</p>
+</li>
+<li>
+<p>三级缓存作用：（三级缓存并非非要不可）</p>
+<ul>
+<li>通过<code>SmartInstantiationAwareBeanPostProcessor</code>对Bean进行扩展。</li>
+<li>尽量可能的延迟AOP的初始化。</li>
+</ul>
+</li>
+<li>
+<figure data-type="image" tabindex="6"><img src="https://note.mxecy.cn/docs/%E5%9B%BE%E7%89%87/Spring%E5%85%A8%E5%AE%B6%E6%A1%B6%EF%BC%88%E9%9D%A2%E8%AF%95%E7%89%88%EF%BC%89/%E5%9C%A8InstantiationBean%E4%B8%AD%E6%94%B9%E5%8F%98%E4%BA%86Bean.png" alt="img" loading="lazy"></figure>
+<pre><code class="language-java">// AbstractAutowireCapableBeanFactory#doCreateBean
+// 忽略部分代码
+if (earlySingletonExposure) {
+    if (logger.isTraceEnabled()) {
+        logger.trace(&quot;Eagerly caching bean '&quot; + beanName +
+                     &quot;' to allow for resolving potential circular references&quot;);
+    }
+    // 添加三级缓存
+    addSingletonFactory(beanName, () -&gt; getEarlyBeanReference(beanName, mbd, bean));
+}
+// 忽略部分代码
 
-      <div class="post-body">
-        
-        
-          
-        
-        
-        <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://lindamao.cn/post/mybatis/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-    </div>
-  </article>
+// AbstractAutowireCapableBeanFactory#getEarlyBeanReference
+protected Object getEarlyBeanReference(String beanName, RootBeanDefinition mbd, Object bean) {
+    Object exposedObject = bean;
+    if (!mbd.isSynthetic() &amp;&amp; hasInstantiationAwareBeanPostProcessors()) {
+        for (SmartInstantiationAwareBeanPostProcessor bp : getBeanPostProcessorCache().smartInstantiationAware) {
+            // 这里实现了getEarlyBeanReference的只有一个AbstractAutoProxyCreator.java
+            exposedObject = bp.getEarlyBeanReference(exposedObject, beanName);
+        }
+    }
+    return exposedObject;
+}
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="spring-mvc">Spring MVC</h2>
+<h3 id="说说自己对于-spring-mvc-了解">说说⾃⼰对于 Spring MVC 了解?</h3>
+<p>谈到这个问题，我们不得不提提之前 Model1 和 Model2 这两个没有 Spring MVC 的时代。</p>
+<ul>
+<li>Model1 时代 : 很多学 Java 后端⽐᫾晚的朋友可能并没有接触过 Model1 模式下的JavaWeb 应⽤开发。在 Model1 模式下，整个 Web 应⽤⼏乎全部⽤ JSP ⻚⾯组成，只⽤少量的 JavaBean 来处理数据库连接、访问等操作。这个模式下 JSP 即是控制层⼜是表现层。显⽽易⻅，这种模式存在很多问题。⽐如①将控制逻辑和表现逻辑混杂在⼀起，导致代码重⽤率极低；②前端和后端相互依赖，难以进⾏测试并且开发效率极低；</li>
+<li>Model2 时代 ：学过 Servlet 并做过相关 Demo 的朋友应该了解“Java Bean(Model)+JSP（View,）+Servlet（Controller） ”这种开发模式,这就是早期的 JavaWeb MVC 开发模式。Model:系统涉及的数据，也就是 dao 和 bean。View：展示模型中的数据，只是⽤来展。Controller：处理⽤户请求都发送给 ，返回数据给 JSP 并展示给⽤户。</li>
+</ul>
+<p>Model2 模式下还存在很多问题，Model2的抽象和封装程度还远远不够，使⽤Model2进⾏开发时不可避免地会重复造轮⼦，这就⼤⼤降低了程序的可维护性和复⽤性。于是很多JavaWeb开发相关的 MVC 框架应运⽽⽣⽐如Struts2，但是 Struts2 ⽐᫾笨重。随着 Spring 轻量级开发框架的流⾏，Spring ⽣态圈出现了 Spring MVC 框架， Spring MVC 是当前最优秀的 MVC 框架。相⽐于Struts2 ， Spring MVC 使⽤更加简单和⽅便，开发效率更⾼，并且 Spring MVC 运⾏速度更快。MVC 是⼀种设计模式,Spring MVC 是⼀款很优秀的 MVC 框架。Spring MVC 可以帮助我们进⾏更简洁的Web层的开发，并且它天⽣与 Spring 框架集成。Spring MVC 下我们⼀般把后端项⽬分为 Service层（处理业务）、Dao层（数据库操作）、Entity层（实体类）、Controller层(控制层，返回数据给前台⻚⾯)。</p>
+<p>SpringMVC ⼯作原理了解吗?</p>
+<figure data-type="image" tabindex="7"><img src="https://i.imgtg.com/2023/02/14/dqdu6.png" alt="dqdu6.png" loading="lazy"></figure>
+<p>流<strong>程：</strong></p>
+<ol>
+<li>客户端（浏览器）发送请求，直接请求到 <strong>DispatcherServlet</strong> 。</li>
+<li>DispatcherServlet 根据请求信息调⽤ <strong>HandlerMapping</strong> ，解析请求对应的 <strong>Handler</strong> 。</li>
+<li>解析到对应的 <strong>Handler</strong> （也就是我们平常说的 <strong>Controller</strong> 控制器）后，开始<strong>HandlerAdapter</strong> 适配器处理。</li>
+<li>HandlerAdapter 会根据 Handler 来调⽤真正的处理器开处理请求，并处理相应的业务逻辑。</li>
+<li>处理器处理完业务后，会返回⼀个 ModelAndView 对象， Model 是返回的数据对象， View 是个逻辑上的 View 。</li>
+<li><strong>ViewResolver</strong> 会根据逻辑 View 查找实际的 View 。</li>
+<li><strong>DispaterServlet</strong> 把返回的 Model 传给 View （视图渲染）。</li>
+<li>把 View 返回给请求者（浏览器）</li>
+</ol>
+<h2 id="spring-springmvc和springboot区别">Spring SpringMVC和SpringBoot区别</h2>
+<h3 id="一-概念">一、概念</h3>
+<p><strong>1、Spring</strong></p>
+<p>Spring是一个开源容器框架，可以接管web层，业务层，dao层，持久层的组件，并且可以配置各种bean,和维护bean与bean之间的关系。其核心就是控制反转(IOC),和面向切面(AOP),简单的说就是一个分层的轻量级开源框架。</p>
+<p><strong>2、SpringMVC</strong></p>
+<p>Spring MVC属于SpringFrameWork的后续产品，已经融合在Spring Web Flow里面。SpringMVC是一种web层mvc框架，用于替代servlet（处理|响应请求，获取表单参数，表单校验等。SpringMVC是一个MVC的开源框架，SpringMVC=struts2+spring，springMVC就相当于是Struts2加上Spring的整合。</p>
+<p><strong>3、SpringBoot</strong></p>
+<p>Springboot是一个微服务框架，延续了spring框架的核心思想IOC和AOP，简化了应用的开发和部署。Spring Boot是为了简化Spring应用的创建、运行、调试、部署等而出现的，使用它可以做到专注于Spring应用的开发，而无需过多关注XML的配置。提供了一堆依赖打包，并已经按照使用习惯解决了依赖问题—&gt;习惯大于约定。</p>
+<h3 id="二区别与总结">二区别与总结</h3>
+<p><strong>1.简单理解为：Spring包含了SpringMVC，而SpringBoot又包含了Spring或者说是在Spring的基础上做得一个扩展。</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/20200920140600599.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ1MjcwNjY3,size_1,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述" loading="lazy"><br>
+<strong>2、关系大概就是这样：</strong></p>
+<p>spring mvc &lt; spring &lt; springboot</p>
+<h2 id="spring-框架中用到了哪些设计模式">Spring 框架中⽤到了哪些设计模式</h2>
+<p>1.<strong>工厂设计模式</strong>：Spring使用工厂模式通过BeanFactory和ApplicationContext创建bean对象。</p>
+<p>2.<strong>代理设计模式</strong>：Spring AOP功能的实现。</p>
+<p>3.<strong>单例设计模式</strong>：Spring中的bean默认都是单例的。</p>
+<p>4.<strong>模板方法模式</strong>：Spring中的jdbcTemplate、hibernateTemplate等以Template结尾的对数据库操作的类，它们就使用到了模板模式。</p>
+<p>5.<strong>包装器设计模式</strong>：我们的项目需要连接多个数据库，而且不同的客户在每次访问中根据需要会去访问不同的数据库。这种模式让我们可以根据客户的需求能够动态切换不同的数据源。</p>
+<p>6.<strong>观察者模式</strong>：Spring<strong>事件驱动模型</strong>就是观察者模式很经典的一个应用。</p>
+<p>7.<strong>适配器模式</strong>：Spring AOP的增强或通知（Advice）使用到了适配器模式、Spring MVC中也是用到了适配器模式适配Controller。</p>
+<p>https://blog.csdn.net/fei1234456/article/details/106693892</p>
+<h2 id="spring-事务">Spring 事务</h2>
+<h3 id="spring-管理事务的方式有几种">Spring 管理事务的⽅式有⼏种？</h3>
+<ol>
+<li><strong>编程式事务</strong>，在代码中硬编码。(不推荐使⽤)</li>
+<li><strong>声明式事务</strong>，在配置⽂件中配置（推荐使⽤）</li>
+</ol>
+<p><strong>声明式事务</strong>⼜分为两种：</p>
+<ol>
+<li>基于<strong>XML</strong>的声明式事务</li>
+<li>基于<strong>注解</strong>的声明式事务 <strong>Transactional</strong></li>
+</ol>
+<h3 id="spring-事务中的隔离级别有哪几种">Spring 事务中的隔离级别有哪⼏种?</h3>
+<ul>
+<li>TransactionDefinition.I <strong>SOLATION_DEFAUL</strong>T: 使⽤后端数据库默认的隔离级别，Mysql默认采⽤的 <strong>REPEATABLE_READ</strong>隔离级别 Oracle 默认采⽤的 READ_COMMITTED隔离级别.</li>
+<li>TransactionDefinition.ISOLATION_READ_UNCOMMITTED: 最低的隔离级别，允许读取尚未提交的数据变更，可能会导致脏读、幻读或不可重复读</li>
+<li>TransactionDefinition.ISOLATION_READ_COMMITTED: 允许读取并发事务已经提交的数据，可以阻⽌脏读，但是幻读或不可重复读仍有可能发⽣</li>
+<li>TransactionDefinition.ISOLATION_REPEATABLE_READ: 对同⼀字段的多次读取结果都是⼀致的，除⾮数据是被本身事务⾃⼰所修改，可以阻⽌脏读和不可重复读，但幻读仍有可能发⽣。</li>
+<li>TransactionDefinition.ISOLATION_SERIALIZABLE: 最⾼的隔离级别，完全服从ACID的隔离级别。所有的事务依次逐个执⾏，这样事务之间就完全不可能产⽣⼲扰，也就是说，该级别可以防⽌脏读、不可重复读以及幻读。但是这将严重影响程序的性能。通常情况下也不会⽤到该级别。</li>
+</ul>
+<h3 id="spring-事务中哪几种事务传播行为">Spring 事务中哪⼏种事务传播⾏为?</h3>
+<p><strong>⽀持当前事务的情况：</strong></p>
+<ul>
+<li>TransactionDefinition.PROPAGATION_REQUIRED： 如果当前存在事务，则加⼊该事务；如果当前没有事务，则创建⼀个新的事务。</li>
+<li>TransactionDefinition.PROPAGATION_SUPPORTS： 如果当前存在事务，则加⼊该事务；如果当前没有事务，则以⾮事务的⽅式继续运⾏。</li>
+<li>TransactionDefinition.PROPAGATION_MANDATORY： 如果当前存在事务，则加⼊该事务；如果当前没有事务，则抛出异常。（mandatory：强制性）</li>
+</ul>
+<p><strong>不⽀持当前事务的情况</strong>：</p>
+<ul>
+<li>TransactionDefinition.PROPAGATION_REQUIRES_NEW： 创建⼀个新的事务，如果当前存在事务，则把当前事务挂起。</li>
+<li>TransactionDefinition.PROPAGATION_NOT_SUPPORTED： 以⾮事务⽅式运⾏，如果当前存在事务，则把当前事务挂起。</li>
+<li>TransactionDefinition.PROPAGATION_NEVER： 以⾮事务⽅式运⾏，如果当前存在事务，则抛出异常。</li>
+</ul>
+<p><strong>其他情况：</strong></p>
+<ul>
+<li>TransactionDefinition.PROPAGATION_NESTED： 如果当前存在事务，则创建⼀个事务作为当前事务的嵌套事务来运⾏；如果当前没有事务，则该取值等价于TransactionDefinition.PROPAGATION_REQUIRED。</li>
+</ul>
+<h3 id="transactionalrollbackfor-exceptionclass注解了解吗">@Transactional(rollbackFor = Exception.class)注解了解吗？</h3>
+<p>我们知道：Exception分为运⾏时异常RuntimeException和⾮运⾏时异常。事务管理对于企业应⽤来说是⾄关重要的，即使出现异常情况，它也可以保证数据的⼀致性。</p>
+<p>当 @Transactional 注解作⽤于类上时，该类的所有 public ⽅法将都具有该类型的事务属性，同时，我们也可以在⽅法级别使⽤该标注来覆盖类级别的定义。如果类或者⽅法加了这个注解，那么这个类⾥⾯的⽅法抛出异常，就会回滚，数据库⾥⾯的数据也会回滚。</p>
+<p>在 @Transactional 注解中如果不配置 rollbackFor 属性,那么事物只会在遇到 <strong>RuntimeException 的时候才会回滚</strong>,加上 rollbackFor=Exception.class ,可以让事物在遇到⾮运⾏时异常时也</p>
+<h3 id="springboot和spring-mvc的区别是什么">springboot和spring MVC的区别是什么</h3>
+<p>Spring 最初利用“工厂模式”（DI）和“代理模式”（AOP）解耦应用组件。大家觉得挺好用，于是按照这种模式搞了一个 MVC框架（一些用Spring 解耦的组件），用开发 web 应用（ SpringMVC ）。然后发现每次开发都写很多样板代码，为了简化工作流程，于是开发出了一些“懒人整合包”（starter），这套就是 Spring Boot。</p>
+<p>所以，用最简练的语言概括就是：</p>
+<p>Spring 是一个“引擎”；</p>
+<p>Spring MVC 是基于Spring的一个 MVC 框架；</p>
+<p>Spring Boot 是基于Spring4的条件注册的一套快速开发整合</p>
+<h2 id="jpa">JPA</h2>
+<h2 id="如何使用jpa在数据库中非持久化一个字段">如何使⽤JPA在数据库中⾮持久化⼀个字段？</h2>
+<p>假如我们有有下⾯⼀个类：</p>
+<figure data-type="image" tabindex="8"><img src="https://i.imgtg.com/2023/02/14/dqVFP.png" alt="dqVFP.png" loading="lazy"></figure>
+<p>如果我们想让 secrect 这个字段不被持久化，也就是不被数据库存储怎么办？我们可以采⽤下⾯⼏种⽅法：</p>
+<figure data-type="image" tabindex="9"><img src="https://i.imgtg.com/2023/02/14/dqYRb.png" alt="dqYRb.png" loading="lazy"></figure>
+<h2 id="spring线程安全问题"><a href="https://blog.csdn.net/weixin_43030522/article/details/107614334">spring线程安全问题</a></h2>
+<p>spring 的 bean 的scope<br>
+spring容器中管理的bean有五种作用域：<br>
+1、<strong>singleton</strong>：单例、也是默认的<br>
+2、<strong>prototype</strong>：原型，即每次需要该bean都会创建一个新的bean<br>
+3、request：请求级别，即每次请求创建一个bean，适用于WebApplicationContext<br>
+4、session：session会话级别，同一个session共享一个bean<br>
+5、application：应用程序级别，同一个程序共享一个bean</p>
+<p>从单例与原型Bean,去说线程安全<br>
+对于原型模式的Bean,每次都会创建一个新对象，也就是线程之间并不存在Bean共享，不会有线程安全的问题。<br>
+对于单例Bean,所有线程都共享一个单例实例Bean,因此是存在资源的竞争。<br>
+如果单例Bean,是一个无状态Bean，也就是线程中的操作不会对Bean的成员执行查询以外的操作，那么这个单例Bean是线程安全的。<br>
+<strong>比如spring mvc 的 Controller、Service、Dao等，这些Bean大多是无状态的，只关注于方法本身。</strong><br>
+<strong>对于有状态的bean，spring官方提供的bean，一般提供了通过ThreadLocal去解决线程安全的方法。</strong><br>
+比如RequestContextHolder、TransactionSynchronizationManager、LocaleContextHolder等。<br>
+使用ThreadLocal的好处是使得多线程场景下，多个线程对这个单例Bean的成员变量并不存在资源的竞争，因为ThreadLocal为每个线程保存线程私有的数据。这是一种以空间换时间的方式。</p>
+<h2 id="spring中-单例模式和原型模式的区别">spring中 单例模式和原型模式的区别</h2>
+<p>简单说来，单例就是用的一个对象。 原型就是拷贝的这个对象。</p>
+<p><strong>单例模式和原型模式多次调用hashcode相同么</strong><br>
+单例模式多次调用hashcode是相同的。</p>
+<p>原型模式多次调用hashcode是不同的。</p>
+<p>如何在spring中验证原型模式hashcode不同<br>
+在2个类中，分别注入一个原型模式的对象，打印hashcode就可以看出来。</p>
+<p>注： 一个类中是看不出来的，因为一个类中注入的时候只调用一次。</p>
+<p><strong>有个需求，当每次调用这个对象的时候，生成一个新日期，用bean的形式好么</strong><br>
+这个要区分下情况。<br>
+如果this.date=new Date(); 写在构造器里是不好用的，因为bean只加载一次。 这个new Date()只在spring创建对象的时候执行一次。 所以一直不变。</p>
+<p>解决方案：<br>
+可以把this.date=new Date(); 写在一个方法里，然后再返回该bean对象，方法每次调用都会执行一遍逻辑，所以date会变化。</p>
+<p><strong>原型模式</strong><br>
+存在一个对象，每次新建对象都是拷贝这个对象的属性值<br>
+分为浅复制与深复制<br>
+区别在于对象里面的引用类型对象属性是否是同一个</p>
+<h2 id="jwt原理">JWT原理</h2>
+<p>参考https://blog.csdn.net/lh_hebine/article/details/99695927</p>
+<p>JWT是为了在网络应用环境之间传递声明而执行的一种基于JSON 的开放标准</p>
+<p>JWT组成</p>
+<p><strong>头部</strong></p>
+<p>​	声明类型</p>
+<p>​	加密算法</p>
+<p>再进行base加密得到第一部分</p>
+<p><strong>载荷</strong> 用于存放有效的信息 不存放敏感的信息</p>
+<p>​	标准中注册的声明</p>
+<p>​	公共的声明</p>
+<p>​	私有的声明</p>
+<p>再进行base加密得到第二部分</p>
+<p><strong>签证</strong></p>
+<p>header base加密后</p>
+<p>payload base加密后</p>
+<p>secret</p>
+<p>通过前两者的加密后字符串 再通过头部声明的加密算法进行加密组成第三部分</p>
+<h2 id="jwt认证流程">JWT认证流程</h2>
+<p>在前后端分离的项目中：前端将用户的登录信息发送给服务器；服务器接受请求后为用户生成独一无二的认证信息--token，传给客户端浏览器；客户端将token保存在cookie或者storage中；在之后访问客户端都携带这个token请求服务器；服务器验证token的值，如果验证成功则给客户端返回数据。服务器并不保存token。</p>
+<h2 id="maven是怎样解决依赖冲突的">maven是怎样解决依赖冲突的</h2>
+<p>用Maven Helper插件，在插件安装好之后，我们打开pom.xml文件，在底部会多出一个Dependency Analyzer选项</p>
+<p>点击 Dependency Analyzer，通过点击conflicts发现冲突，通过如下的方式在解决冲突；</p>
+<h2 id="maven自动解决依赖冲突的规则是什么">maven自动解决依赖冲突的规则是什么？</h2>
+<h3 id="第一原则路径最近者优先">第一原则：路径最近者优先</h3>
+<p>项目A有如下的依赖关系：</p>
+<p>A-&gt;B-&gt;C-&gt;X(1.0)</p>
+<p>A-&gt;D-&gt;X(2.0)</p>
+<p>则该例子中，X的版本是2.0</p>
+<h3 id="第二原则路径相等先声明者优先">第二原则：路径相等，先声明者优先</h3>
+<p>项目A有如下的依赖关系：</p>
+<p>A-&gt;B-&gt;Y(1.0)</p>
+<p>A-&gt;C-&gt;Y(2.0)</p>
+<p>若pom文件中B的依赖坐标先于C进行声明，则最终Y的版本为1.0</p>
 
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <section class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://lindamao.cn/post/mysql/"> Mysql </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-09-14 13:42:58">2020-09-14</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span
-        >62<span class="language" data-lan="minute"
-          >分钟</span
-        ></span
-      >
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span
-        >17160<span class="pc-show language" data-lan="words"
-          >字数</span
-        ></span
-      >
-    </span>
-    
-  </div>
-</section>
-
-      <div class="post-body">
-        
-        
-          
-        
-        
-        <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://lindamao.cn/post/mysql/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-    </div>
-  </article>
-  
+            </div>
+            
+              <div class="reward-btn">
+                <div class="reward-btn-text">赞赏</div>
+              </div>
             
             
-<div class="page bg-color">
-  <ul class="pagination-ul">
-    
-    
-      
-        <li class="pagination-li pagination-active">
-            <a href="/page/../">
-              1
-            </a>
-        </li>
-      
-        <li class="pagination-li ">
-            <a href="/page/2">
-              2
-            </a>
-        </li>
-      
-    
-    
-      <li class="pagination-dir">
-        <a href="/page/2">
-          <i class="fa fa-angle-right"></i>
-        </a>
-      </li>
-    
+              <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong class="language" data-lan="author">本文作者：</strong>
+      lindamao
+    </li>
+    <li class="post-copyright-link">
+      <strong class="language" data-lan="link">本文链接：</strong>
+      <a href="https://lindamao.cn/post/spring/" title="Spring">https://lindamao.cn/post/spring/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong class="language" data-lan="copyright">版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
   </ul>
+  <div class="tags">
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="SpringBoot" href="https://lindamao.cn/post/springboot/">SpringBoot</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="SpringBoot" href="https://lindamao.cn/post/springboot/">上一篇</a>
+      
+    </div>
+    <div class="nav-next">
+      
+        <a class="nav-pc-next" title="Mybatis" href="https://lindamao.cn/post/mybatis/">Mybatis</a>
+        <a class="nav-mobile-next" title="Mybatis" href="https://lindamao.cn/post/mybatis/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
+      
+    </div>
+  </div>
 </div>
-          </section>
+            
+            
+  
+
+          </div>
         </div>
       </div>
     </div>
@@ -1037,6 +1594,223 @@
     parent.insertBefore(aelem, next);
   });
 </script>
+    <div class="reward-mask" style="display: none;">
+  <div class="reward-relative">
+    <span class="close" aria-hidden="true">x</span>
+    <div class="reward-body">
+      <h2>感谢您的支持，我会继续努力的!</h2>
+      <div class="reward-img-box">
+        <div style="position: relative; width: 140px; height: 140px;">
+          
+          
+          
+        </div>
+      </div>
+      <p class="reward-word">扫码打赏，你说多少就多少</p>
+      <p class="reward-tip"> </p>
+    </div>
+    <div class="bottom">
+      
+      
+    </div>
+  </div>
+</div>
+<style>
+  .reward-mask {
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #00000054;
+  }
+
+  .reward-relative {
+    position: relative;
+    width: 480px;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #fff;
+    top: 50%;
+    margin-top: -205px;
+  }
+
+  .reward-relative .close {
+    position: absolute;
+    right: 10px;
+    font-weight: normal;
+    font-size: 16px;
+    color: #929292;
+  }
+
+  .reward-body {
+    padding: 40px 20px 20px;
+  }
+
+  .bottom {
+    display: flex;
+  }
+
+  .reward-btn {
+    text-align: center;
+  }
+
+  .reward-btn-text {
+    display: inline-block;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    background-color: #ff9734;
+    color: #FFF;
+    margin-top: 20px;
+  }
+
+  .pay-text {
+    margin-top: 10px;
+    padding: 10px;
+    flex: 1;
+    transition: all .2s linear;
+  }
+
+  .pay-text:hover {
+    background-color: #a5a5a536;
+  }
+
+  .reward-body h2 {
+    padding-top: 10px;
+    text-align: center;
+    color: #a3a3a3;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0 0 20px;
+  }
+
+  .reward-body h2:after,
+  .reward-body h2:before {
+    font-family: Arial, Helvetica, sans-serif;
+    background: 0 0;
+    width: 0;
+    height: 0;
+    font-style: normal;
+    color: #eee;
+    font-size: 80px;
+    position: absolute;
+    top: 20px;
+  }
+
+  .reward-body h2:before {
+    content: '\201c';
+    left: 50px;
+  }
+
+  .reward-body h2:after {
+    content: '\201d';
+    right: 80px;
+  }
+
+  .reward-img-box {
+    display: inline-block;
+    padding: 10px;
+    border: 6px solid #ea5f00;
+    margin: 0 auto;
+    border-radius: 3px;
+    position: relative;
+  }
+
+  .reward-img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 767px) {
+    .reward-relative {
+      height: 100%;
+      top: 0px;
+      margin-top: 0;
+      width: auto;
+    }
+
+    .reward-relative .bottom {
+      flex-direction: column;
+    }
+
+    .reward-relative .pay-text {
+      width: 80%;
+      margin: 5px auto;
+      border: 1px solid silver;
+      padding: 6px;
+      border-radius: 4px;
+    }
+
+    .reward-body h2:after {
+      right: 40px;
+    }
+
+    .reward-body h2:after,
+    .reward-body h2:before {
+      font-size: 60px;
+    }
+
+    .reward-body h2:before {
+      left: 20px;
+    }
+  }
+</style>
+<script>
+  !function () {
+    var mask = document.querySelector('.reward-mask');
+    let close = document.querySelector('.reward-relative .close');
+    let rewardBtn = document.querySelector('.reward-btn');
+
+    let zfb = document.querySelector('#zfb'),
+      wx = document.querySelector('#wx'),
+      zfbBtn = document.querySelector('#zfbBtn'),
+      wxBtn = document.querySelector('#wxBtn');
+
+    if (zfbBtn && wxBtn) {
+      zfbBtn.addEventListener('click', () => {
+        jQuery.Velocity(zfb, 'transition.slideLeftIn', {
+          duration: 400
+        });
+        jQuery.Velocity(wx, 'transition.slideRightOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+
+      wxBtn.addEventListener('click', () => {
+        jQuery.Velocity(wx, 'transition.slideRightIn', {
+          duration: 400
+        });
+        jQuery.Velocity(zfb, 'transition.slideLeftOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+    }
+
+    rewardBtn.addEventListener('click', (e) => {
+      jQuery.Velocity(mask, 'transition.slideDownIn', {
+        duration: 400
+      })
+    });
+
+    close.addEventListener('click', (e) => {
+      e.preventDefault();
+      jQuery.Velocity(mask, 'transition.slideUpOut', {
+        duration: 400
+      })
+    })
+  }()
+</script>
+
   </div>
 </body>
 
@@ -7791,7 +8565,6 @@ System.out.println(s2 == s3);//true， s2,s3指向常量池中的”AAA“&lt;/p
       speed: 200
     });
   </script>
-
 
 
 
